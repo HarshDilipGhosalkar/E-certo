@@ -10,7 +10,7 @@ import NoPage from "./NoPage/NoPage";
 import Home from "./Home/Home";
 import ContractNotDeployed from "./ContractNotDeployed/ContractNotDeployed";
 import Navbar from "./Navbar/Navbar";
-
+import FormAndPreview from "../components/FormAndPreview/FormAndPreview";
 const ipfsClient = require("ipfs-http-client");
 const ipfs = ipfsClient({
   host: "ipfs.infura.io",
@@ -123,6 +123,14 @@ class App extends Component {
                   }
                 >
                   <Route index element={<Home />} />
+                  <Route
+                    path="create"
+                    element={
+                      <FormAndPreview
+                      createCertificate={this.createCertificate}
+                      />
+                    }
+                  />
                  
                   <Route path="*" element={<NoPage />} />
                 </Route>
