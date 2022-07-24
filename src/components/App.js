@@ -7,7 +7,9 @@ import Ecertify from "../abis/Ecertify.json";
 import ConnectToMetamask from "./ConnectMetamask/ConnectToMetamask";
 import Loading from "./Loading/Loading";
 import NoPage from "./NoPage/NoPage";
-
+import Home from "./Home/Home";
+import ContractNotDeployed from "./ContractNotDeployed/ContractNotDeployed";
+import Navbar from "./Navbar/Navbar";
 
 const ipfsClient = require("ipfs-http-client");
 const ipfs = ipfsClient({
@@ -32,7 +34,7 @@ class App extends Component {
   componentWillMount = async () => {
     await this.loadWeb3();
     await this.loadBlockchainData();
-    await this.setMetaData();
+    // await this.setMetaData();
     
   };
 
@@ -88,84 +90,15 @@ class App extends Component {
   };
 
 
-  mintMyNFT = async (fileUrl, name, tokenPrice, description) => {
-    var months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-    var currentTime = new Date();
-    // returns the month (from 0 to 11)
-    var month = months[currentTime.getMonth()];
-
-    // returns the day of the month (from 1 to 31)
-    var day = currentTime.getDate();
-
-    // returns the year (four digits)
-    var year = currentTime.getFullYear();
-    const overAllDate = month + " " + day + ", " + year;
-    var time =
-      currentTime.getHours() +
-      ":" +
-      currentTime.getMinutes() +
-      ":" +
-      currentTime.getSeconds();
-    var dateTime = overAllDate + " at " + time;
-    this.setState({ loading: true });
-
-    console.log(fileUrl);
-    const nameIsUsed = await this.state.NFTContract.methods
-      .tokenNameExists(name)
-      .call();
-
-    const imageIsUsed = await this.state.NFTContract.methods
-      .tokenImageExists(fileUrl)
-      .call();
-
-    if (!nameIsUsed && !imageIsUsed) {
-      let previousTokenId;
-      previousTokenId = await this.state.NFTContract.methods
-        .NFTCounter()
-        .call();
-      previousTokenId = previousTokenId.toNumber();
-      const tokenId = previousTokenId + 1;
-      const tokenObject = {
-        tokenName: "DeepSpace",
-        tokenSymbol: "DS",
-        tokenId: `${tokenId}`,
-        name: name,
-        imageUrl: fileUrl,
-        description: description,
-      };
-      const cid = await ipfs.add(JSON.stringify(tokenObject));
-      let tokenURI = `https://ipfs.infura.io/ipfs/${cid.path}`;
-      const price = window.web3.utils.toWei(tokenPrice.toString(), "ether");
-      this.state.NFTContract.methods
-        .mintNFT(name, tokenURI, price, fileUrl, dateTime)
+  createCertificate = async (name,course) => {
+    this.state.EcertoContract.methods
+        .addCertificate(name,course)
         .send({ from: this.state.accountAddress })
         .on("confirmation", () => {
           localStorage.setItem(this.state.accountAddress, new Date().getTime());
           this.setState({ loading: false });
           window.location.reload();
         });
-    } else {
-      if (nameIsUsed) {
-        this.setState({ nameIsUsed: true });
-        this.setState({ loading: false });
-      } else if (imageIsUsed) {
-        this.setState({ imageIsUsed: true });
-        this.setState({ loading: false });
-      }
-    }
   };
 
   
