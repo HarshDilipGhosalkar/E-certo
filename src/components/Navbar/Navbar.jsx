@@ -28,27 +28,18 @@ const Navbar = ({ }) => {
           </div>
 
           <nav id="navbar" class="navbar">
-            <div class="search-bar">
-              <img src={search} alt="" class="search__icon " />
-              <input
-                type="text"
-                id="box"
-                placeholder="Search items,Collections and Account"
-                class="search__box"
-              />
-              {/* <img src={search} alt="" /> */}
-            </div>
+            
 
             <ul>
               <li>
-                
-                  <h1 class="navbar-text">Explore</h1>
-                
+              <Link to="/create">
+                  <h1 class="navbar-text">Create</h1>
+              </Link>  
               </li>
               <li>
-       
-                  <h1 class="navbar-text">Stats</h1>
-                
+              <Link to="/view">
+                  <h1 class="navbar-text">View</h1>
+              </Link> 
               </li>
              
               
