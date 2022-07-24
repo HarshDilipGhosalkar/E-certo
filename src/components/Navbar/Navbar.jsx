@@ -23,7 +23,7 @@ const Navbar = ({ }) => {
               <img src={logo} alt="Logo" />
             </Link>
             <Link to="/">
-              <h1 class="logotext">DeepSpace</h1>
+              <h1 class="logotext">E-certo</h1>
             </Link>
           </div>
 
