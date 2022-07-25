@@ -91,8 +91,22 @@ class App extends Component {
 
 
   createCertificate = async (name,course) => {
+    let previousId;
+    previousId = await this.state.EcertoContract.methods
+        .certificateCounter()
+        .call();
+
+    previousId = previousId.toNumber();
+    const currentId = previousId + 1;
+    const certObject = {
+      tokenId: `${currentId}`,
+      name: name,
+      course: course,
+    };
+    const cid = await ipfs.add(JSON.stringify(certObject));
+    let certURI = `https://ipfs.infura.io/ipfs/${cid.path}`;
     this.state.EcertoContract.methods
-        .addCertificate(name,course)
+        .addCertificate(certURI)
         .send({ from: this.state.accountAddress })
         .on("confirmation", () => {
           localStorage.setItem(this.state.accountAddress, new Date().getTime());
