@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./assets/explore.css";
 import Loading from "../Loading/Loading";
 
-class DisplayCert extends Component {
+class DisplayAllCert extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -31,9 +31,9 @@ class DisplayCert extends Component {
                                   key={cert.certid.toNumber()}
                                   class="col-4 col-lg-4 col-md-6 col-sm-1 align-items-center nft_card"
                                 >
-                                  {/* <Link
-                              to={"/assets/details/" + NFT.tokenId.toNumber()}
-                            > */}
+                                  <Link
+                              to={"/assets/details/" + cert.certid.toNumber()}
+                            >
 
                                   <div className="details-div">
                                     <div class="row nft-details">
@@ -43,7 +43,7 @@ class DisplayCert extends Component {
                                       </div>
                                     </div>
                                   </div>
-                                  {/* </Link> */}
+                                  </Link>
                                 </div>
                               </>
                             ) : null}
@@ -62,4 +62,4 @@ class DisplayCert extends Component {
   }
 }
 
-export default DisplayCert;
+export default DisplayAllCert;

@@ -11,7 +11,8 @@ import Home from "./Home/Home";
 import ContractNotDeployed from "./ContractNotDeployed/ContractNotDeployed";
 import Navbar from "./Navbar/Navbar";
 import FormAndPreview from "../components/FormAndPreview/FormAndPreview";
-import DisplayCert from "./display/displayAllCert";
+import DisplayAllCert from "./display/displayAllCert";
+import DisplayCert from "./display/displaycert";
 
 const ipfsClient = require("ipfs-http-client");
 const ipfs = ipfsClient({
@@ -171,8 +172,17 @@ class App extends Component {
                   />
                   <Route
                     path="all"
-                    element={<DisplayCert allCert={this.state.certs} />}
+                    element={<DisplayAllCert allCert={this.state.certs} />}
                   />
+                  <Route
+                    path="assets/details/:id"
+                    element={
+                      <DisplayCert
+                      AllCert={this.state.certs}
+                      />
+                    }
+                  />
+
 
                   <Route path="*" element={<NoPage />} />
                 </Route>
