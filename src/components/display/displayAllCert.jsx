@@ -21,7 +21,7 @@ class DisplayCert extends Component {
   // };
 
   
-  render() {
+render() {
     
  console.log("all cert0",this.props.cert1);
     return (
@@ -54,12 +54,12 @@ class DisplayCert extends Component {
                                     <p>hello</p>
                                     <p class="n">
                                     
-                                        {cert.certid.toNumber()}
+                                      {cert.metaData.name}
                                       
                                     </p>
                                     <p class="nft-owner-name-explore">
                                       <p>jach</p>
-                                      {cert.certURI}
+                                      {cert.metaData.course}
                                     </p>
                                   </div>
                                  
