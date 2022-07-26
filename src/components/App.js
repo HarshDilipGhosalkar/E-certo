@@ -30,8 +30,8 @@ class App extends Component {
       loading: true,
       metamaskConnected: false,
       contractDetected: false,
-      certCount:0,
-      certs:[]
+      certCount: 0,
+      certs: [],
     };
   }
 
@@ -39,10 +39,7 @@ class App extends Component {
     await this.loadWeb3();
     await this.loadBlockchainData();
     await this.setMetaData();
-    
   };
-
-  
 
   loadWeb3 = async () => {
     if (window.ethereum) {
@@ -65,8 +62,7 @@ class App extends Component {
       this.setState({ metamaskConnected: true });
       this.setState({ loading: true });
       this.setState({ accountAddress: accounts[0] });
-     
-     
+
       this.setState({ loading: false });
       const networkId = await web3.eth.net.getId();
       const networkData = Ecertify.networks[networkId];
@@ -80,10 +76,14 @@ class App extends Component {
         this.setState({ contractDetected: true });
 
         this.setState({ loading: false });
-        const certCount = await EcertoContract.methods.certificateCounter().call();
+        const certCount = await EcertoContract.methods
+          .certificateCounter()
+          .call();
         this.setState({ certCount });
         for (var i = 1; i <= certCount; i++) {
-          const certificate = await EcertoContract.methods.allCertificates(i).call();
+          const certificate = await EcertoContract.methods
+            .allCertificates(i)
+            .call();
           this.setState({
             certs: [...this.state.certs, certificate],
           });
@@ -94,7 +94,6 @@ class App extends Component {
     }
   };
 
- 
   connectToMetamask = async () => {
     await window.ethereum.enable();
     this.setState({ metamaskConnected: true });
@@ -108,7 +107,7 @@ class App extends Component {
         const metaData = await result.json();
         this.setState({
           certs: this.state.certs.map((certificate) =>
-          certificate.certid.toNumber() === Number(metaData.certId)
+            certificate.certid.toNumber() === Number(metaData.certId)
               ? {
                   ...certificate,
                   metaData,
@@ -119,11 +118,12 @@ class App extends Component {
       });
     }
   };
-  createCertificate = async (name,course) => {
+  createCertificate = async (name, course) => {
+    this.setState({ loading: true });
     let previousId;
     previousId = await this.state.EcertoContract.methods
-        .certificateCounter()
-        .call();
+      .certificateCounter()
+      .call();
 
     previousId = previousId.toNumber();
     const currentId = previousId + 1;
@@ -132,21 +132,19 @@ class App extends Component {
       name: name,
       course: course,
     };
+
     const cid = await ipfs.add(JSON.stringify(certObject));
     let certURI = `https://ipfs.infura.io/ipfs/${cid.path}`;
+    console.log(certURI);
     this.state.EcertoContract.methods
-        .addCertificate(certURI)
-        .send({ from: this.state.accountAddress })
-        .on("confirmation", () => {
-          localStorage.setItem(this.state.accountAddress, new Date().getTime());
-          this.setState({ loading: false });
-          window.location.reload();
-        });
-    console.log(this.state.certs[1].metaData.name);    
-    console.log(this.state.certs);
+      .addCertificate(certURI)
+      .send({ from: this.state.accountAddress })
+      .on("confirmation", () => {
+        localStorage.setItem(this.state.accountAddress, new Date().getTime());
+        this.setState({ loading: false });
+        window.location.reload();
+      });
   };
-
-  
 
   render() {
     return (
@@ -161,31 +159,21 @@ class App extends Component {
           <>
             <BrowserRouter>
               <Routes>
-                <Route
-                  path="/"
-                  element={
-                    <Navbar/>
-                  }
-                >
+                <Route path="/" element={<Navbar />}>
                   <Route index element={<Home />} />
                   <Route
                     path="create"
                     element={
                       <FormAndPreview
-                      createCertificate={this.createCertificate}
+                        createCertificate={this.createCertificate}
                       />
                     }
                   />
                   <Route
                     path="all"
-                    element={
-                      <DisplayCert
-                      allCert={this.state.certs}
-                      cert1={this.state.certs[1]}
-                      />
-                    }
+                    element={<DisplayCert allCert={this.state.certs} />}
                   />
-                 
+
                   <Route path="*" element={<NoPage />} />
                 </Route>
               </Routes>

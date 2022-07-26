@@ -32,6 +32,11 @@ const Navbar = ({ }) => {
 
             <ul>
               <li>
+              <Link to="/all">
+                  <h1 class="navbar-text">All</h1>
+              </Link>  
+              </li>
+              <li>
               <Link to="/create">
                   <h1 class="navbar-text">Create</h1>
               </Link>  
