@@ -17,6 +17,7 @@ const DisplayCert = ({
         cert={cert}
       /> */}
       <h1>{cert.certid.toNumber()}</h1>
+      <h1>{cert.transactionHash}</h1>
       <h1>{cert.metaData.name}</h1>
       <h1>{cert.metaData.course}</h1>
       </>

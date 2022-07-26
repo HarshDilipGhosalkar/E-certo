@@ -33,6 +33,7 @@ class App extends Component {
       contractDetected: false,
       certCount: 0,
       certs: [],
+      transactionHash:""
     };
   }
 
@@ -140,11 +141,22 @@ class App extends Component {
     this.state.EcertoContract.methods
       .addCertificate(certURI)
       .send({ from: this.state.accountAddress })
-      .on("confirmation", () => {
+      .on("transactionHash", (hash) => {
         localStorage.setItem(this.state.accountAddress, new Date().getTime());
+
+        this.state.EcertoContract.methods
+          .updateTransaction(hash)
+          .send({ from: this.state.accountAddress })
+          .on("confirmation", () => {
+          localStorage.setItem(this.state.accountAddress, new Date().getTime());
+
+          });
         this.setState({ loading: false });
-        window.location.reload();
+        // window.location.reload();
+        this.setState({transactionHash:hash});
+        // console.log(hash)
       });
+      console.log("transactionHash",this.state.transactionHash);
   };
 
   render() {

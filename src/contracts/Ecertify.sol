@@ -11,6 +11,7 @@ contract Ecertify{
 
 struct Certificate {
     uint256 certid;
+    string transactionHash;
     string certURI;
   }
   
@@ -24,9 +25,19 @@ function addCertificate(string memory certURI)external {
   // create a new Certificate (struct) and pass in new values
     Certificate memory newCert = Certificate(
       certificateCounter,
+      "0x0",
       certURI
     );
    // add the id and it's certificate to allCertificate mapping
     allCertificates[certificateCounter] = newCert;
 }
+
+function updateTransaction(string memory _transactionHash)external {
+  
+
+    Certificate memory cert = allCertificates[certificateCounter];
+    cert.transactionHash=_transactionHash;
+    allCertificates[certificateCounter] = cert;
+}
+
 }
