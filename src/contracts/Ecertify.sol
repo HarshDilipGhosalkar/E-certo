@@ -10,14 +10,14 @@ contract Ecertify{
   uint256 public certificateCounter;
 
 struct Certificate {
-    uint256 id;
+    uint256 certid;
     string certURI;
   }
   
 // map Certificates's id to Certificate
 mapping(uint256 => Certificate) public allCertificates;  
 
-function addCertificate(string certURI)external {
+function addCertificate(string memory certURI)external {
   certificateCounter ++;
   // require(!_exists(certificateCounter));
 

@@ -11,6 +11,8 @@ import Home from "./Home/Home";
 import ContractNotDeployed from "./ContractNotDeployed/ContractNotDeployed";
 import Navbar from "./Navbar/Navbar";
 import FormAndPreview from "../components/FormAndPreview/FormAndPreview";
+import DisplayCert from "./display/displayAllCert";
+
 const ipfsClient = require("ipfs-http-client");
 const ipfs = ipfsClient({
   host: "ipfs.infura.io",
@@ -28,13 +30,15 @@ class App extends Component {
       loading: true,
       metamaskConnected: false,
       contractDetected: false,
+      certCount:0,
+      certs:[]
     };
   }
 
   componentWillMount = async () => {
     await this.loadWeb3();
     await this.loadBlockchainData();
-    // await this.setMetaData();
+    await this.setMetaData();
     
   };
 
@@ -76,6 +80,14 @@ class App extends Component {
         this.setState({ contractDetected: true });
 
         this.setState({ loading: false });
+        const certCount = await EcertoContract.methods.certificateCounter().call();
+        this.setState({ certCount });
+        for (var i = 1; i <= certCount; i++) {
+          const certificate = await EcertoContract.methods.allCertificates(i).call();
+          this.setState({
+            certs: [...this.state.certs, certificate],
+          });
+        }
       } else {
         this.setState({ contractDetected: false });
       }
@@ -89,7 +101,24 @@ class App extends Component {
     window.location.reload();
   };
 
-
+  setMetaData = async () => {
+    if (this.state.certs.length !== 0) {
+      this.state.certs.map(async (cert) => {
+        const result = await fetch(cert.certURI);
+        const metaData = await result.json();
+        this.setState({
+          certs: this.state.certs.map((certificate) =>
+          certificate.certid.toNumber() === Number(metaData.certId)
+              ? {
+                  ...certificate,
+                  metaData,
+                }
+              : certificate
+          ),
+        });
+      });
+    }
+  };
   createCertificate = async (name,course) => {
     let previousId;
     previousId = await this.state.EcertoContract.methods
@@ -99,7 +128,7 @@ class App extends Component {
     previousId = previousId.toNumber();
     const currentId = previousId + 1;
     const certObject = {
-      tokenId: `${currentId}`,
+      certId: `${currentId}`,
       name: name,
       course: course,
     };
@@ -113,6 +142,8 @@ class App extends Component {
           this.setState({ loading: false });
           window.location.reload();
         });
+    console.log(this.state.certs[1].metaData.name);    
+    console.log(this.state.certs);
   };
 
   
@@ -142,6 +173,15 @@ class App extends Component {
                     element={
                       <FormAndPreview
                       createCertificate={this.createCertificate}
+                      />
+                    }
+                  />
+                  <Route
+                    path="all"
+                    element={
+                      <DisplayCert
+                      allCert={this.state.certs}
+                      cert1={this.state.certs[1]}
                       />
                     }
                   />
