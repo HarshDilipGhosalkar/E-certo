@@ -120,7 +120,7 @@ class App extends Component {
       });
     }
   };
-  createCertificate = async (name, course) => {
+  createCertificate = async (name, course,gmail,collegeName,passout_year,percentage,SAPId,rollNo,contact) => {
     this.setState({ loading: true });
     let previousId;
     previousId = await this.state.EcertoContract.methods
@@ -133,6 +133,13 @@ class App extends Component {
       certId: `${currentId}`,
       name: name,
       course: course,
+      gmail:gmail,
+      collegeName:collegeName,
+      passout_year:passout_year,
+      percentage:percentage,
+      SAPId:SAPId,
+      rollNo:rollNo,
+      contact:contact
     };
 
     const cid = await ipfs.add(JSON.stringify(certObject));
