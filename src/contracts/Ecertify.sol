@@ -18,6 +18,9 @@ struct Certificate {
 // map Certificates's id to Certificate
 mapping(uint256 => Certificate) public allCertificates;  
 
+// map Certificates's hash to Certificate
+mapping(string => Certificate) public allhashedCertificates;  
+
 function addCertificate(string memory certURI)external {
   certificateCounter ++;
   // require(!_exists(certificateCounter));
@@ -30,6 +33,7 @@ function addCertificate(string memory certURI)external {
     );
    // add the id and it's certificate to allCertificate mapping
     allCertificates[certificateCounter] = newCert;
+     
 }
 
 function updateTransaction(string memory _transactionHash)external {
@@ -38,6 +42,8 @@ function updateTransaction(string memory _transactionHash)external {
     Certificate memory cert = allCertificates[certificateCounter];
     cert.transactionHash=_transactionHash;
     allCertificates[certificateCounter] = cert;
+    // add the hash value and it's certificate to allCertificate mapping
+    allhashedCertificates[_transactionHash] = cert;
 }
 
 }
