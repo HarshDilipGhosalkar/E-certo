@@ -32,7 +32,7 @@ class DisplayAllCert extends Component {
                                   class="col-4 col-lg-4 col-md-6 col-sm-1 align-items-center nft_card"
                                 >
                                   <Link
-                              to={"/assets/details/" + cert.certid.toNumber()}
+                              to={"../certificate/" + cert.certid.toNumber()}
                             >
 
                                   <div className="details-div">

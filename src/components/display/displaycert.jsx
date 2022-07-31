@@ -9,7 +9,7 @@ const DisplayCert = ({ AllCert }) => {
   const certId = parseInt(id, 10) - 1;
   const linkCertId =parseInt(id, 10);
   const cert = AllCert[certId];
-  const [url, setUrl] = useState('http://localhost:3000/assets/details/'+ linkCertId)
+  const [url, setUrl] = useState('http://localhost:3000/details/'+ linkCertId)
 
   
 	const [qr, setQr] = useState('')
@@ -60,9 +60,6 @@ const DisplayCert = ({ AllCert }) => {
     {cert !== undefined && cert.metaData !== undefined? (
       <>
      
-      {/* <NFTDetails
-        cert={cert}
-      /> */}
       <div id="printcertificate">
       <h1>{cert.certid.toNumber()}</h1>
       <h1>{cert.transactionHash}</h1>
