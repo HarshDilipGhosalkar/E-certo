@@ -86,6 +86,16 @@ const DisplayCert = ({ AllCert }) => {
         >
           Print
         </button>
+        <br />
+        <button
+          className="btn"
+          onClick={onclickprint}
+          variant="success"
+          type="submit"
+          class="btns"
+        >
+          Print and send email
+        </button>
        
       </>
         ) : null}

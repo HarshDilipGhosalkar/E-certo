@@ -45,5 +45,7 @@ function updateTransaction(string memory _transactionHash)external {
     // add the hash value and it's certificate to allCertificate mapping
     allhashedCertificates[_transactionHash] = cert;
 }
-
+function getValueAtMapping(string userAddress)  public  constant  returns(Certificate cert) {
+      return allhashedCertificates[userAddress];
+}
 }
