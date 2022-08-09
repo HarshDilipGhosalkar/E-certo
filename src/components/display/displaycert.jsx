@@ -3,13 +3,21 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import QRCode from 'qrcode';
 import printJS from 'print-js'
+import Web3 from "web3";
+// import Ecertify from "./../abis/Ecertify.json";
 
 const DisplayCert = ({ AllCert }) => {
-  const { id } = useParams();
-  const certId = parseInt(id, 10) - 1;
-  const linkCertId =parseInt(id, 10);
-  const cert = AllCert[certId];
-  const [url, setUrl] = useState('http://localhost:3000/details/'+ linkCertId)
+  const { hash } = useParams();
+  console.log("hashvalue",hash);
+  
+let cert;
+AllCert.forEach(c => {
+    if(c.transactionHash == hash){
+        cert =c;
+    }
+});
+
+  const [url, setUrl] = useState('http://localhost:3000/details/'+ hash);
 
   
 	const [qr, setQr] = useState('')

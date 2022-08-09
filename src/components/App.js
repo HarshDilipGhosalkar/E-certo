@@ -12,8 +12,9 @@ import ContractNotDeployed from "./ContractNotDeployed/ContractNotDeployed";
 import Navbar from "./Navbar/Navbar";
 import FormAndPreview from "../components/FormAndPreview/FormAndPreview";
 import DisplayAllCert from "./display/displayAllCert";
-import DisplayCert from "./display/displaycert";
+
 import StudentDetail from "./StudentDetails/StudentDetail";
+import DisplayCert from "./display/displayCert";
 
 const ipfsClient = require("ipfs-http-client");
 const ipfs = ipfsClient({
@@ -121,6 +122,13 @@ class App extends Component {
       });
     }
   };
+
+  // getCertByHash = async (hash) => {
+  //   const cert = await this.state.EcertoContract.methods.getValueAtMapping(hash).call();
+
+  //   return cert;
+  // };
+
   createCertificate = async (name, course,gmail,collegeName,passout_year,percentage,SAPId,rollNo,contact) => {
     this.setState({ loading: true });
     let previousId;
@@ -195,19 +203,20 @@ class App extends Component {
                     element={<DisplayAllCert allCert={this.state.certs} />}
                   />
                   <Route
-                    path="certificate/:id"
+                    path="details/:hash"
                     element={
-                      <DisplayCert
+                      <StudentDetail
                       AllCert={this.state.certs}
                       />
                     }
                   />
                   <Route
-                    path="details/:id"
+                    path="certificate/:hash"
                     element={
-                      <StudentDetail
-                      AllCert={this.state.certs}
-                      />
+                      <DisplayCert
+                      AllCert={this.state.certs}  
+                      // getCertByHash={this.getCertByHash}                   
+                       />
                     }
                   />
                   <Route path="*" element={<NoPage />} />
