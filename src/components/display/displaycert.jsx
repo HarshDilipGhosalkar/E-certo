@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import QRCode from 'qrcode';
 import printJS from 'print-js'
-import Web3 from "web3";
-// import Ecertify from "./../abis/Ecertify.json";
+// import  Puppeteer  from 'puppeteer';
+// const nodemailer = require('nodemailer');
 
 const DisplayCert = ({ AllCert }) => {
   const { hash } = useParams();
@@ -17,7 +17,7 @@ AllCert.forEach(c => {
     }
 });
 
-  const [url, setUrl] = useState('http://localhost:3000/details/'+ hash);
+const [url, setUrl] = useState('http://localhost:3000/details/'+ hash);
 
   
 	const [qr, setQr] = useState('')
