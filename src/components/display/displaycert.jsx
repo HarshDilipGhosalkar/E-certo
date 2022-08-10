@@ -2,9 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import QRCode from 'qrcode';
-import printJS from 'print-js'
-// import  Puppeteer  from 'puppeteer';
-// const nodemailer = require('nodemailer');
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 const DisplayCert = ({ AllCert }) => {
   const { hash } = useParams();
@@ -22,12 +21,21 @@ const [url, setUrl] = useState('http://localhost:3000/details/'+ hash);
   
 	const [qr, setQr] = useState('')
   const [mounted, setMounted] = useState(false)
- function onclickprint (){
-    // event.preventDefault();
-    // window.print();
-    printJS("printcertificate", "html");
-  };
-  
+
+//  function onclickprint (){
+//     printJS("printcertificate", "html");
+//   };
+  const onclickprint =(cname)=>{
+   const input =document.getElementById("printcertificate")
+   html2canvas(input,{logging: true, letterRendering:1, useCORS: true}).then(canvas => {
+   const imgWidth =208;
+   const imgHeight = canvas.height * imgWidth/ canvas.width;
+   const imgData =canvas.toDataURL("img/png");
+   const pdf =new jsPDF("p","mm","a4");
+   pdf.addImage(imgData,"PNG",0,0,imgWidth,imgHeight);
+   pdf.save(cname+"_certificate.pdf")
+   })
+  }
 	// const GenerateQRCode = () => {
 	// 	QRCode.toDataURL(url, {
 	// 		width: 800,
@@ -69,8 +77,8 @@ const [url, setUrl] = useState('http://localhost:3000/details/'+ hash);
       <>
      
       <div id="printcertificate">
-      <h1>{cert.certid.toNumber()}</h1>
-      <h1>{cert.transactionHash}</h1>
+      <h1 >{cert.certid.toNumber()}</h1>
+      <h1 id="styleIt">{cert.transactionHash}</h1>
       <h1>{cert.metaData.name}</h1>
       <h1>{cert.metaData.course}</h1>
       <h1>{cert.metaData.contact}</h1>
@@ -80,11 +88,12 @@ const [url, setUrl] = useState('http://localhost:3000/details/'+ hash);
         <br />
 				<a class="downloadcert" href={qr} download="qrcode.png">Download</a>
 			</>}
+      
       </div>
       <br />
       <button
           className="btn"
-          onClick={onclickprint}
+          onClick={() => onclickprint(cert.metaData.name)}
           variant="success"
           type="submit"
           class="btns"
