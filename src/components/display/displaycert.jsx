@@ -27,14 +27,39 @@ const [url, setUrl] = useState('http://localhost:3000/details/'+ hash);
 //   };
   const onclickprint =(cname)=>{
    const input =document.getElementById("printcertificate")
-   html2canvas(input,{logging: true, letterRendering:1, useCORS: true}).then(canvas => {
-   const imgWidth =208;
-   const imgHeight = canvas.height * imgWidth/ canvas.width;
-   const imgData =canvas.toDataURL("img/png");
-   const pdf =new jsPDF("p","mm","a4");
-   pdf.addImage(imgData,"PNG",0,0,imgWidth,imgHeight);
-   pdf.save(cname+"_certificate.pdf")
-   })
+  //  html2canvas(input,{logging: true, letterRendering:1, useCORS: true}).then(canvas => {
+  //  const imgWidth =250;
+  //  const imgHeight = canvas.height * imgWidth/ canvas.width;
+  //  const imgData =canvas.toDataURL("img/png");
+  //  const pdf =new jsPDF("l","mm","a4");
+  //  pdf.addImage(imgData,"PNG",0,0,imgWidth,imgHeight);
+  //  pdf.save(cname+"_certificate.pdf")
+  //  })
+  html2canvas(input, {
+    useCORS: true,
+    allowTaint: true,
+    scrollY: -window.scrollY,
+    logging: true,
+    letterRendering:1
+  }).then(canvas => {
+    const image = canvas.toDataURL('image/jpeg', 1.0);
+    const doc = new jsPDF('l', 'px', 'a4');
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const pageHeight = doc.internal.pageSize.getHeight();
+
+    const widthRatio = pageWidth / canvas.width;
+    const heightRatio = pageHeight / canvas.height;
+    const ratio = widthRatio > heightRatio ? heightRatio : widthRatio;
+
+    const canvasWidth = canvas.width * ratio;
+    const canvasHeight = canvas.height * ratio;
+
+    const marginX = (pageWidth - canvasWidth) / 2;
+    const marginY = (pageHeight - canvasHeight) / 2;
+
+    doc.addImage(image, 'JPEG', marginX, marginY, canvasWidth, canvasHeight);
+    doc.save(cname+"'s_certificate.pdf")
+  });
   }
 	// const GenerateQRCode = () => {
 	// 	QRCode.toDataURL(url, {
