@@ -12,7 +12,6 @@ import ContractNotDeployed from "./ContractNotDeployed/ContractNotDeployed";
 import Navbar from "./Navbar/Navbar";
 import FormAndPreview from "../components/FormAndPreview/FormAndPreview";
 import DisplayAllCert from "./display/displayAllCert";
-import PCertificate from "./display/pCertificate";
 import StudentDetail from "./StudentDetails/StudentDetail";
 import DisplayCert from "./display/displayCert";
 // const nodemailer = require('nodemailer'); 
@@ -223,15 +222,7 @@ class App extends Component {
                   <Route path="*" element={<NoPage />} />
                 </Route>
                 
-                <Route 
-                  path="certificatep/:hash"
-                  element={
-                     <PCertificate 
-                     AllCert={this.state.certs} 
-                      />
-                   }
-                  />
-                {/* </Route> */}
+               
               </Routes>
             </BrowserRouter>
           </>

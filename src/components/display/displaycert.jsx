@@ -22,19 +22,9 @@ const [url, setUrl] = useState('http://localhost:3000/details/'+ hash);
 	const [qr, setQr] = useState('')
   const [mounted, setMounted] = useState(false)
 
-//  function onclickprint (){
-//     printJS("printcertificate", "html");
-//   };
+
   const onclickprint =(cname)=>{
    const input =document.getElementById("printcertificate")
-  //  html2canvas(input,{logging: true, letterRendering:1, useCORS: true}).then(canvas => {
-  //  const imgWidth =250;
-  //  const imgHeight = canvas.height * imgWidth/ canvas.width;
-  //  const imgData =canvas.toDataURL("img/png");
-  //  const pdf =new jsPDF("l","mm","a4");
-  //  pdf.addImage(imgData,"PNG",0,0,imgWidth,imgHeight);
-  //  pdf.save(cname+"_certificate.pdf")
-  //  })
   html2canvas(input, {
     useCORS: true,
     allowTaint: true,
@@ -61,21 +51,7 @@ const [url, setUrl] = useState('http://localhost:3000/details/'+ hash);
     doc.save(cname+"'s_certificate.pdf")
   });
   }
-	// const GenerateQRCode = () => {
-	// 	QRCode.toDataURL(url, {
-	// 		width: 800,
-	// 		margin: 2,
-	// 		color: {
-	// 			dark: '#335383FF',
-	// 			light: '#EEEEEEFF'
-	// 		}
-	// 	}, (err, url) => {
-	// 		if (err) return console.error(err)
-
-	// 		console.log(url)
-	// 		setQr(url)
-	// 	})
-	// }
+	
   if(!mounted){
     
       QRCode.toDataURL(url, {
