@@ -52,6 +52,21 @@ const [url, setUrl] = useState('http://localhost:3000/details/'+ hash);
   });
   }
 	
+  const imageprint =(cname)=>{
+  const input =document.getElementById("printcertificate");
+  html2canvas(input, {
+    useCORS: true,
+    allowTaint: true,
+    scrollY: -window.scrollY,
+    logging: true,
+    letterRendering:1
+  }).then(canvas => {
+    const a = document.createElement('a');
+     a.href = canvas.toDataURL('image/png', 1.0);
+    a.download=cname+"'s_certificate.png";
+    a.click();
+  });
+  }
   if(!mounted){
     
       QRCode.toDataURL(url, {
@@ -99,17 +114,17 @@ const [url, setUrl] = useState('http://localhost:3000/details/'+ hash);
           type="submit"
           class="btns"
         >
-          Print
+          Print Certificate as Pdf
         </button>
         <br />
         <button
           className="btn"
-          onClick={onclickprint}
+          onClick={() => imageprint(cert.metaData.name)}
           variant="success"
           type="submit"
           class="btns"
         >
-          Print and send email
+          Print Certificate as Image
         </button>
        
       </>
