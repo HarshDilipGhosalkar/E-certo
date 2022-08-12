@@ -124,8 +124,6 @@ class App extends Component {
 
   createCertificate = async (name, course,email,collegeName,passout_year,percentage,SAPId,rollNo,contact) => {
     this.setState({ loading: true });
-
-    console.log("hi");
     this.state.EcertoContract.methods
       .addCertificate(name, course, email, collegeName, passout_year, percentage, SAPId, rollNo, contact)
       .send({ from: this.state.accountAddress })
@@ -136,10 +134,10 @@ class App extends Component {
           .updateTransaction(hash)
           .send({ from: this.state.accountAddress })
           .on("confirmation", () => {
-          localStorage.setItem(this.state.accountAddress, new Date().getTime());
-
+            localStorage.setItem(this.state.accountAddress, new Date().getTime());    
+            this.setState({ loading: false });
+            window.location.reload();
           });
-        this.setState({ loading: false });
         // window.location.reload();
         this.setState({transactionHash:hash});
         // console.log(hash)
