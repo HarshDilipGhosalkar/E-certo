@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
-pragma experimental ABIEncoderV2;
-// pragma abicoder v2;
+pragma solidity >=0.4.21 <0.8.0;
+pragma abicoder v2;
 
 
 // NFT smart contract inherits ERC721 interface
