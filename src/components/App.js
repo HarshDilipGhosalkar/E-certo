@@ -13,15 +13,8 @@ import Navbar from "./Navbar/Navbar";
 import FormAndPreview from "../components/FormAndPreview/FormAndPreview";
 import DisplayAllCert from "./display/displayAllCert";
 import StudentDetail from "./StudentDetails/StudentDetail";
-import DisplayCert from "./display/displayCert";
+import DisplayCert from "./display/displaycert";
 // const nodemailer = require('nodemailer'); 
-
-const ipfsClient = require("ipfs-http-client");
-const ipfs = ipfsClient({
-  host: "ipfs.infura.io",
-  port: 5001,
-  protocol: "https",
-});
 
 class App extends Component {
   constructor(props) {
@@ -129,33 +122,12 @@ class App extends Component {
   //   return cert;
   // };
 
-  createCertificate = async (name, course,gmail,collegeName,passout_year,percentage,SAPId,rollNo,contact) => {
+  createCertificate = async (name, course,email,collegeName,passout_year,percentage,SAPId,rollNo,contact) => {
     this.setState({ loading: true });
-    let previousId;
-    previousId = await this.state.EcertoContract.methods
-      .certificateCounter()
-      .call();
 
-    previousId = previousId.toNumber();
-    const currentId = previousId + 1;
-    const certObject = {
-      certId: `${currentId}`,
-      name: name,
-      course: course,
-      gmail:gmail,
-      collegeName:collegeName,
-      passout_year:passout_year,
-      percentage:percentage,
-      SAPId:SAPId,
-      rollNo:rollNo,
-      contact:contact
-    };
-
-    const cid = await ipfs.add(JSON.stringify(certObject));
-    let certURI = `https://ipfs.infura.io/ipfs/${cid.path}`;
-    console.log(certURI);
+    console.log("hi");
     this.state.EcertoContract.methods
-      .addCertificate(certURI)
+      .addCertificate(name, course, email, collegeName, passout_year, percentage, SAPId, rollNo, contact)
       .send({ from: this.state.accountAddress })
       .on("transactionHash", (hash) => {
         localStorage.setItem(this.state.accountAddress, new Date().getTime());
