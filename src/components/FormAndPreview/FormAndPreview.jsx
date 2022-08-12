@@ -10,10 +10,10 @@ class FormAndPreview extends Component {
       gmail: "",
       collegeName: "",
       passout_year: "",
-      percentage:"",
-      SAPId:"",
-      rollNo:"",
-      contact:""
+      percentage: "",
+      SAPId: "",
+      rollNo: "",
+      contact: ""
     };
   }
   callCreateCertFromApp = (e) => {
@@ -43,7 +43,7 @@ class FormAndPreview extends Component {
                 <p class="sub-head">
                   <span class="highlight">* </span>Required fields{" "}
                 </p>
-                
+
                 <label for="text-1542372332072" class="head">
                   Name <span class="highlight">*</span>
                 </label>
@@ -119,7 +119,7 @@ class FormAndPreview extends Component {
                   ></input>
                   {/* <label for="text-1542372332072"> Name</label> */}
                 </div>
-                
+
                 <br />
                 <label for="text-1542372332072" class="head">
                   Passout year <span class="highlight">*</span>
@@ -139,7 +139,7 @@ class FormAndPreview extends Component {
                   ></input>
                   {/* <label for="text-1542372332072"> Name</label> */}
                 </div>
- 
+
                 <br />
                 <label for="text-1542372332072" class="head">
                   percentage <span class="highlight">*</span>
@@ -159,7 +159,7 @@ class FormAndPreview extends Component {
                   ></input>
                   {/* <label for="text-1542372332072"> Name</label> */}
                 </div>
-                
+
                 <br />
                 <label for="text-1542372332072" class="head">
                   SAPId <span class="highlight">*</span>
@@ -221,12 +221,12 @@ class FormAndPreview extends Component {
 
                 <hr></hr>
                 <br />
-                
+
                 <div className="mt-4">
-                <button
+                  <button
                     type="submit"
                     class="create-btn create-btn-disabled"
-                    
+
                   >
                     Create
                   </button>
