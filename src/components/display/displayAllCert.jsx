@@ -25,8 +25,6 @@ class DisplayAllCert extends Component {
                       {this.props.allCert.map((cert) => {
                         return (
                           <>
-                            {cert.metaData !== undefined ? (
-                              <>
                                 <div
                                   key={cert.certid.toNumber()}
                                   class="col-4 col-lg-4 col-md-6 col-sm-1 align-items-center nft_card"
@@ -38,15 +36,13 @@ class DisplayAllCert extends Component {
                                   <div className="details-div">
                                     <div class="row nft-details">
                                       <div class="col nft-name-explore">
-                                        <p>Name: {cert.metaData.name}</p>
-                                        <p>Course: {cert.metaData.course}</p>
+                                        <p>Name: {cert.name}</p>
+                                        <p>Course: {cert.course}</p>
                                       </div>
                                     </div>
                                   </div>
                                   </Link>
                                 </div>
-                              </>
-                            ) : null}
                           </>
                         );
                       })}

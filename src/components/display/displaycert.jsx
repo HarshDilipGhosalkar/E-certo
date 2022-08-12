@@ -89,15 +89,15 @@ const [url, setUrl] = useState('http://localhost:3000/details/'+ hash);
   },[])
   return (
     <>
-    {cert !== undefined && cert.metaData !== undefined? (
+    {cert !== undefined? (
       <>
      
       <div id="printcertificate">
       <h1 >{cert.certid.toNumber()}</h1>
       <h1 id="styleIt">{cert.transactionHash}</h1>
-      <h1>{cert.metaData.name}</h1>
-      <h1>{cert.metaData.course}</h1>
-      <h1>{cert.metaData.contact}</h1>
+      <h1>{cert.name}</h1>
+      <h1>{cert.course}</h1>
+      <h1>{cert.contact.toNumber()}</h1>
       {qr && <>
 				<img width={200} height={200} src={qr} />
         
@@ -109,7 +109,7 @@ const [url, setUrl] = useState('http://localhost:3000/details/'+ hash);
       <br />
       <button
           className="btn"
-          onClick={() => onclickprint(cert.metaData.name)}
+          onClick={() => onclickprint(cert.name)}
           variant="success"
           type="submit"
           class="btns"
@@ -119,7 +119,7 @@ const [url, setUrl] = useState('http://localhost:3000/details/'+ hash);
         <br />
         <button
           className="btn"
-          onClick={() => imageprint(cert.metaData.name)}
+          onClick={() => imageprint(cert.name)}
           variant="success"
           type="submit"
           class="btns"

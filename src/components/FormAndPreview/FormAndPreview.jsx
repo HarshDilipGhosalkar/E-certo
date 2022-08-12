@@ -1,13 +1,6 @@
 import React, { Component } from "react";
 import "./style.css";
 
-const ipfsClient = require("ipfs-http-client");
-const ipfs = ipfsClient({
-  host: "ipfs.infura.io",
-  port: 5001,
-  protocol: "https",
-});
-
 class FormAndPreview extends Component {
   constructor(props) {
     super(props);
@@ -95,8 +88,8 @@ class FormAndPreview extends Component {
                   <input
                     class="form-control"
                     type="text"
-                    name="text-1542372332032"
-                    id="text-1542372332032"
+                    name="text-1542372332000"
+                    id="text-1542372332000"
                     required="required"
                     value={this.state.gmail}
                     placeholder="Gmail"
@@ -115,8 +108,8 @@ class FormAndPreview extends Component {
                   <input
                     class="form-control"
                     type="text"
-                    name="text-1542372332032"
-                    id="text-1542372332032"
+                    name="text-1542372332001"
+                    id="text-1542372332001"
                     required="required"
                     value={this.state.collegeName}
                     placeholder="College Name"
@@ -135,8 +128,8 @@ class FormAndPreview extends Component {
                   <input
                     class="form-control"
                     type="text"
-                    name="text-1542372332032"
-                    id="text-1542372332032"
+                    name="text-1542372332031"
+                    id="text-1542372332031"
                     required="required"
                     value={this.state.passout_year}
                     placeholder="passout year"
@@ -155,8 +148,8 @@ class FormAndPreview extends Component {
                   <input
                     class="form-control"
                     type="text"
-                    name="text-1542372332032"
-                    id="text-1542372332032"
+                    name="text-1542372332022"
+                    id="text-1542372332022"
                     required="required"
                     value={this.state.percentage}
                     placeholder="Percentage"
@@ -175,8 +168,8 @@ class FormAndPreview extends Component {
                   <input
                     class="form-control"
                     type="text"
-                    name="text-1542372332032"
-                    id="text-1542372332032"
+                    name="text-1542372332932"
+                    id="text-1542372332092"
                     required="required"
                     value={this.state.SAPId}
                     placeholder="College Name"
@@ -195,8 +188,8 @@ class FormAndPreview extends Component {
                   <input
                     class="form-control"
                     type="text"
-                    name="text-1542372332032"
-                    id="text-1542372332032"
+                    name="text-1542372332035"
+                    id="text-1542372332035"
                     required="required"
                     value={this.state.rollNo}
                     placeholder="Roll No"
@@ -204,7 +197,6 @@ class FormAndPreview extends Component {
                       this.setState({ rollNo: e.target.value })
                     }
                   ></input>
-                  {/* <label for="text-1542372332072"> Name</label> */}
                 </div>
 
                 <br />
@@ -215,8 +207,8 @@ class FormAndPreview extends Component {
                   <input
                     class="form-control"
                     type="text"
-                    name="text-1542372332032"
-                    id="text-1542372332032"
+                    name="text-1542372332054"
+                    id="text-1542372332054"
                     required="required"
                     value={this.state.contact}
                     placeholder="Contact"
