@@ -35,6 +35,78 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <section className="feature-section">
+        <div className="container">
+          <h2 className="feaure-heading">
+            Our platform for creating certificates and digital credentials can
+            be used for everything
+          </h2>
+          <ul className="feature-area">
+            <li className="feature-item">
+              <div className="feature-block">
+                <div className="feature-block-img">
+                  <img src={create} alt="" />
+                </div>
+                <h3>Create</h3>
+                <p>
+                  Use our powerful builder to create beautiful certificates:
+                  either from scratch or existing templates.
+                </p>
+              </div>
+            </li>
+            <li className="feature-item">
+              <div className="feature-block">
+                <div className="feature-block-img">
+                  <img src={issue} alt="" />
+                </div>
+                <h3>Issue</h3>
+                <p>
+                  Generate certificates in bulk with one click by uploading a
+                  spreadsheet with recipients’ data or by integrating Certifier
+                  via API.
+                </p>
+              </div>
+            </li>
+            <li className="feature-item">
+              <div className="feature-block">
+                <div className="feature-block-img">
+                  <img src={manage} alt="" />
+                </div>
+                <h3>Manage</h3>
+                <p>
+                  Enjoy the ability to securely store and manage issued
+                  certificates.
+                </p>
+              </div>
+            </li>
+            <li className="feature-item">
+              <div className="feature-block">
+                <div className="feature-block-img">
+                  <img src={verify} alt="" />
+                </div>
+                <h3>Verify</h3>
+                <p>
+                  Replace useless PDFs with trustworthy and verifiable
+                  documents.
+                </p>
+              </div>
+            </li>
+            <li className="feature-item">
+              <div className="feature-block">
+                <div className="feature-block-img">
+                  <img src={share} alt="" />
+                </div>
+                <h3>Share</h3>
+                <p>
+                  The certificates you issue become a powerful marketing tool
+                  since they are easily shareable on LinkedIn or other social
+                  media platforms.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
     </>
   );
 };
