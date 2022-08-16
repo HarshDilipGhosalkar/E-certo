@@ -2,8 +2,10 @@
   scroll-behavior: smooth;
 }
 body {
-  background-color: rgb(32 34 37);
-  color: #fff;
+  background-color: #fff;
+  color: #000;
+  font-family: 'Space Grotesk', sans-serif;
+
 }
 #printcertificate{
   background-color: rgba(48, 64, 88, 0.984);
