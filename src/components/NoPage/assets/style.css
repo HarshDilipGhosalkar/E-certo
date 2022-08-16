@@ -5,9 +5,6 @@
   margin: 0;
   box-sizing: border-box;
 }
-body {
-  background: rgb(32 34 37);
-}
 .contain {
   color: rgb(229, 232, 235);
   font-family: "Poppins", sans-serif;
