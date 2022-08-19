@@ -5,6 +5,8 @@
   "author": "Harsh Ghosalkar - Jhenil Parihar",
   "homepage": "https://github.com/jhenilparihar/DeepSpace",
   "dependencies": {
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
     "@openzeppelin/contracts": "^3.4.1",
     "babel-polyfill": "6.26.0",
     "babel-preset-env": "1.7.0",
@@ -28,7 +30,8 @@
     "react-scripts": "2.1.3",
     "truffle": "5.0.5",
     "truffle-flattener": "^1.5.0",
-    "web3": "1.0.0-beta.55"
+    "web3": "1.0.0-beta.55",
+    "xlsx": "^0.18.5"
   },
   "scripts": {
     "start": "react-scripts start",
