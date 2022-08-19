@@ -14,7 +14,8 @@ import FormAndPreview from "../components/FormAndPreview/FormAndPreview";
 import DisplayAllCert from "./display/displayAllCert";
 import StudentDetail from "./StudentDetails/StudentDetail";
 import DisplayCert from "./display/displaycert";
-// const nodemailer = require('nodemailer'); 
+import FormComponent from "./create-form/FormComponent";
+import Bulk from "./FormAndPreview/bulk";
 
 class App extends Component {
   constructor(props) {
@@ -122,10 +123,10 @@ class App extends Component {
   //   return cert;
   // };
 
-  createCertificate = async (name, course,email,collegeName,passout_year,percentage,SAPId,rollNo,contact) => {
+  createCertificate = async (name, course,email,passout_year,percentage,SAPId,contact,birthDate,gender,highestDegree) => {
     this.setState({ loading: true });
     this.state.EcertoContract.methods
-      .addCertificate(name, course, email, collegeName, passout_year, percentage, SAPId, rollNo, contact)
+      .addCertificate(name, course, email, passout_year, percentage, SAPId, contact,birthDate,gender,highestDegree)
       .send({ from: this.state.accountAddress })
       .on("transactionHash", (hash) => {
         localStorage.setItem(this.state.accountAddress, new Date().getTime());
@@ -163,8 +164,8 @@ class App extends Component {
                   <Route
                     path="create"
                     element={
-                      <FormAndPreview
-                        createCertificate={this.createCertificate}
+                      <FormComponent 
+                      createCertificate={this.createCertificate}
                       />
                     }
                   />
@@ -189,6 +190,14 @@ class App extends Component {
                        />
                     }
                   />
+                  {/* <Route
+                    path="form"
+                    element={
+                      <FormComponent 
+                      createCertificate={this.createCertificate}
+                      />
+                    }
+                  /> */}
                   <Route path="*" element={<NoPage />} />
                 </Route>
                 
