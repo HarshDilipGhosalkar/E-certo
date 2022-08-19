@@ -133,7 +133,7 @@ class FormComponent extends Component {
                 {renderText({
                   type: "h6",
                   color: "primary",
-                  label: "MultiStep Signup Form",
+                  label: "Certificate Details",
                   align: "center",
                 })}
               </Box>
