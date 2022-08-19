@@ -13,12 +13,13 @@ contract Ecertify {
         string name;
         string course;
         string email;
-        string clgName;
         uint256 passoutYear;
         uint256 percentage;
         uint256 SAP;
-        uint256 rollNo;
         uint256 contact;
+        string birthDate;
+        string gender;
+        string highestDegree;
     }
 
     // map Certificates's id to Certificate
@@ -31,12 +32,13 @@ contract Ecertify {
         string memory _name,
         string memory _course,
         string memory _email,
-        string memory _clgName,
         uint256 _passoutYear,
         uint256 _percentage,
         uint256 _SAP,
-        uint256 _rollNo,
-        uint256 _phone
+        uint256 _phone,
+        string memory _birthdate,
+        string memory _gender,
+        string memory _highestDegree
     ) external {
         certificateCounter++;
         // require(!_exists(certificateCounter));
@@ -48,12 +50,13 @@ contract Ecertify {
             _name,
             _course,
             _email,
-            _clgName,
             _passoutYear,
             _percentage,
             _SAP,
-            _rollNo,
-            _phone
+            _phone,
+            _birthdate,
+            _gender,
+            _highestDegree
         );
         // add the id and it's certificate to allCertificate mapping
         allCertificates[certificateCounter] = newCert;
