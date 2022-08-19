@@ -11,8 +11,9 @@ const Navbar = ({}) => {
         <div className="container">
           <div className="row navbar_inner">
             <div className="col-3 column">
+            <Link to="/">
               <img className="logo_img" src={logo} alt="" />
-              <Link to="/">
+             
               <span className="logo_txt">E - Certifier</span>
               </Link>
             </div>
