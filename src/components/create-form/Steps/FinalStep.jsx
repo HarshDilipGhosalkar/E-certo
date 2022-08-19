@@ -26,7 +26,6 @@ const FinalStep = ({ data,createCertificate }) => {
           align: "center",
         })}
       </Box>
-      {data.fullName}
       {JSON.stringify(data, null, 4)}
     </Paper>
   );
