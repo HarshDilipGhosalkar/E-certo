@@ -12,7 +12,9 @@ const Navbar = ({}) => {
           <div className="row navbar_inner">
             <div className="col-3 column">
               <img className="logo_img" src={logo} alt="" />
+              <Link to="/">
               <span className="logo_txt">E - Certifier</span>
+              </Link>
             </div>
             <div className="col-5"></div>
             <div className="col">
