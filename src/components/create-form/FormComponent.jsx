@@ -35,9 +35,8 @@ class FormComponent extends Component {
       sapId: "",
 
       skill: "",
-      jobApplyFor: "",
       workExperence: "",
-      expectedSalary: "",
+      
     },
     errors: {},
     steps: [
