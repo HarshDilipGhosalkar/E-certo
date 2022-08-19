@@ -34,7 +34,7 @@ const Step3 = ({
           {renderSelect({
             state,
             name: "skill",
-            label: "Skills You have",
+            label: "Skills ",
             options: [
               { key: "Programming", value: "Programming" },
               { key: "Communication", value: "Communication" },
@@ -48,8 +48,9 @@ const Step3 = ({
           {renderSelect({
             state,
             name: "workExperence",
-            label: "Experence You have",
+            label: "Experence",
             options: [
+              { key: "No Experince", value: "No Experince" },
               { key: "Less than 1 year", value: "Less than 1 year" },
               { key: "More than 1 year", value: "More than 1 year" },
               { key: "1 year", value: "1 year" },
@@ -59,29 +60,7 @@ const Step3 = ({
         </Grid>
       </Grid>
 
-      <Grid container spacing={1} style={{ marginBottom: "16px" }}>
-        <Grid item xs={12} sm={6}>
-          {renderSelect({
-            state,
-            name: "jobType",
-            label: "Choose Work Type",
-            options: [
-              { key: "Marketting", value: "Marketting" },
-              { key: "Official Work", value: "Official Work" },
-              { key: "Work from home", value: "Work from home" },
-            ],
-            onChange: handleChange,
-          })}
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          {renderInputField({
-            state,
-            name: "expectedSalary",
-            label: " Expected Salaty",
-            onChange: handleChange,
-          })}
-        </Grid>
-      </Grid>
+    
 
       <Grid container component={Box} justify='flex-end' mt={2} p={2}>
         <Box ml={2}>
