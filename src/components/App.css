@@ -1,16 +1,99 @@
 :root {
   scroll-behavior: smooth;
 }
+
 body {
   background-color: #fff;
   color: #000;
   font-family: 'Space Grotesk', sans-serif;
 
 }
-#printcertificate{
-  background-color: rgba(48, 64, 88, 0.984);
+
+#printcertificate {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 5%;
 }
-#styleIt{
+
+#styleIt {
   color: rgb(245, 183, 59);
-  
+
+}
+
+.image_template {
+  /* margin-left:20%; */
+}
+
+#innerdiv {
+  background-color: aqua;
+  height: 1124px;
+  width: 795px;
+  margin: auto;
+  position: relative;
+
+}
+
+#template {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#text-name {
+  position: absolute;
+  top: 37%;
+  width: 100%;
+  text-align: center;
+}
+
+#text-name h1 {
+  font-family: 'Alex Brush', cursive;
+  font-size: 57px;
+  color: #FFCA60;
+}
+
+#course-text {
+  position: absolute;
+  top: 559px;
+  width: 100%;
+  text-align: center;
+}
+
+#course-text h1 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: #FFCA60;
+}
+
+#cert-id {
+  position: absolute;
+  bottom: 110px;
+  left: 266px;
+}
+
+#cert-id h1 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  color: #FFCA60;
+}
+
+#qr-code {
+  position: absolute;
+  bottom: 140px;
+  right: 346px;
+}
+
+#btn-div {
+  padding: 50px 0 50px 0;
+  background-color: white;
+}
+
+.btns1 {
+  margin: auto;
+  width: fit-content;
+  display: flex;
+}
+
+.btn2 {
+  margin: 0 10px 0 10px;
+  text-decoration: none;
 }

@@ -288,11 +288,7 @@
 .filter-op1 {
   display: block;
 }
-.btns{
-  color: #6d3030;
-  width: 200px;
-  background: antiquewhite;
-}
+
 .downloadcert{
   color: rgb(154, 199, 243);
   text-decoration: none;
