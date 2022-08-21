@@ -14,7 +14,7 @@ import DisplayAllCert from "./display/displayAllCert";
 import StudentDetail from "./StudentDetails/StudentDetail";
 import DisplayCert from "./display/displaycert";
 import FormComponent from "./create-form/FormComponent";
-
+import CreateFromExel from "./create-form/uploadexel";
 
 class App extends Component {
   constructor(props) {
@@ -189,14 +189,12 @@ class App extends Component {
                        />
                     }
                   />
-                  {/* <Route
-                    path="form"
+                  <Route
+                    path="createFromExel"
                     element={
-                      <FormComponent 
-                      createCertificate={this.createCertificate}
-                      />
+                      <CreateFromExel />
                     }
-                  /> */}
+                  />
                   <Route path="*" element={<NoPage />} />
                 </Route>
                 
