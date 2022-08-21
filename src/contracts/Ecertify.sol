@@ -17,7 +17,7 @@ contract Ecertify {
         uint256 percentage;
         uint256 SAP;
         uint256 contact;
-        string birthDate;
+        string issueDate;
         string gender;
         string highestDegree;
     }
@@ -36,7 +36,7 @@ contract Ecertify {
         uint256 _percentage,
         uint256 _SAP,
         uint256 _phone,
-        string memory _birthdate,
+        string memory _issueDate,
         string memory _gender,
         string memory _highestDegree
     ) external {
@@ -54,7 +54,7 @@ contract Ecertify {
             _percentage,
             _SAP,
             _phone,
-            _birthdate,
+            _issueDate,
             _gender,
             _highestDegree
         );
