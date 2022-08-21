@@ -57,16 +57,17 @@ class FormComponent extends Component {
     const handleOnChange = ({ target }) => {
       const { data, errors } = this.state;
 
-      // target.value.length <= 3
+      // target.value.length == " "
       //   ? (errors[target.name] = `${target.name} have at least 3 letter`)
       //   : (errors[target.name] = "");
-        errors[target.name] = "";
+        // errors[target.name] = "";
       data[target.name] = target.value;
       this.setState({ data, errors });
     };
 
     const handleNextStep = () => {
-      let { stepCount } = this.state;
+      let { stepCount} = this.state;
+      
       console.log("stepCount", stepCount);
       stepCount = stepCount + 1;
       this.setState({ stepCount });
