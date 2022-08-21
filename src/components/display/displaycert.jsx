@@ -110,10 +110,11 @@ const DisplayCert = ({ AllCert }) => {
                 <h1>{cert.name}</h1>
               </div>
               <div id="course-text">
-                <h1>{cert.course} with {cert.percentage.toNumber()} %</h1>
+                <h1 class="data-fields">{cert.course} with {cert.percentage.toNumber()} %</h1>
               </div>
-              <h1>{cert.contact.toNumber()}</h1>
-
+              <div id="issueDate_text">
+              <h1 class="data-fields">{cert.issueDate}</h1>
+              </div>
               {qr && <>
                 <img id="qr-code" width={100} height={100} src={qr} />
 

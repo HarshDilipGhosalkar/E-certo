@@ -123,9 +123,34 @@ class App extends Component {
   // };
 
   createCertificate = async (name, course,email,passout_year,percentage,SAPId,contact,birthDate,gender,highestDegree) => {
+    var months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    var currentTime = new Date();
+    // returns the month (from 0 to 11)
+    var month = months[currentTime.getMonth()];
+
+    // returns the day of the month (from 1 to 31)
+    var day = currentTime.getDate();
+
+    // returns the year (four digits)
+    var year = currentTime.getFullYear();
+    const issueDate = month + " " + day + " " + year;
+
     this.setState({ loading: true });
     this.state.EcertoContract.methods
-      .addCertificate(name, course, email, passout_year, percentage, SAPId, contact,birthDate,gender,highestDegree)
+      .addCertificate(name, course, email, passout_year, percentage, SAPId, contact,issueDate,gender,highestDegree)
       .send({ from: this.state.accountAddress })
       .on("transactionHash", (hash) => {
         localStorage.setItem(this.state.accountAddress, new Date().getTime());

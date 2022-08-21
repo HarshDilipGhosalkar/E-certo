@@ -58,7 +58,7 @@ body {
   text-align: center;
 }
 
-#course-text h1 {
+.data-fields{
   font-family: 'DM Sans', sans-serif;
   font-size: 15px;
   color: #FFCA60;
@@ -96,4 +96,10 @@ body {
 .btn2 {
   margin: 0 10px 0 10px;
   text-decoration: none;
+}
+#issueDate_text{
+  position: absolute;
+  bottom: 420px;
+  left: 338px;
+  font-weight: bold;
 }
