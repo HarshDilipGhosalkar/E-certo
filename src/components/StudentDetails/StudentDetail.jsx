@@ -5,12 +5,8 @@ import logo from "./assets/sbmp-logo.png";
 import gif from "./assets/verified.gif";
 import {
   FacebookShareButton,
-  WhatsappShareButton,
   LinkedinShareButton,
-  TwitterShareButton,
   LinkedinIcon,
-  TwitterIcon,
-  WhatsappIcon,
   FacebookIcon,
 } from "react-share";
 
@@ -24,17 +20,10 @@ const StudentDetail = ({ AllCert }) => {
       certificateDetail = cert;
     }
   });
-  console.log(certificateDetail);
   return (
     <>
       {certificateDetail !== undefined ? (
         <>
-          {/* <div>
-            <h1>Name : {certificateDetail.name}</h1>
-            <h1>Deparment : {certificateDetail.course}</h1>
-            <h1>Phone : {certificateDetail.contact.toNumber()}</h1>
-          </div>
-          <br /> */}
           <div className="details_page">
             <div className="details_component">
               <div className="details_grid">
