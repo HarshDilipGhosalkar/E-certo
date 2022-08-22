@@ -1,6 +1,6 @@
 header {
-  background-color: #fff;
-  color: #000;
+  background-color: #2d3748;
+  color: #32d4e1;
 }
 
 .navbar_inner {
@@ -18,7 +18,7 @@ header {
 }
 header a {
   text-decoration : none;
-  color: #000;
+  color: white;
   width: 0;
   margin: 20px;
 }
