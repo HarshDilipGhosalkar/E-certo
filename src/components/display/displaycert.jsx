@@ -12,6 +12,7 @@ import download2 from "./download2.svg";
 import pdf from "./pdf.svg";
 import linkedin from "./linkedin.svg";
 import qrcode from "./qr_code.svg";
+import email from "./email.svg";
 import emailjs from "emailjs-com";
 // import { SMTPClient } from 'emailjs';
 import {
@@ -186,9 +187,13 @@ const DisplayCert = ({ AllCert }) => {
                         </Button>
                       </a>
                     </>}
-                    <Button id="image-btn" class="linkedin-btn" onClick={() => sendEmail(cert.name,cert.email,cert.transactionHash)}>
+                    <Button id="image-btn" class="linkedin-btn email" onClick={() => sendEmail(cert.name,cert.email,cert.transactionHash)}>
+                      Send Email<img id="photo-svg" src={email} alt="" />
+                    </Button>
+                    <Button id="image-btn" class="linkedin-btn" >
                       Add to LinkedIn<img id="photo-svg" src={linkedin} alt="" />
                     </Button>
+                    
 
                   </div>
                   <hr id="hr2" />

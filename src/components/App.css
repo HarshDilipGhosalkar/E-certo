@@ -110,7 +110,7 @@ body {
 
 #download-section {
   width: 20%;
-  height: 590px;
+  height: 650px;
   background-color: white;
   margin: 30px;
   border-radius: 10px;
@@ -251,4 +251,8 @@ body {
   overflow: hidden;
   border-radius: 8px;
   margin: 5px;
+}
+.email{
+  background-color: #C53030;
+  border: 1px solid #C53030;
 }
