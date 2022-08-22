@@ -1,0 +1,107 @@
+:root {
+	--bs: 4s;
+	--bt: var(--bs) ease 0s infinite
+}
+	
+.entire {
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+
+	flex-wrap: wrap;
+	align-content: center;
+	flex-direction: column;
+	perspective: 100vmin;
+}
+
+.entire * {
+    transform-style: preserve-3d;
+	box-sizing: border-box;
+}
+
+.loader {
+	width: 60vmin;
+	height: 20vmin;
+	position: relative;
+    animation: tilt 0.5s ease-in-out 0s infinite alternate;
+	/*transform: rotateX(-15deg) translateY(-7.5vmin);*/
+		
+}
+
+@keyframes tilt {
+	0% {transform: rotateX(-15deg) translateY(-7.5vmin);}
+	100% {transform: rotateX(-17deg) translateY(-7.5vmin);}
+}
+
+.ball {
+	position: absolute;
+    width: 60vmin;
+    height: 60vmin;
+    border-radius: 100%;
+    animation: orbit var(--bt);
+    top: -20vmin;
+}
+
+@keyframes orbit {
+	  0% { transform: rotateX(90deg) rotate(360deg); }
+	100% { transform: rotateX(90deg) rotate(0deg); }
+}
+
+.ball:before {
+	content: "";
+    width: 5.25vmin;
+    height: 5.25vmin;
+    background: 
+		radial-gradient(circle at 70% 70%, #fff, 0.5vmin, #fff0 2.5vmin, #0008 5vmin), radial-gradient(circle at 70% 70%, #ffc107 0vmin, transparent 3.5vmin), linear-gradient(315deg, #ffffff7a 0%, #ff9800 74%);
+    position: absolute;
+    left: calc(50% - 2.625vmin);
+    bottom: 0;
+    transform: rotateX(90deg);
+    border-radius: 100%;
+    animation: frnt var(--bt);
+    box-shadow: 
+		0 -15vmin 3vmin 0.5vmin #0002, 
+		0 0vmin 1.25vmin 0.5vmin #0008, 
+		0 0 0vmin 0.75vmin #ffffff38;
+}
+
+.ball:after {
+	content: "";
+    width: 5.25vmin;
+    height: 5.25vmin;
+    background: radial-gradient(ellipse at 75% 75%, #fff8 0.25rem, #fff0 2rem 100%);
+    position: absolute;
+    left: calc(50% - 2.625vmin);
+    bottom: 0vmin;
+    transform: rotateX(90deg);
+    border-radius: 100%;
+    animation: frnt var(--bt);
+    filter: blur(1px);
+}
+
+
+
+
+
+@keyframes frnt {
+	  0% { filter: grayscale(1) opacity(0.35); transform: rotateX(90deg) rotateY(-360deg); }
+	 74% { filter: grayscale(1) opacity(0.35); }
+	 75% { filter: grayscale(0) opacity(1); }
+	100% { filter: grayscale(0) opacity(1); transform: rotateX(90deg) rotateY(0deg); }
+}
+
+.ball:nth-child(2), .ball:nth-child(2):before, .ball:nth-child(2):after {
+	animation-delay: calc(calc(var(--bs) / 4) * -1);
+}
+
+.ball:nth-child(3), .ball:nth-child(3):before, .ball:nth-child(3):after {
+	animation-delay: calc(calc(var(--bs) / 4) * -2);
+}
+
+.ball:nth-child(4), .ball:nth-child(4):before, .ball:nth-child(4):after {
+	animation-delay: calc(calc(var(--bs) / 4) * -3);
+}
