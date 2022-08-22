@@ -12,6 +12,8 @@ import download2 from "./download2.svg";
 import pdf from "./pdf.svg";
 import linkedin from "./linkedin.svg";
 import qrcode from "./qr_code.svg";
+import emailjs from "emailjs-com";
+// import { SMTPClient } from 'emailjs';
 import {
   FacebookShareButton,
   WhatsappShareButton,
@@ -35,7 +37,10 @@ const DisplayCert = ({ AllCert }) => {
       cert = c;
     }
   });
-
+  const [toSend, setToSend] = useState({
+    to_name: '',
+    reply_to: '',
+  });
   const [url, setUrl] = useState('http://localhost:3000/details/' + hash);
 
 
@@ -107,6 +112,23 @@ const DisplayCert = ({ AllCert }) => {
   useEffect(() => {
     setMounted(true)
   }, [])
+
+  
+  const sendEmail = (name,email,hash) => {
+    var sendparams={
+      to_name:name,
+      reply_to:email,
+      message:"Fllow Link for certificate : http://localhost:3000/certificate/"+hash
+    }
+      // setToSend({ ...toSend, [toSend.to_name]: name });
+      // setToSend({ ...toSend, [toSend.reply_to]: email });
+      emailjs.send('service_346hywf','template_rfcp5s2',sendparams,'lXbz1zzxsBOs8HcSZ')
+      .then(function(response) {
+        console.log('SUCCESS!', response.status, response.text);
+     }, function(error) {
+        console.log('FAILED...', error);
+     });
+  }
   return (
     <>
       {cert !== undefined ? (
@@ -164,7 +186,7 @@ const DisplayCert = ({ AllCert }) => {
                         </Button>
                       </a>
                     </>}
-                    <Button id="image-btn" class="linkedin-btn" >
+                    <Button id="image-btn" class="linkedin-btn" onClick={() => sendEmail(cert.name,cert.email,cert.transactionHash)}>
                       Add to LinkedIn<img id="photo-svg" src={linkedin} alt="" />
                     </Button>
 
