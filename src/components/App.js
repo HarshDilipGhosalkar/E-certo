@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes} from "react-router-dom";
+import { Navigate } from "react-router";
 import "./bootstrap/css/bootstrap.css";
 import "./App.css";
 import Web3 from "web3";
@@ -28,7 +29,7 @@ class App extends Component {
       contractDetected: false,
       certCount: 0,
       certs: [],
-      transactionHash:""
+      transactionHash: ""
     };
   }
 
@@ -106,9 +107,9 @@ class App extends Component {
           certs: this.state.certs.map((certificate) =>
             certificate.certid.toNumber() === Number(metaData.certId)
               ? {
-                  ...certificate,
-                  metaData,
-                }
+                ...certificate,
+                metaData,
+              }
               : certificate
           ),
         });
@@ -122,7 +123,7 @@ class App extends Component {
   //   return cert;
   // };
 
-  createCertificate = async (name, course,email,passout_year,percentage,SAPId,contact,birthDate,gender,highestDegree) => {
+  createCertificate = async (name, course, email, passout_year, percentage, SAPId, contact, birthDate, gender, highestDegree) => {
     var months = [
       "January",
       "February",
@@ -150,7 +151,7 @@ class App extends Component {
 
     this.setState({ loading: true });
     this.state.EcertoContract.methods
-      .addCertificate(name, course, email, passout_year, percentage, SAPId, contact,issueDate,gender,highestDegree)
+      .addCertificate(name, course, email, passout_year, percentage, SAPId, contact, issueDate, gender, highestDegree)
       .send({ from: this.state.accountAddress })
       .on("transactionHash", (hash) => {
         localStorage.setItem(this.state.accountAddress, new Date().getTime());
@@ -159,15 +160,15 @@ class App extends Component {
           .updateTransaction(hash)
           .send({ from: this.state.accountAddress })
           .on("confirmation", () => {
-            localStorage.setItem(this.state.accountAddress, new Date().getTime());    
+            localStorage.setItem(this.state.accountAddress, new Date().getTime());
             this.setState({ loading: false });
             window.location.reload();
           });
         // window.location.reload();
-        this.setState({transactionHash:hash});
+        this.setState({ transactionHash: hash });
         // console.log(hash)
       });
-      console.log("transactionHash",this.state.transactionHash);
+    console.log("transactionHash", this.state.transactionHash);
   };
 
   render() {
@@ -183,16 +184,18 @@ class App extends Component {
           <>
             <BrowserRouter>
               <Routes>
-                <Route path="/" element={<Navbar />}>
+                <Route path="/" element={<Navbar
+                  accountAddress={this.state.accountAddress}
+                />}>
                   <Route index element={<Home />} />
-                  <Route
+                  {/* <Route
                     path="create"
                     element={
-                      <FormComponent 
-                      createCertificate={this.createCertificate}
+                      <FormComponent
+                        createCertificate={this.createCertificate}
                       />
                     }
-                  />
+                  /> */}
                   <Route
                     path="all"
                     element={<DisplayAllCert allCert={this.state.certs} />}
@@ -201,19 +204,40 @@ class App extends Component {
                     path="details/:hash"
                     element={
                       <StudentDetail
-                      AllCert={this.state.certs}
+                        AllCert={this.state.certs}
                       />
                     }
                   />
                   <Route
                     path="certificate/:hash"
                     element={
+                      
                       <DisplayCert
-                      AllCert={this.state.certs}  
+                        AllCert={this.state.certs}
                       // getCertByHash={this.getCertByHash}                   
-                       />
+                      />
                     }
                   />
+                  {this.state.accountAddress=="0xEde1A0159E02f488119DFf1D5c5059Fb0c1f1073" ?(
+                    <>
+                    <Route
+                    path="/create"
+                    element={
+                      <FormComponent
+                        createCertificate={this.createCertificate}
+                      />
+                    }
+                  />;
+                    </>
+                  ):(
+                    <>
+                    <Route
+                    path="/create"
+                    element={<Navigate replace to="/abc" />}
+                  />;
+                    </>
+                  )}
+                  
                   <Route
                     path="createFromExel"
                     element={
@@ -222,8 +246,8 @@ class App extends Component {
                   />
                   <Route path="*" element={<NoPage />} />
                 </Route>
-                
-               
+
+
               </Routes>
             </BrowserRouter>
           </>
