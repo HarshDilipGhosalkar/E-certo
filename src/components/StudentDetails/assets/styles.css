@@ -13,7 +13,7 @@
   flex-grow: 0;
   max-width: 100%;
   flex-basis: 100%;
-  margin: 0;
+  margin-top: 30px;
   box-sizing: border-box;
   padding: 10px 0;
 }
@@ -77,10 +77,12 @@
   font-size: 18px;
 }
 .detail_section .col {
-  border: 1px solid;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
   margin: 10px;
   padding: 10px;
   padding-left:20px;
+
 }
 .follow_div {
   text-align: center;
