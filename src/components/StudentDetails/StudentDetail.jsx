@@ -80,8 +80,8 @@ const StudentDetail = ({ AllCert }) => {
                           <h6>-</h6>
                         </div>
                         <div className="col">
-                          <h6 className="detail_label">Passout Date</h6>
-                          <h6>-</h6>
+                          <h6 className="detail_label">Passout Year</h6>
+                          <h6>{certificateDetail.passoutYear.toNumber()}</h6>
                         </div>
                       </div>
                       <div className="row">
