@@ -10,7 +10,7 @@ body {
 }
 
 #printcertificate {
-  background-color: #1a202c;
+  background-color: white;
   /* padding: 5% 10px; */
 }
 
@@ -111,10 +111,11 @@ body {
 #download-section {
   width: 20%;
   height: 590px;
-  background-color: #2d3748;
+  background-color: white;
   margin: 30px;
   border-radius: 10px;
   padding: 32px 40px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
 
@@ -123,7 +124,7 @@ body {
   font-weight: 700;
   font-size: 1.25rem;
   /* line-height: 1.2; */
-  color: white;
+  color: black;
 }
 
 #hr {
@@ -135,7 +136,7 @@ body {
   width: 100%;
   margin-bottom: 1rem;
   margin-top: 0.5rem;
-  background-color: rgba(255, 255, 255, 0.16);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 #hr2 {
@@ -147,7 +148,7 @@ body {
   width: 100%;
   margin-bottom: 1rem;
   margin-top: 2rem;
-  background-color: rgba(255, 255, 255, 0.16);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 #download-section h2 {
@@ -155,7 +156,7 @@ body {
   font-weight: 700;
   font-size: 0.875rem;
   line-height: 1.2;
-  color: white;
+  color: black;
 }
 
 .action {
@@ -166,21 +167,21 @@ body {
   font-weight: 700;
   font-size: 1rem;
   line-height: 1.2;
-  color: white;
+  color: black;
   margin-bottom: 0.75rem;
 }
 
 .download-btns {
   width: 100%;
   height: 200px;
-  /* background-color: #fff; */
+  background-color: #fff;
 }
 
 .linkedin-btn {
   margin-top: 0.5rem;
-  background-color: #9bdaf3;
-  color: black;
-  border: 1px solid #90cdf4;
+  background-color: #00A0DC;
+  color: white;
+  border: 1px solid #00A0DC;
 }
 
 #image-btn {
@@ -209,25 +210,25 @@ body {
 }
 
 .image-btn {
-  border: 1px solid #90cdf4;
-  color: #90cdf4;
+  border: 1px solid #2b6cb0;
+  color: #2b6cb0;
   background: transparent;
   margin-top: 0.5rem;
 }
 
 .image-btn:hover {
-  background-color: rgba(66, 153, 225, 0.1);
+  background-color: rgba(66, 153, 225, 0.2);
 }
 
 .pdf-btn {
   margin-top: 0.5rem;
-  border: 1px solid rgb(254 178 178);
-  color: #feb2b2;
+  border: 1px solid #C53030;
+  color: #C53030;
   background: transparent;
 }
 
 .pdf-btn:hover {
-  background-color: rgba(254, 178, 178, 0.1);
+  background-color: rgba(254, 178, 178, 0.2);
 }
 
 #photo-svg {
