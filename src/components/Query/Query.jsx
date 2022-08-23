@@ -106,7 +106,7 @@ function Query({ sendEmail, certficateExist, AllCert }) {
                       <p className="mt-4">
                         <a
                           class="retieved-data"
-                          href={""}
+                          href={certificateUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                         >
