@@ -168,7 +168,11 @@ class App extends Component {
   };
 
   certficateExist = async (hash) => {
-    
+    const exi = await this.state.EcertoContract.methods
+      .certficateHashExist(hash)
+      .call();
+
+    return exi;
   }
 
   sendEmail = async (name,email,hash) => {
