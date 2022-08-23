@@ -14,7 +14,7 @@ contract Ecertify {
         string course;
         string email;
         uint256 passoutYear;
-        uint256 percentage;
+        string percentage;
         uint256 SAP;
         uint256 contact;
         string issueDate;
@@ -28,12 +28,15 @@ contract Ecertify {
     // map Certificates's hash to Certificate
     mapping(string => Certificate) public allhashedCertificates;
 
+    mapping(string => bool) public certficateHashExist;
+
+
     function addCertificate(
         string memory _name,
         string memory _course,
         string memory _email,
         uint256 _passoutYear,
-        uint256 _percentage,
+        string memory _percentage,
         uint256 _SAP,
         uint256 _phone,
         string memory _issueDate,
@@ -68,6 +71,7 @@ contract Ecertify {
         allCertificates[certificateCounter] = cert;
         // add the hash value and it's certificate to allCertificate mapping
         allhashedCertificates[_transactionHash] = cert;
+        certficateHashExist[_transactionHash] = true;   
     }
 
     function getValueAtMapping(string memory userAddress)
