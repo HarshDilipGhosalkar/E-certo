@@ -38,10 +38,7 @@ const DisplayCert = ({ AllCert }) => {
       cert = c;
     }
   });
-  const [toSend, setToSend] = useState({
-    to_name: '',
-    reply_to: '',
-  });
+ 
   const [url, setUrl] = useState('http://localhost:3000/details/' + hash);
 
 
