@@ -34,7 +34,7 @@ const StudentDetail = ({ AllCert }) => {
                         <div className="col-2">
                           <img className="sbmp_logo" src={logo} alt="" />
                         </div>
-                        <div className="col">
+                        <div className="col  heading_">
                           <h2>Shri Bhagubhai Mafatlal Poltechnic</h2>
                         </div>
                       </div>
@@ -71,7 +71,7 @@ const StudentDetail = ({ AllCert }) => {
                         </div>
                         <div className="col">
                           <h6 className="detail_label">Percentage</h6>
-                          <h6>{certificateDetail.percentage.toNumber()}</h6>
+                          <h6>{certificateDetail.percentage}</h6>
                         </div>
                       </div>
                       <div className="row">
