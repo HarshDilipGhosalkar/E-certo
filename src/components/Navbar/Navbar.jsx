@@ -29,7 +29,7 @@ class Navbar extends Component {
               <div>
               
                 <Link to="/all">All</Link>
-                {this.props.accountAddress =="0xEde1A0159E02f488119DFf1D5c5059Fb0c1f1073" ? (
+                {this.props.accountAddress =="0xEde1A0159E02f488119DFf1D5c5059Fb0c1f1073" || "0xf19dAfbbb3ed2A01a1bd7c51A0e95970c09f800a" ? (
                       <>
                         <Link to="/create">Create</Link>
                       </>
@@ -38,7 +38,7 @@ class Navbar extends Component {
                     )}
                
                 <Link to="/view">View</Link>
-                <Link to="/query">Query</Link>
+                <Link to="/findmycertificate">Query</Link>
               </div>
             </div>
           </div>
