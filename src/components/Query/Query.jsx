@@ -1,10 +1,13 @@
 import React from "react";
 import { useState } from "react";
 import "./styles.css";
+import "./alert.css";
+import "./font-awesome.min.css";
 
 function Query({ sendEmail, certficateExist, AllCert }) {
   const [certificateHash, setCertificateHash] = useState("");
   const [sapId, setSapId] = useState("");
+  const [certificateLink, setCertificateLink] = useState("");
   const [certificateUrl, setCertificateUrl] = useState("");
   const [message, setMessage] = useState("");
 
@@ -13,11 +16,13 @@ function Query({ sendEmail, certficateExist, AllCert }) {
     const alertbox = document.querySelector(".alertbox");
 
     if (cert) {
-      setCertificateUrl("http://localhost:3000/certificate/" + certificateHash);
-      alertbox.classList.add("alertbox_display");
+      setCertificateLink("http://localhost:3000/certificate/" + certificateHash);
+      setCertificateUrl("http://localhost:3000/certificate/" + certificateHash.substring(0,7) + "....." + certificateHash.slice(certificateHash.length - 7));
+      alertbox.style.display = "none";
     } else {
       console.log("Not Found");
-      alertbox.classList.remove("alertbox_display");
+      alertbox.style.display = "block";
+      setCertificateLink("");
       setCertificateUrl("");
     }
   };
@@ -30,16 +35,19 @@ function Query({ sendEmail, certficateExist, AllCert }) {
         certificateDetail = cert;
         console.log(cert);
         const email = cert.email;
-        sendEmail(cert.name, email, cert.transactionHash)
-        console.log(email.substr(email.indexOf('@'), email.length));
-        setMessage(email.substr(0,3) + '***' + email.substr(email.indexOf('@'), email.length));
-        document.querySelector(".message").style.display = "block";
-
+        sendEmail(cert.name, email, cert.transactionHash);
+        console.log(email.substr(email.indexOf("@"), email.length));
+        setMessage(
+          email.substr(0, 3) +
+            "***" +
+            email.substr(email.indexOf("@"), email.length)
+        );
+        document.querySelector(".alertbox_success").style.display = "block";
       }
     });
     if (certificateDetail === "") {
       document.querySelector(".alertbox_sap").style.display = "block";
-      document.querySelector(".message").style.display = "none";
+      document.querySelector(".alertbox_success").style.display = "none";
     }
   };
 
@@ -58,7 +66,7 @@ function Query({ sendEmail, certficateExist, AllCert }) {
       <div className="details_page">
         <div className="details_component">
           <div className="details_grid">
-            <div className="details_div">
+            <div className="details_div query_div">
               <div className="detail_heading">
                 <div className="container">
                   <div className="row">
@@ -69,44 +77,46 @@ function Query({ sendEmail, certficateExist, AllCert }) {
                   </div>
                   <hr className="detail_hr" />
                   <div className="getcertificate_hash">
-                    <div className="row">
-                      <div className="form-group">
-                        <label for="text-1542372332072" class="head">
-                          Get Certificate
-                        </label>
-                        <div class="input-group get-input">
-                          <input
-                            class="form-control"
-                            type="text"
-                            name="text-1542372332012"
-                            id="text-1542372332012"
-                            value={certificateHash}
-                            placeholder="Enter Certificate Hash"
-                            onChange={(e) => setCertificateHash(e.target.value)}
-                          ></input>
-                        </div>
-                      </div>
+                    <div className="row query_block">
+                      <h6>Enter Certificate Id</h6>
+                      <input
+                        className="query_input"
+                        type="text"
+                        name="certificateHash"
+                        value={certificateHash}
+                        placeholder="Enter Certificate ID"
+                        onChange={(e) => setCertificateHash(e.target.value)}
+                      />
                       <button
                         type="submit"
                         onClick={getCertificate}
-                        class="create-btn query-btn"
+                        class="query-btn"
                       >
                         Get Certificate
                       </button>
-                      <div className="alertbox alertbox_display alert alert-danger alert-dissmissible mt-4">
+
+                      <div class="alert alertbox alert-danger alert-white rounded">
                         <button
                           type="button"
-                          className="close"
-                          data-dismiss="alert"
+                          class="close"
+                          aria-hidden="true"
+                          onClick={() => {
+                            document.querySelector(".alertbox").style.display =
+                              "none";
+                          }}
                         >
-                          <span>&times;</span>
+                          ×
                         </button>
-                        <strong>&nbsp; Non-Existent Certificate Id</strong>
+                        <div class="icon">
+                          <i class="fa fa-times-circle"></i>
+                        </div>
+                        <strong>Error!</strong> Non-Existent Certificate ID.
                       </div>
+
                       <p className="mt-4">
                         <a
                           class="retieved-data"
-                          href={certificateUrl}
+                          href={certificateLink}
                           target="_blank"
                           rel="noopener noreferrer"
                         >
@@ -114,60 +124,79 @@ function Query({ sendEmail, certficateExist, AllCert }) {
                         </a>
                       </p>
                     </div>
-                    <button onClick={getCertificateBySap}>
+                    <button className="help_btn" onClick={getCertificateBySap}>
                       Don't Have Certificate Id?
                     </button>
                   </div>
-                  <div className="getcertificate_sap">
-                    <h3>Enter You SAP ID</h3>
-                    <p>
-                      We will email your certificate link on registered email id
-                    </p>
-
+                  <div className="getcertificate_sap query_block">
                     <div className="row">
-                      <div className="form-group">
-                        <label for="text-1542372332072" class="head">
-                          Get Certificate
-                        </label>
-                        <div class="input-group get-input">
-                          <input
-                            class="form-control"
-                            type="text"
-                            name="text-1542372"
-                            id="text-1542372"
-                            value={sapId}
-                            placeholder="Enter SAP Id"
-                            onChange={(e) => {
-                
-                              setSapId(e.target.value)
-                              document.querySelector(".message").style.display = "none";
-
-                            }}
-                          ></input>
-                        </div>
-                      </div>
+                      <h6>Enter SAP Id</h6>
+                      <p>
+                        ( We will email your certificate link on registered
+                        email id )
+                      </p>
+                      <input
+                        className="query_input"
+                        type="text"
+                        name="sapId"
+                        value={sapId}
+                        placeholder="Enter SAP Id"
+                        onChange={(e) => {
+                          setSapId(e.target.value);
+                          document.querySelector(
+                            ".alertbox_success"
+                          ).style.display = "none";
+                        }}
+                      />
                       <button
                         type="submit"
                         onClick={getCertificateSap}
-                        class="create-btn query-btn"
+                        class="query-btn"
                       >
-                        Get Certificate
+                        Get Email
                       </button>
-                      <div className="alertbox_sap alertbox_display alert alert-danger alert-dissmissible mt-4">
+
+                      <div class="alert alertbox_sap alert-danger alert-white rounded">
                         <button
                           type="button"
-                          className="close"
-                          data-dismiss="alert"
+                          class="close"
+                          aria-hidden="true"
+                          onClick={() => {
+                            document.querySelector(
+                              ".alertbox_sap"
+                            ).style.display = "none";
+                          }}
                         >
-                          <span>&times;</span>
+                          ×
                         </button>
-                        <strong>&nbsp; Non-Existent SAP Id</strong>
+                        <div class="icon">
+                          <i class="fa fa-times-circle"></i>
+                        </div>
+                        <strong>Error!</strong> No such SAP ID exists in system
                       </div>
-                      <p className="message">Certificate Link sent on {message}</p>
+
+                      <div class="alertbox_success alert alert-success alert-white rounded">
+                        <button
+                          type="button"
+                          class="close"
+                          aria-hidden="true"
+                          onClick={() => {
+                            document.querySelector(
+                              ".alertbox_success"
+                            ).style.display = "none";
+                          }}
+                        >
+                          ×
+                        </button>
+                        <div class="icon">
+                          <i class="fa fa-check"></i>
+                        </div>
+                        <strong>Success!</strong> Mail is sent to {message}.
+                      </div>
                     </div>
-                    <button onClick={getCertificateByHash}>
-                        Get Certificate By Id?
-                      </button>
+                    <button className="help_btn" onClick={getCertificateByHash}>
+                      Get Certificate By Id?
+                    </button>
                   </div>
                 </div>
               </div>
