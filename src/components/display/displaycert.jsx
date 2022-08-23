@@ -26,7 +26,7 @@ import {
   FacebookIcon,
 } from 'react-share';
 
-const DisplayCert = ({ AllCert }) => {
+const DisplayCert = ({ AllCert, sendEmail }) => {
 
 
   const { hash } = useParams();
@@ -114,22 +114,6 @@ const DisplayCert = ({ AllCert }) => {
     setMounted(true)
   }, [])
 
-  
-  const sendEmail = (name,email,hash) => {
-    var sendparams={
-      to_name:name,
-      reply_to:email,
-      message:"Fllow Link for certificate : http://localhost:3000/certificate/"+hash
-    }
-      // setToSend({ ...toSend, [toSend.to_name]: name });
-      // setToSend({ ...toSend, [toSend.reply_to]: email });
-      emailjs.send('service_346hywf','template_rfcp5s2',sendparams,'lXbz1zzxsBOs8HcSZ')
-      .then(function(response) {
-        console.log('SUCCESS!', response.status, response.text);
-     }, function(error) {
-        console.log('FAILED...', error);
-     });
-  }
   return (
     <>
       {cert !== undefined ? (
@@ -149,7 +133,7 @@ const DisplayCert = ({ AllCert }) => {
                   <h1>{cert.name}</h1>
                 </div>
                 <div id="course-text">
-                  <h1 class="data-fields">{cert.course} with {cert.percentage.toNumber()} %</h1>
+                  <h1 class="data-fields">{cert.course} with {cert.percentage} %</h1>
                 </div>
                 <div id="issueDate_text">
                   <h1 class="data-fields">{cert.issueDate}</h1>
