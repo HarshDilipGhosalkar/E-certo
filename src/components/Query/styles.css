@@ -1,0 +1,18 @@
+.query_heading {
+    text-align: center;
+}
+.query_heading h2 {
+    margin:10px 0;
+}
+.alertbox_display {
+    display: none;
+}
+.getcertificate_sap {
+    display: none;
+}
+.alertbox_sap {
+    display: none;
+}
+.message {
+    display: none;
+}
