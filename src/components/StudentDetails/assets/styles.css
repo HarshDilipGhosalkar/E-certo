@@ -37,7 +37,7 @@
 .detail_heading {
   padding: 16px;
 }
-.detail_heading h2 {
+.detail_heading .heading_ {
   margin: 20px -10px;
   font-weight: 500;
 }
