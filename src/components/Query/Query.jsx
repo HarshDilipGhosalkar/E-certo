@@ -118,7 +118,57 @@ function Query({ sendEmail, certficateExist, AllCert }) {
                       Don't Have Certificate Id?
                     </button>
                   </div>
-                  
+                  <div className="getcertificate_sap">
+                    <h3>Enter You SAP ID</h3>
+                    <p>
+                      We will email your certificate link on registered email id
+                    </p>
+
+                    <div className="row">
+                      <div className="form-group">
+                        <label for="text-1542372332072" class="head">
+                          Get Certificate
+                        </label>
+                        <div class="input-group get-input">
+                          <input
+                            class="form-control"
+                            type="text"
+                            name="text-1542372"
+                            id="text-1542372"
+                            value={sapId}
+                            placeholder="Enter SAP Id"
+                            onChange={(e) => {
+                
+                              setSapId(e.target.value)
+                              document.querySelector(".message").style.display = "none";
+
+                            }}
+                          ></input>
+                        </div>
+                      </div>
+                      <button
+                        type="submit"
+                        onClick={getCertificateSap}
+                        class="create-btn query-btn"
+                      >
+                        Get Certificate
+                      </button>
+                      <div className="alertbox_sap alertbox_display alert alert-danger alert-dissmissible mt-4">
+                        <button
+                          type="button"
+                          className="close"
+                          data-dismiss="alert"
+                        >
+                          <span>&times;</span>
+                        </button>
+                        <strong>&nbsp; Non-Existent SAP Id</strong>
+                      </div>
+                      <p className="message">Certificate Link sent on {message}</p>
+                    </div>
+                    <button onClick={getCertificateByHash}>
+                        Get Certificate By Id?
+                      </button>
+                  </div>
                 </div>
               </div>
             </div>
