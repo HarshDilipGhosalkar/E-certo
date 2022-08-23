@@ -16,6 +16,8 @@ import StudentDetail from "./StudentDetails/StudentDetail";
 import DisplayCert from "./display/displaycert";
 import FormComponent from "./create-form/FormComponent";
 import CreateFromExel from "./create-form/uploadexel";
+import Query from "./Query/Query";
+import emailjs from "emailjs-com";
 
 class App extends Component {
   constructor(props) {
@@ -37,7 +39,7 @@ class App extends Component {
     await this.loadWeb3();
     await this.loadBlockchainData();
     await this.setMetaData();
-  };
+    };
 
   loadWeb3 = async () => {
     if (window.ethereum) {
@@ -117,12 +119,6 @@ class App extends Component {
     }
   };
 
-  // getCertByHash = async (hash) => {
-  //   const cert = await this.state.EcertoContract.methods.getValueAtMapping(hash).call();
-
-  //   return cert;
-  // };
-
   createCertificate = async (name, course, email, passout_year, percentage, SAPId, contact, birthDate, gender, highestDegree) => {
     var months = [
       "January",
@@ -171,6 +167,30 @@ class App extends Component {
     console.log("transactionHash", this.state.transactionHash);
   };
 
+  certficateExist = async (hash) => {
+    const exi = await this.state.EcertoContract.methods
+      .certficateHashExist(hash)
+      .call();
+
+    return exi;
+  }
+
+  sendEmail = async (name,email,hash) => {
+    var sendparams={
+      to_name:name,
+      reply_to:email,
+      message:"Fllow Link for certificate : http://localhost:3000/certificate/"+hash
+    }
+      // setToSend({ ...toSend, [toSend.to_name]: name });
+      // setToSend({ ...toSend, [toSend.reply_to]: email });
+      emailjs.send('service_346hywf','template_rfcp5s2',sendparams,'lXbz1zzxsBOs8HcSZ')
+      .then(function(response) {
+        console.log('SUCCESS!', response.status, response.text);
+     }, function(error) {
+        console.log('FAILED...', error);
+     });
+  }
+
   render() {
     return (
       <>
@@ -214,11 +234,22 @@ class App extends Component {
                       
                       <DisplayCert
                         AllCert={this.state.certs}
+                        sendEmail={this.sendEmail}
                       // getCertByHash={this.getCertByHash}                   
                       />
                     }
                   />
-                  {this.state.accountAddress=="0xEde1A0159E02f488119DFf1D5c5059Fb0c1f1073" ?(
+                  <Route
+                    path="findmycertificate"
+                    element={
+                      <Query
+                        sendEmail={this.sendEmail}
+                        certficateExist={this.certficateExist}                        
+                        AllCert={this.state.certs}
+                      />
+                    }
+                  />
+                  {this.state.accountAddress=="0xEde1A0159E02f488119DFf1D5c5059Fb0c1f1073" || "0xf19dAfbbb3ed2A01a1bd7c51A0e95970c09f800a"?(
                     <>
                     <Route
                     path="/create"
