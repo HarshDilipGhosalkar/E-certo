@@ -5,8 +5,10 @@
   "author": "Harsh Ghosalkar - Jhenil Parihar",
   "homepage": "https://github.com/jhenilparihar/DeepSpace",
   "dependencies": {
-    "@material-ui/core": "^4.11.4",
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/data-grid": "^4.0.0-alpha.37",
     "@material-ui/icons": "^4.11.2",
+    "axios": "^0.24.0",
     "babel-polyfill": "6.26.0",
     "babel-preset-env": "1.7.0",
     "babel-preset-es2015": "6.24.1",
