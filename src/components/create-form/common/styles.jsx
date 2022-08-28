@@ -24,6 +24,6 @@ export const styles = {
     padding: "16px",
   },
   bgDiv:{
-    background:"#e8f4ff"
+    background:"#def4fe"
   }
 };
