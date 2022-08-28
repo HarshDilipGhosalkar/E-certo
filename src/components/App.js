@@ -216,10 +216,22 @@ class App extends Component {
                       />
                     }
                   /> */}
-                  <Route
-                    path="all"
+                  {this.state.accountAddress=="0xEde1A0159E02f488119DFf1D5c5059Fb0c1f1073" || this.state.accountAddress=="0xf19dAfbbb3ed2A01a1bd7c51A0e95970c09f800a"?(
+                    <>
+                    <Route
+                    path="/all"
                     element={<DisplayAllCert allCert={this.state.certs} />}
-                  />
+                  />;
+                    </>
+                  ):(
+                    <>
+                    <Route
+                    path="/all"
+                    element={<Navigate replace to="/abc" />}
+                  />;
+                    </>
+                  )}
+                  
                   <Route
                     path="details/:hash"
                     element={
@@ -249,7 +261,7 @@ class App extends Component {
                       />
                     }
                   />
-                  {this.state.accountAddress=="0xEde1A0159E02f488119DFf1D5c5059Fb0c1f1073" || "0xf19dAfbbb3ed2A01a1bd7c51A0e95970c09f800a"?(
+                  {this.state.accountAddress=="0xEde1A0159E02f488119DFf1D5c5059Fb0c1f1073" || this.state.accountAddress=="0xf19dAfbbb3ed2A01a1bd7c51A0e95970c09f800a"?(
                     <>
                     <Route
                     path="/create"
