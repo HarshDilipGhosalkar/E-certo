@@ -6,6 +6,7 @@ import {
   renderInputField,
   renderSelect,
   renderText,
+  renderDateField,
 } from "../common/DisplayComponent";
 
 const Step1 = ({ state, handleChange, handleNext }) => {
@@ -30,10 +31,11 @@ const Step1 = ({ state, handleChange, handleNext }) => {
           })}
         </Grid>
         <Grid item xs={12} sm={6}>
-          {renderInputField({
+          {renderDateField({
             state,
             name: "birthDate",
-            label: "Birth Dtae",
+            type: "date",
+            label: "Birth Date",
             onChange: handleChange,
           })}
         </Grid>
