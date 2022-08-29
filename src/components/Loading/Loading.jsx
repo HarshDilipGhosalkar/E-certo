@@ -1,20 +1,8 @@
 import React from "react";
-import loadingGIF from "./metamask.gif";
-import "./navbar.css";
+import loadingGIF from "./loading.gif";
 
 const Loading = () => {
-  return (
-    <>
-    <div class="entire">
-<div class="loader">
-	<div class="ball"></div>
-	<div class="ball"></div>
-	<div class="ball"></div>
-	<div class="ball"></div>
-</div>
-	</div>
-    </>
-  );
+  return <img src={loadingGIF} alt="Loading.." className="d-block m-auto" />;
 };
 
 export default Loading;
