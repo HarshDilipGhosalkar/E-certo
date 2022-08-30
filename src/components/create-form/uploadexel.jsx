@@ -14,9 +14,10 @@ function CreateFromExel({createBulkCertificate}) {
   // it will contain array of objects
 
   // handle File
-  const fileType=['application/vnd.ms-excel'];
+  const fileType=['application/vnd.ms-excel','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet','application/vnd.openxmlformats-officedocument.spreadsheetml.template'];
   const handleFile = (e)=>{
     let selectedFile = e.target.files[0];
+    console.log(selectedFile.type);
     if(selectedFile){
       console.log(selectedFile.type);
       if(selectedFile&&fileType.includes(selectedFile.type)){
