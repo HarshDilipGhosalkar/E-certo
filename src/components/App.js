@@ -283,6 +283,14 @@ class App extends Component {
                       />
                     }
                   />;
+
+                 <Route
+                    path="createFromExel"
+                    element={
+                      <CreateFromExel
+                      createBulkCertificate={this.createBulkCertificate} />
+                    }
+                  />;
                     </>
                   ):(
                     <>
@@ -290,16 +298,17 @@ class App extends Component {
                     path="/create"
                     element={<Navigate replace to="/abc" />}
                   />;
+
+                 <Route
+                    path="createFromExel"
+                    element={
+                      <Navigate replace to="/abc" />
+                    }
+                  />
                     </>
                   )}
                   
-                  <Route
-                    path="createFromExel"
-                    element={
-                      <CreateFromExel
-                      createBulkCertificate={this.createBulkCertificate} />
-                    }
-                  />
+                  
                   <Route path="*" element={<NoPage />} />
                 </Route>
 
