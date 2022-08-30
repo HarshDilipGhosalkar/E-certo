@@ -33,6 +33,7 @@ class Navbar extends Component {
                       <>
                       <Link to="/all">All</Link>
                         <Link to="/create">Create</Link>
+                        <Link to="/createFromExel">Upload Exel</Link>
                       </>
                     ) : (
                       <></>
