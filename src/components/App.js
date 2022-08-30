@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Routes} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Navigate } from "react-router";
 import "./bootstrap/css/bootstrap.css";
 import "./App.css";
@@ -39,7 +39,7 @@ class App extends Component {
     await this.loadWeb3();
     await this.loadBlockchainData();
     await this.setMetaData();
-    };
+  };
 
   loadWeb3 = async () => {
     if (window.ethereum) {
@@ -167,8 +167,8 @@ class App extends Component {
     console.log("transactionHash", this.state.transactionHash);
   };
   createBulkCertificate = async (struct) => {
-   
-    console.log("1st name",struct[0].name);
+
+    console.log("1st name", struct[0].name);
     this.setState({ loading: true });
     this.state.EcertoContract.methods
       .addInBulk(struct)
@@ -177,7 +177,7 @@ class App extends Component {
         localStorage.setItem(this.state.accountAddress, new Date().getTime());
 
       });
-    
+
   };
   certficateExist = async (hash) => {
     const exi = await this.state.EcertoContract.methods
@@ -187,20 +187,20 @@ class App extends Component {
     return exi;
   }
 
-  sendEmail = async (name,email,hash) => {
-    var sendparams={
-      to_name:name,
-      reply_to:email,
-      message:"Fllow Link for certificate : http://localhost:3000/certificate/"+hash
+  sendEmail = async (name, email, hash) => {
+    var sendparams = {
+      to_name: name,
+      reply_to: email,
+      message: "Fllow Link for certificate : http://localhost:3000/certificate/" + hash
     }
-      // setToSend({ ...toSend, [toSend.to_name]: name });
-      // setToSend({ ...toSend, [toSend.reply_to]: email });
-      emailjs.send('service_346hywf','template_rfcp5s2',sendparams,'lXbz1zzxsBOs8HcSZ')
-      .then(function(response) {
+    // setToSend({ ...toSend, [toSend.to_name]: name });
+    // setToSend({ ...toSend, [toSend.reply_to]: email });
+    emailjs.send('service_346hywf', 'template_rfcp5s2', sendparams, 'lXbz1zzxsBOs8HcSZ')
+      .then(function (response) {
         console.log('SUCCESS!', response.status, response.text);
-     }, function(error) {
+      }, function (error) {
         console.log('FAILED...', error);
-     });
+      });
   }
 
   render() {
@@ -228,22 +228,22 @@ class App extends Component {
                       />
                     }
                   /> */}
-                  {this.state.accountAddress=="0xEde1A0159E02f488119DFf1D5c5059Fb0c1f1073" || this.state.accountAddress=="0xf19dAfbbb3ed2A01a1bd7c51A0e95970c09f800a"?(
+                  {this.state.accountAddress == "0xEde1A0159E02f488119DFf1D5c5059Fb0c1f1073" || this.state.accountAddress == "0xf19dAfbbb3ed2A01a1bd7c51A0e95970c09f800a" ? (
                     <>
-                    <Route
-                    path="/all"
-                    element={<DisplayAllCert allCert={this.state.certs} />}
-                  />;
+                      <Route
+                        path="/all"
+                        element={<DisplayAllCert allCert={this.state.certs} />}
+                      />;
                     </>
-                  ):(
+                  ) : (
                     <>
-                    <Route
-                    path="/all"
-                    element={<Navigate replace to="/abc" />}
-                  />;
+                      <Route
+                        path="/all"
+                        element={<Navigate replace to="/abc" />}
+                      />;
                     </>
                   )}
-                  
+
                   <Route
                     path="details/:hash"
                     element={
@@ -255,7 +255,7 @@ class App extends Component {
                   <Route
                     path="certificate/:hash"
                     element={
-                      
+
                       <DisplayCert
                         AllCert={this.state.certs}
                         sendEmail={this.sendEmail}
@@ -268,47 +268,47 @@ class App extends Component {
                     element={
                       <Query
                         sendEmail={this.sendEmail}
-                        certficateExist={this.certficateExist}                        
+                        certficateExist={this.certficateExist}
                         AllCert={this.state.certs}
                       />
                     }
                   />
-                  {this.state.accountAddress=="0xEde1A0159E02f488119DFf1D5c5059Fb0c1f1073" || this.state.accountAddress=="0xf19dAfbbb3ed2A01a1bd7c51A0e95970c09f800a"?(
+                  {this.state.accountAddress == "0xEde1A0159E02f488119DFf1D5c5059Fb0c1f1073" || this.state.accountAddress == "0xf19dAfbbb3ed2A01a1bd7c51A0e95970c09f800a" ? (
                     <>
-                    <Route
-                    path="/create"
-                    element={
-                      <FormComponent
-                        createCertificate={this.createCertificate}
-                      />
-                    }
-                  />;
+                      <Route
+                        path="/create"
+                        element={
+                          <FormComponent
+                            createCertificate={this.createCertificate}
+                          />
+                        }
+                      />;
 
-                 <Route
-                    path="createFromExel"
-                    element={
-                      <CreateFromExel
-                      createBulkCertificate={this.createBulkCertificate} />
-                    }
-                  />;
+                      <Route
+                        path="createFromExel"
+                        element={
+                          <CreateFromExel
+                            createBulkCertificate={this.createBulkCertificate} />
+                        }
+                      />;
                     </>
-                  ):(
+                  ) : (
                     <>
-                    <Route
-                    path="/create"
-                    element={<Navigate replace to="/abc" />}
-                  />;
+                      <Route
+                        path="/create"
+                        element={<Navigate replace to="/abc" />}
+                      />;
 
-                 <Route
-                    path="createFromExel"
-                    element={
-                      <Navigate replace to="/abc" />
-                    }
-                  />
+                      <Route
+                        path="createFromExel"
+                        element={
+                          <Navigate replace to="/abc" />
+                        }
+                      />
                     </>
                   )}
-                  
-                  
+
+
                   <Route path="*" element={<NoPage />} />
                 </Route>
 
