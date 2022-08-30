@@ -166,7 +166,19 @@ class App extends Component {
       });
     console.log("transactionHash", this.state.transactionHash);
   };
+  createBulkCertificate = async (struct) => {
+   
+    console.log("1st name",struct[0].name);
+    this.setState({ loading: true });
+    this.state.EcertoContract.methods
+      .addInBulk(struct)
+      .send({ from: this.state.accountAddress })
+      .on("transactionHash", (hash) => {
+        localStorage.setItem(this.state.accountAddress, new Date().getTime());
 
+      });
+    
+  };
   certficateExist = async (hash) => {
     const exi = await this.state.EcertoContract.methods
       .certficateHashExist(hash)
@@ -284,7 +296,8 @@ class App extends Component {
                   <Route
                     path="createFromExel"
                     element={
-                      <CreateFromExel />
+                      <CreateFromExel
+                      createBulkCertificate={this.createBulkCertificate} />
                     }
                   />
                   <Route path="*" element={<NoPage />} />
