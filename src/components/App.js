@@ -154,7 +154,7 @@ class App extends Component {
 
         this.state.EcertoContract.methods
           .updateTransaction(hash)
-          .send({ from: this.state.accountAddress })
+          .send({ from: this.state.accountAddress})
           .on("confirmation", () => {
             localStorage.setItem(this.state.accountAddress, new Date().getTime());
             this.setState({ loading: false });
@@ -173,9 +173,10 @@ class App extends Component {
     this.state.EcertoContract.methods
       .addInBulk(struct)
       .send({ from: this.state.accountAddress })
-      .on("transactionHash", (hash) => {
+      .on("confirmation", () => {
         localStorage.setItem(this.state.accountAddress, new Date().getTime());
-
+        this.setState({ loading: false });
+        window.location.reload();
       });
 
   };
@@ -228,7 +229,7 @@ class App extends Component {
                       />
                     }
                   /> */}
-                  {this.state.accountAddress == "0xEde1A0159E02f488119DFf1D5c5059Fb0c1f1073" || this.state.accountAddress == "0xf19dAfbbb3ed2A01a1bd7c51A0e95970c09f800a" ? (
+                  {this.state.accountAddress == "0xC6d92486A274D0240421b6F6B7cEB19946aFDa61" || this.state.accountAddress == "0xf19dAfbbb3ed2A01a1bd7c51A0e95970c09f800a" ? (
                     <>
                       <Route
                         path="/all"
@@ -273,7 +274,7 @@ class App extends Component {
                       />
                     }
                   />
-                  {this.state.accountAddress == "0xEde1A0159E02f488119DFf1D5c5059Fb0c1f1073" || this.state.accountAddress == "0xf19dAfbbb3ed2A01a1bd7c51A0e95970c09f800a" ? (
+                  {this.state.accountAddress == "0xC6d92486A274D0240421b6F6B7cEB19946aFDa61" || this.state.accountAddress == "0xf19dAfbbb3ed2A01a1bd7c51A0e95970c09f800a" ? (
                     <>
                       <Route
                         path="/create"
