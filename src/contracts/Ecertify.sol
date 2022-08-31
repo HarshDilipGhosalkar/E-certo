@@ -6,7 +6,6 @@ pragma abicoder v2;
 contract Ecertify {
     // total number of NFT minted
     uint256 public certificateCounter;
-
     string convertedHash;
 
     struct Certificate {
@@ -26,6 +25,7 @@ contract Ecertify {
 
     // map Certificates's id to Certificate
     mapping(uint256 => Certificate) public allCertificates;
+
 
     // map Certificates's hash to Certificate
     mapping(string => Certificate) public allhashedCertificates;
@@ -83,41 +83,41 @@ contract Ecertify {
     {
         return allhashedCertificates[userAddress];
     }
-    function bytes32ToString(bytes32 _bytes32) public pure returns (string memory) {
-    uint8 i = 0;
-    bytes memory bytesArray = new bytes(64);
-    for (i = 0; i < bytesArray.length; i++) {
+//     function bytes32ToString(bytes32 _bytes32) public pure returns (string memory) {
+//     uint8 i = 0;
+//     bytes memory bytesArray = new bytes(64);
+//     for (i = 0; i < bytesArray.length; i++) {
 
-        uint8 _f = uint8(_bytes32[i/2] & 0x0f);
-        uint8 _l = uint8(_bytes32[i/2] >> 4);
+//         uint8 _f = uint8(_bytes32[i/2] & 0x0f);
+//         uint8 _l = uint8(_bytes32[i/2] >> 4);
 
-        bytesArray[i] = toByte(_f);
-        i = i + 1;
-        bytesArray[i] = toByte(_l);
-    }
-    return string(bytesArray);
-}
-function toByte(uint8 _uint8) public pure returns (byte) {
-    if(_uint8 < 10) {
-        return byte(_uint8 + 48);
-    } else {
-        return byte(_uint8 + 87);
-    }
-}
-function hash(string memory _string) public pure returns(bytes32) {
-     return keccak256(abi.encodePacked(_string));
-}
+//         bytesArray[i] = toByte(_f);
+//         i = i + 1;
+//         bytesArray[i] = toByte(_l);
+//     }
+//     return string(bytesArray);
+// }
+// function toByte(uint8 _uint8) public pure returns (byte) {
+//     if(_uint8 < 10) {
+//         return byte(_uint8 + 48);
+//     } else {
+//         return byte(_uint8 + 87);
+//     }
+// }
+// function hash(string memory _string) public pure returns(bytes32) {
+//      return keccak256(abi.encodePacked(_string));
+// }
     function addInBulk(Certificate[] memory b) external{
          
          for (uint256 index = 0; index <  b.length; index++) {
           certificateCounter++;
         // require(!_exists(certificateCounter));
-        bytes32 unique = hash(b[index].name);
+        // bytes32 unique = hash(b[index].name);
         // convertedHash = string(unique);
         // create a new Certificate (struct) and pass in new values
         Certificate memory newCert = Certificate(
             certificateCounter,
-            bytes32ToString(unique),
+            b[index].transactionHash,
             b[index].name,
             b[index].course,
             b[index].email,
@@ -131,8 +131,9 @@ function hash(string memory _string) public pure returns(bytes32) {
         );
         // add the id and it's certificate to allCertificate mapping
         allCertificates[certificateCounter] = newCert;
-        certficateHashExist[bytes32ToString(unique)] = true;  
+        certficateHashExist[b[index].transactionHash] = true;  
          }
+        //  allCertificatesInBulk[certificateCounter2] = b;
     }
 
 }
