@@ -184,9 +184,9 @@ class App extends Component {
   };
   createBulkCertificate = async (struct) => {
 
-    struct.forEach(cert => {
-      cert.transactionHash=crypto.SHA256(cert.name).toString();
-    });
+    // struct.forEach(cert => {
+    //   cert.transactionHash=crypto.SHA256(cert.name).toString();
+    // });
 
     console.log("1st name", struct[0].name);
     this.setState({ loading: true });
