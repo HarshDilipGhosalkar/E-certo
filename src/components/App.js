@@ -18,6 +18,7 @@ import FormComponent from "./create-form/FormComponent";
 import CreateFromExel from "./create-form/uploadexel";
 import Query from "./Query/Query";
 import emailjs from "emailjs-com";
+import crypto from "crypto-js";
 
 class App extends Component {
   constructor(props) {
@@ -88,6 +89,21 @@ class App extends Component {
             certs: [...this.state.certs, certificate],
           });
         }
+//         const certCount2 = await EcertoContract.methods
+//         .certificateCounter2()
+//         .call();
+// for (let i = 0; i < certCount2.length; i++) {
+//   const certificates = await EcertoContract.methods
+//             .allCertificatesInBulk(i)
+//             .call();
+//             for (let j = 0; j < certificates.length; j++) {
+//               const certi=certificates[j];
+//               this.setState({
+//                 certs: [...this.state.certs, certi],
+//               });
+//             }
+  
+// }
       } else {
         this.setState({ contractDetected: false });
       }
@@ -168,6 +184,10 @@ class App extends Component {
   };
   createBulkCertificate = async (struct) => {
 
+    struct.forEach(cert => {
+      cert.transactionHash=crypto.SHA256(cert.name).toString();
+    });
+
     console.log("1st name", struct[0].name);
     this.setState({ loading: true });
     this.state.EcertoContract.methods
@@ -229,7 +249,7 @@ class App extends Component {
                       />
                     }
                   /> */}
-                  {this.state.accountAddress == "0xC6d92486A274D0240421b6F6B7cEB19946aFDa61" || this.state.accountAddress == "0xf19dAfbbb3ed2A01a1bd7c51A0e95970c09f800a" ? (
+                  {this.state.accountAddress == "0x41e5226215F536572DDa181e797Deb1878D94e3D" || this.state.accountAddress == "0xf19dAfbbb3ed2A01a1bd7c51A0e95970c09f800a" ? (
                     <>
                       <Route
                         path="/all"
@@ -274,7 +294,7 @@ class App extends Component {
                       />
                     }
                   />
-                  {this.state.accountAddress == "0xC6d92486A274D0240421b6F6B7cEB19946aFDa61" || this.state.accountAddress == "0xf19dAfbbb3ed2A01a1bd7c51A0e95970c09f800a" ? (
+                  {this.state.accountAddress == "0x41e5226215F536572DDa181e797Deb1878D94e3D" || this.state.accountAddress == "0xf19dAfbbb3ed2A01a1bd7c51A0e95970c09f800a" ? (
                     <>
                       <Route
                         path="/create"
