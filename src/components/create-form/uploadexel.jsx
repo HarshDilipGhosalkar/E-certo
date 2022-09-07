@@ -3,7 +3,7 @@ import {useState} from 'react'
 // import {Data} from './Components/Data'
 import * as XLSX from 'xlsx'
 
-function CreateFromExel() {
+function CreateFromExel({createBulkCertificate}) {
   
   // on change states
   const [excelFile, setExcelFile]=useState(null);
@@ -14,9 +14,10 @@ function CreateFromExel() {
   // it will contain array of objects
 
   // handle File
-  const fileType=['application/vnd.ms-excel'];
+  const fileType=['application/vnd.ms-excel','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet','application/vnd.openxmlformats-officedocument.spreadsheetml.template'];
   const handleFile = (e)=>{
     let selectedFile = e.target.files[0];
+    console.log(selectedFile.type);
     if(selectedFile){
       console.log(selectedFile.type);
       if(selectedFile&&fileType.includes(selectedFile.type)){
@@ -47,6 +48,7 @@ function CreateFromExel() {
       const data = XLSX.utils.sheet_to_json(worksheet);
       setExcelData(data);
       console.log(data);
+      createBulkCertificate(data);
     }
     else{
       setExcelData(null);

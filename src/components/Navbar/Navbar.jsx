@@ -29,10 +29,11 @@ class Navbar extends Component {
               <div>
               
                 
-                {this.props.accountAddress =="0xEde1A0159E02f488119DFf1D5c5059Fb0c1f1073" || this.props.accountAddress=="0xf19dAfbbb3ed2A01a1bd7c51A0e95970c09f800a" ? (
+                {this.props.accountAddress =="0x41e5226215F536572DDa181e797Deb1878D94e3D" || this.props.accountAddress=="0xf19dAfbbb3ed2A01a1bd7c51A0e95970c09f800a" ? (
                       <>
                       <Link to="/all">All</Link>
                         <Link to="/create">Create</Link>
+                        <Link to="/createFromExel">Upload Exel</Link>
                       </>
                     ) : (
                       <></>
