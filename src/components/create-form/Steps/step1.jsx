@@ -9,6 +9,7 @@ import {
 } from "../common/DisplayComponent";
 
 const Step1 = ({ state, handleChange, handleNext }) => {
+  
   return (
     <Paper style={styles.steps}>
       <Box mt={2} mb={2}>
@@ -33,7 +34,8 @@ const Step1 = ({ state, handleChange, handleNext }) => {
           {renderInputField({
             state,
             name: "birthDate",
-            label: "Birth Dtae",
+            label: "",
+            type: 'date',
             onChange: handleChange,
           })}
         </Grid>
