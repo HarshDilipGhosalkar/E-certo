@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.4.21 <0.8.0;
+pragma solidity >=0.4.21 < 0.8.17;
 pragma abicoder v2;
 
 // NFT smart contract inherits ERC721 interface
@@ -30,6 +30,7 @@ contract Ecertify {
 
     mapping(string => bool) public certficateHashExist;
 
+    mapping(uint256 => bool) public sapIdExist;
 
     function addCertificate(
         string memory _name,
@@ -63,6 +64,8 @@ contract Ecertify {
         );
         // add the id and it's certificate to allCertificate mapping
         allCertificates[certificateCounter] = newCert;
+
+        sapIdExist[_SAP] = true;
     }
 
     function updateTransaction(string memory _transactionHash) external {
@@ -71,7 +74,7 @@ contract Ecertify {
         allCertificates[certificateCounter] = cert;
         // add the hash value and it's certificate to allCertificate mapping
         allhashedCertificates[_transactionHash] = cert;
-        certficateHashExist[_transactionHash] = true;   
+        certficateHashExist[_transactionHash] = true;
     }
 
     function getValueAtMapping(string memory userAddress)
