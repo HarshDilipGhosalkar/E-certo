@@ -32,7 +32,7 @@ class App extends Component {
       contractDetected: false,
       certCount: 0,
       certs: [],
-      transactionHash: ""
+      transactionHash: "",
     };
   }
 
@@ -89,21 +89,21 @@ class App extends Component {
             certs: [...this.state.certs, certificate],
           });
         }
-//         const certCount2 = await EcertoContract.methods
-//         .certificateCounter2()
-//         .call();
-// for (let i = 0; i < certCount2.length; i++) {
-//   const certificates = await EcertoContract.methods
-//             .allCertificatesInBulk(i)
-//             .call();
-//             for (let j = 0; j < certificates.length; j++) {
-//               const certi=certificates[j];
-//               this.setState({
-//                 certs: [...this.state.certs, certi],
-//               });
-//             }
-  
-// }
+        //         const certCount2 = await EcertoContract.methods
+        //         .certificateCounter2()
+        //         .call();
+        // for (let i = 0; i < certCount2.length; i++) {
+        //   const certificates = await EcertoContract.methods
+        //             .allCertificatesInBulk(i)
+        //             .call();
+        //             for (let j = 0; j < certificates.length; j++) {
+        //               const certi=certificates[j];
+        //               this.setState({
+        //                 certs: [...this.state.certs, certi],
+        //               });
+        //             }
+
+        // }
       } else {
         this.setState({ contractDetected: false });
       }
@@ -125,9 +125,9 @@ class App extends Component {
           certs: this.state.certs.map((certificate) =>
             certificate.certid.toNumber() === Number(metaData.certId)
               ? {
-                ...certificate,
-                metaData,
-              }
+                  ...certificate,
+                  metaData,
+                }
               : certificate
           ),
         });
@@ -135,7 +135,7 @@ class App extends Component {
     }
   };
 
-  createCertificate = async (name, course, email, passout_year, percentage, SAPId, contact, birthDate, gender, highestDegree) => {
+  getCuurentDate = async () => {
     var months = [
       "January",
       "February",
@@ -160,19 +160,45 @@ class App extends Component {
     // returns the year (four digits)
     var year = currentTime.getFullYear();
     const issueDate = month + " " + day + " " + year;
-
+    return issueDate;
+  };
+  createCertificate = async (
+    name,
+    course,
+    email,
+    passout_year,
+    percentage,
+    SAPId,
+    contact,
+    birthDate,
+    gender,
+    highestDegree
+  ) => {
+    const issueDate = await this.getCuurentDate();
     this.setState({ loading: true });
     this.state.EcertoContract.methods
-      .addCertificate(name, course, email, passout_year, percentage, SAPId, contact, issueDate, gender, highestDegree)
+      .addCertificate(
+        name,
+        course,
+        email,
+        passout_year,
+        percentage,
+        SAPId,
+        contact,
+        issueDate
+      )
       .send({ from: this.state.accountAddress })
       .on("transactionHash", (hash) => {
         localStorage.setItem(this.state.accountAddress, new Date().getTime());
 
         this.state.EcertoContract.methods
           .updateTransaction(hash)
-          .send({ from: this.state.accountAddress})
+          .send({ from: this.state.accountAddress })
           .on("confirmation", () => {
-            localStorage.setItem(this.state.accountAddress, new Date().getTime());
+            localStorage.setItem(
+              this.state.accountAddress,
+              new Date().getTime()
+            );
             this.setState({ loading: false });
             window.location.reload();
           });
@@ -183,22 +209,32 @@ class App extends Component {
     console.log("transactionHash", this.state.transactionHash);
   };
   createBulkCertificate = async (struct) => {
-
-    // struct.forEach(cert => {
-    //   cert.transactionHash=crypto.SHA256(cert.name).toString();
-    // });
-
-    console.log("1st name", struct[0].name);
     this.setState({ loading: true });
+    const issueDate = await this.getCuurentDate();
+    var dataStruc = [];
+    struct.map((details) => {
+      dataStruc.push({
+        certid: 0,
+        transactionHash: "0x00",
+        name: details.name,
+        course: details.course,
+        email: details.email,
+        passoutYear: details.passoutYear,
+        percentage: details.percentage,
+        SAP: details.SAP,
+        contact: details.contact,
+        issueDate: issueDate,
+      });
+    });
+
     this.state.EcertoContract.methods
-      .addInBulk(struct)
+      .addInBulk(dataStruc)
       .send({ from: this.state.accountAddress })
       .on("confirmation", () => {
         localStorage.setItem(this.state.accountAddress, new Date().getTime());
         this.setState({ loading: false });
         window.location.reload();
       });
-
   };
   certficateExist = async (hash) => {
     const exi = await this.state.EcertoContract.methods
@@ -206,23 +242,32 @@ class App extends Component {
       .call();
 
     return exi;
-  }
+  };
 
   sendEmail = async (name, email, hash) => {
     var sendparams = {
       to_name: name,
       reply_to: email,
-      message: "Fllow Link for certificate : http://localhost:3000/certificate/" + hash
-    }
-    // setToSend({ ...toSend, [toSend.to_name]: name });
-    // setToSend({ ...toSend, [toSend.reply_to]: email });
-    emailjs.send('service_346hywf', 'template_rfcp5s2', sendparams, 'lXbz1zzxsBOs8HcSZ')
-      .then(function (response) {
-        console.log('SUCCESS!', response.status, response.text);
-      }, function (error) {
-        console.log('FAILED...', error);
-      });
-  }
+      message:
+        "Fllow Link for certificate : http://localhost:3000/certificate/" +
+        hash,
+    };
+    emailjs
+      .send(
+        "service_346hywf",
+        "template_rfcp5s2",
+        sendparams,
+        "lXbz1zzxsBOs8HcSZ"
+      )
+      .then(
+        function(response) {
+          console.log("SUCCESS!", response.status, response.text);
+        },
+        function(error) {
+          console.log("FAILED...", error);
+        }
+      );
+  };
 
   render() {
     return (
@@ -237,9 +282,12 @@ class App extends Component {
           <>
             <BrowserRouter>
               <Routes>
-                <Route path="/" element={<Navbar
-                  accountAddress={this.state.accountAddress}
-                />}>
+                <Route
+                  path="/"
+                  element={
+                    <Navbar accountAddress={this.state.accountAddress} />
+                  }
+                >
                   <Route index element={<Home />} />
                   {/* <Route
                     path="create"
@@ -249,38 +297,38 @@ class App extends Component {
                       />
                     }
                   /> */}
-                  {this.state.accountAddress == "0x41e5226215F536572DDa181e797Deb1878D94e3D" || this.state.accountAddress == "0xf19dAfbbb3ed2A01a1bd7c51A0e95970c09f800a" ? (
+                  {this.state.accountAddress ==
+                    "0x41e5226215F536572DDa181e797Deb1878D94e3D" ||
+                  this.state.accountAddress ==
+                    "0xB641B4F1795a4BfA2cC7056E08cFB2b199831248" ? (
                     <>
                       <Route
                         path="/all"
                         element={<DisplayAllCert allCert={this.state.certs} />}
-                      />;
+                      />
+                      ;
                     </>
                   ) : (
                     <>
                       <Route
                         path="/all"
                         element={<Navigate replace to="/abc" />}
-                      />;
+                      />
+                      ;
                     </>
                   )}
 
                   <Route
                     path="details/:hash"
-                    element={
-                      <StudentDetail
-                        AllCert={this.state.certs}
-                      />
-                    }
+                    element={<StudentDetail AllCert={this.state.certs} />}
                   />
                   <Route
                     path="certificate/:hash"
                     element={
-
                       <DisplayCert
                         AllCert={this.state.certs}
                         sendEmail={this.sendEmail}
-                      // getCertByHash={this.getCertByHash}                   
+                        // getCertByHash={this.getCertByHash}
                       />
                     }
                   />
@@ -294,7 +342,10 @@ class App extends Component {
                       />
                     }
                   />
-                  {this.state.accountAddress == "0x41e5226215F536572DDa181e797Deb1878D94e3D" || this.state.accountAddress == "0xf19dAfbbb3ed2A01a1bd7c51A0e95970c09f800a" ? (
+                  {this.state.accountAddress ==
+                    "0x41e5226215F536572DDa181e797Deb1878D94e3D" ||
+                  this.state.accountAddress ==
+                    "0xB641B4F1795a4BfA2cC7056E08cFB2b199831248" ? (
                     <>
                       <Route
                         path="/create"
@@ -303,37 +354,34 @@ class App extends Component {
                             createCertificate={this.createCertificate}
                           />
                         }
-                      />;
-
+                      />
+                      ;
                       <Route
                         path="createFromExel"
                         element={
                           <CreateFromExel
-                            createBulkCertificate={this.createBulkCertificate} />
+                            createBulkCertificate={this.createBulkCertificate}
+                          />
                         }
-                      />;
+                      />
+                      ;
                     </>
                   ) : (
                     <>
                       <Route
                         path="/create"
                         element={<Navigate replace to="/abc" />}
-                      />;
-
+                      />
+                      ;
                       <Route
                         path="createFromExel"
-                        element={
-                          <Navigate replace to="/abc" />
-                        }
+                        element={<Navigate replace to="/abc" />}
                       />
                     </>
                   )}
 
-
                   <Route path="*" element={<NoPage />} />
                 </Route>
-
-
               </Routes>
             </BrowserRouter>
           </>
