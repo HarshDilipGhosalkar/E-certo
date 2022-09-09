@@ -366,7 +366,7 @@ class App extends Component {
                       />
                       ;
                       <Route
-                        path="createFromExel"
+                        path="/upload-spreadsheet"
                         element={
                           <CreateFromExel
                             createBulkCertificate={this.createBulkCertificate}
@@ -390,7 +390,7 @@ class App extends Component {
                       />
                       ;
                       <Route
-                        path="createFromExel"
+                        path="/upload-spreadsheet"
                         element={<Navigate replace to="/PageNotFound" />}
                       />
                       <Route

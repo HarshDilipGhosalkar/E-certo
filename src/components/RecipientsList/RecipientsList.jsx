@@ -32,7 +32,7 @@ class RecipientsList extends Component {
   };
 
   render() {
-    console.log(this.state.excelData)
+    console.log(this.state.excelData);
     return (
       <>
         {this.props.excelFile != null ? (
@@ -62,7 +62,7 @@ class RecipientsList extends Component {
             </div>
           </div>
         ) : (
-          <Navigate replace to="../createFromExel" />
+          <Navigate replace to="../upload-spreadsheet" />
         )}
       </>
     );
