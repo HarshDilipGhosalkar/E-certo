@@ -1,25 +1,15 @@
 import React from "react";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
-// import {Data} from './Components/Data'
-import * as XLSX from "xlsx";
 
 import "./assets/styles.css";
 
-function CreateFromExel({
-  createBulkCertificate,
-  displayRecipientsList,
-}) {
+function CreateFromExel({ createBulkCertificate, displayRecipientsList }) {
   // on change states
   const [excelFile, setExcelFile] = useState(null);
-  
+
   const [excelFileError, setExcelFileError] = useState(null);
 
-  // submit
-  const [excelData, setExcelData] = useState(null);
-  // it will contain array of objects
-
-  // handle File
   const fileType = [
     "application/vnd.ms-excel",
     "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
@@ -44,22 +34,6 @@ function CreateFromExel({
       }
     } else {
       console.log("plz select your file");
-    }
-  };
-
-  // submit function
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (excelFile !== null) {
-      const workbook = XLSX.read(excelFile, { type: "buffer" });
-      const worksheetName = workbook.SheetNames[0];
-      const worksheet = workbook.Sheets[worksheetName];
-      const data = XLSX.utils.sheet_to_json(worksheet);
-      setExcelData(data);
-
-      createBulkCertificate(data);
-    } else {
-      setExcelData(null);
     }
   };
 
