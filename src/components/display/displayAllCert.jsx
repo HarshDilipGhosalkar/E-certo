@@ -100,12 +100,8 @@ const DisplayAllCert = ({ allCert }) => {
             </div>
           </div>
         </div>
-        {/* <div className="input-box">
-          <input type="text" class="search" onChange={event => setQuery(event.target.value.toLowerCase())} />
-          <span>Search by name</span>
-        </div>
-        <Table data={search()} />
-        {query.length == "" ? (
+        
+        {/* {query.length == "" ? (
           <Pagination
             postsPerPage={postsPerPage}
             totalPosts={allCert.length}
