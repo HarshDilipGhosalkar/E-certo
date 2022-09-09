@@ -1,6 +1,9 @@
 import React from "react";
 const Table = ({ data }) => {
     return (
+        <>
+        {data !== undefined ? (
+            <>
         <table class="content-table">
             <thead>
                 <tr>
@@ -24,6 +27,9 @@ const Table = ({ data }) => {
 
             </tbody>
         </table>
+        </>
+         ) : null}
+        </>
     );
 };
 
