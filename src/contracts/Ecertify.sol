@@ -106,15 +106,15 @@ contract Ecertify {
         }
     }
 
-    function hash(string memory _string) public pure returns (bytes32) {
-        return keccak256(abi.encodePacked(_string));
+    function hash(string memory _string,uint256 _contact,uint256 _SAP) public pure returns (bytes32) {
+        return keccak256(abi.encodePacked(_string,_contact,_SAP));
     }
 
     function addInBulk(Certificate[] memory b) external {
         for (uint256 index = 0; index < b.length; index++) {
             certificateCounter++;
             // require(!_exists(certificateCounter));
-            bytes32 unique = hash(b[index].name);
+            bytes32 unique = hash(b[index].name,b[index].contact,b[index].SAP);
             convertedHash = bytes32ToString(unique);
             // create a new Certificate (struct) and pass in new values
             Certificate memory newCert = Certificate(

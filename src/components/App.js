@@ -39,7 +39,7 @@ class App extends Component {
   componentWillMount = async () => {
     await this.loadWeb3();
     await this.loadBlockchainData();
-    await this.setMetaData();
+    // await this.setMetaData();
   };
 
   loadWeb3 = async () => {
@@ -116,24 +116,24 @@ class App extends Component {
     window.location.reload();
   };
 
-  setMetaData = async () => {
-    if (this.state.certs.length !== 0) {
-      this.state.certs.map(async (cert) => {
-        const result = await fetch(cert.certURI);
-        const metaData = await result.json();
-        this.setState({
-          certs: this.state.certs.map((certificate) =>
-            certificate.certid.toNumber() === Number(metaData.certId)
-              ? {
-                  ...certificate,
-                  metaData,
-                }
-              : certificate
-          ),
-        });
-      });
-    }
-  };
+  // setMetaData = async () => {
+  //   if (this.state.certs.length !== 0) {
+  //     this.state.certs.map(async (cert) => {
+  //       const result = await fetch(cert.certURI);
+  //       const metaData = await result.json();
+  //       this.setState({
+  //         certs: this.state.certs.map((certificate) =>
+  //           certificate.certid.toNumber() === Number(metaData.certId)
+  //             ? {
+  //                 ...certificate,
+  //                 metaData,
+  //               }
+  //             : certificate
+  //         ),
+  //       });
+  //     });
+  //   }
+  // };
 
   getCuurentDate = async () => {
     var months = [
