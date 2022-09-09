@@ -7,22 +7,27 @@ const Table = ({ data }) => {
         <table class="content-table">
             <thead>
                 <tr>
+                <th><input type="checkbox" /></th>
+                    <th>Id</th>
                     <th>Name</th>
-                    <th>SAP</th>
                     <th>Email</th>
-                    <th>Details</th>
+                    <th>Department</th>
+                    <th>Issue Date</th>
                 </tr>
             </thead>
             <tbody>
-
+            
                 {data.map((item) => (
-                    <tr key={item.certid.toNumber()}>
-                        <td>{item.name}</td>
-                        <td>{item.SAP.toNumber()}</td>
-                        <td>{item.email}</td>
-                        <a href={"certificate/" + item.transactionHash}><td>View</td></a>
-
-                    </tr>
+                    <tr >
+                        <td><input type="checkbox" /></td>
+                    <a href={"certificate/" + item.transactionHash}><td>{item.certid.toNumber()}</td></a>
+                                <td>{item.name}</td>
+                                <td>{item.email}</td>
+                                <td>{item.course}</td>
+                                <td>{item.issueDate}</td>
+                                {/* <a href={"certificate/" + item.transactionHash}><td>View</td></a> */}
+        
+                            </tr>
                 ))}
 
             </tbody>
