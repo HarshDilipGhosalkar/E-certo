@@ -4,8 +4,7 @@ import { Navigate } from "react-router-dom";
 
 import "./assets/styles.css";
 
-function CreateFromExel({ createBulkCertificate, displayRecipientsList }) {
-  // on change states
+function uploadExcel({ createBulkCertificate, displayRecipientsList }) {
   const [excelFile, setExcelFile] = useState(null);
 
   const [excelFileError, setExcelFileError] = useState(null);
@@ -179,7 +178,7 @@ function CreateFromExel({ createBulkCertificate, displayRecipientsList }) {
   );
 }
 
-export default CreateFromExel;
+export default uploadExcel;
 
 // <div className="container">
 //   {/* upload file section */}
