@@ -272,11 +272,10 @@ class App extends Component {
   };
 
   displayRecipientsList = async (excelFile) => {
-    this.setState({excelFile : excelFile});
+    this.setState({ excelFile: excelFile });
     // console.log(excelFil)
     console.log(this.state.excelFile);
-
-  }
+  };
 
   render() {
     // console.log(this.state.excelFile);
@@ -375,28 +374,28 @@ class App extends Component {
                           />
                         }
                       />
-                        <Route
-                          path="certificates/recipients"
-                          element={
-                            <RecipientsList excelFile={this.state.excelFile} />
-                          }
-                        />
+                      <Route
+                        path="certificates/recipients"
+                        element={
+                          <RecipientsList excelFile={this.state.excelFile} />
+                        }
+                      />
                       ;
                     </>
                   ) : (
                     <>
                       <Route
                         path="/create"
-                        element={<Navigate replace to="/abc" />}
+                        element={<Navigate replace to="/PageNotFound" />}
                       />
                       ;
                       <Route
                         path="createFromExel"
-                        element={<Navigate replace to="/abc" />}
+                        element={<Navigate replace to="/PageNotFound" />}
                       />
                       <Route
                         path="certificates/recipients"
-                        element={<Navigate replace to="/abc" />}
+                        element={<Navigate replace to="../PageNotFound" />}
                       />
                     </>
                   )}
