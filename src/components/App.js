@@ -15,7 +15,8 @@ import DisplayAllCert from "./display/displayAllCert";
 import StudentDetail from "./StudentDetails/StudentDetail";
 import DisplayCert from "./display/displaycert";
 import FormComponent from "./create-form/FormComponent";
-import uploadExcel from "./uploadExcel/uploadExel";
+// import uploadExcel from "./uploadExcel/uploadExcel";
+import UploadExcelPage from "./uploadExcel/uploadExcel";
 import RecipientsList from "./RecipientsList/RecipientsList";
 import Query from "./Query/Query";
 import emailjs from "emailjs-com";
@@ -368,8 +369,7 @@ class App extends Component {
                       <Route
                         path="/upload-spreadsheet"
                         element={
-                          <uploadExcel
-                            createBulkCertificate={this.createBulkCertificate}
+                          <UploadExcelPage
                             displayRecipientsList={this.displayRecipientsList}
                           />
                         }
