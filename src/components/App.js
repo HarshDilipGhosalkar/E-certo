@@ -16,6 +16,7 @@ import StudentDetail from "./StudentDetails/StudentDetail";
 import DisplayCert from "./display/displaycert";
 import FormComponent from "./create-form/FormComponent";
 import CreateFromExel from "./uploadExcel/uploadexel";
+import RecipientsList from "./RecipientsList/RecipientsList";
 import Query from "./Query/Query";
 import emailjs from "emailjs-com";
 import crypto from "crypto-js";
@@ -33,6 +34,7 @@ class App extends Component {
       certCount: 0,
       certs: [],
       transactionHash: "",
+      excelFile: null,
     };
   }
 
@@ -269,7 +271,15 @@ class App extends Component {
       );
   };
 
+  displayRecipientsList = async (excelFile) => {
+    this.setState({excelFile : excelFile});
+    // console.log(excelFil)
+    console.log(this.state.excelFile);
+
+  }
+
   render() {
+    // console.log(this.state.excelFile);
     return (
       <>
         {!this.state.metamaskConnected ? (
@@ -361,9 +371,16 @@ class App extends Component {
                         element={
                           <CreateFromExel
                             createBulkCertificate={this.createBulkCertificate}
+                            displayRecipientsList={this.displayRecipientsList}
                           />
                         }
                       />
+                        <Route
+                          path="certificates/recipients"
+                          element={
+                            <RecipientsList excelFile={this.state.excelFile} />
+                          }
+                        />
                       ;
                     </>
                   ) : (
@@ -375,6 +392,10 @@ class App extends Component {
                       ;
                       <Route
                         path="createFromExel"
+                        element={<Navigate replace to="/abc" />}
+                      />
+                      <Route
+                        path="certificates/recipients"
                         element={<Navigate replace to="/abc" />}
                       />
                     </>
