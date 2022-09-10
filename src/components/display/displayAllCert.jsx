@@ -98,6 +98,17 @@ const DisplayAllCert = ({ allCert }) => {
             <div className="tab">
             <Table data={search()} />
             </div>
+            <div className="pagination-div">
+              {query.length == "" ? (
+          <Pagination
+            postsPerPage={postsPerPage}
+            totalPosts={allCert.length}
+            paginate={paginate}
+          />
+        ) : (
+          <></>
+        )}
+            </div>
           </div>
         </div>
         
