@@ -1,5 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
+import left from "./assets/left.svg";
+import right from "./assets/right.svg";
 
 const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
   
@@ -24,31 +26,31 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
       <ul className='pagination'>
       <li className='page-item'>
         {page <= 1 ? (
-          <a  className='page-link'>
-          Prev
-        </a>
+          <button disabled className='page-link'>
+          <img class="pagination-img" src={left} alt="" />
+        </button>
         ) : (
-          <a onClick={() => pagination("dec")} className='page-link'>
-          Prev
-        </a>
+          <button onClick={() => pagination("dec")} className='page-link'>
+          <img class="pagination-img" src={left} alt="" />
+        </button>
         )}
           </li>
           <li className='page-item'>
 
-          <a  className='page-link'>
+          <button className='page-link'>
           {page}
-        </a>
+        </button>
 
           </li>
           <li className='page-item'>
         {page >= Math.ceil(totalPosts / postsPerPage) ? (
-          <a  className='page-link'>
-          inc
-        </a>
+          <button disabled className='page-link'>
+          <img class="pagination-img" src={right} alt="" />
+        </button>
         ) : (
-          <a onClick={() => pagination("inc")} className='page-link'>
-          inc
-        </a>
+          <button onClick={() => pagination("inc")} className='page-link'>
+          <img class="pagination-img" src={right} alt="" />
+        </button>
         )}
           </li>
         
