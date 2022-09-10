@@ -33,3 +33,39 @@
   touch-action: manipulation;
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
+.table-area {
+  font-size: 14px;
+  line-height: 1.5715;
+  margin: 25px 0;
+  padding: 0;
+  border-left: 1px solid #f0f0f0;
+  border-top: 1px solid #f0f0f0;
+  border-top-radius: 2px;
+  overflow-x: auto;
+  width:90%;
+}
+
+.recipient-table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+.recipient-table th,
+.recipient-table td {
+  font-weight: 400;
+  text-align: left;
+  padding: 16px;
+  padding-left: 25px;
+  min-width: 320px;
+  border-right: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+}
+.recipient-table th {
+  background: #fafafa;
+  font-weight: 500;
+  
+}
+.recipient-table td {
+  background: white;
+}
