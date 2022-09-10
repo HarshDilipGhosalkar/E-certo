@@ -28,9 +28,18 @@ const Table = ({ data,enableState,disableState }) => {
         console.log(emailList);
         
     }
-    // const changeChecked=(toAdd)=>{
-    //     setchecked(toAdd);
-    // }
+    useEffect(() => {
+        if(checked>0){
+            enableState();
+        }else{
+            disableState();
+        }
+
+        // if(resendStatus==true){
+        //     emailLoop(emailList);
+
+        // }
+      });
     return (
         <>
         {data !== undefined ? (
