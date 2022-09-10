@@ -101,3 +101,7 @@
   cursor: pointer;
   border: none;
 }
+.excel_page svg{
+    vertical-align: -0.125em;
+    margin-right: 10px;
+}
