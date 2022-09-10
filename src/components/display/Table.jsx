@@ -1,5 +1,32 @@
 import React from "react";
-const Table = ({ data }) => {
+import { useState,useEffect } from "react";
+
+const Table = ({ data,enableState,disableState }) => {
+    const [checked,setchecked]=useState(0);
+    const emailList=[];
+
+   
+    const send=(cert,clsname)=>{
+        var checkBox = document.querySelector("."+clsname);
+        if (checkBox.checked == true){
+            emailList.push(cert);
+            setchecked(checked+1);
+          } else {
+             emailList.pop(cert);
+             setchecked(checked-1);
+          }
+        
+        console.log(emailList);
+        // console.log("hello",cert);
+    }
+
+    useEffect(() => {
+        if(checked>0){
+            enableState();
+        }else{
+            disableState();
+        }
+      });
     return (
         <>
         {data !== undefined ? (
@@ -19,7 +46,7 @@ const Table = ({ data }) => {
             
                 {data.map((item) => (
                     <tr >
-                        <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" className={"chk"+item.certid.toNumber()} onClick={() => send(item,"chk"+item.certid.toNumber())}/></td>
                     <a href={"certificate/" + item.transactionHash}><td>{item.certid.toNumber()}</td></a>
                                 <td>{item.name}</td>
                                 <td>{item.email}</td>

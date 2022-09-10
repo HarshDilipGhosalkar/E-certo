@@ -3,25 +3,47 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./assets/explore.css";
 import Loading from "../Loading/Loading";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useRef } from "react";
 import Table from "./Table";
 import Pagination from './Pagination';
 import add from "./assets/add.svg";
 import s from "./assets/search.svg";
+import { ToggleOff } from "@material-ui/icons";
 
-const DisplayAllCert = ({ allCert }) => {
-
+const DisplayAllCert = ({ allCert,sendEmail }) => {
+  // const[resendStatus,setResend]=useState("");
+var resendStatus="false";
+  // const resendStatus = useRef(false);
   const [query, setQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
 
-
-
+  const emailLoop = (certList) => {
+    certList.forEach(cert => {
+      sendEmail(cert.name,cert.email,cert.transactionHash);
+    });
+  }
+  const enableState = () => {
+    var btnstate= document.getElementById("resend-btn");
+    btnstate.disabled = false;
+    btnstate.style.backgroundColor = 'white';
+    btnstate.style.color = '#40a9ff';
+    btnstate.style.border= "1px solid #40a9ff";
+  }
+  const disableState = () => {
+    var btnstate= document.getElementById("resend-btn");
+    btnstate.disabled = true;
+    btnstate.style.color = 'rgba(0,0,0,0.25)';
+    btnstate.style.border= "1px solid #d9d9d9";
+  }
   // Get current posts
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
 
-
+  // const toggleResendStatus=()=>{
+  //   setResend(true);
+  //   console.log(resendStatus);
+  // }
   const paginate = pageNumber => setCurrentPage(pageNumber);
   const search = () => {
     if (query.length == "") {
@@ -32,6 +54,17 @@ const DisplayAllCert = ({ allCert }) => {
 
 
   }
+  function tog(){
+    // resendStatus.current = true;
+    // console.log(resendStatus.current);
+    // console.log("yes");
+    // setResend("true");
+    resendStatus="true";
+    console.log(resendStatus);
+  }
+  // useEffect(() => {
+  //   console.log(resendStatus);
+  // });
   return (
     <>
       <div class="wap">
@@ -90,13 +123,13 @@ const DisplayAllCert = ({ allCert }) => {
           </div>
           <div className="table-div">
             <div className="table-btn">
-            <h5>1 Certificate
+            <h5>{allCert.length} Certificates
               </h5>
-              <button disabled>Resend Email</button>
+              <button id="resend-btn" onClick={tog()} disabled>Resend Email</button>
             </div>
             <div className="hr2"></div>
             <div className="tab">
-            <Table data={search()} />
+            <Table data={search()} enableState={enableState } disableState ={disableState } />
             </div>
             <div className="pagination-div">
               {query.length == "" ? (
