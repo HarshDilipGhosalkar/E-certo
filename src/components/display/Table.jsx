@@ -1,32 +1,36 @@
 import React from "react";
-import { useState,useEffect } from "react";
+import { useState } from "react";
 
 const Table = ({ data,enableState,disableState }) => {
-    const [checked,setchecked]=useState(0);
-    const emailList=[];
+    var emailList=[];
+    var checked=0;
 
-   
+
+    function arrayRemove(arr, value) {
+ 
+        return arr.filter(function(cer){
+            return cer.certid.toNumber() != value;
+        });
+      
+     }
     const send=(cert,clsname)=>{
         var checkBox = document.querySelector("."+clsname);
         if (checkBox.checked == true){
+            
             emailList.push(cert);
-            setchecked(checked+1);
+            checked+=1;
           } else {
-             emailList.pop(cert);
-             setchecked(checked-1);
+             
+            emailList = arrayRemove(emailList, cert.certid.toNumber());
+            checked-=1;
           }
-        
-        console.log(emailList);
-        // console.log("hello",cert);
-    }
 
-    useEffect(() => {
-        if(checked>0){
-            enableState();
-        }else{
-            disableState();
-        }
-      });
+        console.log(emailList);
+        
+    }
+    // const changeChecked=(toAdd)=>{
+    //     setchecked(toAdd);
+    // }
     return (
         <>
         {data !== undefined ? (
