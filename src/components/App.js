@@ -314,7 +314,7 @@ class App extends Component {
                     <>
                       <Route
                         path="/all"
-                        element={<DisplayAllCert allCert={this.state.certs} />}
+                        element={<DisplayAllCert allCert={this.state.certs} sendEmail={this.sendEmail}/>}
                       />
                       ;
                     </>
