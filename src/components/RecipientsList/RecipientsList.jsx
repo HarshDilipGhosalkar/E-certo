@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import * as XLSX from "xlsx";
 
-// import "./assets/styles.css";
+import "./assets/styles.css";
 
 class RecipientsList extends Component {
   constructor(props) {
@@ -43,16 +43,15 @@ class RecipientsList extends Component {
                   <div className="row">
                     <div className="col-6">
                       <p className="path">
-                        <span className="light_fg">Certificate / </span> Upload
-                        Spreadsheet
+                        <span className="light_fg">Certificate / Upload Spreadsheet / </span> Recipients List
                       </p>
-                      <h5>Upload Spreadsheet</h5>
+                      <h5>Recipients List</h5>
                     </div>
                     <div className="col-6">
                       <div className="file_input_area">
                         <br />
-                        <button>Reupload Spreadsheet</button>
-                        <button>Create and Publish Certificates</button>
+                        <button className="reupload_btn">Reupload Spreadsheet</button>
+                        <button className="publish_btn">Publish Certificates</button>
                       </div>
                     </div>
                   </div>
