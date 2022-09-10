@@ -24,7 +24,9 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
       <ul className='pagination'>
       <li className='page-item'>
         {page <= 1 ? (
-          <></>
+          <a  className='page-link'>
+          Prev
+        </a>
         ) : (
           <a onClick={() => pagination("dec")} className='page-link'>
           Prev
@@ -40,7 +42,9 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
           </li>
           <li className='page-item'>
         {page >= Math.ceil(totalPosts / postsPerPage) ? (
-          <></>
+          <a  className='page-link'>
+          inc
+        </a>
         ) : (
           <a onClick={() => pagination("inc")} className='page-link'>
           inc
