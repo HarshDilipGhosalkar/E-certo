@@ -31,6 +31,10 @@ class RecipientsList extends Component {
     }
   };
 
+  createCertificates = async () => {
+    this.props.createBulkCertificate(this.state.excelData);
+  };
+
   render() {
     console.log(this.state.excelData);
     return (
@@ -43,15 +47,31 @@ class RecipientsList extends Component {
                   <div className="row">
                     <div className="col-6">
                       <p className="path">
-                        <span className="light_fg">Certificate / Upload Spreadsheet / </span> Recipients List
+                        <span className="light_fg">
+                          Certificate / Upload Spreadsheet /{" "}
+                        </span>{" "}
+                        Recipients List
                       </p>
                       <h5>Recipients List</h5>
                     </div>
                     <div className="col-6">
                       <div className="file_input_area">
                         <br />
-                        <button className="reupload_btn">Reupload Spreadsheet</button>
-                        <button className="publish_btn">Publish Certificates</button>
+                        <button
+                          className="reupload_btn"
+                          onClick={() => {
+                            this.setState({ excelData: null });
+                            window.location.reload();
+                          }}
+                        >
+                          Reupload Spreadsheet
+                        </button>
+                        <button
+                          className="publish_btn"
+                          onClick={this.createCertificates}
+                        >
+                          Publish Certificates
+                        </button>
                       </div>
                     </div>
                   </div>

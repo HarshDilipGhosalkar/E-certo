@@ -377,7 +377,10 @@ class App extends Component {
                       <Route
                         path="certificates/recipients"
                         element={
-                          <RecipientsList excelFile={this.state.excelFile} />
+                          <RecipientsList
+                            excelFile={this.state.excelFile}
+                            createBulkCertificate={this.createBulkCertificate}
+                          />
                         }
                       />
                       ;
