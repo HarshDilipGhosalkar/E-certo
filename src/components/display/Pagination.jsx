@@ -37,7 +37,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
           </li>
           <li className='page-item'>
 
-          <button className='page-link'>
+          <button disabled className='page-link'>
           {page}
         </button>
 
