@@ -24,8 +24,6 @@ class RecipientsList extends Component {
       const worksheet = workbook.Sheets[worksheetName];
       const data = XLSX.utils.sheet_to_json(worksheet);
       this.setState({ excelData: data });
-
-      //   createBulkCertificate(data);
     } else {
       this.setState({ excelData: null });
     }
@@ -77,7 +75,115 @@ class RecipientsList extends Component {
                   </div>
                 </div>
               </div>
-              <div className="upload_excel_main"></div>
+              <div className="upload_excel_main">
+                <div className="container">
+                  <div className="row">
+                    <div className="col">
+                      <button>Add Recipients</button>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="table-area">
+                      <table class="recipient-table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+                            <th>Sap Id</th>
+                            <th>Course</th>
+                            <th>Email</th>
+                            <th>Passout Year</th>
+                            <th>Percentage</th>
+                            <th>Contact</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {this.state.excelData.map((data) => {
+                            return (
+                              <tr>
+                                <td scope="col">{data.SAP}</td>
+                                <td scope="col">{data.name}</td>
+                                <td scope="col">{data.course}</td>
+                                <td scope="col">{data.email}</td>
+                                <td scope="col">{data.passoutYear}</td>
+                                <td scope="col">{data.contact}</td>
+                                <td scope="col">{data.issueDate}</td>
+                              </tr>
+                            );
+                          })}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                {/* <div className="recipient-table">
+                  <table>
+                    <tr>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Points</th>
+                      <th>Points</th>
+                      <th>Points</th>
+                      <th>Points</th>
+                      <th>Points</th>
+                      <th>Points</th>
+                      <th>Points</th>
+                      <th>Points</th>
+                      <th>Points</th>
+                      <th>Points</th>
+                      <th>Points</th>
+                      <th>Points</th>
+                    </tr>
+                    <tr>
+                      <td>Jill</td>
+                      <td>Smith</td>
+                      <td>50</td>
+                      <td>50</td>
+                      <td>50</td>
+                      <td>50</td>
+                      <td>50</td>
+                      <td>50</td>
+                      <td>50</td>
+                      <td>50</td>
+                      <td>50</td>
+                      <td>50</td>
+                      <td>50</td>
+                      <td>50</td>
+                    </tr>
+                    <tr>
+                      <td>Eve</td>
+                      <td>Jackson</td>
+                      <td>94</td>
+                      <td>94</td>
+                      <td>94</td>
+                      <td>94</td>
+                      <td>94</td>
+                      <td>94</td>
+                      <td>94</td>
+                      <td>94</td>
+                      <td>94</td>
+                      <td>94</td>
+                      <td>50</td>
+                      <td>50</td>
+                    </tr>
+                    <tr>
+                      <td>Adam</td>
+                      <td>Johnson</td>
+                      <td>67</td>
+                      <td>67</td>
+                      <td>67</td>
+                      <td>67</td>
+                      <td>67</td>
+                      <td>67</td>
+                      <td>67</td>
+                      <td>67</td>
+                      <td>67</td>
+                      <td>67</td>
+                      <td>50</td>
+                      <td>50</td>
+                    </tr>
+                  </table>
+                </div> */}
+              </div>
             </div>
           </div>
         ) : (
