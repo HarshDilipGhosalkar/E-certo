@@ -11,8 +11,7 @@ import s from "./assets/search.svg";
 
 const DisplayAllCert = ({ allCert,sendEmail }) => {
   // const[resendStatus,setResend]=useState("");
-var resendStatus="false";
-  // const resendStatus = useRef(false);
+
   const [query, setQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
@@ -21,6 +20,7 @@ var resendStatus="false";
     certList.forEach(cert => {
       sendEmail(cert.name,cert.email,cert.transactionHash);
     });
+   
   }
   const enableState = () => {
     var btnstate= document.getElementById("resend-btn");
@@ -53,14 +53,7 @@ var resendStatus="false";
 
 
   }
-  function tog(){
-    // resendStatus.current = true;
-    // console.log(resendStatus.current);
-    // console.log("yes");
-    // setResend("true");
-    resendStatus="true";
-    console.log(resendStatus);
-  }
+  
   // useEffect(() => {
   //   console.log(resendStatus);
   // });
@@ -121,15 +114,8 @@ var resendStatus="false";
             </div>
           </div>
           <div className="table-div">
-            <div className="table-btn">
-            <h5>{allCert.length} Certificates
-              </h5>
-              <button id="resend-btn" onClick={tog()} disabled>Resend Email</button>
-            </div>
-            <div className="hr2"></div>
-            <div className="tab">
-            <Table data={search()} enableState={enableState } disableState ={disableState } />
-            </div>
+          <Table allCert={allCert} data={search()} enableState={enableState } disableState ={disableState } emailLoop={emailLoop} />
+
             <div className="pagination-div">
               {query.length == "" ? (
           <Pagination
