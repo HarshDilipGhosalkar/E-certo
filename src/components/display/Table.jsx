@@ -15,9 +15,10 @@ const Table = ({ allCert, data, enableState, disableState, emailLoop }) => {
 
     }
     const send = (cert, clsname) => {
-        var checkBox = document.querySelector("." + clsname);
+        var checkBox = document.querySelector(".chk" + clsname);
+        var tr= document.querySelector(".tr"+clsname);
         if (checkBox.checked == true) {
-
+            tr.style.backgroundColor = '#e6f7ff';
             emailList.push(cert);
             checked += 1;
             enableState();
@@ -33,6 +34,7 @@ const Table = ({ allCert, data, enableState, disableState, emailLoop }) => {
             if (checked <= 0) {
                 disableState();
             }
+            tr.style.backgroundColor = 'white';
             document.querySelector(".allCheck").checked = false;
         }
 
@@ -97,8 +99,8 @@ const Table = ({ allCert, data, enableState, disableState, emailLoop }) => {
                             <tbody>
 
                                 {data.map((item) => (
-                                    <tr >
-                                        <td><input type="checkbox" className={"commonChk  chk" + item.certid.toNumber()} onClick={() => send(item, "chk" + item.certid.toNumber())} /></td>
+                                    <tr className={"tr" + item.certid.toNumber()}>
+                                        <td><input type="checkbox" className={"commonChk  chk" + item.certid.toNumber()} onClick={() => send(item,  item.certid.toNumber())} /></td>
                                         <td><a href={"certificate/" + item.transactionHash}>{item.certid.toNumber()}</a></td>
                                         <td>{item.name}</td>
                                         <td>{item.email}</td>
