@@ -3,14 +3,13 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./assets/explore.css";
 import Loading from "../Loading/Loading";
-import { useState, useEffect,useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import Table from "./Table";
 import Pagination from './Pagination';
 import add from "./assets/add.svg";
 import s from "./assets/search.svg";
 
-const DisplayAllCert = ({ allCert,sendEmail }) => {
-  // const[resendStatus,setResend]=useState("");
+const DisplayAllCert = ({ allCert, sendEmail }) => {
 
   const [query, setQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -18,31 +17,28 @@ const DisplayAllCert = ({ allCert,sendEmail }) => {
 
   const emailLoop = (certList) => {
     certList.forEach(cert => {
-      sendEmail(cert.name,cert.email,cert.transactionHash);
+      sendEmail(cert.name, cert.email, cert.transactionHash);
     });
-   
+
   }
   const enableState = () => {
-    var btnstate= document.getElementById("resend-btn");
+    var btnstate = document.getElementById("resend-btn");
     btnstate.disabled = false;
     btnstate.style.backgroundColor = 'white';
     btnstate.style.color = '#40a9ff';
-    btnstate.style.border= "1px solid #40a9ff";
+    btnstate.style.border = "1px solid #40a9ff";
   }
   const disableState = () => {
-    var btnstate= document.getElementById("resend-btn");
+    var btnstate = document.getElementById("resend-btn");
     btnstate.disabled = true;
     btnstate.style.color = 'rgba(0,0,0,0.25)';
-    btnstate.style.border= "1px solid #d9d9d9";
+    btnstate.style.border = "1px solid #d9d9d9";
   }
   // Get current posts
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
 
-  // const toggleResendStatus=()=>{
-  //   setResend(true);
-  //   console.log(resendStatus);
-  // }
+
   const paginate = pageNumber => setCurrentPage(pageNumber);
   const search = () => {
     if (query.length == "") {
@@ -53,10 +49,7 @@ const DisplayAllCert = ({ allCert,sendEmail }) => {
 
 
   }
-  
-  // useEffect(() => {
-  //   console.log(resendStatus);
-  // });
+
   return (
     <>
       <div class="wap">
@@ -114,31 +107,22 @@ const DisplayAllCert = ({ allCert,sendEmail }) => {
             </div>
           </div>
           <div className="table-div">
-          <Table allCert={allCert} data={search()} enableState={enableState } disableState ={disableState } emailLoop={emailLoop} />
+            <Table allCert={allCert} data={search()} enableState={enableState} disableState={disableState} emailLoop={emailLoop} />
 
             <div className="pagination-div">
               {query.length == "" ? (
-          <Pagination
-            postsPerPage={postsPerPage}
-            totalPosts={allCert.length}
-            paginate={paginate}
-          />
-        ) : (
-          <></>
-        )}
+                <Pagination
+                  postsPerPage={postsPerPage}
+                  totalPosts={allCert.length}
+                  paginate={paginate}
+                />
+              ) : (
+                <></>
+              )}
             </div>
           </div>
         </div>
-        
-        {/* {query.length == "" ? (
-          <Pagination
-            postsPerPage={postsPerPage}
-            totalPosts={allCert.length}
-            paginate={paginate}
-          />
-        ) : (
-          <></>
-        )} */}
+
 
       </div>
     </>
