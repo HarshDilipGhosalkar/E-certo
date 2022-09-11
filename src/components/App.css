@@ -490,7 +490,7 @@ background-color: #ffffff;
 .content-table th,
 .content-table td{
  
-  border-bottom: 1px solid #f0f0f0;
+  
   color: rgba(0,0,0,.85);
   font-weight: 400;
   position: relative;
@@ -500,6 +500,7 @@ background-color: #ffffff;
 }
 .content-table th{
   background: #fafafa;
+  border-bottom: 1px solid #f0f0f0;
 }
 .content-table td{
   background: white;
