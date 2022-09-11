@@ -265,6 +265,7 @@ class App extends Component {
       .then(
         function(response) {
           console.log("SUCCESS!", response.status, response.text);
+          window.location.reload();
         },
         function(error) {
           console.log("FAILED...", error);
