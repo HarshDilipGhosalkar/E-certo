@@ -245,7 +245,7 @@ class RecipientsList extends Component {
                               <>
                                 {this.state.editRowId === data.SAP ? (
                                   <div className="action-icon edit_option">
-                                    <button name="edit" className="action-btn">
+                                    <button name="conform-edit" className="action-btn">
                                       <span
                                         role="img"
                                         aria-label="check-circle"
@@ -275,7 +275,9 @@ class RecipientsList extends Component {
                                         </svg>
                                       </span>
                                     </button>
-                                    <button name="edit" className="action-btn">
+                                    <button name="cancel-edit" className="action-btn" onClick={() => {
+                                      this.setState({ editRowId: null });
+                                    }}>
                                       <span
                                         role="img"
                                         aria-label="check-circle"
