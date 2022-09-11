@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Navigate } from "react-router-dom";
 import * as XLSX from "xlsx";
 
+// import {EditIcon} from './ActionBtn';
+
 import "./assets/styles.css";
 
 class RecipientsList extends Component {
@@ -132,7 +134,7 @@ class RecipientsList extends Component {
                 <div className="container">
                   <div className="row">
                     <div className="col">
-                      {this.state.addNew ? (
+                      {this.state.addNew || this.state.editRowData!== null? (
                         <button className="reupload_btn" disabled>
                           <span>
                             <svg
