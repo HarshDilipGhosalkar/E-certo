@@ -80,7 +80,7 @@ const Table = ({ allCert, data, enableState, disableState, emailLoop }) => {
                                 {data.map((item) => (
                                     <tr >
                                         <td><input type="checkbox" className={"commonChk  chk" + item.certid.toNumber()}  onClick={() => send(item, "chk" + item.certid.toNumber())} /></td>
-                                        <a href={"certificate/" + item.transactionHash}><td>{item.certid.toNumber()}</td></a>
+                                        <td><a href={"certificate/" + item.transactionHash}>{item.certid.toNumber()}</a></td>
                                         <td>{item.name}</td>
                                         <td>{item.email}</td>
                                         <td>{item.course}</td>
