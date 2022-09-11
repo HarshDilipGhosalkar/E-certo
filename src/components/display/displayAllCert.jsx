@@ -8,7 +8,6 @@ import Table from "./Table";
 import Pagination from './Pagination';
 import add from "./assets/add.svg";
 import s from "./assets/search.svg";
-import { ToggleOff } from "@material-ui/icons";
 
 const DisplayAllCert = ({ allCert,sendEmail }) => {
   // const[resendStatus,setResend]=useState("");

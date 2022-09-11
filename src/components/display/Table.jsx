@@ -19,27 +19,28 @@ const Table = ({ data,enableState,disableState }) => {
             
             emailList.push(cert);
             checked+=1;
+            enableState();
           } else {
              
             emailList = arrayRemove(emailList, cert.certid.toNumber());
             checked-=1;
+            if(checked<=0){
+                disableState();
+            }
           }
 
         console.log(emailList);
         
     }
-    useEffect(() => {
-        if(checked>0){
-            enableState();
-        }else{
-            disableState();
-        }
+    // useEffect(() => {
+    //     if(checked>0){
+    //         enableState();
+    //     }else{
+    //         disableState();
+    //     }
 
-        // if(resendStatus==true){
-        //     emailLoop(emailList);
-
-        // }
-      });
+        
+    //   });
     return (
         <>
         {data !== undefined ? (
