@@ -74,8 +74,17 @@ const Table = ({ allCert, data, enableState, disableState, emailLoop }) => {
     return (
         <>
             <div className="table-btn">
-                <h5>{allCert.length} Certificates
-                </h5>
+                {data.length <= 1 ? (
+                    <>
+                        <h5>{data.length} Certificate
+                        </h5>
+                    </>
+                ) : (
+                    <>
+                        <h5>{data.length} Certificates
+                        </h5></>
+                )}
+
                 <div id="resend-btn" onClick={() => emailLoop(emailList)} >Resend Email</div>
             </div>
             <div className="hr2"></div>
