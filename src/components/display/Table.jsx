@@ -16,7 +16,7 @@ const Table = ({ allCert, data, enableState, disableState, emailLoop }) => {
     }
     const send = (cert, clsname) => {
         var checkBox = document.querySelector(".chk" + clsname);
-        var tr= document.querySelector(".tr"+clsname);
+        var tr = document.querySelector(".tr" + clsname);
         if (checkBox.checked == true) {
             tr.style.backgroundColor = '#e6f7ff';
             emailList.push(cert);
@@ -42,6 +42,7 @@ const Table = ({ allCert, data, enableState, disableState, emailLoop }) => {
         // setcheck(checked);
     }
     function tog() {
+        const trs = document.querySelectorAll(".commontr");
         const checkBoxes = document.querySelectorAll(".commonChk");
         const allCheck = document.querySelector(".allCheck");
         if (allCheck.checked == true) {
@@ -51,12 +52,18 @@ const Table = ({ allCert, data, enableState, disableState, emailLoop }) => {
             checkBoxes.forEach(chk => {
                 chk.checked = true;
             });
+            trs.forEach(tr => {
+                tr.style.backgroundColor = '#e6f7ff';
+            });
             console.log(emailList);
             enableState();
         } else {
             emailList = []
             checkBoxes.forEach(chk => {
                 chk.checked = false;
+            });
+            trs.forEach(tr => {
+                tr.style.backgroundColor = 'white';
             });
             console.log(emailList);
             disableState();
@@ -99,8 +106,8 @@ const Table = ({ allCert, data, enableState, disableState, emailLoop }) => {
                             <tbody>
 
                                 {data.map((item) => (
-                                    <tr className={"tr" + item.certid.toNumber()}>
-                                        <td><input type="checkbox" className={"commonChk  chk" + item.certid.toNumber()} onClick={() => send(item,  item.certid.toNumber())} /></td>
+                                    <tr className={"commontr tr" + item.certid.toNumber()}>
+                                        <td><input type="checkbox" className={"commonChk  chk" + item.certid.toNumber()} onClick={() => send(item, item.certid.toNumber())} /></td>
                                         <td><a href={"certificate/" + item.transactionHash}>{item.certid.toNumber()}</a></td>
                                         <td>{item.name}</td>
                                         <td>{item.email}</td>
