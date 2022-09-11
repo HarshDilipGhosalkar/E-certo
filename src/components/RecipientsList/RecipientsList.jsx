@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import * as XLSX from "xlsx";
 
@@ -10,7 +9,14 @@ class RecipientsList extends Component {
     super(props);
     this.state = {
       excelData: [],
-      editRowId: null,
+      editRowData: null,
+      name: "",
+      SAP: "",
+      course: "",
+      email: "",
+      passoutYear: "",
+      percentage: "",
+      contact: "",
     };
   }
 
@@ -24,7 +30,19 @@ class RecipientsList extends Component {
       const worksheetName = workbook.SheetNames[0];
       const worksheet = workbook.Sheets[worksheetName];
       const data = XLSX.utils.sheet_to_json(worksheet);
-      this.setState({ excelData: data });
+      var excelData = [];
+      data.map((details) => {
+        excelData.push({
+          name: details.name,
+          course: details.course,
+          email: details.email,
+          passoutYear: details.passoutYear,
+          percentage: details.percentage,
+          SAP: details.SAP,
+          contact: details.contact,
+        });
+      });
+      this.setState({ excelData: excelData });
     } else {
       this.setState({ excelData: null });
     }
@@ -119,7 +137,7 @@ class RecipientsList extends Component {
                           {this.state.excelData.map((data) => {
                             return (
                               <tr>
-                                {this.state.editRowId !== data.SAP ? (
+                                {this.state.editRowData !== data ? (
                                   <>
                                     <td scope="col">{data.name}</td>
                                     <td scope="col">{data.SAP}</td>
@@ -132,25 +150,79 @@ class RecipientsList extends Component {
                                 ) : (
                                   <>
                                     <td className="editing-row" scope="col">
-                                      <input type="text" />
+                                      <input
+                                        type="text"
+                                        value={this.state.name}
+                                        onChange={(e) =>
+                                          this.setState({
+                                            name: e.target.value,
+                                          })
+                                        }
+                                      />
                                     </td>
                                     <td className="editing-row" scope="col">
-                                      <input type="text" />
+                                      <input
+                                        type="text"
+                                        value={this.state.SAP}
+                                        onChange={(e) =>
+                                          this.setState({ SAP: e.target.value })
+                                        }
+                                      />
                                     </td>
                                     <td className="editing-row" scope="col">
-                                      <input type="text" />
+                                      <input
+                                        type="text"
+                                        value={this.state.course}
+                                        onChange={(e) =>
+                                          this.setState({
+                                            course: e.target.value,
+                                          })
+                                        }
+                                      />
                                     </td>
                                     <td className="editing-row" scope="col">
-                                      <input type="text" />
+                                      <input
+                                        type="text"
+                                        value={this.state.email}
+                                        onChange={(e) =>
+                                          this.setState({
+                                            email: e.target.value,
+                                          })
+                                        }
+                                      />
                                     </td>
                                     <td className="editing-row" scope="col">
-                                      <input type="text" />
+                                      <input
+                                        type="text"
+                                        value={this.state.passoutYear}
+                                        onChange={(e) =>
+                                          this.setState({
+                                            passoutYear: e.target.value,
+                                          })
+                                        }
+                                      />
                                     </td>
                                     <td className="editing-row" scope="col">
-                                      <input type="text" />
+                                      <input
+                                        type="text"
+                                        value={this.state.percentage}
+                                        onChange={(e) =>
+                                          this.setState({
+                                            percentage: e.target.value,
+                                          })
+                                        }
+                                      />
                                     </td>
                                     <td className="editing-row" scope="col">
-                                      <input type="text" />
+                                      <input
+                                        type="text"
+                                        value={this.state.contact}
+                                        onChange={(e) =>
+                                          this.setState({
+                                            contact: e.target.value,
+                                          })
+                                        }
+                                      />
                                     </td>
                                   </>
                                 )}
@@ -165,12 +237,20 @@ class RecipientsList extends Component {
                       {this.state.excelData.map((data) => {
                         return (
                           <>
-                            {this.state.editRowId === null ? (
+                            {this.state.editRowData === null ? (
                               <div className="action-icon">
                                 <button
                                   onClick={() => {
-                                    this.setState({ editRowId: data.SAP });
-                                    console.log(data);
+                                    this.setState({ editRowData: data });
+                                    this.setState({
+                                      name: data.name,
+                                      SAP: data.SAP,
+                                      course: data.course,
+                                      email: data.email,
+                                      passoutYear: data.passoutYear,
+                                      percentage: data.percentage,
+                                      contact: data.contact,
+                                    });
                                   }}
                                   name="edit"
                                   className="action-btn"
@@ -243,9 +323,30 @@ class RecipientsList extends Component {
                               </div>
                             ) : (
                               <>
-                                {this.state.editRowId === data.SAP ? (
+                                {this.state.editRowData === data ? (
                                   <div className="action-icon edit_option">
-                                    <button name="conform-edit" className="action-btn">
+                                    <button
+                                      name="conform-edit"
+                                      className="action-btn"
+                                      onClick={() => {
+                                        var allData = this.state.excelData;
+                                        var index = allData.indexOf(data);
+                                        if (index !== -1) {
+                                          allData[index] = {
+                                            name: this.state.name,
+                                            course: this.state.course,
+                                            email: this.state.email,
+                                            passoutYear: this.state.passoutYear,
+                                            percentage: this.state.percentage,
+                                            SAP: this.state.SAP,
+                                            contact: this.state.contact,
+                                          };
+
+                                          this.setState({ excelData: allData });
+                                        }
+                                        this.setState({ editRowData: null });
+                                      }}
+                                    >
                                       <span
                                         role="img"
                                         aria-label="check-circle"
@@ -275,9 +376,13 @@ class RecipientsList extends Component {
                                         </svg>
                                       </span>
                                     </button>
-                                    <button name="cancel-edit" className="action-btn" onClick={() => {
-                                      this.setState({ editRowId: null });
-                                    }}>
+                                    <button
+                                      name="cancel-edit"
+                                      className="action-btn"
+                                      onClick={() => {
+                                        this.setState({ editRowData: null });
+                                      }}
+                                    >
                                       <span
                                         role="img"
                                         aria-label="check-circle"
