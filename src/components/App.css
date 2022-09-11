@@ -477,7 +477,12 @@ background-color: #ffffff;
   padding: 4px;
   border: none;
 }
-
+input:disabled{
+  cursor:not-allowed;
+}
+input{
+  cursor: pointer;
+}
 .content-table thead tr {
   /* background-color: #a3d4e9; */
   color: #ffffff;
