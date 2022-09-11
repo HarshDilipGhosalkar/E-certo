@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect, useRef } from "react";
 
 const Table = ({ allCert, data, enableState, disableState, emailLoop }) => {
-    const resendStatus = useRef(false);
+    // const resendStatus = useRef(false);
     var emailList = [];
     var checked = 0;
     function arrayRemove(arr, value) {
@@ -33,10 +33,12 @@ const Table = ({ allCert, data, enableState, disableState, emailLoop }) => {
     }
     function tog() {
 
-        resendStatus.current = true;
-        console.log(resendStatus.current);
+        // resendStatus.current = true;
+        // console.log(resendStatus.current);
         emailLoop(emailList);
+        
         // window.location.reload();
+        // resendStatus.current = false;
     }
 
     return (
