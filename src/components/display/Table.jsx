@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect, useRef } from "react";
+// import { useState, useEffect, useRef } from "react";
 
 const Table = ({ allCert, data, enableState, disableState, emailLoop }) => {
     // const resendStatus = useRef(false);
@@ -19,6 +19,11 @@ const Table = ({ allCert, data, enableState, disableState, emailLoop }) => {
             emailList.push(cert);
             checked += 1;
             enableState();
+            if(checked==data.length){
+                document.querySelector(".allCheck").checked=true;
+            }else{
+                document.querySelector(".allCheck").checked=false;
+            }
         } else {
 
             emailList = arrayRemove(emailList, cert.certid.toNumber());
@@ -26,6 +31,7 @@ const Table = ({ allCert, data, enableState, disableState, emailLoop }) => {
             if (checked <= 0) {
                 disableState();
             }
+            document.querySelector(".allCheck").checked=false;
         }
 
         console.log(emailList);
@@ -37,7 +43,7 @@ const Table = ({ allCert, data, enableState, disableState, emailLoop }) => {
     if (allCheck.checked==true) {
         console.log("yes");
         emailList=[]
-        emailList=[...allCert];
+        emailList=[...data];
         checkBoxes.forEach(chk => {
           chk.checked=true;
         });
