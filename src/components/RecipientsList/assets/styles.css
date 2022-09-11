@@ -65,9 +65,9 @@
   background: #fafafa;
   font-weight: 500;
 }
-.recipient-table td {
+/* .recipient-table td {
   background: white;
-}
+} */
 
 .action-area {
   width: 10%;
@@ -101,7 +101,28 @@
   cursor: pointer;
   border: none;
 }
-.excel_page svg{
-    vertical-align: -0.125em;
-    margin-right: 10px;
+.excel_page svg {
+  vertical-align: -0.125em;
+  margin-right: 10px;
+}
+.editing-row {
+  background: #fafafa;
+}
+.recipient-table tr input {
+  height: 2rem;
+  padding: 3px 0.75rem;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+  box-sizing: border-box;
+  line-height: 1.5715;
+  list-style: none;
+  margin: 5px;
+  min-width: 0;
+  width: 100%;
+}
+.edit_option {
+  padding: 24px 14px;
+  background: #fafafa;
 }
