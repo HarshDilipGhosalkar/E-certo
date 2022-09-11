@@ -1,11 +1,13 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useRef } from "react";
 
-const Table = ({ data,enableState,disableState }) => {
+const Table = ({ allCert,data,enableState,disableState,emailLoop}) => {
+    // const [clicked,setchecked]=useState(resendStatus);
+    const resendStatus = useRef(false);
     var emailList=[];
     var checked=0;
 
-
+    // console.log("hook",clicked);
     function arrayRemove(arr, value) {
  
         return arr.filter(function(cer){
@@ -32,18 +34,22 @@ const Table = ({ data,enableState,disableState }) => {
         console.log(emailList);
         
     }
+    
     // useEffect(() => {
-    //     if(checked>0){
-    //         enableState();
-    //     }else{
-    //         disableState();
+    //     if(clicked==true){
+    //         console("yes I got it");
     //     }
-
-        
-    //   });
+    //   },[clicked]);
     return (
         <>
-        {data !== undefined ? (
+        <div className="table-btn">
+            <h5>{allCert.length} Certificates
+              </h5>
+              <div id="resend-btn" onClick={()=>tog()} >Resend Email</div>
+            </div>
+            <div className="hr2"></div>
+            <div className="tab">
+            {data !== undefined ? (
             <>
         <table class="content-table">
             <thead>
@@ -66,7 +72,7 @@ const Table = ({ data,enableState,disableState }) => {
                                 <td>{item.email}</td>
                                 <td>{item.course}</td>
                                 <td>{item.issueDate}</td>
-                                {/* <a href={"certificate/" + item.transactionHash}><td>View</td></a> */}
+                               
         
                             </tr>
                 ))}
@@ -75,6 +81,39 @@ const Table = ({ data,enableState,disableState }) => {
         </table>
         </>
          ) : null}
+            </div>
+        {/* {data !== undefined ? (
+            <>
+        <table class="content-table">
+            <thead>
+                <tr>
+                <th><input type="checkbox" /></th>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Department</th>
+                    <th>Issue Date</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+                {data.map((item) => (
+                    <tr >
+                        <td><input type="checkbox" className={"chk"+item.certid.toNumber()} onClick={() => send(item,"chk"+item.certid.toNumber())}/></td>
+                    <a href={"certificate/" + item.transactionHash}><td>{item.certid.toNumber()}</td></a>
+                                <td>{item.name}</td>
+                                <td>{item.email}</td>
+                                <td>{item.course}</td>
+                                <td>{item.issueDate}</td>
+                               
+        
+                            </tr>
+                ))}
+
+            </tbody>
+        </table>
+        </>
+         ) : null} */}
         </>
     );
 };
