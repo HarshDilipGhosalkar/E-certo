@@ -34,7 +34,13 @@ const Table = ({ allCert,data,enableState,disableState,emailLoop}) => {
         console.log(emailList);
         
     }
-    
+    function tog(){
+        // resendStatus="true";
+        resendStatus.current = true;
+        console.log(resendStatus.current);
+        emailLoop(emailList);
+        // window.location.reload();
+      }
     // useEffect(() => {
     //     if(clicked==true){
     //         console("yes I got it");
