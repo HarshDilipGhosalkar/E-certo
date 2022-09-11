@@ -32,21 +32,33 @@ const Table = ({ allCert, data, enableState, disableState, emailLoop }) => {
 
     }
     function tog() {
-
-        // resendStatus.current = true;
-        // console.log(resendStatus.current);
-        emailLoop(emailList);
-        
-        // window.location.reload();
-        // resendStatus.current = false;
+    const checkBoxes=document.querySelectorAll(".commonChk");
+    const allCheck=document.querySelector(".allCheck");
+    if (allCheck.checked==true) {
+        console.log("yes");
+        emailList=[]
+        emailList=[...allCert];
+        checkBoxes.forEach(chk => {
+          chk.checked=true;
+        });
+        console.log(emailList);
+        enableState();
+    } else {
+        emailList=[]
+        checkBoxes.forEach(chk => {
+        chk.checked=false;
+        });
+        console.log(emailList);
+        disableState();
     }
 
+    }
     return (
         <>
             <div className="table-btn">
                 <h5>{allCert.length} Certificates
                 </h5>
-                <div id="resend-btn" onClick={() => tog()} >Resend Email</div>
+                <div id="resend-btn" onClick={() => emailLoop(emailList)} >Resend Email</div>
             </div>
             <div className="hr2"></div>
             <div className="tab">
@@ -55,7 +67,7 @@ const Table = ({ allCert, data, enableState, disableState, emailLoop }) => {
                         <table class="content-table">
                             <thead>
                                 <tr>
-                                    <th><input type="checkbox" /></th>
+                                    <th><input type="checkbox" className="allCheck" onClick={()=>tog()}/></th>
                                     <th>Id</th>
                                     <th>Name</th>
                                     <th>Email</th>
@@ -67,7 +79,7 @@ const Table = ({ allCert, data, enableState, disableState, emailLoop }) => {
 
                                 {data.map((item) => (
                                     <tr >
-                                        <td><input type="checkbox" className={"chk" + item.certid.toNumber()} onClick={() => send(item, "chk" + item.certid.toNumber())} /></td>
+                                        <td><input type="checkbox" className={"commonChk  chk" + item.certid.toNumber()}  onClick={() => send(item, "chk" + item.certid.toNumber())} /></td>
                                         <a href={"certificate/" + item.transactionHash}><td>{item.certid.toNumber()}</td></a>
                                         <td>{item.name}</td>
                                         <td>{item.email}</td>
