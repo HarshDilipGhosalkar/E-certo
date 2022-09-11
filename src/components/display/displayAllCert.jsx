@@ -23,16 +23,16 @@ const DisplayAllCert = ({ allCert, sendEmail }) => {
   }
   const enableState = () => {
     var btnstate = document.getElementById("resend-btn");
-    btnstate.disabled = false;
     btnstate.style.backgroundColor = 'white';
     btnstate.style.color = '#40a9ff';
     btnstate.style.border = "1px solid #40a9ff";
+    btnstate.style.cursor = "pointer"
   }
   const disableState = () => {
     var btnstate = document.getElementById("resend-btn");
-    btnstate.disabled = true;
     btnstate.style.color = 'rgba(0,0,0,0.25)';
     btnstate.style.border = "1px solid #d9d9d9";
+    btnstate.style.cursor = "not-allowed"
   }
   // Get current posts
   const indexOfLastPost = currentPage * postsPerPage;
