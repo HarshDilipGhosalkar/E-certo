@@ -11,13 +11,7 @@ class Table extends Component {
         index:0,
       };
     }
-   arrayRemove= async (arr, value) =>  {
-
-        // return arr.filter(function (cer) {
-        //     return cer.certid.toNumber() != value;
-        // });
-
-    }
+   
     send =async (cert, clsname) => {
         var checkBox = document.querySelector(".chk" + clsname);
         var tr = document.querySelector(".tr" + clsname);
