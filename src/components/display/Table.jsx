@@ -83,14 +83,24 @@ class Table extends Component {
       return (
         <>
             <div className="table-btn">
-                {this.props.data.length <= 1 ? (
+                {this.state.checked <= 1 ? (
                     <>
-                        <h5>{this.props.data.length} Certificate
+                         {this.state.checked == 1 ? (
+<>
+<h5>1 Certificate Selected
                         </h5>
+</>
+                         ):(
+                            <>
+                            <h5>{this.props.data.length} Certificates
+                        </h5>
+                            </>
+                         )}
+                        
                     </>
                 ) : (
                     <>
-                        <h5>{this.props.data.length} Certificates
+                        <h5>{this.state.checked} Certificates Selected
                         </h5></>
                 )}
 
