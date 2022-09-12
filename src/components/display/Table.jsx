@@ -57,6 +57,7 @@ class Table extends Component {
         if (allCheck.checked == true) {
             console.log("yes");
             await this.setState({emailList:this.props.data})
+            await this.setState({checked: this.props.data.length})
             checkBoxes.forEach(chk => {
                 chk.checked = true;
             });
@@ -68,6 +69,7 @@ class Table extends Component {
             this.props.enableState();
         } else {
             await this.setState({emailList:[]})
+            await this.setState({checked: 0})
             checkBoxes.forEach(chk => {
                 chk.checked = false;
             });
