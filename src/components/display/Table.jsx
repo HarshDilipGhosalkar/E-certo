@@ -50,36 +50,33 @@ class Table extends Component {
         
     }
     tog= async () =>  {
-        // this.setState({emailList:[]})
-        // const trs = document.querySelectorAll(".commontr");
-        // const checkBoxes = document.querySelectorAll(".commonChk");
-        // const allCheck = document.querySelector(".allCheck");
-        // if (allCheck.checked == true) {
-        //     console.log("yes");
-        //     const data=this.props.data
-        //     data.forEach(certi => {
-        //         this.setState({emailList:[...this.state.emailList,certi]})
-        //     });
-        //     checkBoxes.forEach(chk => {
-        //         chk.checked = true;
-        //     });
-        //     trs.forEach(tr => {
-        //         tr.style.backgroundColor = '#e6f7ff';
-        //     });
+        await this.setState({emailList:[]})
+        const trs = document.querySelectorAll(".commontr");
+        const checkBoxes = document.querySelectorAll(".commonChk");
+        const allCheck = document.querySelector(".allCheck");
+        if (allCheck.checked == true) {
+            console.log("yes");
+            await this.setState({emailList:this.props.data})
+            checkBoxes.forEach(chk => {
+                chk.checked = true;
+            });
+            trs.forEach(tr => {
+                tr.style.backgroundColor = '#e6f7ff';
+            });
             
-        //     console.log(this.state.emailList);
-        //     this.props.enableState();
-        // } else {
-        //     this.setState({emailList:[]})
-        //     checkBoxes.forEach(chk => {
-        //         chk.checked = false;
-        //     });
-        //     trs.forEach(tr => {
-        //         tr.style.backgroundColor = 'white';
-        //     });
-        //     console.log(this.state.emailList);
-        //     this.props.disableState();
-        // }
+            console.log(this.state.emailList);
+            this.props.enableState();
+        } else {
+            await this.setState({emailList:[]})
+            checkBoxes.forEach(chk => {
+                chk.checked = false;
+            });
+            trs.forEach(tr => {
+                tr.style.backgroundColor = 'white';
+            });
+            console.log(this.state.emailList);
+            this.props.disableState();
+        }
 
     }
     render() {
