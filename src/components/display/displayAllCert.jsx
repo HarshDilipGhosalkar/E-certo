@@ -100,6 +100,9 @@ const DisplayAllCert = ({ allCert, sendEmail }) => {
                 <input type="text" class="search" onChange={event => setQuery(event.target.value.toLowerCase())} />
                 <span>Select a group</span>
               </div>
+              <div className="add-filter">
+                <span><span class="filter-plus">+</span> Add Filters</span>
+              </div>
             </div>
           </div>
           <div className="table-div">
