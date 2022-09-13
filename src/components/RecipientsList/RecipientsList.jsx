@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Navigate } from "react-router-dom";
 import * as XLSX from "xlsx";
 import { Add, Edit, Delete, Confirm, Cancel } from "./Svg";
 import "./assets/styles.css";
@@ -19,6 +18,16 @@ class RecipientsList extends Component {
       contact: "",
       addNew: false,
       newData: null,
+      errorInput: {
+        name: "",
+        name: " ",
+        SAP: " ",
+        course: " ",
+        email: " ",
+        passoutYear: " ",
+        percentage: " ",
+        contact: " ",
+      },
     };
   }
 
@@ -99,9 +108,13 @@ class RecipientsList extends Component {
                 <div className="row">
                   <div className="col-6">
                     <p className="path">
-                      <span className="light_fg">
-                        Certificate / Upload Spreadsheet /{" "}
-                      </span>{" "}
+                      {this.props.excelFile !== null ? (
+                        <span className="light_fg">
+                          Certificate / Upload Spreadsheet /{" "}
+                        </span>
+                      ) : (
+                        <span className="light_fg">Certificate / </span>
+                      )}
                       Recipients List
                     </p>
                     <h5>Recipients List</h5>
@@ -181,12 +194,13 @@ class RecipientsList extends Component {
                                     <input
                                       type="text"
                                       value={this.state.name}
-                                      onChange={(e) =>
+                                      onChange={(e) => {
                                         this.setState({
                                           name: e.target.value,
-                                        })
-                                      }
+                                        });
+                                      }}
                                     />
+                                    <p className="error-message">{this.state.errorInput.name}</p>
                                   </td>
                                   <td className="editing-row" scope="col">
                                     <input
@@ -196,6 +210,7 @@ class RecipientsList extends Component {
                                         this.setState({ SAP: e.target.value })
                                       }
                                     />
+                                    <p className="error-message">{this.state.errorInput.SAP}</p>
                                   </td>
                                   <td className="editing-row" scope="col">
                                     <input
@@ -207,6 +222,7 @@ class RecipientsList extends Component {
                                         })
                                       }
                                     />
+                                    <p className="error-message">{this.state.errorInput.course}</p>
                                   </td>
                                   <td className="editing-row" scope="col">
                                     <input
@@ -218,6 +234,7 @@ class RecipientsList extends Component {
                                         })
                                       }
                                     />
+                                    <p className="error-message">{this.state.errorInput.email}</p>
                                   </td>
                                   <td className="editing-row" scope="col">
                                     <input
@@ -229,6 +246,7 @@ class RecipientsList extends Component {
                                         })
                                       }
                                     />
+                                    <p className="error-message">{this.state.errorInput.passoutYear}</p>
                                   </td>
                                   <td className="editing-row" scope="col">
                                     <input
@@ -240,6 +258,7 @@ class RecipientsList extends Component {
                                         })
                                       }
                                     />
+                                    <p className="error-message">{this.state.errorInput.percentage}</p>
                                   </td>
                                   <td className="editing-row" scope="col">
                                     <input
@@ -251,6 +270,7 @@ class RecipientsList extends Component {
                                         })
                                       }
                                     />
+                                    <p className="error-message">{this.state.errorInput.contact}</p>
                                   </td>
                                 </>
                               )}
