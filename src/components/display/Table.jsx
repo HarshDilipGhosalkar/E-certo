@@ -35,6 +35,11 @@ class Table extends Component {
                 document.querySelector(".chk" + cert.SAP.toNumber()).checked=true;
             }
         });
+        if(this.state.checked != this.props.data.length){
+            document.querySelector(".allCheck").checked=false;
+        }else{
+            document.querySelector(".allCheck").checked=true;
+        }
       }
     send =async (cert, clsname) => {
         var checkBox = document.querySelector(".chk" + clsname);
@@ -84,6 +89,7 @@ class Table extends Component {
     }
     tog= async () =>  {
         await this.setState({emailList:[]})
+        await this.setState({checkList:[]})
         const trs = document.querySelectorAll(".commontr");
         const checkBoxes = document.querySelectorAll(".commonChk");
         const allCheck = document.querySelector(".allCheck");
@@ -97,10 +103,16 @@ class Table extends Component {
             trs.forEach(tr => {
                 tr.style.backgroundColor = '#e6f7ff';
             });
-            
+            const data1=this.props.data;
+            var chkList=[]
+            data1.forEach(cert => {
+               chkList.push(cert.SAP.toNumber());
+            });
+            await this.setState({checkList:chkList})
             console.log(this.state.emailList);
             this.props.enableState();
         } else {
+            await this.setState({chkList:[]})
             await this.setState({emailList:[]})
             await this.setState({checked: 0})
             checkBoxes.forEach(chk => {
