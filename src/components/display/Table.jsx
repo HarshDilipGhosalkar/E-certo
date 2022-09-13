@@ -162,12 +162,12 @@ class Table extends Component {
                                 <tr>
                                     {this.props.data.length != 0 ? (
                                         <>
-                                            <th><input type="checkbox" className="allCheck" onClick={() => this.tog()} /></th>
+                                            <th><input type="checkbox" className="commonChk allCheck" onClick={() => this.tog()} /></th>
 
                                         </>
                                     ) : (
                                         <>
-                                            <th><input type="checkbox" className="allCheck" onClick={() => this.tog()} disabled /></th>
+                                            <th><input type="checkbox" className="commonChk allCheck" onClick={() => this.tog()} disabled /></th>
 
                                         </>
                                     )}
