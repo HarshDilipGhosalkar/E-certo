@@ -28,10 +28,10 @@ class Table extends Component {
         dt.forEach(cert => {
             const tr =document.querySelector(".tr" + cert.SAP.toNumber());
             if (ckList.includes(cert.SAP.toNumber())==false) {
-                
+                tr.style.backgroundColor = 'white';
                 document.querySelector(".chk" + cert.SAP.toNumber()).checked=false;
             } else {
-                
+                tr.style.backgroundColor = '#e6f7ff';
                 document.querySelector(".chk" + cert.SAP.toNumber()).checked=true;
             }
         });
