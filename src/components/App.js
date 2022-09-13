@@ -275,15 +275,25 @@ class App extends Component {
                           />
                         }
                       />
-                    </>
-                  ) : (
-                    <>
                       <Route
-                        path="/all"
-                        element={<Navigate replace to="/abc" />}
+                        path="/upload-spreadsheet"
+                        element={
+                          <UploadExcelPage
+                            displayRecipientsList={this.displayRecipientsList}
+                          />
+                        }
+                      />
+                      <Route
+                        path="certificates/recipients"
+                        element={
+                          <RecipientsList
+                            excelFile={this.state.excelFile}
+                            createBulkCertificate={this.createBulkCertificate}
+                          />
+                        }
                       />
                     </>
-                  )}
+                  ) : null}
 
                   <Route
                     path="details/:hash"
@@ -308,41 +318,6 @@ class App extends Component {
                       />
                     }
                   />
-                  {this.state.accountAddress ==
-                    "0x41e5226215F536572DDa181e797Deb1878D94e3D" ||
-                  this.state.accountAddress ==
-                    "0xB641B4F1795a4BfA2cC7056E08cFB2b199831248" ? (
-                    <>
-                      <Route
-                        path="/create"
-                        element={
-                          <RecipientsList
-                            createCertificate={this.createCertificate}
-                          />
-                        }
-                      />
-                      ;
-                      <Route
-                        path="/upload-spreadsheet"
-                        element={
-                          <UploadExcelPage
-                            displayRecipientsList={this.displayRecipientsList}
-                          />
-                        }
-                      />
-                      <Route
-                        path="certificates/recipients"
-                        element={
-                          <RecipientsList
-                            excelFile={this.state.excelFile}
-                            createBulkCertificate={this.createBulkCertificate}
-                          />
-                        }
-                      />
-                      ;
-                    </>
-                  ) : null}
-
                   <Route path="*" element={<NoPage />} />
                 </Route>
               </Routes>
