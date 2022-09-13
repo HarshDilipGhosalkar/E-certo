@@ -111,6 +111,12 @@ button[disabled] {
 .editing-row {
   background: #fafafa;
 }
+.error-message {
+  margin: 0 10px;
+  color: red;
+  font-size: 13px;
+  height:10px;
+}
 .recipient-table tr input {
   height: 2rem;
   padding: 3px 0.75rem;
@@ -126,6 +132,6 @@ button[disabled] {
   width: 100%;
 }
 .edit_option {
-  padding: 24px 14px;
+  padding: 30px 14px;
   background: #fafafa;
 }
