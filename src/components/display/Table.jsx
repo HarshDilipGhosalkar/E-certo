@@ -7,11 +7,35 @@ class Table extends Component {
       this.state = {
         emailList: [],
         checked: 0,
-        check: 0,
+        checkList: [],
         index:0,
+        seconds: parseInt(props.startTimeInSeconds, 10) || 0,
       };
     }
-   
+    
+    
+      componentDidMount() {
+        this.interval = setInterval(() => this.tick(), 500);
+      }
+    
+      componentWillUnmount() {
+        clearInterval(this.interval);
+      }
+      tick() {
+        
+        const dt=this.props.data;
+        const ckList=this.state.checkList;
+        dt.forEach(cert => {
+            const tr =document.querySelector(".tr" + cert.SAP.toNumber());
+            if (ckList.includes(cert.SAP.toNumber())==false) {
+                
+                document.querySelector(".chk" + cert.SAP.toNumber()).checked=false;
+            } else {
+                
+                document.querySelector(".chk" + cert.SAP.toNumber()).checked=true;
+            }
+        });
+      }
     send =async (cert, clsname) => {
         var checkBox = document.querySelector(".chk" + clsname);
         var tr = document.querySelector(".tr" + clsname);
@@ -19,6 +43,7 @@ class Table extends Component {
             tr.style.backgroundColor = '#e6f7ff';
             await this.setState({emailList:[...this.state.emailList,cert]})
             await this.setState({checked: this.state.checked+1})
+            await this.setState({checkList:[...this.state.checkList,clsname]})
             this.props.enableState();
             if (this.state.checked == this.props.data.length) {
                 document.querySelector(".allCheck").checked = true;
@@ -28,13 +53,20 @@ class Table extends Component {
             console.log("checked")
         } else {
             var slicedData = this.state.emailList;
-            
+            var slicedCheck = this.state.checkList;
             let index = slicedData.indexOf(cert);
+            let checkIndex = slicedCheck.indexOf(clsname);
             console.log(index);
             
             if (index > -1) { 
                 slicedData.splice(index, 1); 
+
               }
+              if (checkIndex > -1) { 
+                slicedCheck.splice(checkIndex, 1); 
+                
+              }
+            await this.setState({checkList:slicedCheck});
             await this.setState({emailList:slicedData});
             await this.setState({checked: this.state.checked-1})
             if (this.state.checked <= 0) {
@@ -46,6 +78,7 @@ class Table extends Component {
         }
 
         console.log(this.state.emailList);
+        console.log(this.state.checkList);
         // console.log(this.state.checked);
         
     }
@@ -79,7 +112,7 @@ class Table extends Component {
             console.log(this.state.emailList);
             this.props.disableState();
         }
-
+        
     }
     render() {
       return (
@@ -136,8 +169,8 @@ class Table extends Component {
                             <tbody>
 
                                 {this.props.data.map((item) => (
-                                    <tr className={"commontr tr" + item.certid.toNumber()}>
-                                        <td><input type="checkbox" className={"commonChk  chk" + item.certid.toNumber()} onClick={() => this.send(item, item.certid.toNumber())} /></td>
+                                    <tr className={"commontr tr" + item.SAP.toNumber()}>
+                                        <td><input type="checkbox" className={"commonChk  chk" + item.SAP.toNumber()} onChange={() => this.send(item, item.SAP.toNumber())} /></td>
                                         <td><a href={"certificate/" + item.transactionHash}>{item.certid.toNumber()}</a></td>
                                         <td>{item.name}</td>
                                         <td>{item.email}</td>
