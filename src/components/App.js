@@ -14,13 +14,10 @@ import Navbar from "./Navbar/Navbar";
 import DisplayAllCert from "./display/displayAllCert";
 import StudentDetail from "./StudentDetails/StudentDetail";
 import DisplayCert from "./display/displaycert";
-import FormComponent from "./create-form/FormComponent";
-// import uploadExcel from "./uploadExcel/uploadExcel";
 import UploadExcelPage from "./uploadExcel/uploadExcel";
 import RecipientsList from "./RecipientsList/RecipientsList";
 import Query from "./Query/Query";
 import emailjs from "emailjs-com";
-import crypto from "crypto-js";
 
 class App extends Component {
   constructor(props) {
@@ -42,7 +39,6 @@ class App extends Component {
   componentWillMount = async () => {
     await this.loadWeb3();
     await this.loadBlockchainData();
-    // await this.setMetaData();
   };
 
   loadWeb3 = async () => {
@@ -92,21 +88,6 @@ class App extends Component {
             certs: [...this.state.certs, certificate],
           });
         }
-        //         const certCount2 = await EcertoContract.methods
-        //         .certificateCounter2()
-        //         .call();
-        // for (let i = 0; i < certCount2.length; i++) {
-        //   const certificates = await EcertoContract.methods
-        //             .allCertificatesInBulk(i)
-        //             .call();
-        //             for (let j = 0; j < certificates.length; j++) {
-        //               const certi=certificates[j];
-        //               this.setState({
-        //                 certs: [...this.state.certs, certi],
-        //               });
-        //             }
-
-        // }
       } else {
         this.setState({ contractDetected: false });
       }
@@ -118,25 +99,6 @@ class App extends Component {
     this.setState({ metamaskConnected: true });
     window.location.reload();
   };
-
-  // setMetaData = async () => {
-  //   if (this.state.certs.length !== 0) {
-  //     this.state.certs.map(async (cert) => {
-  //       const result = await fetch(cert.certURI);
-  //       const metaData = await result.json();
-  //       this.setState({
-  //         certs: this.state.certs.map((certificate) =>
-  //           certificate.certid.toNumber() === Number(metaData.certId)
-  //             ? {
-  //                 ...certificate,
-  //                 metaData,
-  //               }
-  //             : certificate
-  //         ),
-  //       });
-  //     });
-  //   }
-  // };
 
   getCuurentDate = async () => {
     var months = [
@@ -165,6 +127,7 @@ class App extends Component {
     const issueDate = month + " " + day + " " + year;
     return issueDate;
   };
+
   createCertificate = async (
     name,
     course,
@@ -172,10 +135,7 @@ class App extends Component {
     passout_year,
     percentage,
     SAPId,
-    contact,
-    birthDate,
-    gender,
-    highestDegree
+    contact
   ) => {
     const issueDate = await this.getCuurentDate();
     this.setState({ loading: true });
@@ -211,6 +171,7 @@ class App extends Component {
       });
     console.log("transactionHash", this.state.transactionHash);
   };
+
   createBulkCertificate = async (struct) => {
     this.setState({ loading: true });
     const issueDate = await this.getCuurentDate();
@@ -239,6 +200,7 @@ class App extends Component {
         window.location.reload();
       });
   };
+
   certficateExist = async (hash) => {
     const exi = await this.state.EcertoContract.methods
       .certficateHashExist(hash)
@@ -275,12 +237,10 @@ class App extends Component {
 
   displayRecipientsList = async (excelFile) => {
     this.setState({ excelFile: excelFile });
-    // console.log(excelFil)
     console.log(this.state.excelFile);
   };
 
   render() {
-    // console.log(this.state.excelFile);
     return (
       <>
         {!this.state.metamaskConnected ? (
@@ -300,14 +260,7 @@ class App extends Component {
                   }
                 >
                   <Route index element={<Home />} />
-                  {/* <Route
-                    path="create"
-                    element={
-                      <FormComponent
-                        createCertificate={this.createCertificate}
-                      />
-                    }
-                  /> */}
+
                   {this.state.accountAddress ==
                     "0x41e5226215F536572DDa181e797Deb1878D94e3D" ||
                   this.state.accountAddress ==
@@ -315,9 +268,13 @@ class App extends Component {
                     <>
                       <Route
                         path="/all"
-                        element={<DisplayAllCert allCert={this.state.certs} sendEmail={this.sendEmail}/>}
+                        element={
+                          <DisplayAllCert
+                            allCert={this.state.certs}
+                            sendEmail={this.sendEmail}
+                          />
+                        }
                       />
-                      ;
                     </>
                   ) : (
                     <>
@@ -325,7 +282,6 @@ class App extends Component {
                         path="/all"
                         element={<Navigate replace to="/abc" />}
                       />
-                      ;
                     </>
                   )}
 
@@ -339,7 +295,6 @@ class App extends Component {
                       <DisplayCert
                         AllCert={this.state.certs}
                         sendEmail={this.sendEmail}
-                        // getCertByHash={this.getCertByHash}
                       />
                     }
                   />
@@ -361,7 +316,7 @@ class App extends Component {
                       <Route
                         path="/create"
                         element={
-                          <FormComponent
+                          <RecipientsList
                             createCertificate={this.createCertificate}
                           />
                         }
@@ -386,23 +341,7 @@ class App extends Component {
                       />
                       ;
                     </>
-                  ) : (
-                    <>
-                      <Route
-                        path="/create"
-                        element={<Navigate replace to="/PageNotFound" />}
-                      />
-                      ;
-                      <Route
-                        path="/upload-spreadsheet"
-                        element={<Navigate replace to="/PageNotFound" />}
-                      />
-                      <Route
-                        path="certificates/recipients"
-                        element={<Navigate replace to="../PageNotFound" />}
-                      />
-                    </>
-                  )}
+                  ) : null}
 
                   <Route path="*" element={<NoPage />} />
                 </Route>
