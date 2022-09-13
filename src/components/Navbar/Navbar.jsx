@@ -31,12 +31,10 @@ class Navbar extends Component {
                     "0xB641B4F1795a4BfA2cC7056E08cFB2b199831248" ? (
                     <>
                       <Link to="/all">All</Link>
-                      <Link to="/create">Create</Link>
-                      <Link to="/upload-spreadsheet">Upload Exel</Link>
+                      <Link to="/certificates/recipients">Create</Link>
+                      <Link to="/upload-spreadsheet">Upload Excel</Link>
                     </>
-                  ) : (
-                    <></>
-                  )}
+                  ) : null}
 
                   <Link to="/findmycertificate">Query</Link>
                 </div>
