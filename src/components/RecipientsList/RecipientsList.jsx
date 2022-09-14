@@ -97,7 +97,7 @@ class RecipientsList extends Component {
     });
   };
 
-  addNewRow = (data) => {
+  allClear = () => {
     this.errorsExist();
     var length = 0;
     [
@@ -113,24 +113,9 @@ class RecipientsList extends Component {
     });
 
     if (length === 0) {
-      var allData = this.state.excelData;
-      var index = allData.indexOf(data);
-      if (index !== -1) {
-        allData[index] = {
-          name: this.state.name,
-          course: this.state.course,
-          email: this.state.email,
-          passoutYear: this.state.passoutYear,
-          percentage: this.state.percentage,
-          SAP: this.state.SAP,
-          contact: this.state.contact,
-        };
-
-        this.setState({ excelData: allData });
-      }
-      this.resetState();
+      return true;
     } else {
-      console.log("error exist");
+      return false;
     }
   };
 
@@ -177,7 +162,10 @@ class RecipientsList extends Component {
     } else if (!this.isPositiveInteger(this.state.passoutYear)) {
       this.setErrorState("passoutYear", "Invalid Year");
     } else if (Number(this.state.passoutYear) > Number(year)) {
-      this.setErrorState("passoutYear", "Passout Year is greater than current year");
+      this.setErrorState(
+        "passoutYear",
+        "Passout Year is greater than current year"
+      );
     } else {
       this.setErrorState("passoutYear", "");
     }
@@ -473,7 +461,26 @@ class RecipientsList extends Component {
                                   <button
                                     name="conform-edit"
                                     className="action-btn"
-                                    onClick={() => this.addNewRow(data)}
+                                    onClick={() => {
+                                      if (this.allClear()) {
+                                        var allData = this.state.excelData;
+                                        var index = allData.indexOf(data);
+                                        if (index !== -1) {
+                                          allData[index] = {
+                                            name: this.state.name,
+                                            course: this.state.course,
+                                            email: this.state.email,
+                                            passoutYear: this.state.passoutYear,
+                                            percentage: this.state.percentage,
+                                            SAP: this.state.SAP,
+                                            contact: this.state.contact,
+                                          };
+
+                                          this.setState({ excelData: allData });
+                                        }
+                                        this.resetState();
+                                      }
+                                    }}
                                   >
                                     <Confirm />
                                   </button>
@@ -501,25 +508,28 @@ class RecipientsList extends Component {
                                         name="conform-edit"
                                         className="action-btn"
                                         onClick={() => {
-                                          var allData = this.state.excelData;
-                                          var index = allData.indexOf(data);
-                                          if (index !== -1) {
-                                            allData[index] = {
-                                              name: this.state.name,
-                                              course: this.state.course,
-                                              email: this.state.email,
-                                              passoutYear: this.state
-                                                .passoutYear,
-                                              percentage: this.state.percentage,
-                                              SAP: this.state.SAP,
-                                              contact: this.state.contact,
-                                            };
+                                          if (this.allClear()) {
+                                            var allData = this.state.excelData;
+                                            var index = allData.indexOf(data);
+                                            if (index !== -1) {
+                                              allData[index] = {
+                                                name: this.state.name,
+                                                course: this.state.course,
+                                                email: this.state.email,
+                                                passoutYear: this.state
+                                                  .passoutYear,
+                                                percentage: this.state
+                                                  .percentage,
+                                                SAP: this.state.SAP,
+                                                contact: this.state.contact,
+                                              };
 
-                                            this.setState({
-                                              excelData: allData,
-                                            });
+                                              this.setState({
+                                                excelData: allData,
+                                              });
+                                            }
+                                            this.resetState();
                                           }
-                                          this.resetState();
                                         }}
                                       >
                                         <Confirm />
