@@ -1,6 +1,15 @@
 import React, { Component } from "react";
 import * as XLSX from "xlsx";
 import { Add, Edit, Delete, Confirm, Cancel } from "./Svg";
+import {
+  ValidateName,
+  ValidateEmail,
+  ValidateContact,
+  ValidateCourse,
+  ValidatePassoutYear,
+  ValidatePercentage,
+  ValidateSAP,
+} from "./Validation";
 import "./assets/styles.css";
 
 class RecipientsList extends Component {
@@ -97,23 +106,40 @@ class RecipientsList extends Component {
     });
   };
 
-  addNewRow = (data) => {
-    var allData = this.state.excelData;
-    var index = allData.indexOf(data);
-    if (index !== -1) {
-      allData[index] = {
-        name: this.state.name,
-        course: this.state.course,
-        email: this.state.email,
-        passoutYear: this.state.passoutYear,
-        percentage: this.state.percentage,
-        SAP: this.state.SAP,
-        contact: this.state.contact,
-      };
+  allClear = () => {
+    
+    this.setErrorState(ValidateName(this.state.name));
+    this.setErrorState(ValidateSAP(this.state.SAP));
+    this.setErrorState(ValidateCourse(this.state.course));
+    this.setErrorState(ValidateEmail(this.state.email));
+    this.setErrorState(ValidatePassoutYear(this.state.passoutYear));
+    this.setErrorState(ValidatePercentage(this.state.percentage));
+    this.setErrorState(ValidateContact(this.state.contact));
 
-      this.setState({ excelData: allData });
+    var length = 0;
+    [
+      "name",
+      "SAP",
+      "course",
+      "email",
+      "passoutYear",
+      "percentage",
+      "contact",
+    ].map((key) => {
+      length += this.state.errorInput[key].length;
+    });
+
+    if (length === 0) {
+      return true;
+    } else {
+      return false;
     }
-    this.resetState();
+  };
+
+  setErrorState = (arr) => {
+    var allErrors = this.state.errorInput;
+    allErrors[arr[0]] = arr[1];
+    this.setState({ errorInput: allErrors });
   };
 
   render() {
@@ -370,7 +396,26 @@ class RecipientsList extends Component {
                                   <button
                                     name="conform-edit"
                                     className="action-btn"
-                                    onClick={() => this.addNewRow(data)}
+                                    onClick={() => {
+                                      if (this.allClear()) {
+                                        var allData = this.state.excelData;
+                                        var index = allData.indexOf(data);
+                                        if (index !== -1) {
+                                          allData[index] = {
+                                            name: this.state.name,
+                                            course: this.state.course,
+                                            email: this.state.email,
+                                            passoutYear: this.state.passoutYear,
+                                            percentage: this.state.percentage,
+                                            SAP: this.state.SAP,
+                                            contact: this.state.contact,
+                                          };
+
+                                          this.setState({ excelData: allData });
+                                        }
+                                        this.resetState();
+                                      }
+                                    }}
                                   >
                                     <Confirm />
                                   </button>
@@ -398,25 +443,28 @@ class RecipientsList extends Component {
                                         name="conform-edit"
                                         className="action-btn"
                                         onClick={() => {
-                                          var allData = this.state.excelData;
-                                          var index = allData.indexOf(data);
-                                          if (index !== -1) {
-                                            allData[index] = {
-                                              name: this.state.name,
-                                              course: this.state.course,
-                                              email: this.state.email,
-                                              passoutYear: this.state
-                                                .passoutYear,
-                                              percentage: this.state.percentage,
-                                              SAP: this.state.SAP,
-                                              contact: this.state.contact,
-                                            };
+                                          if (this.allClear()) {
+                                            var allData = this.state.excelData;
+                                            var index = allData.indexOf(data);
+                                            if (index !== -1) {
+                                              allData[index] = {
+                                                name: this.state.name,
+                                                course: this.state.course,
+                                                email: this.state.email,
+                                                passoutYear: this.state
+                                                  .passoutYear,
+                                                percentage: this.state
+                                                  .percentage,
+                                                SAP: this.state.SAP,
+                                                contact: this.state.contact,
+                                              };
 
-                                            this.setState({
-                                              excelData: allData,
-                                            });
+                                              this.setState({
+                                                excelData: allData,
+                                              });
+                                            }
+                                            this.resetState();
                                           }
-                                          this.resetState();
                                         }}
                                       >
                                         <Confirm />
