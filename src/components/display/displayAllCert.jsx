@@ -5,49 +5,71 @@ import Pagination from './Pagination';
 import add from "./assets/add.svg";
 import s from "./assets/search.svg";
 
-const DisplayAllCert = ({ allCert, sendEmail }) => {
-
-  const [query, setQuery] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(10);
-
-  const emailLoop = (certList) => {
+class DisplayAllCert extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      query: "",
+      currentPage: 1,
+      postsPerPage: 10,
+      passoutyear:0,
+      
+    };
+  }
+  emailLoop = (certList) => {
     certList.forEach(cert => {
-      sendEmail(cert.name, cert.email, cert.transactionHash);
+      this.props.sendEmail(cert.name, cert.email, cert.transactionHash);
     });
 
   }
-  const enableState = () => {
+ enableState = () => {
     var btnstate = document.getElementById("resend-btn");
     btnstate.style.backgroundColor = 'white';
     btnstate.style.color = '#40a9ff';
     btnstate.style.border = "1px solid #40a9ff";
     btnstate.style.cursor = "pointer"
   }
-  const disableState = () => {
+  disableState = () => {
     var btnstate = document.getElementById("resend-btn");
     btnstate.style.color = 'rgba(0,0,0,0.25)';
     btnstate.style.border = "1px solid #d9d9d9";
     btnstate.style.cursor = "not-allowed"
   }
-  // Get current posts
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-
-
-  const paginate = pageNumber => setCurrentPage(pageNumber);
-  const search = () => {
-    if (query.length == "") {
+  paginate = pageNumber => this.setState({currentPage:pageNumber});
+  search = () => {
+    const indexOfLastPost = this.state.currentPage * this.state.postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - this.state.postsPerPage;
+  const allCert=this.props.allCert;
+    if (this.state.query.length == "") {
       return allCert.slice(indexOfFirstPost, indexOfLastPost);
     } else {
-      return allCert.filter((item) => item.name.toLowerCase().includes(query));
+      return allCert.filter((item) => item.name.toLowerCase().includes(this.state.query));
     }
 
 
   }
+  // toggleFilterdiv = () => {;
+    
+  //   var x=document.querySelector(".fill");
+  //   if (x.style.display == "none") {
+  //     x.style.display = "block";
+  //   } else {
+  //     x.style.display = "none";
+  //   }
+  //   console.log(this.state.passoutyear);
+   
+  // }
+  //  dept = () => {
+    
+  //   document.querySelector(".fill").style.display="none";
+  //   document.querySelector(".department-div").style.display="block";
+    
 
-  return (
-    <>
+   
+  // }
+  render() {
+    return (
+      <>
       <div class="wap">
         <div className="upper-div">
           <div className="tag-div">
@@ -77,7 +99,7 @@ const DisplayAllCert = ({ allCert, sendEmail }) => {
                 Search
               </h5>
               <div className="input-box">
-                <input type="text" class="search" onChange={event => setQuery(event.target.value.toLowerCase())} />
+                <input type="text" class="search" onChange={event => this.setState({query:event.target.value.toLowerCase()})} />
                 <span>Search by name</span>
               </div>
             </div>
@@ -97,23 +119,63 @@ const DisplayAllCert = ({ allCert, sendEmail }) => {
               </div>
 
               <div className="input-box">
-                <input type="text" class="search" onChange={event => setQuery(event.target.value.toLowerCase())} />
+                <input type="text" class="search" onChange={event => this.setState({query:event.target.value.toLowerCase()})} />
                 <span>Select a group</span>
               </div>
-              <div className="add-filter">
+              <div className="add-filter" onClick={this.toggleFilterdiv}>
                 <span><span class="filter-plus">+</span> Add Filters</span>
               </div>
             </div>
+            {/* <div class="fill" >
+              <span onClick={this.dept}>Department</span>
+              <span>Passout year</span>
+              <span>SAP Id</span>
+            </div>
+            <div className="department-div">
+              <input list="browsers" placeholder="Select Department" onChange={event => this.setState({passoutyear:event.target.value.toLowerCase()})}/>
+              <datalist id="browsers">
+    <option value="2000" />
+    <option value="2011" />
+    <option value="2012" />
+    <option value="2013" />
+    <option value="2014" />
+    <option value="2000" />
+    <option value="2011" />
+    <option value="2012" />
+    <option value="2013" />
+    <option value="2014" />
+    <option value="2000" />
+    <option value="2011" />
+    <option value="2012" />
+    <option value="2013" />
+    <option value="2014" />
+    <option value="2000" />
+    <option value="2011" />
+    <option value="2012" />
+    <option value="2013" />
+    <option value="2014" />
+    <option value="2000" />
+    <option value="2011" />
+    <option value="2012" />
+    <option value="2013" />
+    <option value="2014" />
+    <option value="2000" />
+    <option value="2011" />
+    <option value="2012" />
+    <option value="2013" />
+    <option value="2014" />
+  </datalist>
+            </div> */}
           </div>
           <div className="table-div">
-            <Table allCert={allCert} data={search()} enableState={enableState} disableState={disableState} emailLoop={emailLoop} />
+            <Table allCert={this.props.allCert} data={this.search()} enableState={this.enableState} disableState={this.disableState} emailLoop={this.emailLoop} />
 
             <div className="pagination-div">
-              {query.length == "" ? (
+              {this.state.query.length == "" ? (
                 <Pagination
-                  postsPerPage={postsPerPage}
-                  totalPosts={allCert.length}
-                  paginate={paginate}
+                  postsPerPage={this.state.postsPerPage}
+                  totalPosts={this.props.allCert.length}
+                  paginate={this.paginate}
                 />
               ) : (
                 <></>
@@ -124,8 +186,9 @@ const DisplayAllCert = ({ allCert, sendEmail }) => {
 
 
       </div>
-    </>
-  );
+      </>
+    );
+  }
 }
-export default DisplayAllCert;
 
+export default DisplayAllCert;
