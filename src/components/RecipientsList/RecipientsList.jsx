@@ -98,22 +98,125 @@ class RecipientsList extends Component {
   };
 
   addNewRow = (data) => {
-    var allData = this.state.excelData;
-    var index = allData.indexOf(data);
-    if (index !== -1) {
-      allData[index] = {
-        name: this.state.name,
-        course: this.state.course,
-        email: this.state.email,
-        passoutYear: this.state.passoutYear,
-        percentage: this.state.percentage,
-        SAP: this.state.SAP,
-        contact: this.state.contact,
-      };
+    this.errorsExist();
+    var length = 0;
+    [
+      "name",
+      "SAP",
+      "course",
+      "email",
+      "passoutYear",
+      "percentage",
+      "contact",
+    ].map((key) => {
+      length += this.state.errorInput[key].length;
+    });
 
-      this.setState({ excelData: allData });
+    if (length === 0) {
+      var allData = this.state.excelData;
+      var index = allData.indexOf(data);
+      if (index !== -1) {
+        allData[index] = {
+          name: this.state.name,
+          course: this.state.course,
+          email: this.state.email,
+          passoutYear: this.state.passoutYear,
+          percentage: this.state.percentage,
+          SAP: this.state.SAP,
+          contact: this.state.contact,
+        };
+
+        this.setState({ excelData: allData });
+      }
+      this.resetState();
+    } else {
+      console.log("error exist");
     }
-    this.resetState();
+  };
+
+  errorsExist = () => {
+    if (this.state.name.length < 1) {
+      this.setErrorState("name", "Field Required");
+    } else {
+      this.setErrorState("name", "");
+    }
+    if (this.state.SAP.length < 1) {
+      this.setErrorState("SAP", "Field Required");
+    } else if (!this.isPositiveInteger(this.state.SAP)) {
+      this.setErrorState("SAP", "Sap id should be of numbers");
+    } else {
+      this.setErrorState("SAP", "");
+    }
+    if (this.state.course.length < 1) {
+      this.setErrorState("course", "Field Required");
+    } else {
+      this.setErrorState("course", "");
+    }
+    if (this.state.email.length < 1) {
+      this.setErrorState("email", "Field Required");
+    } else if (this.invalidEmail(this.state.email)) {
+      this.setErrorState("email", "Invalid Email");
+    } else {
+      this.setErrorState("email", "");
+    }
+    if (this.state.contact.length < 1) {
+      this.setErrorState("contact", "Field Required");
+    } else if (!this.isPositiveInteger(this.state.contact)) {
+      this.setErrorState("contact", "Invalid Phone Number");
+    } else if (this.state.contact.length !== 10) {
+      this.setErrorState("contact", "Invalid Phone Number ");
+    } else {
+      this.setErrorState("contact", "");
+    }
+    var currentTime = new Date();
+    var year = currentTime.getFullYear();
+    if (this.state.passoutYear.length < 1) {
+      this.setErrorState("passoutYear", "Field Required");
+    } else if (this.state.passoutYear.length !== 4) {
+      this.setErrorState("passoutYear", "Invalid Year");
+    } else if (!this.isPositiveInteger(this.state.passoutYear)) {
+      this.setErrorState("passoutYear", "Invalid Year");
+    } else if (Number(this.state.passoutYear) > Number(year)) {
+      this.setErrorState("passoutYear", "Passout Year is greater than current year");
+    } else {
+      this.setErrorState("passoutYear", "");
+    }
+    if (this.state.percentage.length < 1) {
+      this.setErrorState("percentage", "Field Required");
+    } else if (isNaN(this.state.percentage)) {
+      this.setErrorState("percentage", "Invalid Percentage");
+    } else if (
+      this.state.percentage.slice(0, this.state.percentage.indexOf("."))
+        .length > 2
+    ) {
+      this.setErrorState("percentage", "Invalid Percentage");
+    } else {
+      this.setErrorState("percentage", "");
+    }
+  };
+
+  invalidEmail = (mail) => {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+      return false;
+    }
+    return true;
+  };
+
+  isPositiveInteger = (str) => {
+    if (typeof str !== "string") {
+      return false;
+    }
+    const num = Number(str);
+    if (Number.isInteger(num) && num > 0) {
+      return true;
+    }
+    return false;
+  };
+
+  setErrorState = (key_, data) => {
+    var allErrors = this.state.errorInput;
+    allErrors[key_] = data;
+    this.setState({ errorInput: allErrors });
   };
 
   render() {
