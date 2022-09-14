@@ -20,13 +20,12 @@ class RecipientsList extends Component {
       newData: null,
       errorInput: {
         name: "",
-        name: " ",
-        SAP: " ",
-        course: " ",
-        email: " ",
-        passoutYear: " ",
-        percentage: " ",
-        contact: " ",
+        SAP: "",
+        course: "",
+        email: "",
+        passoutYear: "",
+        percentage: "",
+        contact: "",
       },
     };
   }
@@ -65,7 +64,7 @@ class RecipientsList extends Component {
     this.props.createBulkCertificate(this.state.excelData);
   };
 
-  addNew = () => {
+  addNewHandle = () => {
     var excelData = this.state.excelData;
     excelData.unshift({
       name: "",
@@ -96,6 +95,25 @@ class RecipientsList extends Component {
       newData: null,
       editRowData: null,
     });
+  };
+
+  addNewRow = (data) => {
+    var allData = this.state.excelData;
+    var index = allData.indexOf(data);
+    if (index !== -1) {
+      allData[index] = {
+        name: this.state.name,
+        course: this.state.course,
+        email: this.state.email,
+        passoutYear: this.state.passoutYear,
+        percentage: this.state.percentage,
+        SAP: this.state.SAP,
+        contact: this.state.contact,
+      };
+
+      this.setState({ excelData: allData });
+    }
+    this.resetState();
   };
 
   render() {
@@ -152,7 +170,10 @@ class RecipientsList extends Component {
                         Add Recipients
                       </button>
                     ) : (
-                      <button className="reupload_btn" onClick={this.addNew}>
+                      <button
+                        className="reupload_btn"
+                        onClick={this.addNewHandle}
+                      >
                         <Add />
                         Add Recipients
                       </button>
@@ -200,77 +221,91 @@ class RecipientsList extends Component {
                                         });
                                       }}
                                     />
-                                    <p className="error-message">{this.state.errorInput.name}</p>
+                                    <p className="error-message">
+                                      {this.state.errorInput.name}
+                                    </p>
                                   </td>
                                   <td className="editing-row" scope="col">
                                     <input
                                       type="text"
                                       value={this.state.SAP}
-                                      onChange={(e) =>
-                                        this.setState({ SAP: e.target.value })
-                                      }
+                                      onChange={(e) => {
+                                        this.setState({ SAP: e.target.value });
+                                      }}
                                     />
-                                    <p className="error-message">{this.state.errorInput.SAP}</p>
+                                    <p className="error-message">
+                                      {this.state.errorInput.SAP}
+                                    </p>
                                   </td>
                                   <td className="editing-row" scope="col">
                                     <input
                                       type="text"
                                       value={this.state.course}
-                                      onChange={(e) =>
+                                      onChange={(e) => {
                                         this.setState({
                                           course: e.target.value,
-                                        })
-                                      }
+                                        });
+                                      }}
                                     />
-                                    <p className="error-message">{this.state.errorInput.course}</p>
+                                    <p className="error-message">
+                                      {this.state.errorInput.course}
+                                    </p>
                                   </td>
                                   <td className="editing-row" scope="col">
                                     <input
                                       type="text"
                                       value={this.state.email}
-                                      onChange={(e) =>
+                                      onChange={(e) => {
                                         this.setState({
                                           email: e.target.value,
-                                        })
-                                      }
+                                        });
+                                      }}
                                     />
-                                    <p className="error-message">{this.state.errorInput.email}</p>
+                                    <p className="error-message">
+                                      {this.state.errorInput.email}
+                                    </p>
                                   </td>
                                   <td className="editing-row" scope="col">
                                     <input
                                       type="text"
                                       value={this.state.passoutYear}
-                                      onChange={(e) =>
+                                      onChange={(e) => {
                                         this.setState({
                                           passoutYear: e.target.value,
-                                        })
-                                      }
+                                        });
+                                      }}
                                     />
-                                    <p className="error-message">{this.state.errorInput.passoutYear}</p>
+                                    <p className="error-message">
+                                      {this.state.errorInput.passoutYear}
+                                    </p>
                                   </td>
                                   <td className="editing-row" scope="col">
                                     <input
                                       type="text"
                                       value={this.state.percentage}
-                                      onChange={(e) =>
+                                      onChange={(e) => {
                                         this.setState({
                                           percentage: e.target.value,
-                                        })
-                                      }
+                                        });
+                                      }}
                                     />
-                                    <p className="error-message">{this.state.errorInput.percentage}</p>
+                                    <p className="error-message">
+                                      {this.state.errorInput.percentage}
+                                    </p>
                                   </td>
                                   <td className="editing-row" scope="col">
                                     <input
                                       type="text"
                                       value={this.state.contact}
-                                      onChange={(e) =>
+                                      onChange={(e) => {
                                         this.setState({
                                           contact: e.target.value,
-                                        })
-                                      }
+                                        });
+                                      }}
                                     />
-                                    <p className="error-message">{this.state.errorInput.contact}</p>
+                                    <p className="error-message">
+                                      {this.state.errorInput.contact}
+                                    </p>
                                   </td>
                                 </>
                               )}
@@ -335,24 +370,7 @@ class RecipientsList extends Component {
                                   <button
                                     name="conform-edit"
                                     className="action-btn"
-                                    onClick={() => {
-                                      var allData = this.state.excelData;
-                                      var index = allData.indexOf(data);
-                                      if (index !== -1) {
-                                        allData[index] = {
-                                          name: this.state.name,
-                                          course: this.state.course,
-                                          email: this.state.email,
-                                          passoutYear: this.state.passoutYear,
-                                          percentage: this.state.percentage,
-                                          SAP: this.state.SAP,
-                                          contact: this.state.contact,
-                                        };
-
-                                        this.setState({ excelData: allData });
-                                      }
-                                      this.resetState();
-                                    }}
+                                    onClick={() => this.addNewRow(data)}
                                   >
                                     <Confirm />
                                   </button>
