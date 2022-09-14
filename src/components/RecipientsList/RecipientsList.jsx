@@ -1,6 +1,15 @@
 import React, { Component } from "react";
 import * as XLSX from "xlsx";
 import { Add, Edit, Delete, Confirm, Cancel } from "./Svg";
+import {
+  ValidateName,
+  ValidateEmail,
+  ValidateContact,
+  ValidateCourse,
+  ValidatePassoutYear,
+  ValidatePercentage,
+  ValidateSAP,
+} from "./Validation";
 import "./assets/styles.css";
 
 class RecipientsList extends Component {
@@ -98,7 +107,15 @@ class RecipientsList extends Component {
   };
 
   allClear = () => {
-    this.errorsExist();
+    
+    this.setErrorState(ValidateName(this.state.name));
+    this.setErrorState(ValidateSAP(this.state.SAP));
+    this.setErrorState(ValidateCourse(this.state.course));
+    this.setErrorState(ValidateEmail(this.state.email));
+    this.setErrorState(ValidatePassoutYear(this.state.passoutYear));
+    this.setErrorState(ValidatePercentage(this.state.percentage));
+    this.setErrorState(ValidateContact(this.state.contact));
+
     var length = 0;
     [
       "name",
@@ -119,91 +136,9 @@ class RecipientsList extends Component {
     }
   };
 
-  errorsExist = () => {
-    if (this.state.name.length < 1) {
-      this.setErrorState("name", "Field Required");
-    } else {
-      this.setErrorState("name", "");
-    }
-    if (this.state.SAP.length < 1) {
-      this.setErrorState("SAP", "Field Required");
-    } else if (!this.isPositiveInteger(this.state.SAP)) {
-      this.setErrorState("SAP", "Sap id should be of numbers");
-    } else {
-      this.setErrorState("SAP", "");
-    }
-    if (this.state.course.length < 1) {
-      this.setErrorState("course", "Field Required");
-    } else {
-      this.setErrorState("course", "");
-    }
-    if (this.state.email.length < 1) {
-      this.setErrorState("email", "Field Required");
-    } else if (this.invalidEmail(this.state.email)) {
-      this.setErrorState("email", "Invalid Email");
-    } else {
-      this.setErrorState("email", "");
-    }
-    if (this.state.contact.length < 1) {
-      this.setErrorState("contact", "Field Required");
-    } else if (!this.isPositiveInteger(this.state.contact)) {
-      this.setErrorState("contact", "Invalid Phone Number");
-    } else if (this.state.contact.length !== 10) {
-      this.setErrorState("contact", "Invalid Phone Number ");
-    } else {
-      this.setErrorState("contact", "");
-    }
-    var currentTime = new Date();
-    var year = currentTime.getFullYear();
-    if (this.state.passoutYear.length < 1) {
-      this.setErrorState("passoutYear", "Field Required");
-    } else if (this.state.passoutYear.length !== 4) {
-      this.setErrorState("passoutYear", "Invalid Year");
-    } else if (!this.isPositiveInteger(this.state.passoutYear)) {
-      this.setErrorState("passoutYear", "Invalid Year");
-    } else if (Number(this.state.passoutYear) > Number(year)) {
-      this.setErrorState(
-        "passoutYear",
-        "Passout Year is greater than current year"
-      );
-    } else {
-      this.setErrorState("passoutYear", "");
-    }
-    if (this.state.percentage.length < 1) {
-      this.setErrorState("percentage", "Field Required");
-    } else if (isNaN(this.state.percentage)) {
-      this.setErrorState("percentage", "Invalid Percentage");
-    } else if (
-      this.state.percentage.slice(0, this.state.percentage.indexOf("."))
-        .length > 2
-    ) {
-      this.setErrorState("percentage", "Invalid Percentage");
-    } else {
-      this.setErrorState("percentage", "");
-    }
-  };
-
-  invalidEmail = (mail) => {
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
-      return false;
-    }
-    return true;
-  };
-
-  isPositiveInteger = (str) => {
-    if (typeof str !== "string") {
-      return false;
-    }
-    const num = Number(str);
-    if (Number.isInteger(num) && num > 0) {
-      return true;
-    }
-    return false;
-  };
-
-  setErrorState = (key_, data) => {
+  setErrorState = (arr) => {
     var allErrors = this.state.errorInput;
-    allErrors[key_] = data;
+    allErrors[arr[0]] = arr[1];
     this.setState({ errorInput: allErrors });
   };
 
