@@ -189,6 +189,12 @@ class DisplayAllCert extends Component {
     await this.setState({ dept: "" });
     await this.setState({ filters: this.state.filters-1 });
   }
+  clearSAP=async()=>{
+    await this.setState({ SAP: 0 });
+    await this.setState({ sp: 0 });
+    await this.setState({ filters: this.state.filters-1 });
+  }
+  
   render() {
     return (
       <>
@@ -272,7 +278,7 @@ class DisplayAllCert extends Component {
 {this.state.SAP!=0 ? (
                     <>
                     <div className="show-filters">
-                  <span class="display-filter">SAP: {this.state.SAP} <span class="close-filter" ><img src={close} alt="" /></span></span>
+                  <span class="display-filter">SAP: {this.state.SAP} <span class="close-filter" onClick={this.clearSAP} ><img src={close} alt="" /></span></span>
                   
                 </div>
                     </>
@@ -281,7 +287,7 @@ class DisplayAllCert extends Component {
 {this.state.passoutyear!="" ? (
                     <>
                     <div className="show-filters">
-                  <span class="display-filter">Passout year: {this.state.passoutyear} <span class="close-filter"><img src={close} alt="" /></span></span>
+                  <span class="display-filter">Passout year: {this.state.passoutyear} <span class="close-filter" onClick={this.clearYear} ><img src={close} alt="" /></span></span>
                   
                 </div>
                     </>
