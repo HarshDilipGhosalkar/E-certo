@@ -2,7 +2,7 @@
   scroll-behavior: smooth;
 }
 .root-div {
-  min-height: calc(100vh - 64px);
+  min-height: calc(100vh - 117px);
 }
 
 body {
