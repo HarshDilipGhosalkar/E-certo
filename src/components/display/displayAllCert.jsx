@@ -222,9 +222,20 @@ class DisplayAllCert extends Component {
                     </span>
                     Filter
                   </h5>
-                  <button class="filter-btn">
+                  {this.state.filters!=0 ? (
+                    <>
+                    <button class="filter-btn" >
                     <span>Clear all Filters</span>
                   </button>
+                    </>
+                  ):(
+                    <>
+                    <button class="filter-btn" disabled>
+                    <span>Clear all Filters</span>
+                  </button>
+                    </>
+                  )}
+                  
                 </div>
 
                 
