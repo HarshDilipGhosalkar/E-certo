@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./assets/styles.css";
 import logo from "./assets/sbmp-logo.png";
@@ -12,7 +12,9 @@ import {
 
 const shareUrl = "";
 
-const StudentDetail = ({ AllCert }) => {
+const StudentDetail = ({ AllCert, handleActiveLink }) => {
+  useEffect(() => handleActiveLink(""));
+
   const { hash } = useParams();
   let certificateDetail;
   AllCert.forEach((cert) => {
@@ -97,7 +99,15 @@ const StudentDetail = ({ AllCert }) => {
                       <div className="row">
                         <div className="col">
                           <h6 className="detail_label">About Organization</h6>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit, sed do eiusmod tempor incididunt ut labore et
+                            dolore magna aliqua. Ut enim ad minim veniam, quis
+                            nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat. Duis aute irure dolor in
+                            reprehenderit in voluptate velit esse cillum dolore
+                            eu fugiat nulla pariatur.
+                          </p>
                         </div>
                       </div>
                     </div>

@@ -1,5 +1,4 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
 import "./assets/style.css";
 import banner from "./assets/image/banner.png";
 import create from "./assets/image/create.png";
@@ -8,7 +7,8 @@ import manage from "./assets/image/manage.png";
 import share from "./assets/image/share.png";
 import verify from "./assets/image/verify.png";
 
-const Home = () => {
+const Home = ({ handleActiveLink }) => {
+  useEffect(() => handleActiveLink(""));
   return (
     <>
       <section>
