@@ -457,6 +457,8 @@ background-color: #ffffff;
 }
 .filter-div .search-div h5 span img{
   width: 20px;
+  margin-right: 5px;
+  margin-bottom: 5px;
 }
 .content-table {
   border-collapse: collapse;
