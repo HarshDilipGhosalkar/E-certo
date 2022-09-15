@@ -648,7 +648,9 @@ height: 100%;
 .fill span:hover{
   background-color: #f5f5f5;
 }
-.department-div{
+.department-div,
+.SAP-div,
+.passout-div{
   display: none;
   background: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -658,7 +660,9 @@ height: 100%;
     padding: 20px 10px;
 position: relative;
 }
-.department-div input{
+.department-div input,
+.SAP-div input,
+.passout-div input{
   background-image: none;
   border: 1px solid #d9d9d9;
   border-radius: 2px;
@@ -668,11 +672,15 @@ position: relative;
   font-size: 14px;
   padding: 5px 5px 5px 10px;
 }
-.department-div input:hover{
+.department-div input:hover,
+.SAP-div input:hover,
+.passout-div input:hover{
   border: 1px solid #40a9ff;
 }
 
-.department-div input::placeholder { 
+.department-div input::placeholder,
+.SAP-div input::placeholder,
+.passout-div input::placeholder { 
   font-size: 13px;
   color: black;
   /* padding-left: 10px;  */
@@ -694,4 +702,20 @@ position: relative;
     bottom: 22px;
     right: 11px;
     cursor: pointer;
+    border: none;
+}
+.apply-btn:disabled{
+  background: white;
+  border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    box-shadow: 0 2px 0 rgb(0 0 0 / 2%);
+    color: rgba(0,0,0,0.25);
+    cursor: not-allowed;
+    width: 90px;
+    font-size: 13px;
+    padding: 5px 7px;
+    position: absolute;
+    bottom: 22px;
+    right: 11px;
+    
 }
