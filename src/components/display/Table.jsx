@@ -197,8 +197,18 @@ class Table extends Component {
 </>
                          ):(
                             <>
-                            <h5>{this.props.data.length} Certificates
+                            {this.props.modified == 1 ? (
+                                <>
+                                <h5>{this.props.data.length} Certificates
                         </h5>
+                                </>
+                            ):(
+                                <>
+                                <h5>{this.props.allCert.length} Certificates
+                        </h5>
+                                </>
+                            )}
+                            
                             </>
                          )}
                         
