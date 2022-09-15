@@ -35,11 +35,20 @@ class Table extends Component {
                 document.querySelector(".chk" + cert.SAP.toNumber()).checked=true;
             }
         });
-        // if(this.state.checked !== this.props.data.length){
-        //     document.querySelector(".allCheck").checked=false;
-        // }else{
-        //     document.querySelector(".allCheck").checked=true;
-        // }
+        if(this.props.modified==1){
+            if(this.state.checked !== this.props.data.length){
+                document.querySelector(".allCheck").checked=false;
+            }else{
+                document.querySelector(".allCheck").checked=true;
+            }
+        }else{
+            if(this.state.checked !== this.props.allCert.length){
+                document.querySelector(".allCheck").checked=false;
+            }else{
+                document.querySelector(".allCheck").checked=true;
+            }
+        }
+        
       }
     send =async (cert, clsname) => {
         var checkBox = document.querySelector(".chk" + clsname);
@@ -131,6 +140,50 @@ class Table extends Component {
         }
         
     }
+    togData= async () =>  {
+        await this.setState({emailList:[]})
+        await this.setState({checkList:[]})
+        const trs = document.querySelectorAll(".commontr");
+        const checkBoxes = document.querySelectorAll(".commonChk");
+        const allCheck = document.querySelector(".allCheck");
+        if (allCheck.checked == true) {
+            console.log("yes");
+            const dts=this.props.data
+            // await this.setState({emailList:dts})
+            await this.setState({checked: dts.length})
+            dts.forEach(cert => {
+                this.setState({emailList:[...this.state.emailList,cert]})
+            });
+            checkBoxes.forEach(chk => {
+                chk.checked = true;
+            });
+            trs.forEach(tr => {
+                tr.style.backgroundColor = '#e6f7ff';
+            });
+            const data1=this.props.data;
+            var chkList=[]
+            data1.forEach(cert => {
+               chkList.push(cert.SAP.toNumber());
+            });
+            await this.setState({checkList:chkList})
+            console.log(this.state.emailList);
+            this.props.enableState();
+        } else {
+            await this.setState({chkList:[]})
+            await this.setState({emailList:[]})
+            await this.setState({checked: 0})
+            checkBoxes.forEach(chk => {
+                chk.checked = false;
+            });
+            trs.forEach(tr => {
+                tr.style.backgroundColor = 'white';
+            });
+            console.log(this.state.emailList);
+            this.props.disableState();
+            console.log("unchecked");
+        }
+        
+    }
     render() {
       return (
         <>
@@ -167,7 +220,16 @@ class Table extends Component {
                                 <tr>
                                     {this.props.data.length != 0 ? (
                                         <>
+                                        {this.props.modified==1 ? (
+                                            <>
+                                            <th><input type="checkbox" className="commonChk allCheck" onClick={() => this.togData()} /></th>
+
+                                            </>
+                                        ):(
+                                            <>
                                             <th><input type="checkbox" className="commonChk allCheck" onClick={() => this.tog()} /></th>
+                                            </>
+                                        )}
 
                                         </>
                                     ) : (
