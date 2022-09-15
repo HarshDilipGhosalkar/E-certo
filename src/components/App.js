@@ -129,50 +129,6 @@ class App extends Component {
     return issueDate;
   };
 
-  createCertificate = async (
-    name,
-    course,
-    email,
-    passout_year,
-    percentage,
-    SAPId,
-    contact
-  ) => {
-    const issueDate = await this.getCuurentDate();
-    this.setState({ loading: true });
-    this.state.EcertoContract.methods
-      .addCertificate(
-        name,
-        course,
-        email,
-        passout_year,
-        percentage,
-        SAPId,
-        contact,
-        issueDate
-      )
-      .send({ from: this.state.accountAddress })
-      .on("transactionHash", (hash) => {
-        localStorage.setItem(this.state.accountAddress, new Date().getTime());
-
-        this.state.EcertoContract.methods
-          .updateTransaction(hash)
-          .send({ from: this.state.accountAddress })
-          .on("confirmation", () => {
-            localStorage.setItem(
-              this.state.accountAddress,
-              new Date().getTime()
-            );
-            this.setState({ loading: false });
-            window.location.reload();
-          });
-        // window.location.reload();
-        this.setState({ transactionHash: hash });
-        // console.log(hash)
-      });
-    console.log("transactionHash", this.state.transactionHash);
-  };
-
   createBulkCertificate = async (struct) => {
     this.setState({ loading: true });
     const issueDate = await this.getCuurentDate();
