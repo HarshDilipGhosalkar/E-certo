@@ -1,6 +1,9 @@
 :root {
   scroll-behavior: smooth;
 }
+.root-div {
+  min-height: calc(100vh - 64px);
+}
 
 body {
   background-color: #fff;
