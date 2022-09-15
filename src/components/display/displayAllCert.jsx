@@ -4,6 +4,7 @@ import Table from "./Table";
 import Pagination from "./Pagination";
 import add from "./assets/add.svg";
 import s from "./assets/search.svg";
+import close from "./assets/close.svg";
 
 class DisplayAllCert extends Component {
   constructor(props) {
@@ -258,7 +259,7 @@ class DisplayAllCert extends Component {
                   {this.state.department!="" ? (
                     <>
                     <div className="show-filters">
-                  <span class="display-filter">Department: {this.state.department.toUpperCase()}</span>
+                  <span class="display-filter">Department: {this.state.department.toUpperCase()} <span class="close-filter"><img src={close} alt="" /></span></span>
                   
                 </div>
                     </>
@@ -267,7 +268,7 @@ class DisplayAllCert extends Component {
 {this.state.SAP!=0 ? (
                     <>
                     <div className="show-filters">
-                  <span class="display-filter">SAP: {this.state.SAP}</span>
+                  <span class="display-filter">SAP: {this.state.SAP} <span class="close-filter"><img src={close} alt="" /></span></span>
                   
                 </div>
                     </>
@@ -276,7 +277,7 @@ class DisplayAllCert extends Component {
 {this.state.passoutyear!="" ? (
                     <>
                     <div className="show-filters">
-                  <span class="display-filter">Passout year: {this.state.passoutyear}</span>
+                  <span class="display-filter">Passout year: {this.state.passoutyear} <span class="close-filter"><img src={close} alt="" /></span></span>
                   
                 </div>
                     </>
