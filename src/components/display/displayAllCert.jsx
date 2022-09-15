@@ -19,10 +19,26 @@ class DisplayAllCert extends Component {
       dept: "",
       SAP: 0,
       sp: 0,
+      modified:0,
     };
   }
+  componentDidMount() {
+    this.interval = setInterval(() => this.tick(), 500);
+    this.props.handleActiveLink("#all");
+  }
 
-  componentDidMount = () => this.props.handleActiveLink("#all");
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+  tick(){
+  if(this.state.query.length!=""){
+    this.setState({modified:1})
+  }else if (this.state.filters!=0) {
+    this.setState({modified:1})
+  }else{
+    this.setState({modified:0})
+  }
+  }
 
   emailLoop = (certList) => {
     certList.forEach((cert) => {
@@ -428,6 +444,7 @@ class DisplayAllCert extends Component {
                 enableState={this.enableState}
                 disableState={this.disableState}
                 emailLoop={this.emailLoop}
+                modified={this.state.modified}
               />
 
               <div className="pagination-div">
