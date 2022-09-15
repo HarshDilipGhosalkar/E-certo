@@ -33,6 +33,7 @@ class App extends Component {
       certs: [],
       transactionHash: "",
       excelFile: null,
+      certificateCreated: false,
     };
   }
 
@@ -196,8 +197,9 @@ class App extends Component {
       .send({ from: this.state.accountAddress })
       .on("confirmation", () => {
         localStorage.setItem(this.state.accountAddress, new Date().getTime());
-        this.setState({ loading: false });
-        window.location.reload();
+        this.setState({ loading: false, certificateCreated:true });
+        // window.location.reload();
+        
       });
   };
 
@@ -312,6 +314,7 @@ class App extends Component {
                             excelFile={this.state.excelFile}
                             createBulkCertificate={this.createBulkCertificate}
                             handleActiveLink={this.handleActiveLink}
+                            certificateCreated={this.state.certificateCreated}
                           />
                         }
                       />
