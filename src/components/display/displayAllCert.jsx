@@ -175,6 +175,15 @@ class DisplayAllCert extends Component {
     document.querySelector(".SAP-div").style.display = "none";
     console.log(this.state.SAP);
   };
+  clearFilters = async()=>{
+    await this.setState({ SAP: 0 });
+    await this.setState({ sp: 0 });
+    await this.setState({ department: "" });
+    await this.setState({ dept: "" });
+    await this.setState({ passoutyear: 0 });
+    await this.setState({ py: 0 });
+    await this.setState({ filters: 0 });
+  };
   render() {
     return (
       <>
@@ -222,9 +231,20 @@ class DisplayAllCert extends Component {
                     </span>
                     Filter
                   </h5>
-                  <button class="filter-btn">
+                  {this.state.filters!=0 ? (
+                    <>
+                    <button class="filter-btn" onClick={this.clearFilters}>
                     <span>Clear all Filters</span>
                   </button>
+                    </>
+                  ):(
+                    <>
+                    <button class="filter-btn" disabled>
+                    <span>Clear all Filters</span>
+                  </button>
+                    </>
+                  )}
+                  
                 </div>
 
                 
@@ -233,6 +253,39 @@ class DisplayAllCert extends Component {
                     <span class="filter-plus">+</span> Add Filters
                   </span>
                 </div>
+                {this.state.filters!=0 ? (
+                  <>
+                  {this.state.department!="" ? (
+                    <>
+                    <div className="show-filters">
+                  <span class="display-filter">Department: {this.state.department.toUpperCase()}</span>
+                  
+                </div>
+                    </>
+                  ):null}
+
+{this.state.SAP!=0 ? (
+                    <>
+                    <div className="show-filters">
+                  <span class="display-filter">SAP: {this.state.SAP}</span>
+                  
+                </div>
+                    </>
+                  ):null}
+
+{this.state.passoutyear!="" ? (
+                    <>
+                    <div className="show-filters">
+                  <span class="display-filter">Passout year: {this.state.passoutyear}</span>
+                  
+                </div>
+                    </>
+                  ):null}
+                  </>
+                ):(
+                  <></>
+                )}
+                
               </div>
               <div class="fill">
                 <span onClick={this.dept}>Department</span>
