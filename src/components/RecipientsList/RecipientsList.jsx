@@ -11,6 +11,7 @@ import {
   ValidateSAP,
 } from "./Validation";
 import "./assets/styles.css";
+import { Navigate } from "react-router-dom";
 
 class RecipientsList extends Component {
   constructor(props) {
@@ -73,7 +74,7 @@ class RecipientsList extends Component {
   };
 
   createCertificates = async () => {
-    this.props.createBulkCertificate(this.state.excelData);
+    await this.props.createBulkCertificate(this.state.excelData);
   };
 
   addNewHandle = () => {
@@ -156,6 +157,9 @@ class RecipientsList extends Component {
   render() {
     return (
       <>
+        {this.props.certificateCreated ? (
+          <Navigate replace to="../dashboard" />
+        ) : null}
         <div className="excel_page root-div">
           <div className="excel_component">
             <div className="upload_excel_header">
