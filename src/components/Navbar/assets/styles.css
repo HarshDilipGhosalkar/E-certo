@@ -27,3 +27,21 @@ header {
   color: #fff;
   background-color: rgb(24 144 255);
 }
+footer {
+  background-color:  rgb(240 242 245);
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  
+  height: 53px;
+}
+footer span {
+  color: rgba(0,0,0,.6);
+  text-align: center;
+  font-size: 14px;
+  font-family: Mukta,sans-serif;
+  font-weight:100;
+}

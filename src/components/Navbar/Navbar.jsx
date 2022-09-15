@@ -67,8 +67,10 @@ class Navbar extends Component {
             </div>
           </nav>
         </header>
-
         <Outlet />
+        <footer>
+          <span>© 2022 Certifier. All rights reserved.</span>
+        </footer>
       </>
     );
   }
