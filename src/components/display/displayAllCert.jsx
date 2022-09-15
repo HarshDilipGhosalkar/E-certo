@@ -227,16 +227,7 @@ class DisplayAllCert extends Component {
                   </button>
                 </div>
 
-                <div className="input-box">
-                  <input
-                    type="text"
-                    class="search"
-                    onChange={(event) =>
-                      this.setState({ query: event.target.value.toLowerCase() })
-                    }
-                  />
-                  <span>Select a group</span>
-                </div>
+                
                 <div className="add-filter" onClick={this.toggleFilterdiv}>
                   <span>
                     <span class="filter-plus">+</span> Add Filters
