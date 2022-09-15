@@ -1,5 +1,4 @@
 import React, { Component, useEffect } from "react";
-import { useState } from "react";
 import Table from "./Table";
 import Pagination from "./Pagination";
 import add from "./assets/add.svg";
@@ -76,36 +75,36 @@ class DisplayAllCert extends Component {
          }else if (this.state.filters==2) {
             if (this.state.department!="" ) {
                if(this.state.passoutyear!=0){
-                allCert.filter(
+                const dt=allCert.filter(
                   (item) => item.course.toLowerCase() == this.state.department
                  );
-               return allCert.filter(
+               return dt.filter(
                  (item) => item.passoutYear == this.state.passoutyear
                 );
                }else{
-                allCert.filter(
+                const dt=allCert.filter(
                   (item) => item.course.toLowerCase() == this.state.department
                  );
-               return allCert.filter(
+               return dt.filter(
                  (item) => item.SAP == this.state.SAP
                 );
                }
                
           } else {
-            allCert.filter(
+            const dt= allCert.filter(
               (item) => item.passoutYear == this.state.passoutyear
              );
-             return allCert.filter(
+             return dt.filter(
               (item) => item.SAP == this.state.SAP
              );
           }
          }else{
           console.log("yes its ");
-          allCert.filter(
+          const at1=allCert.filter(
             (item) => item.passoutYear.toNumber() == this.state.passoutyear
           );
       
-          const at= allCert.filter(
+          const at= at1.filter(
             (item) => item.SAP.toNumber() == this.state.SAP
           );
           return at.filter(
@@ -185,6 +184,11 @@ class DisplayAllCert extends Component {
     await this.setState({ py: 0 });
     await this.setState({ filters: 0 });
   };
+  clearDept=async()=>{
+    await this.setState({ department: "" });
+    await this.setState({ dept: "" });
+    await this.setState({ filters: this.state.filters-1 });
+  }
   render() {
     return (
       <>
@@ -259,7 +263,7 @@ class DisplayAllCert extends Component {
                   {this.state.department!="" ? (
                     <>
                     <div className="show-filters">
-                  <span class="display-filter">Department: {this.state.department.toUpperCase()} <span class="close-filter"><img src={close} alt="" /></span></span>
+                  <span class="display-filter">Department: {this.state.department.toUpperCase()} <span class="close-filter" onClick={this.clearDept}><img src={close} alt="" /></span></span>
                   
                 </div>
                     </>
@@ -268,7 +272,7 @@ class DisplayAllCert extends Component {
 {this.state.SAP!=0 ? (
                     <>
                     <div className="show-filters">
-                  <span class="display-filter">SAP: {this.state.SAP} <span class="close-filter"><img src={close} alt="" /></span></span>
+                  <span class="display-filter">SAP: {this.state.SAP} <span class="close-filter" ><img src={close} alt="" /></span></span>
                   
                 </div>
                     </>
