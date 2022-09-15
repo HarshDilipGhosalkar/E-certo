@@ -14,6 +14,10 @@ class DisplayAllCert extends Component {
       postsPerPage: 10,
       passoutyear:0,
       py:0,
+      filters:0,
+      department:"",
+      dept:"",
+      SAP:0,
     };
   }
   emailLoop = (certList) => {
@@ -58,13 +62,15 @@ class DisplayAllCert extends Component {
   }
   toggleFilterdiv = () => {
     document.querySelector(".department-div").style.display="none";
+    document.querySelector(".passout-div").style.display="none";
+    document.querySelector(".SAP-div").style.display="none";
     var x=document.querySelector(".fill");
     if (x.style.display == "none") {
       x.style.display = "block";
     } else {
       x.style.display = "none";
     }
-    console.log(this.state.passoutyear);
+    // console.log(this.state.passoutyear);
    
   }
   setquery=async(query)=>{
@@ -76,11 +82,38 @@ class DisplayAllCert extends Component {
     document.querySelector(".department-div").style.display="block";
     
   }
-  addDept=async()=>{
+  passout = () => {
+    
+    document.querySelector(".fill").style.display="none";
+    document.querySelector(".passout-div").style.display="block";
+    
+  }
+  SAP = () => {
+    
+    document.querySelector(".fill").style.display="none";
+    document.querySelector(".SAP-div").style.display="block";
+    
+  }
+  addYear=async()=>{
     await this.setState({query:""});
     await this.setState({passoutyear:this.state.py});
-    document.querySelector(".department-div").style.display="none";
+    await this.setState({py:0});
+    document.querySelector(".passout-div").style.display="none";
     console.log(this.state.passoutyear);
+    
+  }
+  addDept=async()=>{
+    await this.setState({query:""});
+    await this.setState({department:this.state.dept});
+    document.querySelector(".department-div").style.display="none";
+    console.log(this.state.department);
+  }
+  addSAP=async()=>{
+    await this.setState({query:""});
+    await this.setState({SAP:this.state.py});
+    await this.setState({py:0});
+    document.querySelector(".SAP-div").style.display="none";
+    console.log(this.state.SAP);
   }
   render() {
     return (
@@ -143,12 +176,37 @@ class DisplayAllCert extends Component {
             </div>
             <div class="fill" >
               <span onClick={this.dept}>Department</span>
-              <span>Passout year</span>
-              <span>SAP Id</span>
+              <span onClick={this.passout}>Passout year</span>
+              <span onClick={this.SAP}>SAP Id</span>
             </div>
             <div className="department-div">
-              <input list="browsers" placeholder="Select Department" onChange={event => this.setState({py:event.target.value.toLowerCase()})}/>
+              <input type="text" list="browsers" placeholder="Select Department" onChange={event => this.setState({dept:event.target.value.toLowerCase()})}/>
               <datalist id="browsers">
+    <option value="CSE" />
+    <option value="IT" />
+    <option value="EXTC" />
+    <option value="CIVIL" />
+    <option value="MECHANICAL" />
+    <option value="ELECTRICAL" />
+    <option value="PLASTIC" />
+    <option value="INDUSTRIAL" />
+    <option value="DIGITAL" />
+    
+              </datalist>
+              {this.state.dept.length == "" ? (
+                <>
+                <button className="apply-btn" onClick={this.addDept} disabled >Apply filter</button>
+                </>
+              ):(
+                <>
+                <button className="apply-btn" onClick={this.addDept} >Apply filter</button>
+                </>
+              )}
+              
+            </div>
+            <div className="passout-div">
+              <input list="browser" placeholder="Passout year" onChange={event => this.setState({py:event.target.value.toLowerCase()})}/>
+              <datalist id="browser">
     <option value="2000" />
     <option value="2011" />
     <option value="2012" />
@@ -179,8 +237,28 @@ class DisplayAllCert extends Component {
     <option value="2012" />
     <option value="2013" />
     <option value="2022" />
-  </datalist>
-  <div className="apply-btn" onClick={this.addDept}>Apply filter</div>
+              </datalist>
+              {this.state.py == 0 ? (
+                <>
+                <button className="apply-btn" onClick={this.addYear} disabled >Apply filter</button>
+                </>
+              ):(
+                <>
+                <button className="apply-btn" onClick={this.addYear} >Apply filter</button>
+                </>
+              )}
+            </div>
+            <div className="SAP-div">
+              <input  placeholder="Enter SAP" onChange={event => this.setState({py:event.target.value.toLowerCase()})}/>
+              {this.state.py == 0 ? (
+                <>
+                <button className="apply-btn" onClick={this.addSAP} disabled >Apply filter</button>
+                </>
+              ):(
+                <>
+                <button className="apply-btn" onClick={this.addSAP} >Apply filter</button>
+                </>
+              )}
             </div>
           </div>
           <div className="table-div">
