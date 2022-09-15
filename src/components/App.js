@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Navigate } from "react-router";
 import "./bootstrap/css/bootstrap.css";
 import "./App.css";
 import Web3 from "web3";
@@ -209,6 +208,17 @@ class App extends Component {
     return exi;
   };
 
+  handleActiveLink = (id) => {
+    document.querySelector("#all").classList.remove("nav-active");
+    document.querySelector("#create").classList.remove("nav-active");
+    document.querySelector("#upload").classList.remove("nav-active");
+    document.querySelector("#query").classList.remove("nav-active");
+    if (id.length > 0) {
+      const link = document.querySelector(id);
+      link.classList.add("nav-active");
+    }
+  };
+
   sendEmail = async (name, email, hash) => {
     var sendparams = {
       to_name: name,
@@ -237,7 +247,6 @@ class App extends Component {
 
   displayRecipientsList = async (excelFile) => {
     this.setState({ excelFile: excelFile });
-    console.log(this.state.excelFile);
   };
 
   render() {
@@ -259,7 +268,10 @@ class App extends Component {
                     <Navbar accountAddress={this.state.accountAddress} />
                   }
                 >
-                  <Route index element={<Home />} />
+                  <Route
+                    index
+                    element={<Home handleActiveLink={this.handleActiveLink} />}
+                  />
 
                   {this.state.accountAddress ==
                     "0x41e5226215F536572DDa181e797Deb1878D94e3D" ||
@@ -272,6 +284,7 @@ class App extends Component {
                           <DisplayAllCert
                             allCert={this.state.certs}
                             sendEmail={this.sendEmail}
+                            handleActiveLink={this.handleActiveLink}
                           />
                         }
                       />
@@ -280,6 +293,7 @@ class App extends Component {
                         element={
                           <UploadExcelPage
                             displayRecipientsList={this.displayRecipientsList}
+                            handleActiveLink={this.handleActiveLink}
                           />
                         }
                       />
@@ -289,6 +303,7 @@ class App extends Component {
                           <RecipientsList
                             excelFile={this.state.excelFile}
                             createBulkCertificate={this.createBulkCertificate}
+                            handleActiveLink={this.handleActiveLink}
                           />
                         }
                       />
@@ -297,7 +312,12 @@ class App extends Component {
 
                   <Route
                     path="details/:hash"
-                    element={<StudentDetail AllCert={this.state.certs} />}
+                    element={
+                      <StudentDetail
+                        AllCert={this.state.certs}
+                        handleActiveLink={this.handleActiveLink}
+                      />
+                    }
                   />
                   <Route
                     path="certificate/:hash"
@@ -305,6 +325,7 @@ class App extends Component {
                       <DisplayCert
                         AllCert={this.state.certs}
                         sendEmail={this.sendEmail}
+                        handleActiveLink={this.handleActiveLink}
                       />
                     }
                   />
@@ -315,10 +336,16 @@ class App extends Component {
                         sendEmail={this.sendEmail}
                         certficateExist={this.certficateExist}
                         AllCert={this.state.certs}
+                        handleActiveLink={this.handleActiveLink}
                       />
                     }
                   />
-                  <Route path="*" element={<NoPage />} />
+                  <Route
+                    path="*"
+                    element={
+                      <NoPage handleActiveLink={this.handleActiveLink} />
+                    }
+                  />
                 </Route>
               </Routes>
             </BrowserRouter>
