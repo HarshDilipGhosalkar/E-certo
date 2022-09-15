@@ -106,6 +106,15 @@ class RecipientsList extends Component {
       contact: "",
       newData: null,
       editRowData: null,
+      errorInput: {
+        name: "",
+        SAP: "",
+        course: "",
+        email: "",
+        passoutYear: "",
+        percentage: "",
+        contact: "",
+      },
     });
   };
 
@@ -177,12 +186,26 @@ class RecipientsList extends Component {
                       >
                         Reupload Spreadsheet
                       </button> */}
-                      <button
-                        className="publish_btn"
-                        onClick={this.createCertificates}
-                      >
-                        Publish Certificates
-                      </button>
+                      {this.state.excelData.length > 0 ? (
+                        <>
+                          {this.state.excelData[0].name.length > 0 ? (
+                            <button
+                              className="publish_btn"
+                              onClick={this.createCertificates}
+                            >
+                              Publish Certificates
+                            </button>
+                          ) : (
+                            <button className="publish_btn" disabled>
+                              Publish Certificates
+                            </button>
+                          )}
+                        </>
+                      ) : (
+                        <button className="publish_btn" disabled>
+                          Publish Certificates
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
