@@ -194,7 +194,11 @@ class DisplayAllCert extends Component {
     await this.setState({ sp: 0 });
     await this.setState({ filters: this.state.filters-1 });
   }
-  
+  clearYear=async()=>{
+    await this.setState({ passoutyear: 0 });
+    await this.setState({ py: 0 });
+    await this.setState({ filters: this.state.filters-1 });
+  }
   render() {
     return (
       <>
