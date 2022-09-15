@@ -209,10 +209,18 @@ class App extends Component {
   };
 
   handleActiveLink = (id) => {
-    document.querySelector("#all").classList.remove("nav-active");
-    document.querySelector("#create").classList.remove("nav-active");
-    document.querySelector("#upload").classList.remove("nav-active");
+    if (
+      this.state.accountAddress ==
+        "0x41e5226215F536572DDa181e797Deb1878D94e3D" ||
+      this.state.accountAddress == "0xB641B4F1795a4BfA2cC7056E08cFB2b199831248"
+    ) {
+      document.querySelector("#all").classList.remove("nav-active");
+      document.querySelector("#create").classList.remove("nav-active");
+      document.querySelector("#upload").classList.remove("nav-active");
+    }
+
     document.querySelector("#query").classList.remove("nav-active");
+
     if (id.length > 0) {
       const link = document.querySelector(id);
       link.classList.add("nav-active");
@@ -253,7 +261,7 @@ class App extends Component {
     return (
       <>
         {!this.state.metamaskConnected ? (
-          <ConnectToMetamask connectToMetamask={this.connectToMetamask} />
+          <Home connectToMetamask={this.connectToMetamask} />
         ) : !this.state.contractDetected ? (
           <ContractNotDeployed />
         ) : this.state.loading ? (
@@ -270,7 +278,13 @@ class App extends Component {
                 >
                   <Route
                     index
-                    element={<Home handleActiveLink={this.handleActiveLink} />}
+                    element={
+                      <Home
+                        handleActiveLink={this.handleActiveLink}
+                        connectToMetamask={this.connectToMetamask}
+                        isMetamaskConnected={this.state.metamaskConnected}
+                      />
+                    }
                   />
 
                   {this.state.accountAddress ==
