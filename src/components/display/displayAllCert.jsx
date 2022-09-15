@@ -4,6 +4,7 @@ import Pagination from "./Pagination";
 import add from "./assets/add.svg";
 import s from "./assets/search.svg";
 import close from "./assets/close.svg";
+import filter from "./assets/filter.svg";
 
 class DisplayAllCert extends Component {
   constructor(props) {
@@ -258,7 +259,7 @@ class DisplayAllCert extends Component {
                 <div className="filter-header">
                   <h5>
                     <span>
-                      <img src={s} alt="" />
+                      <img src={filter} alt="" />
                     </span>
                     Filter
                   </h5>
