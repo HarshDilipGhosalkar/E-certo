@@ -7,11 +7,16 @@ import manage from "./assets/image/manage.png";
 import share from "./assets/image/share.png";
 import verify from "./assets/image/verify.png";
 
-const Home = ({ handleActiveLink }) => {
-  useEffect(() => handleActiveLink(""));
+const Home = ({ handleActiveLink, connectToMetamask, isMetamaskConnected }) => {
+  useEffect(() => {
+    if (isMetamaskConnected) {
+      document.querySelector("#home-div").classList.remove("home-div");
+      handleActiveLink("");
+    }
+  });
   return (
     <>
-      <section>
+      <section className="root-div home-div" id="home-div">
         <div className="container">
           <div className="hero">
             <div className="row">
@@ -24,7 +29,11 @@ const Home = ({ handleActiveLink }) => {
                   to generate certificates. A certificate builder, templates,
                   emails, security, and analytics.
                 </p>
-                <button className="start-btn">Get Started</button>
+                {!isMetamaskConnected ? (
+                  <button onClick={connectToMetamask} className="start-btn">
+                    Connect Metamask
+                  </button>
+                ) : null}
               </div>
               <div className="col-7">
                 <span className="banner-image-area">
