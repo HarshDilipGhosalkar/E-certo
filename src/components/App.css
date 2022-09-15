@@ -281,12 +281,8 @@ body {
 
 .wap {
   width: 100%;
-  min-height: 650px;
-  /* height: 650px; */
-  /* margin: auto;
-  margin-top: 5%; */
   background-color: #f0f2f5;
-  padding-top: 20px;
+  padding: 20px 0;
 }
 .upper-div,
 .lower-div{
