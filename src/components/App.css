@@ -578,6 +578,13 @@ input{
   background: transparent;
     border-color: transparent;
     box-shadow: none;
+    color:#40a9ff;
+    text-shadow: none;
+}
+.filter-btn:disabled{
+  background: transparent;
+    border-color: transparent;
+    box-shadow: none;
     color: rgba(0,0,0,.25);
     text-shadow: none;
 }
