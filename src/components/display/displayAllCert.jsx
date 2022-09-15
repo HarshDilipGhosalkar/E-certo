@@ -233,6 +233,39 @@ class DisplayAllCert extends Component {
                     <span class="filter-plus">+</span> Add Filters
                   </span>
                 </div>
+                {this.state.filters!=0 ? (
+                  <>
+                  {this.state.department!="" ? (
+                    <>
+                    <div className="show-filters">
+                  <span class="display-filter">Department: {this.state.department.toUpperCase()}</span>
+                  
+                </div>
+                    </>
+                  ):null}
+
+{this.state.SAP!=0 ? (
+                    <>
+                    <div className="show-filters">
+                  <span class="display-filter">SAP: {this.state.SAP}</span>
+                  
+                </div>
+                    </>
+                  ):null}
+
+{this.state.passoutyear!="" ? (
+                    <>
+                    <div className="show-filters">
+                  <span class="display-filter">Passout year: {this.state.passoutyear}</span>
+                  
+                </div>
+                    </>
+                  ):null}
+                  </>
+                ):(
+                  <></>
+                )}
+                
               </div>
               <div class="fill">
                 <span onClick={this.dept}>Department</span>
