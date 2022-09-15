@@ -41,7 +41,10 @@ class RecipientsList extends Component {
 
   componentDidMount = async () => {
     if (this.props.excelFile !== null) {
+      this.props.handleActiveLink("#upload");
       await this.extractDataFromSpreadsheet();
+    } else {
+      this.props.handleActiveLink("#create");
     }
   };
 
@@ -107,7 +110,6 @@ class RecipientsList extends Component {
   };
 
   allClear = () => {
-    
     this.setErrorState(ValidateName(this.state.name));
     this.setErrorState(ValidateSAP(this.state.SAP));
     this.setErrorState(ValidateCourse(this.state.course));

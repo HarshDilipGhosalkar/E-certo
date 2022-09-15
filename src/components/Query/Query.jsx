@@ -1,10 +1,12 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./styles.css";
 import "./alert.css";
 import "./font-awesome.min.css";
 
-function Query({ sendEmail, certficateExist, AllCert }) {
+function Query({ sendEmail, certficateExist, AllCert, handleActiveLink }) {
+  useEffect(() => handleActiveLink("#query"));
+
   const [certificateHash, setCertificateHash] = useState("");
   const [sapId, setSapId] = useState("");
   const [certificateLink, setCertificateLink] = useState("");
@@ -16,8 +18,15 @@ function Query({ sendEmail, certficateExist, AllCert }) {
     const alertbox = document.querySelector(".alertbox");
 
     if (cert) {
-      setCertificateLink("http://localhost:3000/certificate/" + certificateHash);
-      setCertificateUrl("http://localhost:3000/certificate/" + certificateHash.substring(0,7) + "....." + certificateHash.slice(certificateHash.length - 7));
+      setCertificateLink(
+        "http://localhost:3000/certificate/" + certificateHash
+      );
+      setCertificateUrl(
+        "http://localhost:3000/certificate/" +
+          certificateHash.substring(0, 7) +
+          "....." +
+          certificateHash.slice(certificateHash.length - 7)
+      );
       alertbox.style.display = "none";
     } else {
       console.log("Not Found");
