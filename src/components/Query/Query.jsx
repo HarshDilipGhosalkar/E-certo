@@ -72,7 +72,7 @@ function Query({ sendEmail, certficateExist, AllCert, handleActiveLink }) {
 
   return (
     <>
-      <div className="details_page">
+      <div className="details_page root-div">
         <div className="details_component">
           <div className="details_grid">
             <div className="details_div query_div">

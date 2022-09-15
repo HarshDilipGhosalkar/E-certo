@@ -111,7 +111,7 @@ const DisplayCert = ({ AllCert, sendEmail, handleActiveLink }) => {
   }, []);
 
   return (
-    <>
+    <div className="root-div">
       {cert !== undefined ? (
         <>
           <div id="printcertificate">
@@ -248,7 +248,7 @@ const DisplayCert = ({ AllCert, sendEmail, handleActiveLink }) => {
           </div>
         </>
       ) : null}
-    </>
+    </div>
   );
 };
 

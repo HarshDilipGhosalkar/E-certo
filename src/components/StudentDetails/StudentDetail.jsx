@@ -26,7 +26,7 @@ const StudentDetail = ({ AllCert, handleActiveLink }) => {
     <>
       {certificateDetail !== undefined ? (
         <>
-          <div className="details_page">
+          <div className="details_page root-div">
             <div className="details_component">
               <div className="details_grid">
                 <div className="details_div">

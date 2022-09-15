@@ -147,7 +147,7 @@ class RecipientsList extends Component {
   render() {
     return (
       <>
-        <div className="excel_page">
+        <div className="excel_page root-div">
           <div className="excel_component">
             <div className="upload_excel_header">
               <div className="container">

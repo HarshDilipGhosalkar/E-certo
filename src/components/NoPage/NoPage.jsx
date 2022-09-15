@@ -9,7 +9,7 @@ const NoPage = ({ handleActiveLink }) => {
 
   return (
     <>
-      <div class="contain">
+      <div class="contain root-div">
         <div class="big_text">
           <h1>
             4<img class="compass" src={compass} alt="0" />4
