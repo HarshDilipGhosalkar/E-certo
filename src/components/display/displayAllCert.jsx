@@ -18,7 +18,7 @@ class DisplayAllCert extends Component {
       department: "",
       dept: "",
       SAP: 0,
-      sp:0,
+      sp: 0,
     };
   }
 
@@ -57,61 +57,61 @@ class DisplayAllCert extends Component {
         item.name.toLowerCase().includes(this.state.query)
       );
     } else if (this.state.filters != 0) {
-      
-         if(this.state.filters==1){
-          if (this.state.passoutyear!=0) {
-            return allCert.filter(
-              (item) => item.passoutYear.toNumber() == this.state.passoutyear
-            );
-          } else if (this.state.SAP!=0) {
-            return allCert.filter(
-              (item) => item.SAP.toNumber() == this.state.SAP
-            );
-          } else {
-            return allCert.filter(
-              (item) => item.course.toLowerCase() == this.state.department
-            );
-          }
-         }else if (this.state.filters==2) {
-            if (this.state.department!="" ) {
-               if(this.state.passoutyear!=0){
-                const dt=allCert.filter(
-                  (item) => item.course.toLowerCase() == this.state.department
-                 );
-               return dt.filter(
-                 (item) => item.passoutYear == this.state.passoutyear
-                );
-               }else{
-                const dt=allCert.filter(
-                  (item) => item.course.toLowerCase() == this.state.department
-                 );
-               return dt.filter(
-                 (item) => item.SAP == this.state.SAP
-                );
-               }
-               
-          } else {
-            const dt= allCert.filter(
-              (item) => item.passoutYear == this.state.passoutyear
-             );
-             return dt.filter(
-              (item) => item.SAP == this.state.SAP
-             );
-          }
-         }else{
-          console.log("yes its ");
-          const at1=allCert.filter(
+
+      if (this.state.filters == 1) {
+        if (this.state.passoutyear != 0) {
+          return allCert.filter(
             (item) => item.passoutYear.toNumber() == this.state.passoutyear
           );
-      
-          const at= at1.filter(
+        } else if (this.state.SAP != 0) {
+          return allCert.filter(
             (item) => item.SAP.toNumber() == this.state.SAP
           );
-          return at.filter(
+        } else {
+          return allCert.filter(
             (item) => item.course.toLowerCase() == this.state.department
           );
-          
-         }
+        }
+      } else if (this.state.filters == 2) {
+        if (this.state.department != "") {
+          if (this.state.passoutyear != 0) {
+            const dt = allCert.filter(
+              (item) => item.course.toLowerCase() == this.state.department
+            );
+            return dt.filter(
+              (item) => item.passoutYear == this.state.passoutyear
+            );
+          } else {
+            const dt = allCert.filter(
+              (item) => item.course.toLowerCase() == this.state.department
+            );
+            return dt.filter(
+              (item) => item.SAP == this.state.SAP
+            );
+          }
+
+        } else {
+          const dt = allCert.filter(
+            (item) => item.passoutYear == this.state.passoutyear
+          );
+          return dt.filter(
+            (item) => item.SAP == this.state.SAP
+          );
+        }
+      } else {
+        console.log("yes its ");
+        const at1 = allCert.filter(
+          (item) => item.passoutYear.toNumber() == this.state.passoutyear
+        );
+
+        const at = at1.filter(
+          (item) => item.SAP.toNumber() == this.state.SAP
+        );
+        return at.filter(
+          (item) => item.course.toLowerCase() == this.state.department
+        );
+
+      }
     } else {
       return allCert.slice(indexOfFirstPost, indexOfLastPost);
     }
@@ -144,38 +144,38 @@ class DisplayAllCert extends Component {
     document.querySelector(".SAP-div").style.display = "block";
   };
   addYear = async () => {
-    if(this.state.passoutyear==0){
-      await this.setState({ filters: this.state.filters+1 });
+    if (this.state.passoutyear == 0) {
+      await this.setState({ filters: this.state.filters + 1 });
     }
     await this.setState({ query: "" });
     await this.setState({ passoutyear: this.state.py });
     await this.setState({ py: 0 });
-    
+
     document.querySelector(".passout-div").style.display = "none";
     console.log(this.state.passoutyear);
   };
   addDept = async () => {
-    if(this.state.department==""){
-      await this.setState({ filters: this.state.filters+1 });
+    if (this.state.department == "") {
+      await this.setState({ filters: this.state.filters + 1 });
     }
     await this.setState({ query: "" });
     await this.setState({ department: this.state.dept });
-    
+
     document.querySelector(".department-div").style.display = "none";
     console.log(this.state.department);
   };
   addSAP = async () => {
-    if(this.state.SAP==0){
-      await this.setState({ filters: this.state.filters+1 });
+    if (this.state.SAP == 0) {
+      await this.setState({ filters: this.state.filters + 1 });
     }
     await this.setState({ query: "" });
     await this.setState({ SAP: this.state.sp });
     await this.setState({ sp: 0 });
-   
+
     document.querySelector(".SAP-div").style.display = "none";
     console.log(this.state.SAP);
   };
-  clearFilters = async()=>{
+  clearFilters = async () => {
     await this.setState({ SAP: 0 });
     await this.setState({ sp: 0 });
     await this.setState({ department: "" });
@@ -184,20 +184,20 @@ class DisplayAllCert extends Component {
     await this.setState({ py: 0 });
     await this.setState({ filters: 0 });
   };
-  clearDept=async()=>{
+  clearDept = async () => {
     await this.setState({ department: "" });
     await this.setState({ dept: "" });
-    await this.setState({ filters: this.state.filters-1 });
+    await this.setState({ filters: this.state.filters - 1 });
   }
-  clearSAP=async()=>{
+  clearSAP = async () => {
     await this.setState({ SAP: 0 });
     await this.setState({ sp: 0 });
-    await this.setState({ filters: this.state.filters-1 });
+    await this.setState({ filters: this.state.filters - 1 });
   }
-  clearYear=async()=>{
+  clearYear = async () => {
     await this.setState({ passoutyear: 0 });
     await this.setState({ py: 0 });
-    await this.setState({ filters: this.state.filters-1 });
+    await this.setState({ filters: this.state.filters - 1 });
   }
   render() {
     return (
@@ -246,61 +246,61 @@ class DisplayAllCert extends Component {
                     </span>
                     Filter
                   </h5>
-                  {this.state.filters!=0 ? (
+                  {this.state.filters != 0 ? (
                     <>
-                    <button class="filter-btn" onClick={this.clearFilters}>
-                    <span>Clear all Filters</span>
-                  </button>
+                      <button class="filter-btn" onClick={this.clearFilters}>
+                        <span>Clear all Filters</span>
+                      </button>
                     </>
-                  ):(
+                  ) : (
                     <>
-                    <button class="filter-btn" disabled>
-                    <span>Clear all Filters</span>
-                  </button>
+                      <button class="filter-btn" disabled>
+                        <span>Clear all Filters</span>
+                      </button>
                     </>
                   )}
-                  
+
                 </div>
 
-                
+
                 <div className="add-filter" onClick={this.toggleFilterdiv}>
                   <span>
                     <span class="filter-plus">+</span> Add Filters
                   </span>
                 </div>
-                {this.state.filters!=0 ? (
+                {this.state.filters != 0 ? (
                   <>
-                  {this.state.department!="" ? (
-                    <>
-                    <div className="show-filters">
-                  <span class="display-filter">Department: {this.state.department.toUpperCase()} <span class="close-filter" onClick={this.clearDept}><img src={close} alt="" /></span></span>
-                  
-                </div>
-                    </>
-                  ):null}
+                    {this.state.department != "" ? (
+                      <>
+                        <div className="show-filters">
+                          <span class="display-filter">Department: {this.state.department.toUpperCase()} <span class="close-filter" onClick={this.clearDept}><img src={close} alt="" /></span></span>
 
-{this.state.SAP!=0 ? (
-                    <>
-                    <div className="show-filters">
-                  <span class="display-filter">SAP: {this.state.SAP} <span class="close-filter" onClick={this.clearSAP} ><img src={close} alt="" /></span></span>
-                  
-                </div>
-                    </>
-                  ):null}
+                        </div>
+                      </>
+                    ) : null}
 
-{this.state.passoutyear!="" ? (
-                    <>
-                    <div className="show-filters">
-                  <span class="display-filter">Passout year: {this.state.passoutyear} <span class="close-filter" onClick={this.clearYear} ><img src={close} alt="" /></span></span>
-                  
-                </div>
-                    </>
-                  ):null}
+                    {this.state.SAP != 0 ? (
+                      <>
+                        <div className="show-filters">
+                          <span class="display-filter">SAP: {this.state.SAP} <span class="close-filter" onClick={this.clearSAP} ><img src={close} alt="" /></span></span>
+
+                        </div>
+                      </>
+                    ) : null}
+
+                    {this.state.passoutyear != "" ? (
+                      <>
+                        <div className="show-filters">
+                          <span class="display-filter">Passout year: {this.state.passoutyear} <span class="close-filter" onClick={this.clearYear} ><img src={close} alt="" /></span></span>
+
+                        </div>
+                      </>
+                    ) : null}
                   </>
-                ):(
+                ) : (
                   <></>
                 )}
-                
+
               </div>
               <div class="fill">
                 <span onClick={this.dept}>Department</span>
@@ -431,7 +431,7 @@ class DisplayAllCert extends Component {
               />
 
               <div className="pagination-div">
-                {this.state.query.length == ""  ? (
+                {this.state.query.length == "" ? (
                   <Pagination
                     postsPerPage={this.state.postsPerPage}
                     totalPosts={this.props.allCert.length}
