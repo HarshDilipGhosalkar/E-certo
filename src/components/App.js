@@ -17,6 +17,7 @@ import UploadExcelPage from "./uploadExcel/uploadExcel";
 import RecipientsList from "./RecipientsList/RecipientsList";
 import Query from "./Query/Query";
 import emailjs from "emailjs-com";
+import { Navigate } from "react-router-dom";
 
 class App extends Component {
   constructor(props) {
@@ -276,22 +277,15 @@ class App extends Component {
                     <Navbar accountAddress={this.state.accountAddress} />
                   }
                 >
-                  <Route
-                    index
-                    element={
-                      <Home
-                        handleActiveLink={this.handleActiveLink}
-                        connectToMetamask={this.connectToMetamask}
-                        isMetamaskConnected={this.state.metamaskConnected}
-                      />
-                    }
-                  />
-
                   {this.state.accountAddress ==
                     "0x41e5226215F536572DDa181e797Deb1878D94e3D" ||
                   this.state.accountAddress ==
                     "0xB641B4F1795a4BfA2cC7056E08cFB2b199831248" ? (
                     <>
+                      <Route
+                        path="/"
+                        element={<Navigate replace to="/dashboard" />}
+                      />
                       <Route
                         path="/dashboard"
                         element={
@@ -322,7 +316,20 @@ class App extends Component {
                         }
                       />
                     </>
-                  ) : null}
+                  ) : (
+                    <>
+                      <Route
+                        index
+                        element={
+                          <Home
+                            handleActiveLink={this.handleActiveLink}
+                            connectToMetamask={this.connectToMetamask}
+                            isMetamaskConnected={this.state.metamaskConnected}
+                          />
+                        }
+                      />
+                    </>
+                  )}
 
                   <Route
                     path="details/:hash"
