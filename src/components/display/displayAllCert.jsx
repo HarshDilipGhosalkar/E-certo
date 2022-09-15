@@ -354,35 +354,27 @@ class DisplayAllCert extends Component {
                   }
                 />
                 <datalist id="browser">
-                  <option value="2000" />
+                  <option value="2001" />
+                  <option value="2002" />
+                  <option value="2003" />
+                  <option value="2004" />
+                  <option value="2005" />
+                  <option value="2006" />
+                  <option value="2007" />
+                  <option value="2008" />
+                  <option value="2009" />
+                  <option value="2010" />
                   <option value="2011" />
                   <option value="2012" />
                   <option value="2013" />
                   <option value="2014" />
-                  <option value="2000" />
-                  <option value="2011" />
-                  <option value="2012" />
-                  <option value="2013" />
-                  <option value="2014" />
-                  <option value="2000" />
-                  <option value="2011" />
-                  <option value="2012" />
-                  <option value="2013" />
-                  <option value="2014" />
-                  <option value="2000" />
-                  <option value="2011" />
-                  <option value="2012" />
-                  <option value="2013" />
-                  <option value="2014" />
-                  <option value="2000" />
-                  <option value="2011" />
-                  <option value="2012" />
-                  <option value="2013" />
-                  <option value="2014" />
-                  <option value="2000" />
-                  <option value="2011" />
-                  <option value="2012" />
-                  <option value="2013" />
+                  <option value="2015" />
+                  <option value="2016" />
+                  <option value="2017" />
+                  <option value="2018" />
+                  <option value="2019" />
+                  <option value="2020" />
+                  <option value="2021" />
                   <option value="2022" />
                 </datalist>
                 {this.state.py == 0 ? (
