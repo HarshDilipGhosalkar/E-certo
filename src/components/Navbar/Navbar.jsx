@@ -81,7 +81,7 @@ class Navbar extends Component {
                   this.props.accountAddress ==
                     "0xB641B4F1795a4BfA2cC7056E08cFB2b199831248" ? (
                     <>
-                      <Link to="/all" id="all" class="navbar-link">
+                      <Link to="/dashboard" id="all" class="navbar-link">
                         Dashboard
                       </Link>
                       <Link to="/certificates/recipients" id="create" class="navbar-link">

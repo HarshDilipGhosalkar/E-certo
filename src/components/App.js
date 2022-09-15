@@ -279,7 +279,7 @@ class App extends Component {
                     "0xB641B4F1795a4BfA2cC7056E08cFB2b199831248" ? (
                     <>
                       <Route
-                        path="/all"
+                        path="/dashboard"
                         element={
                           <DisplayAllCert
                             allCert={this.state.certs}
