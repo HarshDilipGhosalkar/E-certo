@@ -45,11 +45,23 @@ class Navbar extends Component {
                       >
                         Upload Spreadsheet
                       </Link>
+                      <Link
+                        to="/findmycertificate"
+                        id="query"
+                        class="navbar-link"
+                      >
+                        Query
+                      </Link>
                     </>
-                  ) : null}
-                  <Link to="/findmycertificate" id="query" class="navbar-link">
-                    Query
-                  </Link>
+                  ) : (
+                    <Link
+                      to="/findmycertificate"
+                      id="query"
+                      class="navbar-link"
+                    >
+                      Lost your Certficate?
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>
