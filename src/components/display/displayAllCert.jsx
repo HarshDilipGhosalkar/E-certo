@@ -175,6 +175,15 @@ class DisplayAllCert extends Component {
     document.querySelector(".SAP-div").style.display = "none";
     console.log(this.state.SAP);
   };
+  clearFilters = async()=>{
+    await this.setState({ SAP: 0 });
+    await this.setState({ sp: 0 });
+    await this.setState({ department: "" });
+    await this.setState({ dept: "" });
+    await this.setState({ passoutyear: 0 });
+    await this.setState({ py: 0 });
+    await this.setState({ filters: 0 });
+  };
   render() {
     return (
       <>
@@ -224,7 +233,7 @@ class DisplayAllCert extends Component {
                   </h5>
                   {this.state.filters!=0 ? (
                     <>
-                    <button class="filter-btn" >
+                    <button class="filter-btn" onClick={this.clearFilters}>
                     <span>Clear all Filters</span>
                   </button>
                     </>
