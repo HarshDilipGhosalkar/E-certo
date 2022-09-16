@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Ecerto",
   "author": "Harsh Ghosalkar - Jhenil Parihar",
-  "homepage": "https://github.com/jhenilparihar/DeepSpace",
+  "homepage": "https://github.com/HarshDilipGhosalkar/E-certo",
   "dependencies": {
     "@material-ui/core": "^4.12.3",
     "@material-ui/data-grid": "^4.0.0-alpha.37",
