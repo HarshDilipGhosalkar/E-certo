@@ -145,24 +145,22 @@ const DisplayCert = ({ AllCert, sendEmail, handleActiveLink }) => {
                   <h3>Vice Principal</h3>
                   </div>
                 </div>
+                <div className="last-div">
+                  <div className="sign-name">
+                  <h3>Certificate ID:</h3>
+                  <h4>{cert.transactionHash}</h4>
+                  </div>
+                  <div className="sign-name">
+                  <h3>Issue date</h3>
+                  <h4>{cert.issueDate}</h4>
+                  </div>
+                </div>
 
                 <div id="text-name">
                   <h1>{cert.name}</h1>
                   
                 </div>
-                {/* <div id="cert-id">
-                  <h1 id="styleIt">{cert.transactionHash}</h1>
-                </div> */}
-
                 
-                {/* <div id="course-text">
-                  <h1 class="data-fields">
-                    {cert.course} with {cert.percentage} %
-                  </h1>
-                </div> */}
-                {/* <div id="issueDate_text">
-                  <h1 class="data-fields">{cert.issueDate}</h1>
-                </div> */}
                 {/* {qr && (
                   <>
                     <img id="qr-code" width={100} height={100} src={qr} />
