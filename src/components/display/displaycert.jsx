@@ -173,11 +173,7 @@ const DisplayCert = ({ AllCert, sendEmail, handleActiveLink }) => {
                 <h3>Certificate ID: </h3>
                   <h4> {cert.transactionHash}</h4>
                 </div>
-                {/* {qr && (
-                  <>
-                    <img id="qr-code" width={50} height={50} src={qr} />
-                  </>
-                )} */}
+                
               </div>
               <div id="download-section">
                 <h1>Issued by</h1>

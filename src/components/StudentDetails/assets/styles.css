@@ -74,11 +74,12 @@
   vertical-align: middle;
 }
 .detail_label {
-  color: #0020ff;
-  font-size: 18px;
+  color: #3182ce;
+  font-size: 1.5rem;
+  font-weight: 800;
 }
 .detail_section .col {
-  border: 1px solid rgba(0, 0, 0, 0.4);
+  
   border-radius: 4px;
   margin: 10px;
   padding: 10px;
@@ -94,4 +95,7 @@
 }
 .powered_div span {
   font-size: 12px;
+}
+.heading_ h2{
+  font-weight: 800;
 }
