@@ -121,6 +121,13 @@ const DisplayCert = ({ AllCert, sendEmail, handleActiveLink }) => {
                 <div id="template">
                   <img class="image_template" src={bgImage} alt="" />
                 </div>
+                <div id="clg-name">
+                  <h1>SVKM's Shri Bhagubhai Mafatlal Polytechnic</h1>
+                </div>
+                <div id="recognition-text">
+                  <h1>CERTIFICATE</h1>
+                  <h3>OF DIPLOMA</h3>
+                </div>
                 <div id="cert-id">
                   <h1 id="styleIt">{cert.transactionHash}</h1>
                 </div>
