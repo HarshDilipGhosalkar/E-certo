@@ -282,8 +282,9 @@ class RecipientsList extends Component {
                                   </td>
                                   <td className="editing-row" scope="col">
                                     <input
-                                      type="text"
+                                      type="number"
                                       value={this.state.SAP}
+                                      min="0"
                                       onChange={(e) => {
                                         this.setState({ SAP: e.target.value });
                                       }}
@@ -308,7 +309,7 @@ class RecipientsList extends Component {
                                   </td>
                                   <td className="editing-row" scope="col">
                                     <input
-                                      type="text"
+                                      type="email"
                                       value={this.state.email}
                                       onChange={(e) => {
                                         this.setState({
@@ -322,8 +323,9 @@ class RecipientsList extends Component {
                                   </td>
                                   <td className="editing-row" scope="col">
                                     <input
-                                      type="text"
+                                      type="number"
                                       value={this.state.passoutYear}
+                                      min="1990"
                                       onChange={(e) => {
                                         this.setState({
                                           passoutYear: e.target.value,
@@ -336,8 +338,11 @@ class RecipientsList extends Component {
                                   </td>
                                   <td className="editing-row" scope="col">
                                     <input
-                                      type="text"
+                                      type="number"
                                       value={this.state.percentage}
+                                      min="0"
+                                      max="100"
+                                      step="0.01"
                                       onChange={(e) => {
                                         this.setState({
                                           percentage: e.target.value,
