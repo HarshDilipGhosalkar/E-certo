@@ -274,6 +274,7 @@ class RecipientsList extends Component {
                                         this.setState({
                                           name: e.target.value,
                                         });
+                                        
                                       }}
                                     />
                                     <p className="error-message">
@@ -294,15 +295,36 @@ class RecipientsList extends Component {
                                     </p>
                                   </td>
                                   <td className="editing-row" scope="col">
-                                    <input
-                                      type="text"
-                                      value={this.state.course}
+                                    <select
+                                      class="form-select"
                                       onChange={(e) => {
                                         this.setState({
                                           course: e.target.value,
                                         });
                                       }}
-                                    />
+                                    >
+                                      <option selected disabled>
+                                        {this.state.course}
+                                      </option>   
+                                      <option value="Computer Engineering">
+                                        Computer Engineering
+                                      </option>
+                                      <option value="Information Technology">
+                                        Information Technology
+                                      </option>
+                                      <option value="Civil Engineering">
+                                        Civil Engineering
+                                      </option>
+                                      <option value="Mechanical Engineering">
+                                        Mechanical Engineering
+                                      </option>
+                                      <option value="Plastic Engineering">
+                                        Plastic Engineering
+                                      </option>
+                                      <option value="Chemical Engineering">
+                                        Chemical Engineering
+                                      </option>
+                                    </select>
                                     <p className="error-message">
                                       {this.state.errorInput.course}
                                     </p>
