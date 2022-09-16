@@ -122,7 +122,7 @@ const DisplayCert = ({ AllCert, sendEmail, handleActiveLink }) => {
                   <img class="image_template" src={bgImage} alt="" />
                 </div>
                 <div id="clg-name">
-                  <h1>SVKM's Shri Bhagubhai Mafatlal Polytechnic</h1>
+                  <h1>SHRI BHAGUBHAI MAFATLAL POLYTECHNIC</h1>
                 </div>
                 <div id="recognition-text">
                   <h1>CERTIFICATE</h1>
@@ -132,29 +132,42 @@ const DisplayCert = ({ AllCert, sendEmail, handleActiveLink }) => {
                   <h1>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam cursus tempus, quam viverra sit augue faucibus. Lobortis felis facilisis tortor mol.
                   </h1>
-                
-
                 </div>
-                <div id="cert-id">
-                  <h1 id="styleIt">{cert.transactionHash}</h1>
+                <div className="sign-div">
+                  <div className="sign-name">
+                  <h1>Neeta Kadukar</h1>
+                  <hr />
+                  <h3>Principal</h3>
+                  </div>
+                  <div className="sign-name">
+                  <h1>Neeta Kadukar</h1>
+                  <hr />
+                  <h3>Vice Principal</h3>
+                  </div>
                 </div>
 
                 <div id="text-name">
                   <h1>{cert.name}</h1>
+                  
                 </div>
-                <div id="course-text">
+                {/* <div id="cert-id">
+                  <h1 id="styleIt">{cert.transactionHash}</h1>
+                </div> */}
+
+                
+                {/* <div id="course-text">
                   <h1 class="data-fields">
                     {cert.course} with {cert.percentage} %
                   </h1>
-                </div>
-                <div id="issueDate_text">
+                </div> */}
+                {/* <div id="issueDate_text">
                   <h1 class="data-fields">{cert.issueDate}</h1>
-                </div>
-                {qr && (
+                </div> */}
+                {/* {qr && (
                   <>
                     <img id="qr-code" width={100} height={100} src={qr} />
                   </>
-                )}
+                )} */}
               </div>
               <div id="download-section">
                 <h1>Issued by</h1>
