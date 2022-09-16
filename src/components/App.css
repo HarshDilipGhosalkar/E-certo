@@ -205,8 +205,8 @@ body {
 
 #qr-code {
   position: absolute;
-  bottom: 140px;
-  right: 346px;
+  bottom: 23%;
+    left: 31%;
 }
 
 #btn-div {
