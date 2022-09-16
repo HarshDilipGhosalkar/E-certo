@@ -449,7 +449,7 @@ class DisplayAllCert extends Component {
               />
 
               <div className="pagination-div">
-                {this.state.query.length == "" ? (
+                {this.state.modified == 0 ? (
                   <Pagination
                     postsPerPage={this.state.postsPerPage}
                     totalPosts={this.props.allCert.length}
