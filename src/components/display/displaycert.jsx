@@ -128,6 +128,13 @@ const DisplayCert = ({ AllCert, sendEmail, handleActiveLink }) => {
                   <h1>CERTIFICATE</h1>
                   <h3>OF DIPLOMA</h3>
                 </div>
+                <div id="normal-text">
+                  <h1>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam cursus tempus, quam viverra sit augue faucibus. Lobortis felis facilisis tortor mol.
+                  </h1>
+                
+
+                </div>
                 <div id="cert-id">
                   <h1 id="styleIt">{cert.transactionHash}</h1>
                 </div>
