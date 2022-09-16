@@ -334,9 +334,9 @@ class DisplayAllCert extends Component {
                   }
                 />
                 <datalist id="browsers">
-                  <option value="CSE" />
-                  <option value="IT" />
-                  <option value="EXTC" />
+                  <option value="COMPUTER SCIENCE" />
+                  <option value="INFORMATION TECHNOLOGY" />
+                  <option value="ELECTRONICHS" />
                   <option value="CIVIL" />
                   <option value="MECHANICAL" />
                   <option value="ELECTRICAL" />
