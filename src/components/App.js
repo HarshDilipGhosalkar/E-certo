@@ -153,9 +153,8 @@ class App extends Component {
       .send({ from: this.state.accountAddress })
       .on("confirmation", () => {
         localStorage.setItem(this.state.accountAddress, new Date().getTime());
-        this.setState({ loading: false, certificateCreated:true });
+        this.setState({ loading: false, certificateCreated: true });
         // window.location.reload();
-        
       });
   };
 
@@ -186,20 +185,21 @@ class App extends Component {
     }
   };
 
-  sendEmail = async (name, email, hash) => {
+  sendEmail = async (name, email, hash, department) => {
+    console.log("Here");
     var sendparams = {
       to_name: name,
+      department: department,
       reply_to: email,
-      message:
-        "Fllow Link for certificate : http://localhost:3000/certificate/" +
-        hash,
+      message: "http://localhost:3000/certificate/" + hash,
     };
+
     emailjs
       .send(
-        "service_346hywf",
-        "template_rfcp5s2",
+        "service_ysr730a",
+        "template_v0a1xxc",
         sendparams,
-        "lXbz1zzxsBOs8HcSZ"
+        "e9JuUEfd3BAc8hdQi"
       )
       .then(
         function(response) {
