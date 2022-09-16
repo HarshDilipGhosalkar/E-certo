@@ -122,20 +122,32 @@ body {
   color: #C5840B;
   font-family: 'Manrope', sans-serif;
 }
+
 .sign-div{
   position: absolute;
   top: 62%;
   left: 8%;
-  width: 50%;
+  width: 56%;
   height: 83px;
-  /* background-color: #00A0DC; */
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.last-div{
+  position: absolute;
+  top: 82%;
+  left: 8%;
+  width: 56%;
+  height: 83px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
 }
 .sign-name{
-  /* width: 22%; */
+  width:160px;
   height: 100%;
   /* background: rebeccapurple; */
 }
@@ -150,8 +162,16 @@ body {
   color: #58484E;
   font-size: 13px;
   font-family: 'Manrope', sans-serif;
-  font-weight: 600;
+  font-weight: bold;
   letter-spacing: 1px;
+}
+.sign-name h4{
+  text-align: left;
+  color: #C5840B;
+  font-size: 10px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: bold;
+  letter-spacing: px;
 }
 .sign-name hr{
   
