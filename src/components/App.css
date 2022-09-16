@@ -137,15 +137,27 @@ body {
 }
 .last-div{
   position: absolute;
-  top: 82%;
+  top: 78%;
   left: 8%;
   width: 56%;
-  height: 83px;
+  height: fit-content;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
 }
+.cert-hash{
+  position: absolute;
+  bottom: 5%;
+  left: 8%;
+  display: flex;
+}
+.cert-hash h3,
+.cert-hash h4{
+  margin-left: 5px;
+  align-self: flex-end;
+}
+
 #passoutyear-div{
   position: absolute;
   top: 34%;
@@ -170,6 +182,7 @@ body {
   font-size: 29px;
   font-family: 'Dancing Script', cursive;
 }
+.cert-hash h3,
 .sign-name h3{
   text-align: left;
   color: #58484E;
@@ -178,13 +191,14 @@ body {
   font-weight: bold;
   letter-spacing: 1px;
 }
+.cert-hash h4,
 .sign-name h4{
   text-align: left;
   color: #C5840B;
   font-size: 10px;
   font-family: 'Manrope', sans-serif;
   font-weight: bold;
-  letter-spacing: px;
+  letter-spacing: 1px;
 }
 .sign-name hr{
   

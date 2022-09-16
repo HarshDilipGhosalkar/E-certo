@@ -152,8 +152,12 @@ const DisplayCert = ({ AllCert, sendEmail, handleActiveLink }) => {
                 </div>
                 <div className="last-div">
                   <div className="sign-name">
-                  <h3>Certificate ID:</h3>
-                  <h4>{cert.transactionHash}</h4>
+                  
+                  {qr && (
+                  <>
+                    <img  width={75} height={75} src={qr} />
+                  </>
+                )}
                   </div>
                   <div className="sign-name">
                   <h3>Issue date</h3>
@@ -165,12 +169,15 @@ const DisplayCert = ({ AllCert, sendEmail, handleActiveLink }) => {
                   <h1>{cert.name}</h1>
                   
                 </div>
-                
-                {qr && (
+                <div className="cert-hash">
+                <h3>Certificate ID: </h3>
+                  <h4> {cert.transactionHash}</h4>
+                </div>
+                {/* {qr && (
                   <>
-                    <img id="qr-code" width={100} height={100} src={qr} />
+                    <img id="qr-code" width={50} height={50} src={qr} />
                   </>
-                )}
+                )} */}
               </div>
               <div id="download-section">
                 <h1>Issued by</h1>
