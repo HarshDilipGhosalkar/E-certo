@@ -274,7 +274,6 @@ class RecipientsList extends Component {
                                         this.setState({
                                           name: e.target.value,
                                         });
-                                        
                                       }}
                                     />
                                     <p className="error-message">
@@ -305,7 +304,7 @@ class RecipientsList extends Component {
                                     >
                                       <option selected disabled>
                                         {this.state.course}
-                                      </option>   
+                                      </option>
                                       <option value="Computer Engineering">
                                         Computer Engineering
                                       </option>
