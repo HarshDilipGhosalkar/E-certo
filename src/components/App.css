@@ -108,7 +108,19 @@ body {
   font-size: 59px;
   color: #58484E;
 }
-
+#normal-text{
+  position: absolute;
+  top: 52%;
+  left: 8%;
+  text-align: left; 
+  width: 45%;
+}
+#normal-text h1{
+  font-size: 12px;
+  font-weight: 600;
+  color: #C5840B;
+  font-family: 'Manrope', sans-serif;
+}
 #course-text {
   position: absolute;
   top: 559px;
