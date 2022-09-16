@@ -62,24 +62,14 @@ const StudentDetail = ({ AllCert, handleActiveLink }) => {
                           <h6>{certificateDetail.course}</h6>
                         </div>
                         <div className="col">
-                          <h6 className="detail_label">Education</h6>
-                          <h6>{certificateDetail.highestDegree}</h6>
-                        </div>
-                      </div>
-                      <div className="row">
-                        <div className="col">
                           <h6 className="detail_label">Sap Number</h6>
                           <h6>{certificateDetail.SAP.toNumber()}</h6>
                         </div>
-                        <div className="col">
-                          <h6 className="detail_label">Percentage</h6>
-                          <h6>{certificateDetail.percentage}</h6>
-                        </div>
                       </div>
                       <div className="row">
                         <div className="col">
-                          <h6 className="detail_label">Date of Join</h6>
-                          <h6>-</h6>
+                          <h6 className="detail_label">Percentage</h6>
+                          <h6>{certificateDetail.percentage}</h6>
                         </div>
                         <div className="col">
                           <h6 className="detail_label">Passout Year</h6>
