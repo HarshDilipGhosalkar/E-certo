@@ -95,7 +95,8 @@ const DisplayCert = ({ AllCert, sendEmail, handleActiveLink }) => {
         margin: 2,
         color: {
           dark: "#335383FF",
-          light: "#FFCA60FF",
+          light: "#fdf9f3FF",
+          
         },
       },
       (err, url) => {
@@ -161,11 +162,11 @@ const DisplayCert = ({ AllCert, sendEmail, handleActiveLink }) => {
                   
                 </div>
                 
-                {/* {qr && (
+                {qr && (
                   <>
                     <img id="qr-code" width={100} height={100} src={qr} />
                   </>
-                )} */}
+                )}
               </div>
               <div id="download-section">
                 <h1>Issued by</h1>
