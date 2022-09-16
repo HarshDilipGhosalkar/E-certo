@@ -184,7 +184,7 @@ const DisplayCert = ({ AllCert, sendEmail, handleActiveLink }) => {
                       id="image-btn"
                       class="linkedin-btn email"
                       onClick={() =>
-                        sendEmail(cert.name, cert.email, cert.transactionHash)
+                        sendEmail(cert.name, cert.email, cert.transactionHash, cert.course)
                       }
                     >
                       Send Email
