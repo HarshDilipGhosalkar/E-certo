@@ -93,7 +93,7 @@ body {
 }
 #clg-name h1{
   font-family: 'Cormorant', serif;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 600;
 }
 #text-name {
@@ -113,13 +113,50 @@ body {
   top: 52%;
   left: 8%;
   text-align: left; 
-  width: 45%;
+  width: 60%;
 }
 #normal-text h1{
+  letter-spacing: 1px;
   font-size: 12px;
   font-weight: 600;
   color: #C5840B;
   font-family: 'Manrope', sans-serif;
+}
+.sign-div{
+  position: absolute;
+  top: 62%;
+  left: 8%;
+  width: 50%;
+  height: 83px;
+  /* background-color: #00A0DC; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.sign-name{
+  /* width: 22%; */
+  height: 100%;
+  /* background: rebeccapurple; */
+}
+.sign-name h1{
+  text-align: left;
+  color: #58484E;
+  font-size: 29px;
+  font-family: 'Dancing Script', cursive;
+}
+.sign-name h3{
+  text-align: left;
+  color: #58484E;
+  font-size: 13px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.sign-name hr{
+  
+  border-top: 2px solid black;
+  
 }
 #course-text {
   position: absolute;
