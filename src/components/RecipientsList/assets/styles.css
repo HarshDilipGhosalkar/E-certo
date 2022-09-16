@@ -131,6 +131,7 @@ input::-webkit-inner-spin-button {
   font-size: 13px;
   height: 10px;
 }
+.recipient-table tr select,
 .recipient-table tr input {
   height: 2rem;
   padding: 3px 0.75rem;
