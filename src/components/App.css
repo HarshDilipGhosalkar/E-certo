@@ -354,6 +354,7 @@ body {
   color: #2b6cb0;
   background: transparent;
   margin-top: 0.5rem;
+  max-width: 100%;
 }
 
 .image-btn:hover {
@@ -873,4 +874,25 @@ position: relative;
 .close-filter img{
   width: 12px;
   height: 12px;
+}
+
+@media only screen and (max-width: 1350px) {
+  #innerdiv {
+    background-color: aqua;
+    height: 640px;
+    width: 900px;
+    margin: 5% auto 0 auto;
+    position: relative;
+  
+  }
+  #download-section {
+    width: 20%;
+    height: 650px;
+    background-color: white;
+    margin: 30px;
+    border-radius: 10px;
+    padding: 28px 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  
+  }
 }
