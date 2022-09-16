@@ -43,7 +43,7 @@ class DisplayAllCert extends Component {
 
   emailLoop = (certList) => {
     certList.forEach((cert) => {
-      this.props.sendEmail(cert.name, cert.email, cert.transactionHash);
+      this.props.sendEmail(cert.name, cert.email, cert.transactionHash, cert.course);
     });
   };
   enableState = () => {
