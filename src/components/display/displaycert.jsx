@@ -13,6 +13,7 @@ import pdf from "./pdf.svg";
 import linkedin from "./linkedin.svg";
 import qrcode from "./qr_code.svg";
 import email from "./email.svg";
+import bgImage from "./assets/certificate_background.png"
 import {
   FacebookShareButton,
   WhatsappShareButton,
@@ -118,7 +119,7 @@ const DisplayCert = ({ AllCert, sendEmail, handleActiveLink }) => {
             <div id="flex-section">
               <div id="innerdiv">
                 <div id="template">
-                  <img class="image_template" src={temp1} alt="" />
+                  <img class="image_template" src={bgImage} alt="" />
                 </div>
                 <div id="cert-id">
                   <h1 id="styleIt">{cert.transactionHash}</h1>
