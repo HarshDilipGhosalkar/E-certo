@@ -66,18 +66,47 @@ body {
   width: 100%;
   height: 100%;
 }
-
+#clg-name {
+  position: absolute;
+  top: 11%;
+  left: 8%;
+  text-align: center;
+  color: #58484E;
+}
+#recognition-text{
+  position: absolute;
+  top: 22%;
+  left: 8%;
+  text-align: left;
+  color: #58484E;
+  display: block;
+}
+#recognition-text h1{
+  font-size: 40px;
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+}
+#recognition-text h3{
+  font-size: 22px;
+  font-family: 'Cinzel', serif;
+  font-weight: 400;
+}
+#clg-name h1{
+  font-family: 'Cormorant', serif;
+  font-size: 30px;
+  font-weight: 600;
+}
 #text-name {
   position: absolute;
-  top: 37%;
-  width: 100%;
-  text-align: center;
+  top: 40%;
+  left: 8%;
+  text-align: left;
 }
 
 #text-name h1 {
   font-family: 'Alex Brush', cursive;
-  font-size: 57px;
-  color: #FFCA60;
+  font-size: 59px;
+  color: #58484E;
 }
 
 #course-text {
