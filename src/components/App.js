@@ -1,23 +1,23 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+import Web3 from "web3";
+import emailjs from "emailjs-com";
+
 import "./bootstrap/css/bootstrap.css";
 import "./App.css";
-import Web3 from "web3";
 import Ecertify from "../abis/Ecertify.json";
-import ConnectToMetamask from "./ConnectMetamask/ConnectToMetamask";
 import Loading from "./Loading/Loading";
 import NoPage from "./NoPage/NoPage";
 import Home from "./Home/Home";
 import ContractNotDeployed from "./ContractNotDeployed/ContractNotDeployed";
 import Navbar from "./Navbar/Navbar";
-import DisplayAllCert from "./display/displayAllCert";
+import DisplayAllCert from "./Dashboard/displayAllCert";
 import StudentDetail from "./StudentDetails/StudentDetail";
 import DisplayCert from "./DisplayCertificate/displaycert";
 import UploadExcelPage from "./uploadExcel/uploadExcel";
 import RecipientsList from "./RecipientsList/RecipientsList";
 import Query from "./Query/Query";
-import emailjs from "emailjs-com";
-import { Navigate } from "react-router-dom";
 
 class App extends Component {
   constructor(props) {
