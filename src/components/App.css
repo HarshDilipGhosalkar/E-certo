@@ -713,7 +713,8 @@ input{
     color:#40a9ff;
     text-shadow: none;
 }
-.filter-btn:disabled{
+.filter-btn:disabled,
+.filter-btn:disabled:hover{
   background: transparent;
     border-color: transparent;
     box-shadow: none;
