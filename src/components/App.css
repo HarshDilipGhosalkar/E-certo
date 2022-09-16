@@ -46,8 +46,8 @@ body {
 
 #innerdiv {
   background-color: aqua;
-  height: 1124px;
-  width: 795px;
+  height: 676px;
+  width: 957px;
   margin: 5% auto 0 auto;
   position: relative;
 
@@ -57,6 +57,14 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#template img{
+  object-fit: fill;
+  width: 100%;
+  height: 100%;
 }
 
 #text-name {
