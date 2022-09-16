@@ -317,25 +317,7 @@ class DisplayAllCert extends Component {
                 <span onClick={this.SAP}>SAP Id</span>
               </div>
               <div className="department-div">
-                {/* <input
-                  type="text"
-                  list="browsers"
-                  placeholder="Select Department"
-                  onChange={(event) =>
-                    this.setState({ dept: event.target.value.toLowerCase() })
-                  }
-                />
-                <datalist id="browsers">
-                  <option value="COMPUTER SCIENCE" />
-                  <option value="INFORMATION TECHNOLOGY" />
-                  <option value="ELECTRONICHS" />
-                  <option value="CIVIL" />
-                  <option value="MECHANICAL" />
-                  <option value="ELECTRICAL" />
-                  <option value="PLASTIC" />
-                  <option value="INDUSTRIAL" />
-                  <option value="DIGITAL" />
-                </datalist> */}
+          
                 <select
                                       class="form-select"
                                       onChange={(event) =>
