@@ -146,6 +146,19 @@ body {
   justify-content: space-between;
   align-items: flex-end;
 }
+#passoutyear-div{
+  position: absolute;
+  top: 34%;
+  right: 14%;
+}
+#passoutyear-div h1{
+  text-align: center;
+  color: #58484E;
+  font-size: 13px;
+  font-weight: bold;
+  font-family: 'Cinzel', serif;
+
+}
 .sign-name{
   width:160px;
   height: 100%;
