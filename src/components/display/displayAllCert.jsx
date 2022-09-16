@@ -325,7 +325,7 @@ class DisplayAllCert extends Component {
                 <span onClick={this.SAP}>SAP Id</span>
               </div>
               <div className="department-div">
-                <input
+                {/* <input
                   type="text"
                   list="browsers"
                   placeholder="Select Department"
@@ -343,7 +343,35 @@ class DisplayAllCert extends Component {
                   <option value="PLASTIC" />
                   <option value="INDUSTRIAL" />
                   <option value="DIGITAL" />
-                </datalist>
+                </datalist> */}
+                <select
+                                      class="form-select"
+                                      onChange={(event) =>
+                                        this.setState({ dept: event.target.value.toLowerCase() })
+                                      }
+                                    >
+                                      <option selected disabled>
+                                        Department
+                                      </option>
+                                      <option value="Computer Engineering">
+                                        Computer Engineering
+                                      </option>
+                                      <option value="Information Technology">
+                                        Information Technology
+                                      </option>
+                                      <option value="Civil Engineering">
+                                        Civil Engineering
+                                      </option>
+                                      <option value="Mechanical Engineering">
+                                        Mechanical Engineering
+                                      </option>
+                                      <option value="Plastic Engineering">
+                                        Plastic Engineering
+                                      </option>
+                                      <option value="Chemical Engineering">
+                                        Chemical Engineering
+                                      </option>
+                                    </select>
                 {this.state.dept.length == "" ? (
                   <>
                     <button
