@@ -225,14 +225,6 @@ class DisplayAllCert extends Component {
               <span class="cer1">Certificates</span>
               <h1 class="cer2">Certificates</h1>
             </div>
-            <div className="issuer-div">
-              <button className="issuer-btn">
-                <span>
-                  <img src={add} alt="" />
-                </span>
-                <span>Issue Certificate</span>
-              </button>
-            </div>
           </div>
           <div className="lower-div">
             <div className="filter-div">

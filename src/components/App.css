@@ -438,8 +438,7 @@ body {
   justify-content: space-between;
   align-items: flex-end;
 }
-.tag-div,
-.issuer-div{
+.tag-div{
   width: 10%;
 height: 100%;
 background-color: #ffffff;
@@ -448,28 +447,6 @@ background-color: #ffffff;
   width: 100px;
 }
 
-.issuer-div{
-  width: 13%;
-  position: relative;
-}
-.issuer-btn{
-  background: #40a9ff;
-  border: #40a9ff;
-  font-size: 14px;
-  text-align: center;
-  color: #fff;
-  width: 100%;
-  height: 50%;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
-.issuer-btn span{
-  margin-left: 8px;
-}
-.issuer-btn span img{
-  width: 20px;
-}
 .cer1{
   font-size: 14px;
   color: black;
