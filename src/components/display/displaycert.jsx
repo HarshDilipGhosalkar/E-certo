@@ -130,7 +130,7 @@ const DisplayCert = ({ AllCert, sendEmail, handleActiveLink }) => {
                   <h3>OF DIPLOMA</h3>
                 </div>
                 <div id="passoutyear-div">
-                  <h1>VERIFIED</h1>
+                  <h1>PASSOUT YEAR</h1>
                   <h1>{cert.passoutYear.toNumber()}</h1>
                 </div>
                 <div id="normal-text">
