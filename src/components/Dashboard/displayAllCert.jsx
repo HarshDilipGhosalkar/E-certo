@@ -64,11 +64,7 @@ class DisplayAllCert extends Component {
     const indexOfLastPost = this.state.currentPage * this.state.postsPerPage;
     const indexOfFirstPost = indexOfLastPost - this.state.postsPerPage;
     const allCert = this.props.allCert;
-    // if (this.state.query.length == "") {
-    //   return allCert.slice(indexOfFirstPost, indexOfLastPost);
-    // } else {
-    //   return allCert.filter((item) => item.name.toLowerCase().includes(this.state.query));
-    // }
+    
     if (this.state.query.length != "") {
       return allCert.filter((item) =>
         item.name.toLowerCase().includes(this.state.query)

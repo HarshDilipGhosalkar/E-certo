@@ -875,7 +875,7 @@ position: relative;
 
 @media only screen and (max-width: 1350px) {
   #innerdiv {
-    background-color: aqua;
+    background-color: white;
     height: 640px;
     width: 900px;
     margin: 5% auto 0 auto;

@@ -154,7 +154,7 @@ const DisplayCert = ({ AllCert, sendEmail, handleActiveLink }) => {
                   <div className="sign-name">
                     {qr && (
                       <>
-                        <img width={75} height={75} src={qr} />
+                        <img width={60} height={60} src={qr} />
                       </>
                     )}
                   </div>
