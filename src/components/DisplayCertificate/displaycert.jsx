@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import QRCode from "qrcode";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-import { Button } from "@material-ui/core";
 import photo from "./assets/photo.svg";
 import download from "./assets/download.svg";
 import download2 from "./assets/download2.svg";
@@ -182,7 +181,7 @@ const DisplayCert = ({ AllCert, sendEmail, handleActiveLink }) => {
                 <h3>Download</h3>
                 <div class="download-btns">
                   <div class="btn2">
-                    <Button
+                    <button
                       id="image-btn"
                       class="image-btn"
                       onClick={() => imageprint(cert.name)}
@@ -190,8 +189,8 @@ const DisplayCert = ({ AllCert, sendEmail, handleActiveLink }) => {
                       As Image
                       <img id="photo-svg" src={photo} alt="" />
                       <img id="photo-svg" src={download} alt="" />
-                    </Button>
-                    <Button
+                    </button>
+                    <button
                       class="pdf-btn"
                       id="image-btn"
                       onClick={() => onclickprint(cert.name)}
@@ -199,19 +198,19 @@ const DisplayCert = ({ AllCert, sendEmail, handleActiveLink }) => {
                       As Pdf
                       <img id="photo-svg" src={pdf} alt="" />
                       <img id="photo-svg" src={download2} alt="" />
-                    </Button>
+                    </button>
                     {qr && (
                       <>
                         <a class="btn2" href={qr} download="qrcode.png">
-                          <Button class="image-btn" id="image-btn">
+                          <button class="image-btn" id="image-btn">
                             Download Qr code
                             <img id="photo-svg" src={qrcode} alt="" />
                             <img id="photo-svg" src={download} alt="" />
-                          </Button>
+                          </button>
                         </a>
                       </>
                     )}
-                    <Button
+                    <button
                       id="image-btn"
                       class="linkedin-btn email"
                       onClick={() =>
@@ -225,11 +224,11 @@ const DisplayCert = ({ AllCert, sendEmail, handleActiveLink }) => {
                     >
                       Send Email
                       <img id="photo-svg" src={email} alt="" />
-                    </Button>
-                    <Button id="image-btn" class="linkedin-btn">
+                    </button>
+                    <button id="image-btn" class="linkedin-btn">
                       Add to LinkedIn
                       <img id="photo-svg" src={linkedin} alt="" />
-                    </Button>
+                    </button>
                   </div>
                   <hr id="hr2" />
                   <h3>Share</h3>
