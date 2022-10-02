@@ -56,7 +56,7 @@ class RecipientsList extends Component {
       const worksheet = workbook.Sheets[worksheetName];
       const data = XLSX.utils.sheet_to_json(worksheet);
       var excelData = [];
-      data.map((details) => {
+      data.map((details) =>
         excelData.push({
           name: details.name,
           course: details.course,
@@ -65,8 +65,8 @@ class RecipientsList extends Component {
           percentage: details.percentage,
           SAP: details.SAP,
           contact: details.contact,
-        });
-      });
+        })
+      );
       this.setState({ excelData: excelData });
     } else {
       this.setState({ excelData: null });
@@ -137,9 +137,7 @@ class RecipientsList extends Component {
       "passoutYear",
       "percentage",
       "contact",
-    ].map((key) => {
-      length += this.state.errorInput[key].length;
-    });
+    ].map((key) => (length += this.state.errorInput[key].length));
 
     if (length === 0) {
       return true;
@@ -256,17 +254,17 @@ class RecipientsList extends Component {
                               {this.state.editRowData !== data &&
                               this.state.newData !== data ? (
                                 <>
-                                  <td scope="col">{data.name}</td>
-                                  <td scope="col">{data.SAP}</td>
-                                  <td scope="col">{data.course}</td>
-                                  <td scope="col">{data.email}</td>
-                                  <td scope="col">{data.passoutYear}</td>
-                                  <td scope="col">{data.percentage}</td>
-                                  <td scope="col">{data.contact}</td>
+                                  <td>{data.name}</td>
+                                  <td>{data.SAP}</td>
+                                  <td>{data.course}</td>
+                                  <td>{data.email}</td>
+                                  <td>{data.passoutYear}</td>
+                                  <td>{data.percentage}</td>
+                                  <td>{data.contact}</td>
                                 </>
                               ) : (
                                 <>
-                                  <td className="editing-row" scope="col">
+                                  <td className="editing-row">
                                     <input
                                       type="text"
                                       value={this.state.name}
@@ -280,7 +278,7 @@ class RecipientsList extends Component {
                                       {this.state.errorInput.name}
                                     </p>
                                   </td>
-                                  <td className="editing-row" scope="col">
+                                  <td className="editing-row">
                                     <input
                                       type="number"
                                       value={this.state.SAP}
@@ -293,7 +291,7 @@ class RecipientsList extends Component {
                                       {this.state.errorInput.SAP}
                                     </p>
                                   </td>
-                                  <td className="editing-row" scope="col">
+                                  <td className="editing-row">
                                     <select
                                       class="form-select"
                                       onChange={(e) => {
@@ -328,7 +326,7 @@ class RecipientsList extends Component {
                                       {this.state.errorInput.course}
                                     </p>
                                   </td>
-                                  <td className="editing-row" scope="col">
+                                  <td className="editing-row">
                                     <input
                                       type="email"
                                       value={this.state.email}
@@ -342,7 +340,7 @@ class RecipientsList extends Component {
                                       {this.state.errorInput.email}
                                     </p>
                                   </td>
-                                  <td className="editing-row" scope="col">
+                                  <td className="editing-row">
                                     <input
                                       type="number"
                                       value={this.state.passoutYear}
@@ -357,7 +355,7 @@ class RecipientsList extends Component {
                                       {this.state.errorInput.passoutYear}
                                     </p>
                                   </td>
-                                  <td className="editing-row" scope="col">
+                                  <td className="editing-row">
                                     <input
                                       type="number"
                                       value={this.state.percentage}
@@ -374,7 +372,7 @@ class RecipientsList extends Component {
                                       {this.state.errorInput.percentage}
                                     </p>
                                   </td>
-                                  <td className="editing-row" scope="col">
+                                  <td className="editing-row">
                                     <input
                                       type="text"
                                       value={this.state.contact}

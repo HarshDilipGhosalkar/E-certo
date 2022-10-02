@@ -18,7 +18,7 @@ const StudentDetail = ({ AllCert, handleActiveLink }) => {
   const { hash } = useParams();
   let certificateDetail;
   AllCert.forEach((cert) => {
-    if (cert.transactionHash == hash) {
+    if (cert.transactionHash === hash) {
       certificateDetail = cert;
     }
   });

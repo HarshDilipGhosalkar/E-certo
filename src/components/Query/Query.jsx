@@ -39,7 +39,7 @@ function Query({ sendEmail, certficateExist, AllCert, handleActiveLink }) {
   const getCertificateSap = async () => {
     let certificateDetail = "";
     AllCert.forEach((cert) => {
-      if (cert.SAP == sapId) {
+      if (cert.SAP === sapId) {
         document.querySelector(".alertbox_sap").style.display = "none";
         certificateDetail = cert;
         console.log(cert);

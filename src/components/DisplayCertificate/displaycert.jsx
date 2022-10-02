@@ -32,12 +32,12 @@ const DisplayCert = ({ AllCert, sendEmail, handleActiveLink }) => {
   const shareUrl = "http://localhost:3000/certificate/" + hash;
   let cert;
   AllCert.forEach((c) => {
-    if (c.transactionHash == hash) {
+    if (c.transactionHash === hash) {
       cert = c;
     }
   });
 
-  const [url, setUrl] = useState("http://localhost:3000/details/" + hash);
+  const url = "http://localhost:3000/details/" + hash;
 
   const [qr, setQr] = useState("");
   const [mounted, setMounted] = useState(false);
@@ -154,7 +154,7 @@ const DisplayCert = ({ AllCert, sendEmail, handleActiveLink }) => {
                   <div className="sign-name">
                     {qr && (
                       <>
-                        <img width={60} height={60} src={qr} />
+                        <img width={60} height={60} src={qr} alt="Qr Code" />
                       </>
                     )}
                   </div>

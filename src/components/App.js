@@ -133,7 +133,7 @@ class App extends Component {
     this.setState({ loading: true });
     const issueDate = await this.getCuurentDate();
     var dataStruc = [];
-    struct.map((details) => {
+    struct.map((details) =>
       dataStruc.push({
         certid: 0,
         transactionHash: "0x00",
@@ -145,8 +145,8 @@ class App extends Component {
         SAP: details.SAP,
         contact: details.contact,
         issueDate: issueDate,
-      });
-    });
+      })
+    );
 
     this.state.EcertoContract.methods
       .addInBulk(dataStruc)
@@ -168,9 +168,9 @@ class App extends Component {
 
   handleActiveLink = (id) => {
     if (
-      this.state.accountAddress ==
+      this.state.accountAddress ===
         "0x41e5226215F536572DDa181e797Deb1878D94e3D" ||
-      this.state.accountAddress == "0xB641B4F1795a4BfA2cC7056E08cFB2b199831248"
+      this.state.accountAddress === "0xB641B4F1795a4BfA2cC7056E08cFB2b199831248"
     ) {
       document.querySelector("#all").classList.remove("nav-active");
       document.querySelector("#create").classList.remove("nav-active");
@@ -235,9 +235,9 @@ class App extends Component {
                     <Navbar accountAddress={this.state.accountAddress} />
                   }
                 >
-                  {this.state.accountAddress ==
+                  {this.state.accountAddress ===
                     "0x41e5226215F536572DDa181e797Deb1878D94e3D" ||
-                  this.state.accountAddress ==
+                  this.state.accountAddress ===
                     "0xB641B4F1795a4BfA2cC7056E08cFB2b199831248" ? (
                     <>
                       <Route

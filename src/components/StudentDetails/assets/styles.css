@@ -1,6 +1,5 @@
 .details_page {
   background-color: #f0f2f5;
-
 }
 .details_component {
   display: flex;
@@ -79,12 +78,10 @@
   font-weight: 800;
 }
 .detail_section .col {
-  
   border-radius: 4px;
   margin: 10px;
   padding: 10px;
-  padding-left:20px;
-
+  padding-left: 20px;
 }
 .follow_div {
   text-align: center;
@@ -96,6 +93,6 @@
 .powered_div span {
   font-size: 12px;
 }
-.heading_ h2{
+.heading_ h2 {
   font-weight: 800;
 }
