@@ -1,10 +1,8 @@
-import React from "react";
-
 export const ValidateName = (name) => {
   if (name.length < 1) {
     return ["name", "Field Required"];
   } else {
-    return "name", "";
+    return ["name", ""];
   }
 };
 
@@ -77,7 +75,7 @@ export const ValidateContact = (contact) => {
 };
 
 const invalidEmail = (mail) => {
-  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+  if (/^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
     return false;
   }
   return true;

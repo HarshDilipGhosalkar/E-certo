@@ -30,10 +30,13 @@ class App extends Component {
       metamaskConnected: false,
       contractDetected: false,
       certCount: 0,
-      certs: [],
+      AcademicCertificate: [],
+      EventCertificate: [],
       transactionHash: "",
       excelFile: null,
       certificateCreated: false,
+      certificateType: null,
+      createType: null,
     };
   }
 
@@ -80,13 +83,29 @@ class App extends Component {
         const certCount = await EcertoContract.methods
           .certificateCounter()
           .call();
+
+        const eventCertCount = await EcertoContract.methods
+          .eventCertificateCounter()
+          .call();
+
         this.setState({ certCount });
         for (var i = 1; i <= certCount; i++) {
           const certificate = await EcertoContract.methods
             .allCertificates(i)
             .call();
           this.setState({
-            certs: [...this.state.certs, certificate],
+            AcademicCertificate: [
+              ...this.state.AcademicCertificate,
+              certificate,
+            ],
+          });
+        }
+        for (var i = 1; i <= eventCertCount; i++) {
+          const certificate = await EcertoContract.methods
+            .allEventCertificates(i)
+            .call();
+          this.setState({
+            EventCertificate: [...this.state.EventCertificate, certificate],
           });
         }
       } else {
@@ -133,7 +152,7 @@ class App extends Component {
     this.setState({ loading: true });
     const issueDate = await this.getCuurentDate();
     var dataStruc = [];
-    struct.map((details) => {
+    struct.map((details) =>
       dataStruc.push({
         certid: 0,
         transactionHash: "0x00",
@@ -145,11 +164,46 @@ class App extends Component {
         SAP: details.SAP,
         contact: details.contact,
         issueDate: issueDate,
-      });
-    });
+      })
+    );
 
     this.state.EcertoContract.methods
       .addInBulk(dataStruc)
+      .send({ from: this.state.accountAddress })
+      .on("confirmation", () => {
+        localStorage.setItem(this.state.accountAddress, new Date().getTime());
+        this.setState({ loading: false, certificateCreated: true });
+        // window.location.reload();
+      });
+  };
+
+  createBulkEventCertificate = async (
+    struct,
+    eventName,
+    eventType,
+    eventDate
+  ) => {
+    this.setState({ loading: true });
+    const issueDate = await this.getCuurentDate();
+    var dataStruc = [];
+    struct.map((details) =>
+      dataStruc.push({
+        certid: 0,
+        transactionHash: "0x00",
+        name: details.name,
+        email: details.email,
+        domain: details.domain,
+        contact: details.contact,
+        eventName: eventName,
+        eventType: eventType,
+        eventDate,
+        eventDate,
+        issueDate: issueDate,
+      })
+    );
+
+    this.state.EcertoContract.methods
+      .addEventInBulk(dataStruc)
       .send({ from: this.state.accountAddress })
       .on("confirmation", () => {
         localStorage.setItem(this.state.accountAddress, new Date().getTime());
@@ -168,13 +222,12 @@ class App extends Component {
 
   handleActiveLink = (id) => {
     if (
-      this.state.accountAddress ==
+      this.state.accountAddress ===
         "0x41e5226215F536572DDa181e797Deb1878D94e3D" ||
-      this.state.accountAddress == "0xB641B4F1795a4BfA2cC7056E08cFB2b199831248"
+      this.state.accountAddress === "0xB641B4F1795a4BfA2cC7056E08cFB2b199831248"
     ) {
       document.querySelector("#all").classList.remove("nav-active");
       document.querySelector("#create").classList.remove("nav-active");
-      document.querySelector("#upload").classList.remove("nav-active");
     }
 
     document.querySelector("#query").classList.remove("nav-active");
@@ -216,7 +269,12 @@ class App extends Component {
     this.setState({ excelFile: excelFile });
   };
 
+  modalFormHandle = (createType, certificateType) => {
+    this.setState({ certificateType: certificateType, createType: createType });
+  };
+
   render() {
+    console.log(this.state.EventCertificate);
     return (
       <>
         {!this.state.metamaskConnected ? (
@@ -235,9 +293,9 @@ class App extends Component {
                     <Navbar accountAddress={this.state.accountAddress} />
                   }
                 >
-                  {this.state.accountAddress ==
+                  {this.state.accountAddress ===
                     "0x41e5226215F536572DDa181e797Deb1878D94e3D" ||
-                  this.state.accountAddress ==
+                  this.state.accountAddress ===
                     "0xB641B4F1795a4BfA2cC7056E08cFB2b199831248" ? (
                     <>
                       <Route
@@ -248,7 +306,7 @@ class App extends Component {
                         path="/dashboard"
                         element={
                           <DisplayAllCert
-                            allCert={this.state.certs}
+                            allCert={this.state.AcademicCertificate}
                             sendEmail={this.sendEmail}
                             handleActiveLink={this.handleActiveLink}
                           />
@@ -257,18 +315,36 @@ class App extends Component {
                       <Route
                         path="/upload-spreadsheet"
                         element={
-                          <UploadExcelPage
-                            displayRecipientsList={this.displayRecipientsList}
-                            handleActiveLink={this.handleActiveLink}
-                          />
+                          <>
+                            {this.state.createType === "excel" ? (
+                              <UploadExcelPage
+                                displayRecipientsList={
+                                  this.displayRecipientsList
+                                }
+                                certificateType={this.state.certificateType}
+                                handleActiveLink={this.handleActiveLink}
+                              />
+                            ) : (
+                              <Navigate
+                                replace
+                                to="../certificates/recipients"
+                              />
+                            )}
+                          </>
                         }
                       />
                       <Route
                         path="certificates/recipients"
                         element={
                           <RecipientsList
+                            certificateType={this.state.certificateType}
+                            createType={this.state.createType}
+                            modalFormHandle={this.modalFormHandle}
                             excelFile={this.state.excelFile}
                             createBulkCertificate={this.createBulkCertificate}
+                            createBulkEventCertificate={
+                              this.createBulkEventCertificate
+                            }
                             handleActiveLink={this.handleActiveLink}
                             certificateCreated={this.state.certificateCreated}
                           />
@@ -294,7 +370,7 @@ class App extends Component {
                     path="details/:hash"
                     element={
                       <StudentDetail
-                        AllCert={this.state.certs}
+                        AllCert={this.state.AcademicCertificate}
                         handleActiveLink={this.handleActiveLink}
                       />
                     }
@@ -303,7 +379,7 @@ class App extends Component {
                     path="certificate/:hash"
                     element={
                       <DisplayCert
-                        AllCert={this.state.certs}
+                        AllCert={this.state.AcademicCertificate}
                         sendEmail={this.sendEmail}
                         handleActiveLink={this.handleActiveLink}
                       />
@@ -325,7 +401,7 @@ class App extends Component {
                       <Query
                         sendEmail={this.sendEmail}
                         certficateExist={this.certficateExist}
-                        AllCert={this.state.certs}
+                        AllCert={this.state.AcademicCertificate}
                         handleActiveLink={this.handleActiveLink}
                       />
                     }
