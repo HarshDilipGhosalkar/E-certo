@@ -327,7 +327,7 @@ class EventRecipientList extends Component {
                                         }}
                                       />
                                       <p className="error-message">
-                                        {this.state.errorInput.contact}
+                                        {this.state.errorInput.domain}
                                       </p>
                                     </td>
                                     <td className="editing-row">
