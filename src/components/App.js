@@ -388,7 +388,7 @@ class App extends Component {
                     path="pcertificate/:hash"
                     element={
                       <ParticipationTemplate
-                        AllCert={this.state.certs}
+                        AllCert={this.state.AcademicCertificate}
                         sendEmail={this.sendEmail}
                         handleActiveLink={this.handleActiveLink}
                       />
