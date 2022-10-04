@@ -8,7 +8,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
 
   function pagination(decision) {
     var p = 0;
-    if (decision === "inc") {
+    if (decision == "inc") {
       p = page + 1;
       setPage(p);
     } else {

@@ -31,9 +31,9 @@ class DisplayAllCert extends Component {
     clearInterval(this.interval);
   }
   tick() {
-    if (this.state.query.length !== "") {
+    if (this.state.query.length != "") {
       this.setState({ modified: 1 });
-    } else if (this.state.filters !== 0) {
+    } else if (this.state.filters != 0) {
       this.setState({ modified: 1 });
     } else {
       this.setState({ modified: 0 });
@@ -69,55 +69,55 @@ class DisplayAllCert extends Component {
     const indexOfFirstPost = indexOfLastPost - this.state.postsPerPage;
     const allCert = this.props.allCert;
 
-    if (this.state.query.length !== "") {
+    if (this.state.query.length != "") {
       return allCert.filter((item) =>
         item.name.toLowerCase().includes(this.state.query)
       );
-    } else if (this.state.filters !== 0) {
-      if (this.state.filters === 1) {
-        if (this.state.passoutyear !== 0) {
+    } else if (this.state.filters != 0) {
+      if (this.state.filters == 1) {
+        if (this.state.passoutyear != 0) {
           return allCert.filter(
-            (item) => item.passoutYear.toNumber() === this.state.passoutyear
+            (item) => item.passoutYear.toNumber() == this.state.passoutyear
           );
-        } else if (this.state.SAP !== 0) {
+        } else if (this.state.SAP != 0) {
           return allCert.filter(
-            (item) => item.SAP.toNumber() === this.state.SAP
+            (item) => item.SAP.toNumber() == this.state.SAP
           );
         } else {
           return allCert.filter(
-            (item) => item.course.toLowerCase() === this.state.department
+            (item) => item.course.toLowerCase() == this.state.department
           );
         }
-      } else if (this.state.filters === 2) {
-        if (this.state.department !== "") {
-          if (this.state.passoutyear !== 0) {
+      } else if (this.state.filters == 2) {
+        if (this.state.department != "") {
+          if (this.state.passoutyear != 0) {
             const dt = allCert.filter(
-              (item) => item.course.toLowerCase() === this.state.department
+              (item) => item.course.toLowerCase() == this.state.department
             );
             return dt.filter(
-              (item) => item.passoutYear === this.state.passoutyear
+              (item) => item.passoutYear == this.state.passoutyear
             );
           } else {
             const dt = allCert.filter(
-              (item) => item.course.toLowerCase() === this.state.department
+              (item) => item.course.toLowerCase() == this.state.department
             );
-            return dt.filter((item) => item.SAP === this.state.SAP);
+            return dt.filter((item) => item.SAP == this.state.SAP);
           }
         } else {
           const dt = allCert.filter(
-            (item) => item.passoutYear === this.state.passoutyear
+            (item) => item.passoutYear == this.state.passoutyear
           );
-          return dt.filter((item) => item.SAP === this.state.SAP);
+          return dt.filter((item) => item.SAP == this.state.SAP);
         }
       } else {
         console.log("yes its ");
         const at1 = allCert.filter(
-          (item) => item.passoutYear.toNumber() === this.state.passoutyear
+          (item) => item.passoutYear.toNumber() == this.state.passoutyear
         );
 
-        const at = at1.filter((item) => item.SAP.toNumber() === this.state.SAP);
+        const at = at1.filter((item) => item.SAP.toNumber() == this.state.SAP);
         return at.filter(
-          (item) => item.course.toLowerCase() === this.state.department
+          (item) => item.course.toLowerCase() == this.state.department
         );
       }
     } else {
@@ -129,7 +129,7 @@ class DisplayAllCert extends Component {
     document.querySelector(".passout-div").style.display = "none";
     document.querySelector(".SAP-div").style.display = "none";
     var x = document.querySelector(".fill");
-    if (x.style.display === "none") {
+    if (x.style.display == "none") {
       x.style.display = "block";
     } else {
       x.style.display = "none";
@@ -152,7 +152,7 @@ class DisplayAllCert extends Component {
     document.querySelector(".SAP-div").style.display = "block";
   };
   addYear = async () => {
-    if (this.state.passoutyear === 0) {
+    if (this.state.passoutyear == 0) {
       await this.setState({ filters: this.state.filters + 1 });
     }
     await this.setState({ query: "" });
@@ -163,7 +163,7 @@ class DisplayAllCert extends Component {
     console.log(this.state.passoutyear);
   };
   addDept = async () => {
-    if (this.state.department === "") {
+    if (this.state.department == "") {
       await this.setState({ filters: this.state.filters + 1 });
     }
     await this.setState({ query: "" });
@@ -173,7 +173,7 @@ class DisplayAllCert extends Component {
     console.log(this.state.department);
   };
   addSAP = async () => {
-    if (this.state.SAP === 0) {
+    if (this.state.SAP == 0) {
       await this.setState({ filters: this.state.filters + 1 });
     }
     await this.setState({ query: "" });
@@ -246,7 +246,7 @@ class DisplayAllCert extends Component {
                     </span>
                     Filter
                   </h5>
-                  {this.state.filters !== 0 ? (
+                  {this.state.filters != 0 ? (
                     <>
                       <button class="filter-btn" onClick={this.clearFilters}>
                         <span>Clear all Filters</span>
@@ -266,9 +266,9 @@ class DisplayAllCert extends Component {
                     <span class="filter-plus">+</span> Add Filters
                   </span>
                 </div>
-                {this.state.filters !== 0 ? (
+                {this.state.filters != 0 ? (
                   <>
-                    {this.state.department !== "" ? (
+                    {this.state.department != "" ? (
                       <>
                         <div className="show-filters">
                           <span class="display-filter">
@@ -281,7 +281,7 @@ class DisplayAllCert extends Component {
                       </>
                     ) : null}
 
-                    {this.state.SAP !== 0 ? (
+                    {this.state.SAP != 0 ? (
                       <>
                         <div className="show-filters">
                           <span class="display-filter">
@@ -294,7 +294,7 @@ class DisplayAllCert extends Component {
                       </>
                     ) : null}
 
-                    {this.state.passoutyear !== "" ? (
+                    {this.state.passoutyear != "" ? (
                       <>
                         <div className="show-filters">
                           <span class="display-filter">
@@ -343,7 +343,7 @@ class DisplayAllCert extends Component {
                     Chemical Engineering
                   </option>
                 </select>
-                {this.state.dept.length === "" ? (
+                {this.state.dept.length == "" ? (
                   <>
                     <button
                       className="apply-btn"
@@ -393,7 +393,7 @@ class DisplayAllCert extends Component {
                   <option value="2021" />
                   <option value="2022" />
                 </datalist>
-                {this.state.py === 0 ? (
+                {this.state.py == 0 ? (
                   <>
                     <button
                       className="apply-btn"
@@ -418,7 +418,7 @@ class DisplayAllCert extends Component {
                     this.setState({ sp: event.target.value })
                   }
                 />
-                {this.state.sp === 0 ? (
+                {this.state.sp == 0 ? (
                   <>
                     <button
                       className="apply-btn"
@@ -448,7 +448,7 @@ class DisplayAllCert extends Component {
               />
 
               <div className="pagination-div">
-                {this.state.modified === 0 ? (
+                {this.state.modified == 0 ? (
                   <Pagination
                     postsPerPage={this.state.postsPerPage}
                     totalPosts={this.props.allCert.length}

@@ -24,7 +24,7 @@ class Table extends Component {
     const ckList = this.state.checkList;
     dt.forEach((cert) => {
       const tr = document.querySelector(".tr" + cert.SAP.toNumber());
-      if (ckList.includes(cert.SAP.toNumber()) === false) {
+      if (ckList.includes(cert.SAP.toNumber()) == false) {
         tr.style.backgroundColor = "white";
         document.querySelector(".chk" + cert.SAP.toNumber()).checked = false;
       } else {
@@ -32,7 +32,7 @@ class Table extends Component {
         document.querySelector(".chk" + cert.SAP.toNumber()).checked = true;
       }
     });
-    if (this.props.modified === 1) {
+    if (this.props.modified == 1) {
       if (this.state.checked !== this.props.data.length) {
         document.querySelector(".allCheck").checked = false;
       } else {
@@ -49,13 +49,13 @@ class Table extends Component {
   send = async (cert, clsname) => {
     var checkBox = document.querySelector(".chk" + clsname);
     var tr = document.querySelector(".tr" + clsname);
-    if (checkBox.checked === true) {
+    if (checkBox.checked == true) {
       tr.style.backgroundColor = "#e6f7ff";
       await this.setState({ emailList: [...this.state.emailList, cert] });
       await this.setState({ checked: this.state.checked + 1 });
       await this.setState({ checkList: [...this.state.checkList, clsname] });
       this.props.enableState();
-      if (this.state.checked === this.props.data.length) {
+      if (this.state.checked == this.props.data.length) {
         document.querySelector(".allCheck").checked = true;
       } else {
         document.querySelector(".allCheck").checked = false;
@@ -95,7 +95,7 @@ class Table extends Component {
     const trs = document.querySelectorAll(".commontr");
     const checkBoxes = document.querySelectorAll(".commonChk");
     const allCheck = document.querySelector(".allCheck");
-    if (allCheck.checked === true) {
+    if (allCheck.checked == true) {
       console.log("yes");
       const dts = this.props.allCert;
       // await this.setState({emailList:dts})
@@ -138,7 +138,7 @@ class Table extends Component {
     const trs = document.querySelectorAll(".commontr");
     const checkBoxes = document.querySelectorAll(".commonChk");
     const allCheck = document.querySelector(".allCheck");
-    if (allCheck.checked === true) {
+    if (allCheck.checked == true) {
       console.log("yes");
       const dts = this.props.data;
       // await this.setState({emailList:dts})
@@ -181,13 +181,13 @@ class Table extends Component {
         <div className="table-btn">
           {this.state.checked <= 1 ? (
             <>
-              {this.state.checked === 1 ? (
+              {this.state.checked == 1 ? (
                 <>
                   <h5>1 Certificate Selected</h5>
                 </>
               ) : (
                 <>
-                  {this.props.modified === 1 ? (
+                  {this.props.modified == 1 ? (
                     <>
                       <h5>{this.props.data.length} Certificates</h5>
                     </>
@@ -221,7 +221,7 @@ class Table extends Component {
                   <tr>
                     {this.props.data.length !== 0 ? (
                       <>
-                        {this.props.modified === 1 ? (
+                        {this.props.modified == 1 ? (
                           <>
                             <th>
                               <input
