@@ -849,7 +849,51 @@ input {
   width: 12px;
   height: 12px;
 }
+#ptext,#ptext21,#pname,#ptext3{
+  width: 100%;
+  position: absolute;
+  text-align: center;
+}
+#ptext{
+  top: 125px;
+}
+#ptext21{
+  top: 175px;
+}
+#ptext h1{
+  font-family: 'Ubuntu', sans-serif;
+  color: #87575C;
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+#ptext21 h1{
+  font-family: 'Ubuntu', sans-serif;
+  color: #E6604D;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+#pname{
+  top: 215px;
+}
+#pname h1{
+  font-size: 56px;
+  color: #87575C;
+  font-family: 'Dancing Script', cursive;
+}
+#ptext3{
+  top: 295px;
+}
+#ptext3 #innerptext{
+  width: 50%;
+  margin: auto;
 
+}
+#ptext3 #innerptext h1{
+  font-size: 14px;
+  color: #87575C;
+}
 @media only screen and (max-width: 1350px) {
   #innerdiv {
     background-color: white;
