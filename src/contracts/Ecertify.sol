@@ -6,6 +6,7 @@ pragma abicoder v2;
 contract Ecertify {
     // total number of NFT minted
     uint256 public certificateCounter;
+    uint256 public eventCertificateCounter;
     string convertedHash;
 
     struct Certificate {
@@ -21,11 +22,30 @@ contract Ecertify {
         string issueDate;
     }
 
+    struct EventCertificate {
+        uint256 certid;
+        string transactionHash;
+        string name;
+        string email;
+        string domain;
+        uint256 contact;
+        string eventName;
+        string eventType;
+        string eventDate;
+        string issueDate;
+    }
+
     // map Certificates's id to Certificate
     mapping(uint256 => Certificate) public allCertificates;
 
+    // map Certificates's id to Certificate
+    mapping(uint256 => EventCertificate) public allEventCertificates;
+
     // map Certificates's hash to Certificate
     mapping(string => Certificate) public allhashedCertificates;
+
+    // map Certificates's hash to Certificate
+    mapping(string => EventCertificate) public allhashedEventCertificates;
 
     mapping(string => bool) public certficateHashExist;
 
@@ -106,15 +126,19 @@ contract Ecertify {
         }
     }
 
-    function hash(string memory _string,uint256 _contact,uint256 _SAP) public pure returns (bytes32) {
-        return keccak256(abi.encodePacked(_string,_contact,_SAP));
+    function hash(string memory _string, uint256 _contact)
+        public
+        pure
+        returns (bytes32)
+    {
+        return keccak256(abi.encodePacked(_string, _contact));
     }
 
     function addInBulk(Certificate[] memory b) external {
         for (uint256 index = 0; index < b.length; index++) {
             certificateCounter++;
             // require(!_exists(certificateCounter));
-            bytes32 unique = hash(b[index].name,b[index].contact,b[index].SAP);
+            bytes32 unique = hash(b[index].name, b[index].contact);
             convertedHash = bytes32ToString(unique);
             // create a new Certificate (struct) and pass in new values
             Certificate memory newCert = Certificate(
@@ -131,6 +155,31 @@ contract Ecertify {
             );
             // add the id and it's certificate to allCertificate mapping
             allCertificates[certificateCounter] = newCert;
+            certficateHashExist[convertedHash] = true;
+        }
+        //  allCertificatesInBulk[certificateCounter2] = b;
+    }
+
+    function addEventInBulk(EventCertificate[] memory b) external {
+        for (uint256 index = 0; index < b.length; index++) {
+            eventCertificateCounter++;
+            bytes32 unique = hash(b[index].name, b[index].contact);
+            convertedHash = bytes32ToString(unique);
+            // create a new Certificate (struct) and pass in new values
+            EventCertificate memory newCert = EventCertificate(
+                eventCertificateCounter,
+                convertedHash,
+                b[index].name,
+                b[index].email,
+                b[index].domain,
+                b[index].contact,
+                b[index].eventName,
+                b[index].eventType,
+                b[index].eventDate,
+                b[index].issueDate
+            );
+            // add the id and it's certificate to allCertificate mapping
+            allEventCertificates[eventCertificateCounter] = newCert;
             certficateHashExist[convertedHash] = true;
         }
         //  allCertificatesInBulk[certificateCounter2] = b;
