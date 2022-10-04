@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import Web3 from "web3";
 import emailjs from "emailjs-com";
-
+import ParticipationTemplate from "./DisplayCertificate/ParticipationTemplate";
 import "./bootstrap/css/bootstrap.css";
 import "./App.css";
 import Ecertify from "../abis/Ecertify.json";
@@ -303,6 +303,16 @@ class App extends Component {
                     path="certificate/:hash"
                     element={
                       <DisplayCert
+                        AllCert={this.state.certs}
+                        sendEmail={this.sendEmail}
+                        handleActiveLink={this.handleActiveLink}
+                      />
+                    }
+                  />
+                  <Route
+                    path="pcertificate/:hash"
+                    element={
+                      <ParticipationTemplate
                         AllCert={this.state.certs}
                         sendEmail={this.sendEmail}
                         handleActiveLink={this.handleActiveLink}
