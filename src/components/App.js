@@ -196,8 +196,7 @@ class App extends Component {
         contact: details.contact,
         eventName: eventName,
         eventType: eventType,
-        eventDate,
-        eventDate,
+        eventDate: eventDate,
         issueDate: issueDate,
       })
     );
