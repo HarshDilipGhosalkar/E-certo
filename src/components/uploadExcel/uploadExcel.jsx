@@ -4,8 +4,12 @@ import { Navigate } from "react-router-dom";
 
 import "./assets/styles.css";
 
-function UploadExcel({ displayRecipientsList, handleActiveLink }) {
-  useEffect(() => handleActiveLink("#upload"));
+function UploadExcel({
+  displayRecipientsList,
+  certificateType,
+  handleActiveLink,
+}) {
+  useEffect(() => handleActiveLink("#create"));
   const [excelFile, setExcelFile] = useState(null);
 
   const [excelFileError, setExcelFileError] = useState(null);
@@ -36,6 +40,13 @@ function UploadExcel({ displayRecipientsList, handleActiveLink }) {
       console.log("plz select your file");
     }
   };
+  let downloadTemplateUrl = "";
+  console.log(certificateType);
+  if (certificateType === "event") {
+    downloadTemplateUrl = "./assets/event_spreadsheet_template.xlsx";
+  } else {
+    downloadTemplateUrl = "./assets/academic_spreadsheet_template.xlsx";
+  }
 
   return (
     <>
@@ -123,7 +134,7 @@ function UploadExcel({ displayRecipientsList, handleActiveLink }) {
                     <a
                       class="download_template"
                       download=""
-                      href="./assets/spreadsheet_template.xlsx"
+                      href={downloadTemplateUrl}
                     >
                       <span
                         role="img"
