@@ -32,15 +32,9 @@ class Navbar extends Component {
                         id="create"
                         class="navbar-link"
                       >
-                        Create
+                        Issue Certificate
                       </Link>
-                      <Link
-                        to="/upload-spreadsheet"
-                        id="upload"
-                        class="navbar-link"
-                      >
-                        Upload Spreadsheet
-                      </Link>
+
                       <Link
                         to="/findmycertificate"
                         id="query"
