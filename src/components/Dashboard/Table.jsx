@@ -33,13 +33,13 @@ class Table extends Component {
       }
     });
     if (this.props.modified == 1) {
-      if (this.state.checked !== this.props.data.length) {
+      if (this.state.checked != this.props.data.length) {
         document.querySelector(".allCheck").checked = false;
       } else {
         document.querySelector(".allCheck").checked = true;
       }
     } else {
-      if (this.state.checked !== this.props.allCert.length) {
+      if (this.state.checked != this.props.allCert.length) {
         document.querySelector(".allCheck").checked = false;
       } else {
         document.querySelector(".allCheck").checked = true;
@@ -214,12 +214,12 @@ class Table extends Component {
         </div>
         <div className="hr2"></div>
         <div className="tab">
-          {this.props.data !== undefined ? (
+          {this.props.data != undefined ? (
             <>
               <table class="content-table">
                 <thead>
                   <tr>
-                    {this.props.data.length !== 0 ? (
+                    {this.props.data.length != 0 ? (
                       <>
                         {this.props.modified == 1 ? (
                           <>
