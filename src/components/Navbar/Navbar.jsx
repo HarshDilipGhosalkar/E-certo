@@ -27,6 +27,9 @@ class Navbar extends Component {
                       <Link to="/dashboard" id="all" class="navbar-link">
                         Dashboard
                       </Link>
+                      <Link to="/event-certificates" id="all2" class="navbar-link">
+                        Event Certificate
+                      </Link>
                       <Link
                         to="/certificates/recipients"
                         id="create"

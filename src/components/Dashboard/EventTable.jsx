@@ -273,7 +273,7 @@ class EventTable extends Component {
                         />
                       </td>
                       <td>
-                        <a href={"certificate/" + item.transactionHash}>
+                        <a href={"event-certificate/" + item.transactionHash}>
                           {item.certid.toNumber()}
                         </a>
                       </td>

@@ -228,6 +228,7 @@ class App extends Component {
       this.state.accountAddress === "0xB641B4F1795a4BfA2cC7056E08cFB2b199831248"
     ) {
       document.querySelector("#all").classList.remove("nav-active");
+      document.querySelector("#all2").classList.remove("nav-active");
       document.querySelector("#create").classList.remove("nav-active");
     }
 

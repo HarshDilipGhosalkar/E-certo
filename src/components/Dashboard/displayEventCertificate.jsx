@@ -24,7 +24,7 @@ class DisplayEventCert extends Component {
   }
   componentDidMount() {
     this.interval = setInterval(() => this.tick(), 500);
-    this.props.handleActiveLink("#all");
+    this.props.handleActiveLink("#all2");
   }
 
   componentWillUnmount() {
