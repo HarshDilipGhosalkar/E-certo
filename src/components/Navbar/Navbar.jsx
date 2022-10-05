@@ -13,7 +13,7 @@ class Navbar extends Component {
             <div class="container-fluid">
               <Link to="/">
                 <span className="navbar-logo">
-                  {/* <img src={logo} alt="" /> */}
+                  <img src={logo} alt="" />
                 </span>
               </Link>
 

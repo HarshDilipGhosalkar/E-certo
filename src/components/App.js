@@ -14,10 +14,12 @@ import ContractNotDeployed from "./ContractNotDeployed/ContractNotDeployed";
 import Navbar from "./Navbar/Navbar";
 import DisplayAllCert from "./Dashboard/displayAllCert";
 import StudentDetail from "./StudentDetails/StudentDetail";
+import ParticipantDetail from "./StudentDetails/ParticipantDetails";
 import DisplayCert from "./DisplayCertificate/displaycert";
 import UploadExcelPage from "./uploadExcel/uploadExcel";
 import RecipientsList from "./RecipientsList/RecipientsList";
 import Query from "./Query/Query";
+import DisplayEventCert from "./Dashboard/displayEventCertificate";
 
 class App extends Component {
   constructor(props) {
@@ -312,6 +314,16 @@ class App extends Component {
                         }
                       />
                       <Route
+                        path="/event-certificates"
+                        element={
+                          <DisplayEventCert
+                            allCert={this.state.EventCertificate}
+                            sendEmail={this.sendEmail}
+                            handleActiveLink={this.handleActiveLink}
+                          />
+                        }
+                      />
+                      <Route
                         path="/upload-spreadsheet"
                         element={
                           <>
@@ -375,6 +387,15 @@ class App extends Component {
                     }
                   />
                   <Route
+                    path="/participant-details/:hash"
+                    element={
+                      <ParticipantDetail
+                        AllEventCert={this.state.EventCertificate}
+                        handleActiveLink={this.handleActiveLink}
+                      />
+                    }
+                  />
+                  <Route
                     path="certificate/:hash"
                     element={
                       <DisplayCert
@@ -385,10 +406,10 @@ class App extends Component {
                     }
                   />
                   <Route
-                    path="pcertificate/:hash"
+                    path="event-certificate/:hash"
                     element={
                       <ParticipationTemplate
-                        AllCert={this.state.AcademicCertificate}
+                        AllCert={this.state.EventCertificate}
                         sendEmail={this.sendEmail}
                         handleActiveLink={this.handleActiveLink}
                       />

@@ -849,100 +849,107 @@ input {
   width: 12px;
   height: 12px;
 }
-#ptext,#ptext21,#pname,#ptext3,#proud{
-  
+#ptext,
+#ptext21,
+#pname,
+#ptext3,
+#proud {
   position: absolute;
   left: 245px;
   text-align: center;
 }
-#ptext{
+#ptext {
   top: 85px;
 }
-#ptext21{
-  top: 155px;
+#qrcode {
+  position: absolute;
+  top: 25px;
+  left: 25px;
 }
-#ptext h1{
-  font-family: 'Ubuntu', sans-serif;
-  color: #9B3625;
+#ptext21 {
+  top: 163px;
+}
+#ptext h1 {
+  font-family: "Ubuntu", sans-serif;
+  color: #9b3625;
   font-size: 59px;
   font-weight: bold;
   letter-spacing: 1px;
 }
-#ptext21 h1{
-  font-family: 'Ubuntu', sans-serif;
-  color: #9B3625;
-  font-size: 30px;
+#ptext21 h1 {
+  font-family: "Ubuntu", sans-serif;
+  color: #9b3625;
+  font-size: 23px;
   font-weight: 100;
   letter-spacing: 1px;
 }
-#pname{
+#pname {
   top: 332px;
 }
-#pname h1{
+#pname h1 {
   font-size: 56px;
-  color: #9B3625;
-  font-family: 'Dancing Script', cursive;
+  color: #9b3625;
+  font-family: "Dancing Script", cursive;
 }
-#proud{
+#proud {
   top: 305px;
 }
-#proud h1{
-  color: #AF5B5B;
+#proud h1 {
+  color: #af5b5b;
   font-size: 19px;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-weight: 700;
   letter-spacing: 1px;
 }
-#ptext3{
+#ptext3 {
   top: 415px;
 }
-#ptext3 #innerptext{
+#ptext3 #innerptext {
   width: 60%;
-
 }
-#ptext3 #innerptext h1{
+#ptext3 #innerptext h1 {
   font-size: 14px;
-  color: #87575C;
+  color: #87575c;
 }
 #issuediv,
-#eventdiv{
-  color: #9B3625;
+#eventdiv {
+  color: #9b3625;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
-  
 }
-#issuediv{
+#issuediv {
   position: absolute;
   top: 78%;
   left: 27%;
   width: 263px;
 }
-#eventdiv{
+#eventdiv {
   position: absolute;
   top: 78%;
   left: 63%;
   width: 263px;
 }
 #issuediv h1,
-#issuediv h2{
+#issuediv h2 {
   font-size: 14px;
 }
 #eventdiv h1,
-#eventdiv h2{
+#eventdiv h2 {
   font-size: 14px;
 }
-#eventnamediv{
-  width: 190px;
-  color: white;
+#eventnamediv {
+  width: 320px;
+  color: #ff4343;
   position: absolute;
-  top: 15%;
-  text-align: center;
+  top: 35%;
+  text-align: left;
+  left: 245px;
 }
 #eventnamediv h1,
-#eventnamediv h2{
-  font-size: 25px;
+#eventnamediv h2 {
+  font-size: 40px;
   font-weight: 600;
 }
 .cert-hash1 {
