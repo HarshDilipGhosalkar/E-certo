@@ -125,6 +125,9 @@ const ParticipationTemplate = ({ AllCert, sendEmail, handleActiveLink }) => {
                 <div id="ptext21">
                   <h1>OF PARTICIPATION</h1>
                 </div>
+                <div id="proud">
+                  <h1>PROUDLY PRESENTED TO </h1>
+                </div>
                 <div id="pname">
                   <h1>Harsh Dilip Ghosalkar</h1>
                 </div>
@@ -134,6 +137,22 @@ const ParticipationTemplate = ({ AllCert, sendEmail, handleActiveLink }) => {
 
                     </div>
                 </div>
+                <div id="issuediv">
+                  <h1>IssueDate</h1>
+                  <h2>23/04/2022</h2>
+                </div>
+                <div id="eventdiv">
+                  <h1>EventDate</h1>
+                  <h2>23/04/2022</h2>
+                </div>
+                <div id="eventnamediv">
+<h1>Event </h1>
+<h2>Hackover 3.0</h2>
+                </div>
+                <div className="cert-hash1">
+                  <h3>Certificate ID: </h3>
+                  <h4> {cert.transactionHash}</h4>
+                </div> 
                 {/* <div id="clg-name">
                   <h1>SHRI BHAGUBHAI MAFATLAL POLYTECHNIC</h1>
                 </div>

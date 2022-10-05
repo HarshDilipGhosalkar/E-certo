@@ -849,50 +849,131 @@ input {
   width: 12px;
   height: 12px;
 }
-#ptext,#ptext21,#pname,#ptext3{
-  width: 100%;
+#ptext,#ptext21,#pname,#ptext3,#proud{
+  
   position: absolute;
+  left: 245px;
   text-align: center;
 }
 #ptext{
-  top: 125px;
+  top: 85px;
 }
 #ptext21{
-  top: 175px;
+  top: 155px;
 }
 #ptext h1{
   font-family: 'Ubuntu', sans-serif;
-  color: #87575C;
-  font-size: 32px;
-  font-weight: 500;
+  color: #9B3625;
+  font-size: 59px;
+  font-weight: bold;
   letter-spacing: 1px;
 }
 #ptext21 h1{
   font-family: 'Ubuntu', sans-serif;
-  color: #E6604D;
-  font-size: 15px;
-  font-weight: 700;
+  color: #9B3625;
+  font-size: 30px;
+  font-weight: 100;
   letter-spacing: 1px;
 }
 #pname{
-  top: 215px;
+  top: 332px;
 }
 #pname h1{
   font-size: 56px;
-  color: #87575C;
+  color: #9B3625;
   font-family: 'Dancing Script', cursive;
 }
+#proud{
+  top: 305px;
+}
+#proud h1{
+  color: #AF5B5B;
+  font-size: 19px;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
 #ptext3{
-  top: 295px;
+  top: 415px;
 }
 #ptext3 #innerptext{
-  width: 50%;
-  margin: auto;
+  width: 60%;
 
 }
 #ptext3 #innerptext h1{
   font-size: 14px;
   color: #87575C;
+}
+#issuediv,
+#eventdiv{
+  color: #9B3625;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  
+}
+#issuediv{
+  position: absolute;
+  top: 78%;
+  left: 27%;
+  width: 263px;
+}
+#eventdiv{
+  position: absolute;
+  top: 78%;
+  left: 63%;
+  width: 263px;
+}
+#issuediv h1,
+#issuediv h2{
+  font-size: 14px;
+}
+#eventdiv h1,
+#eventdiv h2{
+  font-size: 14px;
+}
+#eventnamediv{
+  width: 190px;
+  color: white;
+  position: absolute;
+  top: 15%;
+  text-align: center;
+}
+#eventnamediv h1,
+#eventnamediv h2{
+  font-size: 25px;
+  font-weight: 600;
+}
+.cert-hash1 {
+  position: absolute;
+  bottom: 1%;
+  left: 26%;
+  display: flex;
+}
+.cert-hash1 h3 {
+  font-size: 10px;
+}
+.cert-hash1 h3,
+.cert-hash1 h4 {
+  margin-left: 5px;
+  align-self: flex-end;
+}
+.cert-hash1 h3 {
+  text-align: left;
+  color: #58484e;
+  font-family: "Manrope", sans-serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.cert-hash1 h4 {
+  text-align: left;
+  color: #c5840b;
+  font-size: 10px;
+  font-family: "Manrope", sans-serif;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 @media only screen and (max-width: 1350px) {
   #innerdiv {
