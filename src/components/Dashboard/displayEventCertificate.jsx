@@ -45,7 +45,7 @@ class DisplayEventCert extends Component {
       this.props.sendEmail(
         cert.name,
         cert.email,
-        cert.transactionHash,
+        "http://localhost:3000/event-certificate/" + cert.transactionHash,
         cert.eventName
       );
     });

@@ -246,7 +246,7 @@ class App extends Component {
       to_name: name,
       department: department,
       reply_to: email,
-      message: "http://localhost:3000/certificate/" + hash,
+      message: hash,
     };
 
     emailjs
