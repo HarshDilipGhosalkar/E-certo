@@ -38,14 +38,18 @@
 ### Signup/Login
 - Connect to metamask
   <p align="center">
- <img height=150px width=650px  src="./images/eimage15.gif" >
+ <img height=300px width=500px  src="./images/eimage15.gif" >
 </p>
   
   
- - Upon First Signup `Metamask` User Profile will be set to default values.
- 
+ Upon SignIn the first page that's going to be visible is the Dashboard page.
+ ### Dashboard Page
+- All the Certificates issueyed by the Admin will be listed on the dashboard.
+- Admin can resend certificate to the user by selecting records.
+- Admin can apply multiple filters such as filter by Department,Passout year,SAP.
+- Admin can search the record by name.
  <p align="center">
- <img height=350px  src="./images/profile1.png" >
+ <img height=350px  src="./images/eimage14.gif" >
 </p>  
   
   - You can edit your profile by going to the profile Setting page.
