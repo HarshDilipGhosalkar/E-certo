@@ -217,7 +217,7 @@ const DisplayCert = ({ AllCert, sendEmail, handleActiveLink }) => {
                         sendEmail(
                           cert.name,
                           cert.email,
-                          cert.transactionHash,
+                          "http://localhost:3000/certificate/" + cert.transactionHash,
                           cert.course
                         )
                       }

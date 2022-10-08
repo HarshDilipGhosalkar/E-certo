@@ -28,7 +28,7 @@ const ParticipationTemplate = ({ AllCert, sendEmail, handleActiveLink }) => {
 
   const { hash } = useParams();
   console.log("hashvalue", hash);
-  const shareUrl = "http://localhost:3000/certificate/" + hash;
+  const shareUrl = "http://localhost:3000/event-certificate/" + hash;
   let cert;
   AllCert.forEach((c) => {
     if (c.transactionHash == hash) {
@@ -36,7 +36,9 @@ const ParticipationTemplate = ({ AllCert, sendEmail, handleActiveLink }) => {
     }
   });
 
-  const [url, setUrl] = useState("http://localhost:3000/details/" + hash);
+  const [url, setUrl] = useState(
+    "http://localhost:3000/participant-details/" + hash
+  );
 
   const [qr, setQr] = useState("");
   const [mounted, setMounted] = useState(false);
@@ -119,91 +121,52 @@ const ParticipationTemplate = ({ AllCert, sendEmail, handleActiveLink }) => {
                 <div id="template">
                   <img class="image_template" src={bgImage} alt="" />
                 </div>
-                 <div id="ptext">
+                <div id="qrcode">
+                  <div className="sign-name">
+                    {qr && (
+                      <>
+                        <img width={80} height={80} src={qr} alt="Qr Code" />
+                      </>
+                    )}
+                  </div>
+                </div>
+
+                <div id="ptext">
                   <h1>CERTIFICATE</h1>
                 </div>
                 <div id="ptext21">
-                  <h1>OF PARTICIPATION</h1>
+                  <h1>Of Participant in </h1>
                 </div>
                 <div id="proud">
                   <h1>PROUDLY PRESENTED TO </h1>
                 </div>
                 <div id="pname">
-                  <h1>Harsh Dilip Ghosalkar</h1>
+                  <h1>{cert.name}</h1>
                 </div>
                 <div id="ptext3">
-                    <div id="innerptext">
-                   <h1> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rhoncus erat a cras non netus fringilla etiam.</h1>
-
-                    </div>
+                  <div id="innerptext">
+                    <h1>
+                      {" "}
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Rhoncus erat a cras non netus fringilla etiam.
+                    </h1>
+                  </div>
                 </div>
                 <div id="issuediv">
                   <h1>IssueDate</h1>
-                  <h2>23/04/2022</h2>
+                  <h2>{cert.issueDate}</h2>
                 </div>
                 <div id="eventdiv">
                   <h1>EventDate</h1>
-                  <h2>23/04/2022</h2>
+                  <h2>{cert.eventDate}</h2>
                 </div>
                 <div id="eventnamediv">
-<h1>Event </h1>
-<h2>Hackover 3.0</h2>
+                  <h2>{cert.eventName}</h2>
                 </div>
                 <div className="cert-hash1">
                   <h3>Certificate ID: </h3>
                   <h4> {cert.transactionHash}</h4>
-                </div> 
-                {/* <div id="clg-name">
-                  <h1>SHRI BHAGUBHAI MAFATLAL POLYTECHNIC</h1>
                 </div>
-                <div id="recognition-text">
-                  <h1>CERTIFICATE</h1>
-                  <h3>OF DIPLOMA</h3>
-                </div>
-                <div id="passoutyear-div">
-                  <h1>VERIFIED</h1>
-                  <h1>{cert.passoutYear.toNumber()}</h1>
-                </div>
-                <div id="normal-text">
-                  <h1>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Aliquam cursus tempus, quam viverra sit augue faucibus.
-                    Lobortis felis facilisis tortor mol.
-                  </h1>
-                </div>
-                <div className="sign-div">
-                  <div className="sign-name">
-                    <h1>Neeta Kadukar</h1>
-                    <hr />
-                    <h3>Principal</h3>
-                  </div>
-                  <div className="sign-name">
-                    <h1>Neeta Kadukar</h1>
-                    <hr />
-                    <h3>Vice Principal</h3>
-                  </div>
-                </div>
-                <div className="last-div">
-                  <div className="sign-name">
-                    {qr && (
-                      <>
-                        <img width={60} height={60} src={qr} />
-                      </>
-                    )}
-                  </div>
-                  <div className="sign-name">
-                    <h3>Issue date</h3>
-                    <h4>{cert.issueDate}</h4>
-                  </div>
-                </div>
-
-                <div id="text-name">
-                  <h1>{cert.name}</h1>
-                </div>
-                <div className="cert-hash">
-                  <h3>Certificate ID: </h3>
-                  <h4> {cert.transactionHash}</h4>
-                </div> */}
               </div>
               <div id="download-section">
                 <h1>Issued by</h1>
@@ -251,7 +214,8 @@ const ParticipationTemplate = ({ AllCert, sendEmail, handleActiveLink }) => {
                         sendEmail(
                           cert.name,
                           cert.email,
-                          cert.transactionHash,
+                          "http://localhost:3000/event-certificate/" +
+                            cert.transactionHash,
                           cert.course
                         )
                       }
@@ -314,7 +278,7 @@ const ParticipationTemplate = ({ AllCert, sendEmail, handleActiveLink }) => {
                 </div>
               </div>
             </div>
-          </div> 
+          </div>
         </>
       ) : null}
     </div>

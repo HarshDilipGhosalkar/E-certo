@@ -130,6 +130,7 @@ class EventRecipientList extends Component {
     return false;
   };
   render() {
+    console.log(this.state.excelData);
     return (
       <div className="excel_page root-div">
         <div className="excel_component">

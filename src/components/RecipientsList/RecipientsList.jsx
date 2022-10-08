@@ -46,7 +46,13 @@ class RecipientsList extends Component {
     return (
       <>
         {this.props.certificateCreated ? (
-          <Navigate replace to="../dashboard" />
+          <>
+            {this.props.certificateType === "event" ? (
+              <Navigate replace to="../event-certificates" />
+            ) : (
+              <Navigate replace to="../dashboard" />
+            )}
+          </>
         ) : null}
         {this.props.certificateType === null ||
         this.props.createType === null ? (

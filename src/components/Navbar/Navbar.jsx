@@ -13,7 +13,7 @@ class Navbar extends Component {
             <div class="container-fluid">
               <Link to="/">
                 <span className="navbar-logo">
-                  {/* <img src={logo} alt="" /> */}
+                  <img src={logo} alt="" />
                 </span>
               </Link>
 
@@ -26,6 +26,9 @@ class Navbar extends Component {
                     <>
                       <Link to="/dashboard" id="all" class="navbar-link">
                         Dashboard
+                      </Link>
+                      <Link to="/event-certificates" id="all2" class="navbar-link">
+                        Event Certificate
                       </Link>
                       <Link
                         to="/certificates/recipients"

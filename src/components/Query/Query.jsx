@@ -45,7 +45,7 @@ function Query({ sendEmail, certficateExist, AllCert, handleActiveLink }) {
         certificateDetail = cert;
         console.log(cert);
         const email = cert.email;
-        sendEmail(cert.name, email, cert.transactionHash, cert.course);
+        sendEmail(cert.name, email, "http://localhost:3000/certificate/" + cert.transactionHash, cert.course);
         console.log(email.substr(email.indexOf("@"), email.length));
         setMessage(
           email.substr(0, 3) +
