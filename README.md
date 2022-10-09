@@ -3,7 +3,7 @@
 <img height=200px src="./src/components/Navbar/assets/image.png" >         
         </p>
 <h1 align="center"> E-Certo </h1>
-<h3 align="center"> Issueing and Verifyinf Digitalizeed certificates using Blockchain<h3>
+<h3 align="center"> Issuing and Verifying Digitalized certificates using Blockchain<h3>
 
 <div align="center">
   
@@ -11,14 +11,13 @@
   [![made-with-react](https://img.shields.io/badge/React-16.8.4-brightgreen.svg?style=for-the-badge)](https://github.com/facebook/create-react-app)
    [![](https://img.shields.io/badge/-Ethereum-lightgrey.svg?style=for-the-badge)](https://www.ethereum.org/)
     ![](https://img.shields.io/badge/Smart%20-Contract-lightgrey.svg?style=for-the-badge)
- ![](https://img.shields.io/github/forks/HarshDilipGhosalkar/DeepSpace.svg?style=for-the-badge) 
-  ![](https://img.shields.io/github/stars/HarshDilipGhosalkar/DeepSpace.svg?style=for-the-badge) 
-<!--   ![](https://img.shields.io/github/license/HarshDilipGhosalkar/DeepSpace.svg?style=for-the-badge)
-   -->
+ ![](https://img.shields.io/github/forks/HarshDilipGhosalkar/E-certo.svg?style=for-the-badge) 
+  ![](https://img.shields.io/github/stars/HarshDilipGhosalkar/E-certo.svg?style=for-the-badge) 
+
  </div>
   
   ## E-certo : About
-- It is a blockchain based project for issueing verifying Certificates. 
+- It is a blockchain based project for issuing verifying Certificates. 
 - It works on the idea that: “Admin can issue,resend,download Certificates and any non user can verify the certificate using QR code” The entire process       works on the blockchain . 
 - Thus this is a modern way to create Certificates and overcomes the drawback of traditional approach of verifying which consumes alot of time.
 
@@ -111,7 +110,7 @@
 ### Interact with the deployed DApp
 - Ecertify DApp requires [Metamask](https://metamask.io/) browser wallet extension to interact with.
 - Connect metamask browser wallet to Localhost 7545 running a custom RPC like Ganache.
-<!-- - Access Marketplace DApp at [NFT-marketplace]() and start minting your NFTs. -->
+
 #
 ### Run the DApp Locally
 #### Install truffle
@@ -128,7 +127,7 @@ ganache-cli --port 7545
 ```
 #### Open new terminal window and clone this repository
 ```
-git clone https://github.com/HarshDilipGhosalkar/DeepSpace.git
+git clone https://github.com/HarshDilipGhosalkar/E-certo.git
 ```
 #### Install dependencies
 ```
@@ -143,9 +142,6 @@ truffle compile
 ```
 truffle migrate
 ```
-#### Test smart contract
-```
-truffle test
 ```
 #### Start DApp
 ```
@@ -160,6 +156,5 @@ npm start
   ## Authors
   - Harsh Ghosalkar - [HarshDilipGhosalkar](https://github.com/HarshDilipGhosalkar)
   - Jhenil Parihar - [JhenilParihar](https://github.com/jhenilparihar)
-  - Dev Jobalia -[DevJobalia](https://github.com/DevJobalia)
 ## License
 This project is licensed under the MIT
