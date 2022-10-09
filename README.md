@@ -51,52 +51,40 @@
  <p align="center">
  <img height=350px  src="./images/eimage14.gif" >
 </p>  
+ 
+  ### Issue Certificate Page
+- A pop up will appear asking about the type of Certificate and mode it want to submit the data like using spread sheet of manual data entry.
+- After selecting spread sheet option a page will appear over there you can upload your spread sheet and can also download the template.
+- After uploading the spread sheet data from excel file will be read and will be rendered to Admin to re assure whether all the data is correct or not.
+- Admin can edit or delete the data.
+ <p align="center">
+ <img height=300px width=500px  src="./images/eimage11.png" >
+  </p> 
+  <p align="center">
+ <img height=300px width=500px src="./images/eimage12.png" >
+ </p> 
+  <p align="center">
+ <img height=300px width=500px  src="./images/eimage13.png" >
+</p> 
+ 
+ ### Certificate Details Page
+- By clicking on id a Certificate will be displayed.
+- Admin can download the Certificate in pdf, image form also he/she can download the QR code
+- Admin can also share the certificate on various social media platforms mentioned.
+- Admin can also scan the QR code n verify it.
+ <p align="center">
+ <img height=300px width=500px  src="./images/eimages7.gif" >
+  </p> 
+
+ ### Certificate Verification
+- Ceriticate can be verified by scanning the QR code on it.
+- After scanning the QR code it will be drived to a page where all the details of that student will be displayed and it will be a proof of being a verified document.
+ <p align="center">
+ <img height=300px width=500px  src="./images/eimage8.gif" >
+  </p> 
   
-  - You can edit your profile by going to the profile Setting page.
- 
- <p align="center">
- <img height=350px  src="./images/profile.gif" >
-</p>  
-  
-  - Landing page.
- 
- <p align="center">
- <img height=350px  src="./images/landing.gif" >
-</p> 
-  
-  
-  - Landing page have these options :
- 
-         - `Create`
-              - User's can create their Nft's by going to the create section. They can upload their artwork , give it name, set appropriate price and description.
- 
-         - `Explore`
-              - User's can Explore all the Nft's that have been minted by all users on our site. On the explore page user will get some filter options like recently minted or getting Nft's between specific price range(some filters are yet to be added still working on it).
- 
-- Create page.
-      - User's can create their Nft's by going to the create section. They can upload their artwork , give it name, set appropriate price and description.
- <p align="center">
- <img height=350px  src="./images/create.gif" >
-</p> 
-- Explore page.
-    - User's can Explore all the Nft's that have been minted by all users on our site. On the explore page user will get some filter options like recently minted or getting Nft's between specific price range(some filters are yet to be added still working on it).
- <p align="center">
- <img height=350px  src="./images/explore.gif" >
-</p> 
-- Nft Details page.
-    - User's can view details about a particular Nft by clicking on it(nft info includes: Nft image, Creator, Current Owner,Previous Owner,Buy Option,if owner[then keep for sale/remove from sale option and change price option],description).
- <p align="center">
- <img height=350px  src="./images/nft details.gif" >
-</p> 
-- Buy Nft by clickinh on buy button
- <p align="center">
- <img height=350px  src="./images/buy.gif" >
-</p> 
-  - Query page.
-    - User's can Query details about a particular Nft by the Id of it ,user can get address of the owner an csn get metadata about a particular nft by using its Id.
- <p align="center">
- <img height=350px  src="./images/query.gif" >
-</p> 
+
+
 
 #
 ### Stack
