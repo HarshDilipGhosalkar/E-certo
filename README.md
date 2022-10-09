@@ -83,8 +83,21 @@
  <img height=300px width=500px  src="./images/eimage8.gif" >
   </p> 
   
+ ### Appliance for lost Certificate.
+- On user login he/she won't be provided with all the rights that Admin has.
+- user/student can enter it's unique certificate hash and can get the certificate.
+- If a student is not having his/her unique hash then he/she can enter his/her SAP and the certificate will be mailed to that respective student.
+ <p align="center">
+ <img height=300px width=500px  src="./images/eimag9.gif" >
+  </p> 
 
+ ### Resend Email.
+- Admin can select the records that he/she wants to resend the email.
+- By clicking on the resend email button email be sent.
 
+ <p align="center">
+ <img height=300px width=500px  src="./images/eimage10.gif" >
+  </p> 
 
 #
 ### Stack
@@ -96,7 +109,7 @@
 - [Ganache](https://www.trufflesuite.com/ganache) - Personal blockchain for Ethereum development used to deploy contracts, develop DApps, and run tests.
 #
 ### Interact with the deployed DApp
-- Marketplace DApp requires [Metamask](https://metamask.io/) browser wallet extension to interact with.
+- Ecertify DApp requires [Metamask](https://metamask.io/) browser wallet extension to interact with.
 - Connect metamask browser wallet to Localhost 7545 running a custom RPC like Ganache.
 <!-- - Access Marketplace DApp at [NFT-marketplace]() and start minting your NFTs. -->
 #
