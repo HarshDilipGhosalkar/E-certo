@@ -131,7 +131,7 @@ git clone https://github.com/HarshDilipGhosalkar/E-certo.git
 ```
 #### Install dependencies
 ```
-cd DeepSpace
+cd E-certo
 npm install
 ```
 #### Compile smart contract
@@ -145,16 +145,16 @@ truffle migrate
 ```
 #### Start DApp
 ```
-npm start
-```
+### npm start
+
 - Open metamask browser wallet and connect network to Localhost 7545.
 - Import accounts from ganache-cli into the metamask browser wallet to make transactions on the DApp.
-  -------------------------------------
-  ## Contributing
-  - We're are open to enhancements & bug-fixes.
-  - Feel free to add issues and submit patches.
-  ## Authors
-  - Harsh Ghosalkar - [HarshDilipGhosalkar](https://github.com/HarshDilipGhosalkar)
-  - Jhenil Parihar - [JhenilParihar](https://github.com/jhenilparihar)
-## License
+  
+### Contributing
+- We're are open to enhancements & bug-fixes.
+- Feel free to add issues and submit patches.
+### Authors
+- Harsh Ghosalkar - [HarshDilipGhosalkar](https://github.com/HarshDilipGhosalkar)
+- Jhenil Parihar - [JhenilParihar](https://github.com/jhenilparihar)
+### License
 This project is licensed under the MIT
