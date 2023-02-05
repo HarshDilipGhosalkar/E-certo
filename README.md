@@ -98,7 +98,7 @@ ganache-cli --port 7545
 ```
 #### Open new terminal window and clone this repository
 ```
-git clone https://github.com/HarshDilipGhosalkar/E-certo.git
+[git clone https://github.com/HarshDilipGhosalkar/E-certo.git](https://github.com/jhenilparihar/SPIT-All-Stacker.git)
 ```
 #### Install dependencies
 ```
@@ -127,7 +127,7 @@ truffle migrate
 ### Authors
 - Harsh Ghosalkar - [HarshDilipGhosalkar](https://github.com/HarshDilipGhosalkar)
 - Jhenil Parihar - [JhenilParihar](https://github.com/jhenilparihar)
-- prerak gada - [prerak gaad](https://github.com/jhenilparihar)
+- prerak gada - [prerak gada](https://github.com/jhenilparihar)
 - yash joshi [yash joshi](https://github.com/jhenilparihar)
 ### License
 This project is licensed under the MIT
