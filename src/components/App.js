@@ -20,6 +20,7 @@ import UploadExcelPage from "./uploadExcel/uploadExcel";
 import RecipientsList from "./RecipientsList/RecipientsList";
 import Query from "./Query/Query";
 import DisplayEventCert from "./Dashboard/displayEventCertificate";
+import ApplicationForm from "./ApplicationForm/ApplicationForm";
 
 class App extends Component {
   constructor(props) {
@@ -71,12 +72,11 @@ class App extends Component {
 
       this.setState({ loading: false });
       const networkId = await web3.eth.net.getId();
-      const networkData = Ecertify.networks[networkId];
-      if (networkData) {
+      if (Ecertify.address) {
         this.setState({ loading: true });
         const EcertoContract = web3.eth.Contract(
           Ecertify.abi,
-          networkData.address
+          Ecertify.address
         );
         this.setState({ EcertoContract });
         this.setState({ contractDetected: true });
@@ -426,6 +426,10 @@ class App extends Component {
                         handleActiveLink={this.handleActiveLink}
                       />
                     }
+                  />
+                  <Route
+                    path="application-form"
+                    element={<ApplicationForm />}
                   />
                   <Route
                     path="*"

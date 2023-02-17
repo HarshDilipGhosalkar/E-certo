@@ -169,15 +169,6 @@ class AcademicRecipientList extends Component {
                 <div className="col-6">
                   <div className="file_input_area">
                     <br />
-                    {/* <button
-                      className="reupload_btn"
-                      onClick={() => {
-                        this.setState({ excelData: null });
-                        window.location.reload();
-                      }}
-                    >
-                      Reupload Spreadsheet
-                    </button> */}
                     {this.state.excelData.length > 0 ? (
                       <>
                         {this.state.excelData[0].name.length > 0 ? (
