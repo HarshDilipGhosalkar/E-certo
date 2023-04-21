@@ -1,11 +1,11 @@
 
-<h1 align="center"> Stream.it </h1>
+<h1 align="center"> E-Certo </h1>
 
  <p align="center">
 <img src="https://readme-typing-svg.herokuapp.com?font=monospace&color=92B6FE&size=25&vCenter=true&lines=Issuance+of+Certificate;Appliance+of+Certificate"alt="Verification+of+Certificate">
 </p>
 </p>
-<h3 align="center"> Blockchain based OTT Platform<h3>
+<h3 align="center"> Issuing and Verifying Digitalized certificates using Blockchain<h3>
 
 <div align="center">
   
@@ -18,10 +18,10 @@
 
  </div>
   
-  ## Stream.it : About
-- It is a blockchain based project for uploading videos on our OTT platform. 
-- It works on the idea that: “User can upload its created content he/she can apply some pay restrictions on it for others to view it". 
-- Thus this is a modern way to create Contents and overcomes the drawback of traditional approach of your content being getting malfunctioned.
+  ## E-certo : About
+- It is a blockchain based project for issuing verifying Certificates. 
+- It works on the idea that: “Admin can issue,resend,download Certificates and any non user can verify the certificate using QR code” The entire process       works on the blockchain . 
+- Thus this is a modern way to create Certificates and overcomes the drawback of traditional approach of verifying which consumes alot of time.
 
   
 ## Insight
@@ -39,33 +39,67 @@
 ### Signup/Login
 - Connect to metamask
   <p align="center">
- 
+ <img height=300px width=500px  src="./images/eimage15.gif" >
 </p>
   
   
  Upon SignIn the first page that's going to be visible is the Dashboard page.
  ### Dashboard Page
-- All the Created contents by the Admin will be listed on the dashboard.
-- user can earn through the content created by it.
+- All the Certificates issueyed by the Admin will be listed on the dashboard.
+- Admin can resend certificate to the user by selecting records.
 - Admin can apply multiple filters such as filter by Department,Passout year,SAP.
-- User can search for its liked contents.
+- Admin can search the record by name.
  <p align="center">
- 
+ <img height=350px  src="./images/eimage14.gif" >
 </p>  
  
-  ### ML/AI in our project
-- We implemented recommended system that recommends user music/video based on his/her mood.
-- Also implemented a model for nudity detection.
-- Searching Functionality has also been successfully implemented.
+  ### Issue Certificate Page
+- A pop up will appear asking about the type of Certificate and mode it want to submit the data like using spread sheet of manual data entry.
+- After selecting spread sheet option a page will appear over there you can upload your spread sheet and can also download the template.
+- After uploading the spread sheet data from excel file will be read and will be rendered to Admin to re assure whether all the data is correct or not.
+- Admin can edit or delete the data.
+ <p align="center">
+ <img height=300px width=500px  src="./images/eimage11.png" >
+  </p> 
+  <p align="center">
+ <img height=300px width=500px src="./images/eimage12.png" >
+ </p> 
+  <p align="center">
+ <img height=300px width=500px  src="./images/eimage13.png" >
+</p> 
  
- 
+ ### Certificate Details Page
+- By clicking on id a Certificate will be displayed.
+- Admin can download the Certificate in pdf, image form also he/she can download the QR code
+- Admin can also share the certificate on various social media platforms mentioned.
+- Admin can also scan the QR code n verify it.
+ <p align="center">
+ <img height=300px width=500px  src="./images/eimages7.gif" >
+  </p> 
 
-
- ### user profile/profilr-setting section
-- user can view its profile 
-- Its also allows user to to change his/her setting.
+ ### Certificate Verification
+- Ceriticate can be verified by scanning the QR code on it.
+- After scanning the QR code it will be drived to a page where all the details of that student will be displayed and it will be a proof of being a verified document.
+ <p align="center">
+ <img height=300px width=500px  src="./images/eimage8.gif" >
+  </p> 
   
- 
+ ### Appliance for lost Certificate.
+- On user login he/she won't be provided with all the rights that Admin has.
+- user/student can enter it's unique certificate hash and can get the certificate.
+- If a student is not having his/her unique hash then he/she can enter his/her SAP and the certificate will be mailed to that respective student.
+ <p align="center">
+ <img height=300px width=500px  src="./images/eimag9.gif" >
+  </p> 
+
+ ### Resend Email.
+- Admin can select the records that he/she wants to resend the email.
+- By clicking on the resend email button email be sent.
+
+ <p align="center">
+ <img height=300px width=500px  src="./images/eimage10.gif" >
+  </p> 
+
 #
 ### Stack
 - [Solidity](https://docs.soliditylang.org/en/v0.7.6/) - Object-oriented, high-level language for implementing smart contracts.
@@ -74,9 +108,6 @@
 - [web3.js](https://web3js.readthedocs.io/en/v1.3.4/) - Allows users to interact with a local or remote ethereum node using HTTP, IPC or WebSocket.
 - [Truffle](https://www.trufflesuite.com/truffle) - Development environment, testing framework and asset pipeline for blockchains using the Ethereum Virtual Machine (EVM).
 - [Ganache](https://www.trufflesuite.com/ganache) - Personal blockchain for Ethereum development used to deploy contracts, develop DApps, and run tests.
-- Django
-- AI/ML
-- DRF
 #
 ### Interact with the deployed DApp
 - Ecertify DApp requires [Metamask](https://metamask.io/) browser wallet extension to interact with.
@@ -98,7 +129,7 @@ ganache-cli --port 7545
 ```
 #### Open new terminal window and clone this repository
 ```
-[git clone https://github.com/HarshDilipGhosalkar/E-certo.git](https://github.com/jhenilparihar/SPIT-All-Stacker.git)
+git clone https://github.com/HarshDilipGhosalkar/E-certo.git
 ```
 #### Install dependencies
 ```
@@ -127,7 +158,5 @@ truffle migrate
 ### Authors
 - Harsh Ghosalkar - [HarshDilipGhosalkar](https://github.com/HarshDilipGhosalkar)
 - Jhenil Parihar - [JhenilParihar](https://github.com/jhenilparihar)
-- prerak gada - [prerak gada](https://github.com/jhenilparihar)
-- yash joshi [yash joshi](https://github.com/jhenilparihar)
 ### License
 This project is licensed under the MIT
