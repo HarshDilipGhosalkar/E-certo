@@ -29,6 +29,7 @@ const ADMIN_ADDRESSES = [
   "0xeeccb526299a611322f46802f9a2afda505a1e14",
   "0x7b54060dabce12d2536081473d1701017abf6ebb",
   "0x83632f0a6ae1402cffde97cfd11d573e9581a8d4",
+  "0xede7d2afd5612e1c4ef49d478a3cc23f659569cc",
 ];
 
 class App extends Component {
