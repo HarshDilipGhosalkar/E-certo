@@ -130,14 +130,14 @@ function addExtraCertificate(
         sapIdExist[_SAP] = true;
     }
 
-    function updateExtraTransaction(string memory _transactionHash) external {
-        ExtraCertificate memory cert = allExtraCertificates[certificateCounter];
-        cert.transactionHash = _transactionHash;
-        allExtraCertificates[certificateCounter] = cert;
-        // add the hash value and it's certificate to allCertificate mapping
-        allhashedCertificates[_transactionHash] = cert;
-        certficateHashExist[_transactionHash] = true;
-    }
+    // function updateExtraTransaction(string memory _transactionHash) external {
+    //     ExtraCertificate memory cert = allExtraCertificates[certificateCounter];
+    //     cert.transactionHash = _transactionHash;
+    //     allExtraCertificates[certificateCounter] = cert;
+    //     // add the hash value and it's certificate to allCertificate mapping
+    //     allhashedCertificates[_transactionHash] = cert;
+    //     certficateHashExist[_transactionHash] = true;
+    // }
 
     function updateTransaction(string memory _transactionHash) external {
         Certificate memory cert = allCertificates[certificateCounter];

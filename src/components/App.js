@@ -22,6 +22,15 @@ import Query from "./Query/Query";
 import DisplayEventCert from "./Dashboard/displayEventCertificate";
 import ApplicationForm from "./ApplicationForm/ApplicationForm";
 
+
+// addresses with admin privileges; comparisons are done in lowercase
+const ADMIN_ADDRESSES = [
+  "0xdfa2f788a5d70f4464f2cbb7dbfef1044cf36e1e",
+  "0xeeccb526299a611322f46802f9a2afda505a1e14",
+  "0x7b54060dabce12d2536081473d1701017abf6ebb",
+  "0x83632f0a6ae1402cffde97cfd11d573e9581a8d4",
+];
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -72,11 +81,12 @@ class App extends Component {
 
       this.setState({ loading: false });
       const networkId = await web3.eth.net.getId();
-      if (Ecertify.address) {
+      console.log(Ecertify.networks[5777].address)
+      if (Ecertify.networks[5777].address) {
         this.setState({ loading: true });
         const EcertoContract = web3.eth.Contract(
           Ecertify.abi,
-          Ecertify.address
+          Ecertify.networks[5777].address
         );
         this.setState({ EcertoContract });
         this.setState({ contractDetected: true });
@@ -213,6 +223,12 @@ class App extends Component {
       });
   };
 
+  // helper to determine whether a given address is allowed to see admin UI
+  isAdminAddress = (address) => {
+    if (!address) return false;
+    return ADMIN_ADDRESSES.includes(address.toLowerCase());
+  };
+
   certficateExist = async (hash) => {
     const exi = await this.state.EcertoContract.methods
       .certficateHashExist(hash)
@@ -222,21 +238,24 @@ class App extends Component {
   };
 
   handleActiveLink = (id) => {
-    if (
-      this.state.accountAddress ===
-        "0x41e5226215F536572DDa181e797Deb1878D94e3D" ||
-      this.state.accountAddress === "0xB641B4F1795a4BfA2cC7056E08cFB2b199831248"
-    ) {
-      document.querySelector("#all").classList.remove("nav-active");
-      document.querySelector("#all2").classList.remove("nav-active");
-      document.querySelector("#create").classList.remove("nav-active");
+    // remove any previously active styles; guard in case elements are not rendered yet
+    if (this.isAdminAddress(this.state.accountAddress)) {
+      const allEl = document.querySelector("#all");
+      const all2El = document.querySelector("#all2");
+      const createEl = document.querySelector("#create");
+      if (allEl) allEl.classList.remove("nav-active");
+      if (all2El) all2El.classList.remove("nav-active");
+      if (createEl) createEl.classList.remove("nav-active");
     }
 
-    document.querySelector("#query").classList.remove("nav-active");
+    const queryEl = document.querySelector("#query");
+    if (queryEl) queryEl.classList.remove("nav-active");
 
-    if (id.length > 0) {
+    if (id && id.length > 0) {
       const link = document.querySelector(id);
-      link.classList.add("nav-active");
+      if (link) {
+        link.classList.add("nav-active");
+      }
     }
   };
 
@@ -251,10 +270,10 @@ class App extends Component {
 
     emailjs
       .send(
-        "service_ysr730a",
-        "template_v0a1xxc",
+        "service_5022r9n",
+        "template_rfcp5s2",
         sendparams,
-        "e9JuUEfd3BAc8hdQi"
+        "lXbz1zzxsBOs8HcSZ"
       )
       .then(
         function(response) {
@@ -295,10 +314,7 @@ class App extends Component {
                     <Navbar accountAddress={this.state.accountAddress} />
                   }
                 >
-                  {this.state.accountAddress ===
-                    "0x41e5226215F536572DDa181e797Deb1878D94e3D" ||
-                  this.state.accountAddress ===
-                    "0xB641B4F1795a4BfA2cC7056E08cFB2b199831248" ? (
+                  {this.isAdminAddress(this.state.accountAddress) ? (
                     <>
                       <Route
                         path="/"

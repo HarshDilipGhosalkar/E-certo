@@ -176,17 +176,17 @@ class AcademicRecipientList extends Component {
                             className="publish_btn"
                             onClick={this.createCertificates}
                           >
-                            Publish Certificates
+                            Create Certificates
                           </button>
                         ) : (
                           <button className="publish_btn" disabled>
-                            Publish Certificates
+                            Create Certificates
                           </button>
                         )}
                       </>
                     ) : (
                       <button className="publish_btn" disabled>
-                        Publish Certificates
+                        Create Certificates
                       </button>
                     )}
                   </div>

@@ -4,8 +4,21 @@ import { Outlet, Link } from "react-router-dom";
 
 import "./assets/styles.css";
 import logo from "./assets/E-Certo.svg";
+
+// keep in sync with App.js
+const ADMIN_ADDRESSES = [
+  "0xdfa2f788a5d70f4464f2cbb7dbfef1044cf36e1e",
+  "0xeeccb526299a611322f46802f9a2afda505a1e14",
+  "0x7b54060dabce12d2536081473d1701017abf6ebb",
+  "0x83632f0a6ae1402cffde97cfd11d573e9581a8d4",
+];
+
+function isAdmin(address) {
+  return address && ADMIN_ADDRESSES.includes(address.toLowerCase());
+}
 class Navbar extends Component {
   render() {
+    const admin = isAdmin(this.props.accountAddress);
     return (
       <>
         <header>
@@ -19,10 +32,7 @@ class Navbar extends Component {
 
               <div>
                 <div class="navbar-nav">
-                  {this.props.accountAddress ===
-                    "0x41e5226215F536572DDa181e797Deb1878D94e3D" ||
-                  this.props.accountAddress ===
-                    "0xB641B4F1795a4BfA2cC7056E08cFB2b199831248" ? (
+                  {admin ? (
                     <>
                       <Link to="/dashboard" id="all" class="navbar-link">
                         Dashboard
@@ -35,7 +45,7 @@ class Navbar extends Component {
                         id="create"
                         class="navbar-link"
                       >
-                        Issue Certificate
+                        Create Certificate
                       </Link>
 
                       <Link

@@ -120,7 +120,7 @@ const DisplayCert = ({ AllCert, sendEmail, handleActiveLink }) => {
                   <img class="image_template" src={bgImage} alt="" />
                 </div>
                 <div id="clg-name">
-                  <h1>SHRI BHAGUBHAI MAFATLAL POLYTECHNIC</h1>
+                  <h1>SVKM's D J Sanghvi College Of Engineering</h1>
                 </div>
                 <div id="recognition-text">
                   <h1>CERTIFICATE</h1>
@@ -139,12 +139,12 @@ const DisplayCert = ({ AllCert, sendEmail, handleActiveLink }) => {
                 </div>
                 <div className="sign-div">
                   <div className="sign-name">
-                    <h1>Neeta Kadukar</h1>
+                    <h1>xyz</h1>
                     <hr />
                     <h3>Principal</h3>
                   </div>
                   <div className="sign-name">
-                    <h1>Neeta Kadukar</h1>
+                    <h1>xyz</h1>
                     <hr />
                     <h3>Vice Principal</h3>
                   </div>
@@ -174,7 +174,7 @@ const DisplayCert = ({ AllCert, sendEmail, handleActiveLink }) => {
               <div id="download-section">
                 <h1>Issued by</h1>
                 <hr id="hr" />
-                <h2>Shri Bhagubhai Mafatlal Polytechnic</h2>
+                <h2>SVKM's D J Sanghvi College Of Engineering</h2>
                 <h1 class="action">Actions</h1>
 
                 <hr id="hr" />
