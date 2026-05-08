@@ -37,7 +37,7 @@ const ParticipantDetail = ({ AllEventCert, handleActiveLink }) => {
                           <img className="sbmp_logo" src={logo} alt="" />
                         </div>
                         <div className="col  heading_">
-                          <h2>SVKM's D J Sanghvi College Of Engineering</h2>
+                          <h2>Shri. Bhagubhai Mafatlal Polytechnic</h2>
                         </div>
                       </div>
                       <hr className="detail_hr" />
